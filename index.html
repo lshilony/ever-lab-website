@@ -230,6 +230,36 @@
     .hero-data-viz g[transform] > circle:first-child { animation: none; }
   }
 
+  /* Biometric "data rain" — falls in upper-left ceiling area of hero */
+  .hero-data-float text {
+    font-family: 'Space Mono', monospace;
+    fill: #FFFFFF;
+    letter-spacing: 0.08em;
+    opacity: 0;
+    animation: heroRainfall var(--dur, 13s) linear infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .hero-data-float .fn-1  { animation-delay: 0s;    --dur: 12s; }
+  .hero-data-float .fn-2  { animation-delay: 1.6s;  --dur: 14s; }
+  .hero-data-float .fn-3  { animation-delay: 3.2s;  --dur: 11s; }
+  .hero-data-float .fn-4  { animation-delay: 4.8s;  --dur: 15s; }
+  .hero-data-float .fn-5  { animation-delay: 6.4s;  --dur: 13s; }
+  .hero-data-float .fn-6  { animation-delay: 8s;    --dur: 16s; }
+  .hero-data-float .fn-7  { animation-delay: 9.6s;  --dur: 12s; }
+  .hero-data-float .fn-8  { animation-delay: 11.2s; --dur: 14s; }
+  .hero-data-float .fn-9  { animation-delay: 2.4s;  --dur: 17s; }
+  .hero-data-float .fn-10 { animation-delay: 7.2s;  --dur: 13s; }
+  @keyframes heroRainfall {
+    0%   { opacity: 0; transform: translateY(-30px); }
+    12%  { opacity: var(--peak, 0.55); }
+    85%  { opacity: var(--peak, 0.55); }
+    100% { opacity: 0; transform: translateY(380px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-data-float text { animation: none; opacity: var(--peak, 0.35); }
+  }
+
   /* Hourglass — towering, rises past the headline (top portion in cream area) */
   .hero-rune {
     position: absolute;
@@ -4154,6 +4184,20 @@
         <circle cx="1100" cy="510" r="1.6" fill="rgba(255, 255, 255, 0.75)"/>
         <circle cx="340" cy="620" r="1.6" fill="rgba(255, 255, 255, 0.65)"/>
         <circle cx="1450" cy="260" r="1.6" fill="rgba(255, 255, 255, 0.65)"/>
+
+        <!-- Biometric "data rain" — falls in upper-left ceiling area -->
+        <g class="hero-data-float">
+          <text class="fn-1"  x="80"  y="80"  font-size="14" text-anchor="start" style="--peak:0.6">42.3 yrs</text>
+          <text class="fn-2"  x="200" y="50"  font-size="13" text-anchor="start" style="--peak:0.55">7.4 ms</text>
+          <text class="fn-3"  x="340" y="90"  font-size="14" text-anchor="start" style="--peak:0.6">38.6 %</text>
+          <text class="fn-4"  x="120" y="40"  font-size="12" text-anchor="start" style="--peak:0.45">96 bpm</text>
+          <text class="fn-5"  x="450" y="60"  font-size="15" text-anchor="start" style="--peak:0.65">−4.2 yrs</text>
+          <text class="fn-6"  x="280" y="100" font-size="12" text-anchor="start" style="--peak:0.5">134/82</text>
+          <text class="fn-7"  x="520" y="75"  font-size="13" text-anchor="start" style="--peak:0.55">0.84×</text>
+          <text class="fn-8"  x="160" y="65"  font-size="14" text-anchor="start" style="--peak:0.6">94 % O₂</text>
+          <text class="fn-9"  x="380" y="30"  font-size="12" text-anchor="start" style="--peak:0.45">28.4 °C</text>
+          <text class="fn-10" x="240" y="85"  font-size="13" text-anchor="start" style="--peak:0.55">61 % BF</text>
+        </g>
       </g>
     </svg>
   </div>
