@@ -1486,13 +1486,13 @@
     .journey-nav { display: none; }
   }
 
-  /* ═══════════ FLUID NAVIGATION — circular expanding menu (bottom-left) ═══════════ */
+  /* ═══════════ FLUID NAVIGATION — circular expanding menu (top-right, RTL-friendly) ═══════════ */
   nav.fluid-nav {
     position: fixed;
-    top: auto;
-    right: auto;
-    bottom: 32px;
-    left: 32px;
+    top: 90px;
+    right: 32px;
+    bottom: auto;
+    left: auto;
     width: 60px;
     height: 60px;
     padding: 0;
@@ -1548,17 +1548,17 @@
     transform: rotate(0) scale(1);
   }
 
-  /* Items container — items start collapsed at toggle position, expand upward */
+  /* Items container — items start collapsed at toggle position, expand downward */
   .fnav-items {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 60px;
     pointer-events: none;
   }
   .fnav-item {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 60px;
     height: 60px;
@@ -1609,17 +1609,18 @@
     pointer-events: auto;
     transform: translateY(var(--offset, 0)) scale(1);
   }
-  /* Staggered offsets — each item rises further than the previous, with delay */
-  .fluid-nav[data-state="open"] .fnav-item:nth-child(1) { --offset: -72px;  transition-delay: 40ms; }
-  .fluid-nav[data-state="open"] .fnav-item:nth-child(2) { --offset: -140px; transition-delay: 80ms; }
-  .fluid-nav[data-state="open"] .fnav-item:nth-child(3) { --offset: -208px; transition-delay: 120ms; }
-  .fluid-nav[data-state="open"] .fnav-item:nth-child(4) { --offset: -276px; transition-delay: 160ms; }
-  .fluid-nav[data-state="open"] .fnav-item:nth-child(5) { --offset: -344px; transition-delay: 200ms; }
+  /* Staggered offsets — each item drops further than the previous, with delay */
+  .fluid-nav[data-state="open"] .fnav-item:nth-child(1) { --offset: 72px;  transition-delay: 40ms; }
+  .fluid-nav[data-state="open"] .fnav-item:nth-child(2) { --offset: 140px; transition-delay: 80ms; }
+  .fluid-nav[data-state="open"] .fnav-item:nth-child(3) { --offset: 208px; transition-delay: 120ms; }
+  .fluid-nav[data-state="open"] .fnav-item:nth-child(4) { --offset: 276px; transition-delay: 160ms; }
+  .fluid-nav[data-state="open"] .fnav-item:nth-child(5) { --offset: 344px; transition-delay: 200ms; }
 
-  /* Tooltip label on hover — appears to the right of the item */
+  /* Tooltip label on hover — appears to the LEFT of the item (RTL-friendly, nav at right edge) */
   .fnav-item .fnav-label {
     position: absolute;
-    left: 72px;
+    right: 72px;
+    left: auto;
     top: 50%;
     transform: translateY(-50%);
     background: rgba(20, 20, 20, 0.88);
@@ -1639,21 +1640,21 @@
   .fnav-item:hover .fnav-label,
   .fnav-item:focus-visible .fnav-label {
     opacity: 1;
-    transform: translateY(-50%) translateX(4px);
+    transform: translateY(-50%) translateX(-4px);
   }
 
   @media (max-width: 768px) {
-    .fluid-nav { bottom: 22px; left: 22px; }
+    nav.fluid-nav { top: 76px; right: 18px; width: 52px; height: 52px; }
     .fnav-toggle { width: 52px; height: 52px; }
     .fnav-toggle svg { width: 19px; height: 19px; }
     .fnav-items, .fnav-item { width: 52px; }
     .fnav-item { height: 52px; }
     .fnav-item svg { width: 19px; height: 19px; }
-    .fluid-nav[data-state="open"] .fnav-item:nth-child(1) { --offset: -62px; }
-    .fluid-nav[data-state="open"] .fnav-item:nth-child(2) { --offset: -122px; }
-    .fluid-nav[data-state="open"] .fnav-item:nth-child(3) { --offset: -182px; }
-    .fluid-nav[data-state="open"] .fnav-item:nth-child(4) { --offset: -242px; }
-    .fluid-nav[data-state="open"] .fnav-item:nth-child(5) { --offset: -302px; }
+    .fluid-nav[data-state="open"] .fnav-item:nth-child(1) { --offset: 62px; }
+    .fluid-nav[data-state="open"] .fnav-item:nth-child(2) { --offset: 122px; }
+    .fluid-nav[data-state="open"] .fnav-item:nth-child(3) { --offset: 182px; }
+    .fluid-nav[data-state="open"] .fnav-item:nth-child(4) { --offset: 242px; }
+    .fluid-nav[data-state="open"] .fnav-item:nth-child(5) { --offset: 302px; }
     .fnav-item .fnav-label { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {
