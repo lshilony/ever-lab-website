@@ -1570,6 +1570,46 @@
   }
   .cdl-dot-top { top: 30%; }
   .cdl-dot-bottom { top: 70%; }
+  /* Sliding marker — tiny data point traversing the spine */
+  .cdl-marker {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--sage-deep);
+    box-shadow: 0 0 10px rgba(107, 139, 112, 0.6);
+    opacity: 0;
+    animation: cdlSlide 22s ease-in-out infinite;
+  }
+  .cdl-marker::after {
+    content: attr(data-val);
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--sage-deep);
+    white-space: nowrap;
+    opacity: 0.85;
+  }
+  .cdl-marker-2 { animation-delay: 11s; }
+  @keyframes cdlSlide {
+    0%   { top: 8%;  opacity: 0; }
+    8%   { opacity: 0.7; }
+    28%  { top: 30%; opacity: 0.8; animation-timing-function: ease-in; }
+    38%  { top: 30%; opacity: 0.8; animation-timing-function: ease-out; }
+    62%  { top: 70%; opacity: 0.8; animation-timing-function: ease-in; }
+    72%  { top: 70%; opacity: 0.8; animation-timing-function: ease-out; }
+    92%  { opacity: 0.5; }
+    100% { top: 92%; opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cdl-marker { animation: none; opacity: 0; }
+  }
   @media (max-width: 900px) {
     .chapter-index { top: 32px; right: 24px; font-size: 10px; }
     .chapter-dataline { display: none; }
@@ -4340,6 +4380,8 @@
   <div class="chapter-dataline" aria-hidden="true">
     <span class="cdl-dot cdl-dot-top"></span>
     <span class="cdl-dot cdl-dot-bottom"></span>
+    <span class="cdl-marker cdl-marker-1" data-val="0.87×"></span>
+    <span class="cdl-marker cdl-marker-2" data-val="42.3 yrs"></span>
   </div>
 
   <div class="chapter-eyebrow">
