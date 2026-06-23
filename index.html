@@ -113,7 +113,7 @@
     direction: ltr;
     color: var(--ink);
     font-family: 'Heebo', sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.22em;
     font-size: 18px;
     text-decoration: none;
@@ -141,7 +141,7 @@
     font-family: 'Space Mono', monospace;
     font-size: 24px;
     line-height: 1;
-    font-weight: 400;
+    font-weight: 500;
     transition: background 0.3s, transform 0.3s;
   }
   .nav-plus:hover { background: var(--ink); transform: rotate(90deg); }
@@ -195,7 +195,7 @@
     inset: 0;
     background: url('img/hero.jpg') center bottom/cover;
   }
-  /* Dark gradient at top so white text reads */
+  /* Original dark gradient at top so white text reads — image stays natural */
   .hero-img::after {
     content: '';
     position: absolute;
@@ -204,6 +204,31 @@
       linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.18) 35%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.1) 100%);
   }
   /* (Inset white frame removed — no longer serves the design) */
+
+  /* Bio-Tech Data Visualization Layer (above image, below content) */
+  .hero-data-viz {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+  /* Each labeled data point pulses gently — "live measurement" feel */
+  .hero-data-viz g[transform] > circle:first-child {
+    animation: heroDataPulse 3.4s ease-in-out infinite;
+  }
+  .hero-data-viz g[transform]:nth-child(2) > circle:first-child { animation-delay: 0.7s; }
+  .hero-data-viz g[transform]:nth-child(3) > circle:first-child { animation-delay: 1.4s; }
+  .hero-data-viz g[transform]:nth-child(4) > circle:first-child { animation-delay: 2.1s; }
+  .hero-data-viz g[transform]:nth-child(5) > circle:first-child { animation-delay: 2.8s; }
+  @keyframes heroDataPulse {
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-data-viz g[transform] > circle:first-child { animation: none; }
+  }
 
   /* Hourglass — towering, rises past the headline (top portion in cream area) */
   .hero-rune {
@@ -263,7 +288,7 @@
   /* HEADLINE, upper area, white */
   .hero-content {
     position: absolute;
-    top: 12vh;
+    top: 18vh;
     right: 80px;
     z-index: 5;
     max-width: 70vw;
@@ -295,8 +320,7 @@
     font-size: clamp(22px, 2.4vw, 38px);
     letter-spacing: 0.22em;
     line-height: 1;
-    color: rgba(255, 255, 255, 0.92);
-    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.25);
+    color: var(--ink);
     margin-bottom: 18px;
   }
   .brand-mark .bm-flip {
@@ -310,9 +334,10 @@
     align-self: flex-start;
     margin-top: 0.3em;
     opacity: 0.7;
-    font-weight: 400;
+    font-weight: 500;
   }
 
+  /* Hero H1 — large dramatic headline, restored */
   .hero-subline {
     font-family: 'Frank Ruhl Libre', serif;
     font-weight: 300;
@@ -322,14 +347,12 @@
     color: #fff;
     max-width: 100%;
     margin-bottom: 22px;
-    text-shadow: 0 3px 28px rgba(0, 0, 0, 0.28);
   }
   .hero-subline .em {
     font-family: 'Frank Ruhl Libre', serif;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 500;
     color: var(--sage-soft);
-    text-shadow: 0 2px 18px rgba(20, 20, 20, 0.35);
   }
   /* Hero claim — the human promise under the headline */
   .hero-claim {
@@ -339,15 +362,13 @@
     line-height: 1.22;
     color: var(--sage-soft);
     margin-bottom: 28px;
-    text-shadow: 0 3px 22px rgba(0, 0, 0, 0.4);
     max-width: 820px;
   }
   .hero-claim .em {
     font-family: 'Frank Ruhl Libre', serif;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 500;
     color: #fff;
-    text-shadow: 0 2px 18px rgba(20, 20, 20, 0.5);
   }
 
   .hero-tagline {
@@ -381,7 +402,7 @@
       /* Top-left warm highlight, like natural light falling */
       radial-gradient(ellipse 60% 55% at 22% 18%, rgba(244, 240, 235, 0.22) 0%, rgba(244, 240, 235, 0) 65%),
       /* Soft sage glow in upper-right quadrant */
-      radial-gradient(ellipse 70% 60% at 78% 32%, rgba(205, 223, 183, 0.30) 0%, rgba(205, 223, 183, 0) 70%),
+      radial-gradient(ellipse 70% 60% at 78% 32%, rgba(107, 139, 112, 0.30) 0%, rgba(107, 139, 112, 0) 70%),
       /* Bottom shadow for depth */
       radial-gradient(ellipse 80% 70% at 70% 100%, rgba(107, 139, 112, 0.42) 0%, rgba(107, 139, 112, 0) 78%),
       /* Base diagonal gradient — lighter sage to deeper sage */
@@ -417,14 +438,14 @@
   /* The 'EVER' mark inline — brand wordplay (Ever Lab + ever) */
   .hero-box .ever-mark {
     font-family: 'Heebo', sans-serif;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 0.04em;
     color: var(--ink);
   }
   .hero-box .box-tagline {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 18px;
     line-height: 1.4;
     letter-spacing: 0;
@@ -447,29 +468,102 @@
     color: var(--paper);
     text-decoration: none;
     font-family: 'Heebo', sans-serif;
-    font-size: 17px;
+    font-size: clamp(16px, 1.4vw, 18px);
     font-weight: 500;
     letter-spacing: 0.02em;
     transition: all 0.3s ease;
     align-self: flex-start;
   }
   .hero-cta:hover {
-    background: #4F6754;
+    background: var(--ink);
+    color: var(--paper);
     transform: translateY(-2px);
+    box-shadow: 0 16px 36px rgba(20, 20, 20, 0.22);
   }
   .hero-cta .arr {
-    transition: transform 0.3s ease;
+    transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
     display: inline-block;
   }
   .hero-cta:hover .arr {
     transform: translateX(-6px);
   }
 
+  /* ═══════════ HERO — Bio-Tech Luxury layers ═══════════ */
+
+  /* Data ticker — monospace data stream at top of hero */
+  .hero-ticker {
+    position: absolute;
+    top: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--sage-soft);
+    opacity: 0.9;
+    z-index: 7;
+    white-space: nowrap;
+    pointer-events: none;
+    direction: ltr;
+  }
+  /* Tiny dot before the ticker — visual anchor */
+  .hero-ticker::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--sage-soft);
+    margin-inline-end: 14px;
+    vertical-align: middle;
+    box-shadow: 0 0 12px rgba(205, 223, 183, 0.85);
+    animation: heroTickerPulse 2.4s ease-in-out infinite;
+  }
+  @keyframes heroTickerPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; box-shadow: 0 0 20px rgba(107, 139, 112, 1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-ticker::before { animation: none; }
+  }
+
+  /* Asymmetric corner accents — fine sage L-marks (TL + BR only) */
+  .hero-corner {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    z-index: 7;
+    pointer-events: none;
+  }
+  .hero-corner-tl {
+    top: 88px;
+    left: 80px;
+    border-top: 1px solid rgba(205, 223, 183, 0.7);
+    border-left: 1px solid rgba(205, 223, 183, 0.7);
+  }
+  .hero-corner-br {
+    bottom: 60px;
+    right: 80px;
+    border-bottom: 1px solid rgba(205, 223, 183, 0.7);
+    border-right: 1px solid rgba(205, 223, 183, 0.7);
+  }
+
+  /* (Text shadows removed — cleaner luxury feel) */
+
+  /* Responsive — adjust hero layers on smaller screens */
+  @media (max-width: 900px) {
+    .hero-ticker { top: 110px; font-size: 9px; letter-spacing: 0.22em; }
+    .hero-corner { width: 50px; height: 50px; }
+    .hero-corner-tl { top: 60px; left: 24px; }
+    .hero-corner-br { bottom: 32px; right: 24px; }
+  }
+
   /* Small bottom-right meta tag in hero (location/founded) */
   .hero-meta-tag {
     position: absolute;
-    bottom: 60px;
-    right: 80px;
+    bottom: 96px;
+    right: 116px;
     z-index: 6;
     text-align: left;
     font-family: 'Space Mono', monospace;
@@ -480,15 +574,23 @@
     line-height: 1.6;
   }
   .hero-meta-tag .lg {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-family: 'Frank Ruhl Libre', serif;
     text-transform: none;
     letter-spacing: -0.012em;
     font-size: 28px;
     color: #fff;
-    margin-bottom: 6px;
     line-height: 1;
     font-weight: 300;
+    direction: rtl;
+  }
+  .hero-meta-tag .meta-pin {
+    width: 16px;
+    height: 22px;
+    color: var(--sage-soft);
+    flex-shrink: 0;
   }
 
   /* --- WHY US (after hero), editorial / manifesto style --- */
@@ -585,7 +687,7 @@
     text-transform: uppercase;
     color: var(--warm-gray);
     margin-top: 14px;
-    font-weight: 400;
+    font-weight: 500;
   }
   .why-row h3 {
     font-family: 'Frank Ruhl Libre', serif;
@@ -610,7 +712,7 @@
   .why-row-text .why-quote {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 22px;
     line-height: 1.35;
     color: var(--sage-deep);
@@ -689,7 +791,7 @@
   }
   .stage-bridge .sb-label .arr {
     color: var(--sage-deep);
-    font-weight: 400;
+    font-weight: 500;
     margin-right: 6px;
   }
   /* Text sits above the decorative orbit */
@@ -781,12 +883,32 @@
     text-transform: uppercase;
     color: var(--sage-deep);
     margin-bottom: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
   }
+  .plan-eyebrow .eyebrow-line {
+    display: inline-block;
+    width: 40px;
+    height: 1px;
+    background: var(--sage-deep);
+    opacity: 0.5;
+  }
+  /* Plan section index — position override */
+  .plan-index {
+    top: 56px;
+    right: 56px;
+  }
+  @media (max-width: 900px) {
+    .plan-index { top: 32px; right: 24px; }
+  }
+  /* H2 — 44px desktop / 32px mobile */
   .plan-title {
     font-family: 'Frank Ruhl Libre', serif;
     font-weight: 300;
-    font-size: clamp(40px, 5.2vw, 78px);
-    line-height: 1.05;
+    font-size: clamp(32px, 3.5vw, 44px);
+    line-height: 1.15;
     letter-spacing: -0.022em;
     color: var(--ink);
     margin-bottom: 32px;
@@ -797,15 +919,16 @@
     letter-spacing: inherit;
     color: inherit;
   }
+  /* Paragraph — 18px desktop / 17px mobile, max-width 720px */
   .plan-subtitle {
     font-family: 'Heebo', sans-serif;
-    font-size: 17px;
+    font-size: clamp(17px, 1.4vw, 18px);
     line-height: 1.85;
     font-weight: 300;
     color: var(--ink-soft);
     letter-spacing: -0.005em;
     margin: 0 auto;
-    max-width: 760px;
+    max-width: 720px;
     text-align: right;
   }
   .plan-subtitle strong {
@@ -816,7 +939,9 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
+    align-items: stretch;
   }
+  /* Cards aligned — equal combination, not a sequence */
   .plan-card {
     background: var(--paper);
     position: relative;
@@ -861,10 +986,12 @@
     text-transform: uppercase;
     color: var(--sage-deep);
     margin-bottom: 18px;
+    direction: ltr;
+    unicode-bidi: embed;
   }
   .plan-card-title {
     font-family: 'Frank Ruhl Libre', serif;
-    font-weight: 400;
+    font-weight: 300;
     font-size: clamp(28px, 2.6vw, 38px);
     line-height: 1.1;
     letter-spacing: -0.012em;
@@ -898,7 +1025,7 @@
     border: none;
     padding: 16px 28px;
     font-family: 'Heebo', sans-serif;
-    font-size: 14px;
+    font-size: clamp(16px, 1.4vw, 18px);
     font-weight: 500;
     letter-spacing: 0.04em;
     cursor: pointer;
@@ -922,10 +1049,10 @@
     .plan-card-content { padding: 32px 28px 32px; }
   }
 
-  /* ═══════════ CLOSING SECTION — green box on cream background (like hero) ═══════════ */
+  /* ═══════════ CLOSING SECTION — integrated like Chapter / Plan ═══════════ */
   .closing-band {
     background: var(--paper);
-    padding: 80px 32px;
+    padding: 140px 32px 120px;
     text-align: center;
     position: relative;
   }
@@ -941,90 +1068,163 @@
     background: var(--sage-deep);
     opacity: 0.4;
   }
-  .closing-box {
-    position: relative;
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 64px 48px;
-    border-radius: 28px;
-    color: var(--ink);
-    background:
-      /* Top-left warm highlight, like natural light falling */
-      radial-gradient(ellipse 60% 55% at 22% 18%, rgba(244, 240, 235, 0.22) 0%, rgba(244, 240, 235, 0) 65%),
-      /* Soft sage glow in upper-right quadrant */
-      radial-gradient(ellipse 70% 60% at 78% 32%, rgba(205, 223, 183, 0.30) 0%, rgba(205, 223, 183, 0) 70%),
-      /* Bottom shadow for depth */
-      radial-gradient(ellipse 80% 70% at 70% 100%, rgba(107, 139, 112, 0.42) 0%, rgba(107, 139, 112, 0) 78%),
-      /* Base diagonal gradient — lighter sage to deeper sage */
-      linear-gradient(135deg, #9BB89F 0%, #8DAE92 48%, #7FA086 100%);
-    box-shadow: var(--shadow-md);
-  }
-  /* Inset border — same framed feeling as hero-box */
-  .closing-box::after {
-    content: '';
-    position: absolute;
-    inset: 10px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.32);
-    pointer-events: none;
-  }
   .closing-inner {
     position: relative;
     z-index: 1;
+    max-width: 820px;
+    margin: 0 auto;
   }
+  /* H2 manifesto — Frank Ruhl Libre 300, matches other section titles */
   .closing-manifesto {
     font-family: 'Frank Ruhl Libre', serif;
     font-weight: 300;
-    font-size: clamp(20px, 2.2vw, 30px);
-    line-height: 1.45;
-    letter-spacing: -0.012em;
-    margin-bottom: 40px;
+    font-size: clamp(28px, 3.2vw, 40px);
+    line-height: 1.35;
+    letter-spacing: -0.022em;
+    margin-bottom: 48px;
     color: var(--ink);
   }
-  .closing-manifesto strong {
-    /* No bold emphasis — inherits weight/color from manifesto */
-    font-weight: inherit;
-    color: inherit;
+  /* ─── Closing form (replaces the single CTA button) ─── */
+  .closing-form {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: right;
+    direction: rtl;
   }
-  .closing-manifesto em {
-    /* No italic — clean elegance, inherits everything from manifesto */
-    font-family: inherit;
-    font-style: normal;
-    color: inherit;
-    font-weight: inherit;
+  .closing-form .cf-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
   }
-  .closing-meta {
-    font-family: 'Space Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
+  .cf-field {
+    display: block;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .cf-row .cf-field {
+    margin-bottom: 0;
+  }
+  .cf-label {
+    display: block;
+    font-family: 'Heebo', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
     color: var(--ink-soft);
-    margin-bottom: 36px;
+    margin-bottom: 6px;
+    letter-spacing: -0.005em;
   }
-  .closing-cta {
+  .cf-field input {
+    width: 100%;
+    font-family: 'Heebo', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid rgba(20, 20, 20, 0.18);
+    border-radius: 12px;
+    padding: 12px 14px;
+    direction: rtl;
+    text-align: right;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    outline: none;
+  }
+  .cf-field input:focus-visible {
+    border-color: var(--sage-deep);
+    box-shadow: 0 0 0 3px rgba(107, 139, 112, 0.18);
+  }
+  /* Consent checkbox — custom styled */
+  .cf-consent {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 12px;
+    align-items: start;
+    margin: 24px 0 28px;
+    cursor: pointer;
+    text-align: right;
+  }
+  .cf-consent input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .cf-consent-mark {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1px solid rgba(20, 20, 20, 0.3);
+    border-radius: 5px;
+    background: transparent;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    margin-top: 2px;
+    position: relative;
+  }
+  .cf-consent input[type="checkbox"]:checked ~ .cf-consent-mark {
+    background: var(--sage-deep);
+    border-color: var(--sage-deep);
+  }
+  .cf-consent input[type="checkbox"]:checked ~ .cf-consent-mark::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--paper);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .cf-consent input[type="checkbox"]:focus-visible ~ .cf-consent-mark {
+    box-shadow: 0 0 0 3px rgba(107, 139, 112, 0.25);
+  }
+  .cf-consent-text {
+    font-family: 'Heebo', sans-serif;
+    font-size: 12.5px;
+    font-weight: 300;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    letter-spacing: -0.003em;
+  }
+  .cf-link {
+    color: var(--sage-deep);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .cf-link:hover {
+    color: var(--ink);
+  }
+  /* Submit — same style as previous closing-cta */
+  .cf-submit {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
+    width: 100%;
     background: var(--sage-deep);
     color: var(--paper);
+    border: none;
     padding: 16px 28px;
     border-radius: 14px;
-    text-decoration: none;
     font-family: 'Heebo', sans-serif;
-    font-size: 14px;
+    font-size: clamp(16px, 1.4vw, 18px);
     letter-spacing: 0.04em;
     font-weight: 500;
+    cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: var(--shadow-md);
   }
-  .closing-cta:hover {
+  .cf-submit:hover {
     background: var(--ink);
     color: var(--paper);
     transform: translateY(-2px);
   }
+  @media (max-width: 600px) {
+    .closing-form .cf-row { grid-template-columns: 1fr; gap: 14px; }
+  }
   @media (max-width: 700px) {
-    .closing-band { padding: 80px 20px; }
-    .closing-box { padding: 64px 28px; }
+    .closing-band { padding: 100px 20px 90px; }
+    .closing-manifesto { margin-bottom: 36px; }
   }
 
   /* ═══════════ MANIFESTO BRIDGE — Longevity principles between sections ═══════════ */
@@ -1060,7 +1260,7 @@
   .mb-line em {
     font-style: italic;
     color: var(--sage-deep);
-    font-weight: 400;
+    font-weight: 500;
   }
 
   /* ═══════════ BRIDGE SECTION (Hero → Method) ═══════════ */
@@ -1076,7 +1276,7 @@
   }
   .bridge-headline {
     font-family: 'Heebo', sans-serif;
-    font-weight: 700;
+    font-weight: 500;
     font-size: clamp(30px, 3.6vw, 52px);
     letter-spacing: -0.022em;
     line-height: 1.16;
@@ -1091,7 +1291,7 @@
   }
   .bridge-subline {
     font-family: 'Frank Ruhl Libre', serif;
-    font-weight: 400;
+    font-weight: 500;
     font-size: clamp(16px, 1.4vw, 20px);
     line-height: 1.5;
     color: var(--ink-soft);
@@ -1191,7 +1391,7 @@
     transition: opacity 0.25s ease, transform 0.25s ease;
     pointer-events: none;
   }
-  .jn-num { color: var(--sage-deep); font-weight: 700; }
+  .jn-num { color: var(--sage-deep); font-weight: 500; }
   .jn-name { color: var(--ink); font-weight: 500; }
   .jn-item:hover .jn-label { opacity: 1; transform: translateX(0); }
   .jn-item:hover .jn-dot { background: rgba(107, 139, 112, 0.6); }
@@ -1245,13 +1445,77 @@
     text-transform: uppercase;
     color: var(--warm-gray);
     margin-bottom: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
   }
+  /* Horizontal indicator line beside the eyebrow text — Bio-Tech detail */
+  .chapter-eyebrow .eyebrow-line {
+    display: inline-block;
+    width: 40px;
+    height: 1px;
+    background: var(--sage-deep);
+    opacity: 0.5;
+  }
+
+  /* ═══════════ CHAPTER — Bio-Tech Luxury layers ═══════════ */
+
+  /* Section index marker (top-right corner) */
+  .chapter-index {
+    position: absolute;
+    top: 56px;
+    right: 56px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--sage-deep);
+    opacity: 0.55;
+    z-index: 4;
+    direction: ltr;
+    pointer-events: none;
+  }
+
+  /* Vertical data line — asymmetric, decorative */
+  .chapter-dataline {
+    position: absolute;
+    top: 88px;
+    bottom: 80px;
+    left: 12%;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(107, 139, 112, 0.35) 15%,
+      rgba(107, 139, 112, 0.35) 85%,
+      transparent 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+  .cdl-dot {
+    position: absolute;
+    left: 50%;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--sage-deep);
+    transform: translateX(-50%);
+    box-shadow: 0 0 14px rgba(107, 139, 112, 0.5);
+  }
+  .cdl-dot-top { top: 30%; }
+  .cdl-dot-bottom { top: 70%; }
+  @media (max-width: 900px) {
+    .chapter-index { top: 32px; right: 24px; font-size: 10px; }
+    .chapter-dataline { display: none; }
+  }
+  /* H2 — 44px desktop / 32px mobile */
   .chapter-title {
     font-family: 'Frank Ruhl Libre', serif;
     font-weight: 300;
-    font-size: clamp(34px, 4.6vw, 72px);
+    font-size: clamp(32px, 3.5vw, 44px);
     letter-spacing: -0.022em;
-    line-height: 1.1;
+    line-height: 1.15;
     color: var(--ink);
     display: inline-block;
     margin-bottom: 32px;
@@ -1262,7 +1526,7 @@
   }
   .chapter-subtitle {
     font-family: 'Frank Ruhl Libre', serif;
-    font-weight: 400;
+    font-weight: 500;
     font-size: clamp(18px, 1.9vw, 28px);
     line-height: 1.4;
     color: var(--sage-deep);
@@ -1277,12 +1541,13 @@
     font-weight: 500;
     color: var(--sage-deep);
   }
+  /* Paragraph — 18px desktop / 17px mobile, max-width 720px */
   .chapter-intro,
   .chapter-answer {
-    max-width: 760px;
+    max-width: 720px;
     margin: 0 auto;
     font-family: 'Heebo', sans-serif;
-    font-size: 17px;
+    font-size: clamp(17px, 1.4vw, 18px);
     line-height: 1.85;
     color: var(--ink-soft);
     font-weight: 300;
@@ -1589,11 +1854,12 @@
     z-index: 5;
     max-width: 720px;
   }
+  /* H2 — 44px desktop / 32px mobile */
   .vital-top h3 {
     font-family: 'Frank Ruhl Libre', serif;
     font-weight: 300;
-    font-size: clamp(40px, 5vw, 78px);
-    line-height: 0.98;
+    font-size: clamp(32px, 3.5vw, 44px);
+    line-height: 1.15;
     color: #fff;
     letter-spacing: -0.022em;
     margin-bottom: 32px;
@@ -1651,7 +1917,7 @@
     background: var(--sage-soft);
     border-color: var(--sage-soft);
     color: var(--sage-deep);
-    font-weight: 700;
+    font-weight: 500;
   }
 
   /* Top-left: Numbered list in bordered transparent box */
@@ -1692,7 +1958,7 @@
     font-size: 28px;
     color: var(--ink);
     direction: ltr;
-    font-weight: 400;
+    font-weight: 500;
     padding-top: 2px;
   }
   .vital-row p {
@@ -1792,6 +2058,15 @@
   .vital.measure {
     background: var(--bg);
     padding: 140px 32px 100px;
+    position: relative;
+  }
+  /* Section index override — positioned relative to measure section */
+  .measure-index {
+    top: 96px;
+    right: 56px;
+  }
+  @media (max-width: 900px) {
+    .measure-index { top: 60px; right: 24px; }
   }
   .vital.measure .vital-frame {
     height: auto;
@@ -1827,7 +2102,7 @@
   }
   /* Body text — block-centered, right-aligned (RTL natural reading, like Chapter) */
   .vital.measure .vital-body {
-    max-width: 760px;
+    max-width: 720px;
     margin: 0 auto;
     text-align: right;
     order: 2;
@@ -1842,12 +2117,42 @@
     margin: 0 auto;
     width: 100%;
     max-width: 560px;
+    order: 4;
+  }
+  /* Sample report tag — above the bio-report (Hebrew, Heebo) */
+  .vital.measure .report-tag {
     order: 3;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--sage-deep);
+    opacity: 0.8;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    direction: rtl;
+    margin: 0 auto;
+  }
+  .vital.measure .report-tag .rt-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--sage-deep);
+    box-shadow: 0 0 10px rgba(107, 139, 112, 0.7);
+    animation: reportTagPulse 2.4s ease-in-out infinite;
+  }
+  @keyframes reportTagPulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 16px rgba(107, 139, 112, 1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .vital.measure .report-tag .rt-dot { animation: none; }
   }
   .vital.measure .vital-body p {
     font-family: 'Heebo', sans-serif;
     font-weight: 300;
-    font-size: 17px;
+    font-size: clamp(17px, 1.4vw, 18px);
     line-height: 1.85;
     color: var(--ink-soft);
     margin: 0 0 18px;
@@ -1868,7 +2173,7 @@
     transform: none;
     margin: 8px auto 0;
     align-self: center;
-    order: 4;
+    order: 5;
   }
   .vital.measure .vital-expand-btn:hover {
     transform: translateY(-2px);
@@ -1891,7 +2196,7 @@
     color: var(--sage-deep);
     font-family: 'Frank Ruhl Libre', serif;
     font-style: italic;
-    font-weight: 400;
+    font-weight: 500;
     font-size: clamp(18px, 1.8vw, 26px);
     line-height: 1.3;
     letter-spacing: 0.02em;
@@ -1986,7 +2291,7 @@
     display: block;
     font-family: 'Frank Ruhl Libre', serif;
     font-style: italic;
-    font-weight: 400;
+    font-weight: 500;
     margin-top: 6px;
   }
   .vital.smart-train .stage-label { color: var(--sage-deep); }
@@ -2188,7 +2493,7 @@
     border-bottom: 1px solid rgba(20, 20, 20, 0.1);
     margin-bottom: 14px;
   }
-  .br-brand { font-weight: 700; color: var(--ink); }
+  .br-brand { font-weight: 500; color: var(--ink); }
   .br-hero { margin-bottom: 26px; }
   .br-hero-label {
     font-family: 'Space Mono', monospace;
@@ -2200,7 +2505,7 @@
   }
   .br-hero-num {
     font-family: 'Heebo', sans-serif;
-    font-weight: 700;
+    font-weight: 500;
     color: var(--ink);
     line-height: 1;
     letter-spacing: -0.04em;
@@ -2221,7 +2526,7 @@
     color: #fff;
     font-family: 'Space Mono', monospace;
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 0.04em;
     padding: 5px 12px;
     border-radius: 999px;
@@ -2276,7 +2581,7 @@
   .br-cat-val {
     font-family: 'Space Mono', monospace;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 500;
     color: var(--ink);
     text-align: right;
   }
@@ -2284,13 +2589,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Space Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.02em;
     color: var(--ink-soft);
-    padding-top: 10px;
+    padding-top: 12px;
     border-top: 1px solid rgba(20, 20, 20, 0.1);
+    direction: rtl;
   }
   .br-dot {
     width: 4px;
@@ -2332,6 +2638,10 @@
     color: var(--sage-deep);
     line-height: 1;
     letter-spacing: -0.022em;
+    /* Bio-Tech Luxury glow — subtle sage halo around the focal data */
+    text-shadow:
+      0 0 22px rgba(107, 139, 112, 0.35),
+      0 0 44px rgba(107, 139, 112, 0.25);
   }
   .br-circle-label {
     font-family: 'Heebo', sans-serif;
@@ -2353,7 +2663,7 @@
     align-items: center;
     gap: 6px;
     padding: 5px 14px;
-    background: rgba(205, 223, 183, 0.45);
+    background: rgba(107, 139, 112, 0.45);
     color: var(--sage-deep);
     font-family: 'Heebo', sans-serif;
     font-size: 11px;
@@ -2393,7 +2703,7 @@
     letter-spacing: 0;
   }
   .br-headline strong {
-    font-weight: 700;
+    font-weight: 500;
     color: var(--sage-deep);
     font-size: 22px;
     letter-spacing: -0.012em;
@@ -2418,7 +2728,7 @@
     width: 32px;
     height: 32px;
     margin: 0 auto 8px;
-    background: rgba(205, 223, 183, 0.45);
+    background: rgba(107, 139, 112, 0.45);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -2508,7 +2818,7 @@
     padding: 16px 28px;
     border-radius: 14px;
     font-family: 'Heebo', sans-serif;
-    font-size: 14px;
+    font-size: clamp(16px, 1.4vw, 18px);
     font-weight: 500;
     letter-spacing: 0.04em;
     cursor: pointer;
@@ -2550,6 +2860,27 @@
     background: var(--bg);
     display: none;
     padding: 110px 32px 100px;
+    position: relative;
+  }
+  /* Bio-Tech Luxury: new H2 title for expand panel */
+  .vexpand-title-new {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 3.5vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -0.022em;
+    color: var(--ink);
+    margin: 0 0 24px;
+    text-align: center;
+  }
+  /* Section index for expand panels — wider text since it's longer */
+  .expand-index {
+    top: 56px;
+    right: 56px;
+    font-size: 10.5px;
+  }
+  @media (max-width: 900px) {
+    .expand-index { top: 32px; right: 24px; font-size: 9.5px; }
   }
   .vital-expand.open {
     display: block;
@@ -2637,11 +2968,12 @@
     height: 1px;
     background: var(--sage-deep);
   }
+  /* H2 — 44px desktop / 32px mobile */
   .vexpand-title {
     font-family: 'Frank Ruhl Libre', serif;
     font-weight: 300;
-    font-size: clamp(36px, 4.4vw, 68px);
-    line-height: 1.02;
+    font-size: clamp(32px, 3.5vw, 44px);
+    line-height: 1.15;
     color: var(--ink);
     letter-spacing: -0.022em;
   }
@@ -2681,16 +3013,15 @@
 
   /* HOW — methodology paragraph, between WHY and cards */
   .vexpand-how {
-    max-width: 880px;
+    max-width: 780px;
     margin: 0 auto 70px;
-    text-align: center;
+    text-align: right;
     font-family: 'Heebo', sans-serif;
     font-size: 16px;
     line-height: 1.85;
     color: var(--ink-soft);
     font-weight: 300;
-    padding: 36px 32px 0;
-    border-top: 1px solid rgba(20, 20, 20, 0.10);
+    padding: 0 32px;
   }
   .vexpand-how strong {
     font-weight: 500;
@@ -2699,9 +3030,9 @@
 
   /* "Why this matters" context block — now positioned BEFORE the methodology */
   .vexpand-context {
-    max-width: 880px;
-    margin: 0 auto 60px;
-    text-align: center;
+    max-width: 780px;
+    margin: 0 auto 40px;
+    text-align: right;
     padding: 0 32px;
   }
   .vexpand-question {
@@ -2714,6 +3045,18 @@
     margin-bottom: 26px;
     letter-spacing: -0.005em;
   }
+  .vexpand-subtitle {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: clamp(24px, 2.6vw, 36px);
+    line-height: 1.25;
+    color: var(--ink);
+    text-align: center;
+    letter-spacing: -0.01em;
+    max-width: 880px;
+    margin: 0 auto 44px;
+    padding: 0 32px;
+  }
   .vexpand-answer,
   .vexpand-evidence {
     font-family: 'Heebo', sans-serif;
@@ -2722,9 +3065,7 @@
     color: var(--ink-soft);
     font-weight: 300;
     margin-bottom: 18px;
-    max-width: 760px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: none;
   }
   .vexpand-answer strong,
   .vexpand-evidence strong {
@@ -2786,8 +3127,9 @@
   }
   .tech-title {
     font-family: 'Heebo', sans-serif;
-    font-weight: 700;
+    font-weight: 500;
     font-size: clamp(28px, 2.4vw, 36px);
+    line-height: 1.15;
     letter-spacing: 0.04em;
     text-align: center;
     margin-bottom: 32px;
@@ -2795,6 +3137,10 @@
     padding-bottom: 28px;
     border-bottom: 1px solid rgba(20, 20, 20, 0.12);
     direction: ltr;
+    min-height: calc(2 * 1.15em + 28px);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
   }
   /* Icon-based card variant (for Measure categories) */
   .tech-icon {
@@ -2834,31 +3180,36 @@
 
   /* Stat row at bottom of card */
   .tech-stat {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 16px;
-    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
     margin-top: auto;
     padding-top: 22px;
     border-top: 1px solid rgba(20, 20, 20, 0.12);
+    direction: rtl;
   }
   .tech-stat .stat-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--sage-deep);
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
   }
   .tech-stat .stat-num {
     font-family: 'Heebo', sans-serif;
-    font-size: 32px;
-    font-weight: 400;
-    color: var(--ink);
+    font-size: 30px;
+    font-weight: 300;
+    color: var(--sage-deep);
     letter-spacing: -0.012em;
+    direction: rtl;
+    unicode-bidi: isolate;
+    /* Bio-Tech Luxury — subtle sage halo, like the "53" in the bio-report */
+    text-shadow:
+      0 0 18px rgba(107, 139, 112, 0.30),
+      0 0 36px rgba(205, 223, 183, 0.20);
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    direction: ltr;
   }
   .tech-stat .stat-num .arrow {
     font-size: 22px;
@@ -2888,7 +3239,7 @@
     right: 0;
     top: 0;
     color: var(--sage-deep);
-    font-weight: 700;
+    font-weight: 500;
     font-size: 1.4em;
     line-height: 1;
   }
@@ -2935,7 +3286,7 @@
     font-size: 12px;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 500;
     transition: color 0.3s;
   }
   .stage-link:hover { color: var(--ink); }
@@ -3161,7 +3512,7 @@
     text-transform: uppercase;
     color: var(--sage-deep);
     margin-bottom: 28px;
-    font-weight: 400;
+    font-weight: 500;
     display: flex;
     align-items: center;
     gap: 14px;
@@ -3413,7 +3764,7 @@
   .disc-kicker {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 18px;
     letter-spacing: 0;
     color: var(--sage-soft);
@@ -3441,7 +3792,7 @@
   .disc-list li span:last-child {
     color: var(--sage-soft);
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 500;
     direction: ltr;
   }
   .disc-cta {
@@ -3452,7 +3803,7 @@
     text-decoration: none;
     font-family: 'Heebo', sans-serif;
     font-size: 15px;
-    font-weight: 400;
+    font-weight: 500;
     border-bottom: 1px solid rgba(255, 255, 255, 0.6);
     padding-bottom: 8px;
     transition: gap 0.3s, border-color 0.3s;
@@ -3490,6 +3841,195 @@
   .hero-bottom > *:nth-child(1) { animation-delay: 0.4s; }
   .hero-bottom > *:nth-child(2) { animation-delay: 0.55s; }
   .hero-bottom > *:nth-child(3) { animation-delay: 0.7s; }
+
+  /* ═══════════════════════════════════════════════════════════════════
+     MOBILE OPTIMIZATION — tablet and below (≤768px)
+     ═══════════════════════════════════════════════════════════════════ */
+  @media (max-width: 768px) {
+    /* ─── Nav ─── */
+    nav { padding: 14px 18px; }
+    nav.scrolled { padding: 12px 18px; }
+    .nav-cta {
+      padding: 10px 14px;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      gap: 8px;
+    }
+    .nav-cta span:first-child { font-size: 11px; }
+
+    /* ─── Hero — completely rebuild for mobile ─── */
+    .hero {
+      height: auto;
+      min-height: 100vh;
+      padding: 80px 14px 24px;
+    }
+    .hero-frame {
+      position: relative;
+      top: auto; left: auto; right: auto; bottom: auto;
+      width: 100%;
+      min-height: calc(100vh - 100px);
+      border-radius: 18px;
+    }
+    .hero-content {
+      position: absolute;
+      top: 60px;
+      right: 24px;
+      left: 24px;
+      max-width: none;
+      z-index: 5;
+    }
+    .hero-subline {
+      font-size: 38px;
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+    .hero-claim {
+      font-size: 20px;
+      line-height: 1.3;
+      max-width: 100%;
+    }
+    /* Green box — fits the screen */
+    .hero-box {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      width: auto;
+      max-width: none;
+      padding: 22px 24px;
+      border-radius: 20px;
+    }
+    .hero-box::after {
+      inset: 8px;
+      border-radius: 14px;
+    }
+    .hero-box p {
+      font-size: 14px;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    .hero-cta {
+      padding: 14px 22px;
+      font-size: 15px;
+      width: 100%;
+      justify-content: center;
+    }
+    /* Data viz — show but lighter on mobile */
+    .hero-data-viz { opacity: 0.5; }
+    /* Hero meta tag — small, tucked in */
+    .hero-meta-tag {
+      bottom: auto;
+      top: 18px;
+      right: 24px;
+      left: auto;
+    }
+    .hero-meta-tag .lg { font-size: 16px; gap: 6px; }
+    .hero-meta-tag .meta-pin { width: 11px; height: 14px; }
+    /* Corner accents — smaller on mobile */
+    .hero-corner { width: 36px; height: 36px; }
+    .hero-corner-tl { top: 100px; left: 24px; }
+    .hero-corner-br { bottom: 38px; right: 24px; }
+
+    /* ─── Chapter section ─── */
+    .chapter { padding: 80px 22px 50px; }
+    .chapter-eyebrow { font-size: 10px; gap: 10px; }
+    .chapter-eyebrow .eyebrow-line { width: 28px; }
+    .chapter-title { font-size: 32px; }
+    .chapter-intro { font-size: 16px; padding: 0 4px; }
+    .chapter-dataline { display: none; }
+    .chapter-index { top: 28px; right: 24px; font-size: 9.5px; }
+
+    /* ─── Measure / Bio-report section ─── */
+    .vital.measure { padding: 90px 18px 70px; }
+    .vital.measure .vital-frame { gap: 24px; }
+    .vital.measure .vital-top h3 { font-size: 30px; }
+    .vital.measure .vital-top h3 .em-step { font-size: 16px; margin-top: 10px; }
+    .vital.measure .vital-body { max-width: 100%; padding: 0 4px; }
+    .vital.measure .vital-body p { font-size: 16px; margin-bottom: 14px; }
+    .vital.measure .bio-report {
+      width: 100%;
+      max-width: 460px;
+      border-radius: 22px;
+    }
+    .br-frame { margin: 10px; padding: 18px 16px 16px; border-radius: 18px; }
+    .br-head { font-size: 9px; margin-bottom: 12px; padding-bottom: 8px; }
+    .br-circle { width: 130px; height: 130px; margin: 0 auto 8px; }
+    .br-circle-num { font-size: 42px; }
+    .br-circle-label, .br-circle-rate { font-size: 9.5px; }
+    .br-status-pill { font-size: 10px; padding: 4px 12px; }
+    .br-compare { font-size: 10.5px; margin-bottom: 12px; }
+    .br-card-grid { gap: 6px; margin-bottom: 12px; }
+    .br-card { padding: 10px 8px; border-radius: 12px; }
+    .br-card-icon { width: 26px; height: 26px; margin-bottom: 6px; }
+    .br-card-icon svg { width: 14px; height: 14px; }
+    .br-card-title { font-size: 9.5px; margin-bottom: 4px; min-height: 22px; }
+    .br-card-num { font-size: 22px; margin-bottom: 4px; }
+    .br-card-status { font-size: 9px; gap: 4px; }
+    .br-foot { font-size: 10px; padding-top: 10px; }
+
+    /* ─── Plan section ─── */
+    .plan-overview { padding: 90px 18px 70px; }
+    .plan-header { margin-bottom: 40px; }
+    .plan-title { font-size: 32px; }
+    .plan-subtitle { font-size: 16px; padding: 0 4px; }
+    .plan-cards { grid-template-columns: 1fr; gap: 22px; }
+    .plan-card-img { height: 200px; margin: 14px 14px 0; }
+    .plan-card-content { padding: 26px 24px 26px; }
+    .plan-card-title { font-size: 24px; margin-bottom: 16px; }
+    .plan-card-text { font-size: 15px; margin-bottom: 22px; }
+    .plan-card .plan-card-btn {
+      padding: 14px 22px;
+      font-size: 14px;
+      width: 100%;
+      justify-content: center;
+      align-self: stretch;
+    }
+
+    /* ─── Expand panels (Tech & Recovery) ─── */
+    .vital-expand { padding: 70px 18px 60px; }
+    .expand-index { top: 28px; right: 24px; font-size: 9px; }
+    .vexpand-inner { padding: 0; }
+    .vexpand-title-new { font-size: 30px; }
+    .vexpand-intro { font-size: 15px; padding: 0 4px; }
+    .vexpand-grid.cols-2 { grid-template-columns: 1fr; gap: 20px; }
+    .tech-card { border-radius: 18px; }
+    .tech-img { aspect-ratio: 16/10; margin: 12px 12px 0; border-radius: 12px; }
+    .tech-icon { height: 140px; margin: 12px 12px 0; }
+    .tech-icon svg { width: 64px; height: 64px; }
+    .tech-content { padding: 22px 20px 22px; }
+    .tech-label { font-size: 10px; margin-bottom: 12px; }
+    .tech-title { font-size: 26px; margin-bottom: 14px; }
+    .tech-paragraph, .tech-bullets li { font-size: 14px; line-height: 1.75; }
+    .tech-stat { padding-top: 16px; }
+    .tech-stat .stat-label { font-size: 11px; }
+    .tech-stat .stat-num { font-size: 24px; }
+
+    /* ─── Closing section ─── */
+    .closing-band { padding: 80px 22px 70px; }
+    .closing-inner { max-width: 100%; }
+    .closing-manifesto { font-size: 24px; line-height: 1.4; margin-bottom: 36px; }
+    .closing-form { max-width: 100%; }
+    .closing-form .cf-row { grid-template-columns: 1fr; gap: 12px; }
+    .cf-field input { padding: 12px 14px; font-size: 16px; }
+    .cf-consent { gap: 10px; margin: 18px 0 22px; }
+    .cf-consent-text { font-size: 12px; line-height: 1.55; }
+    .cf-submit { padding: 16px 20px; font-size: 15px; }
+
+    /* ─── Journey nav (left side dots) — hide on mobile ─── */
+    .journey-nav { display: none; }
+  }
+
+  /* Smaller phones — additional refinements ≤ 400px */
+  @media (max-width: 400px) {
+    .hero-subline { font-size: 32px; }
+    .hero-claim { font-size: 18px; }
+    .hero-meta-tag .lg { font-size: 14px; }
+    .chapter-title, .plan-title, .vital.measure .vital-top h3, .vexpand-title-new {
+      font-size: 28px;
+    }
+    .closing-manifesto { font-size: 21px; }
+    .br-card-grid { grid-template-columns: 1fr 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -3529,18 +4069,101 @@
 <section class="hero">
   <div class="hero-frame">
     <div class="hero-img"></div>
+
+    <!-- Bio-Tech Data Layer — sage waves + data points hint at bio-age measurement -->
+    <svg class="hero-data-viz" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <defs>
+        <!-- Subtle measurement grid -->
+        <pattern id="hero-grid" width="100" height="100" patternUnits="userSpaceOnUse">
+          <path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255, 255, 255, 0.12)" stroke-width="0.5"/>
+        </pattern>
+        <!-- Wave gradient — fades at edges, full in middle -->
+        <linearGradient id="hd-wave-fade" x1="0" x2="1">
+          <stop offset="0" stop-color="rgba(255, 255, 255, 0)"/>
+          <stop offset="0.15" stop-color="rgba(255, 255, 255, 0.6)"/>
+          <stop offset="0.85" stop-color="rgba(255, 255, 255, 0.6)"/>
+          <stop offset="1" stop-color="rgba(255, 255, 255, 0)"/>
+        </linearGradient>
+        <linearGradient id="hd-wave-fade-soft" x1="0" x2="1">
+          <stop offset="0" stop-color="rgba(255, 255, 255, 0)"/>
+          <stop offset="0.2" stop-color="rgba(255, 255, 255, 0.6)"/>
+          <stop offset="0.8" stop-color="rgba(255, 255, 255, 0.6)"/>
+          <stop offset="1" stop-color="rgba(255, 255, 255, 0)"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Measurement grid background -->
+      <rect width="1600" height="900" fill="url(#hero-grid)"/>
+
+      <!-- Wave 1 — top curve, lightest sage -->
+      <path d="M 0 240 Q 200 200 400 230 T 800 250 T 1200 290 T 1600 340"
+            fill="none" stroke="url(#hd-wave-fade)" stroke-width="1.5" opacity="0.85"
+            stroke-dasharray="14 9"/>
+
+      <!-- Wave 2 — middle curve, medium sage, gentle descent -->
+      <path d="M 0 440 Q 200 400 400 430 T 800 460 T 1200 510 T 1600 560"
+            fill="none" stroke="url(#hd-wave-fade)" stroke-width="1.5" opacity="0.8"
+            stroke-dasharray="14 9"/>
+
+      <!-- Wave 3 — bottom curve, deeper sage -->
+      <path d="M 0 640 Q 200 600 400 630 T 800 670 T 1200 720 T 1600 770"
+            fill="none" stroke="url(#hd-wave-fade-soft)" stroke-width="1.5" opacity="0.75"
+            stroke-dasharray="14 9"/>
+
+      <!-- Data points with labels (LTR, monospace) -->
+      <g style="font-family: 'Space Mono', monospace;">
+
+        <!-- Point: 37.4 (top-left area) -->
+        <g transform="translate(280, 230)">
+          <circle r="3" fill="#FFFFFF" filter="drop-shadow(0 0 8px rgba(255,255,255,0.9))"/>
+          <line x1="0" y1="0" x2="0" y2="-50" stroke="rgba(255, 255, 255, 0.65)" stroke-width="0.5" stroke-dasharray="5 4"/>
+          <text x="0" y="-62" font-size="13" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.05em">37.4</text>
+        </g>
+
+        <!-- Point: 42.1 (mid area) -->
+        <g transform="translate(620, 430)">
+          <circle r="2.5" fill="#FFFFFF" opacity="0.8"/>
+          <line x1="0" y1="0" x2="0" y2="-36" stroke="rgba(255, 255, 255, 0.55)" stroke-width="0.5" stroke-dasharray="5 4"/>
+          <text x="0" y="-46" font-size="11" fill="rgba(255, 255, 255, 0.9)" text-anchor="middle">42.1</text>
+        </g>
+
+        <!-- Point: 35.9 (mid-right) -->
+        <g transform="translate(960, 460)">
+          <circle r="3" fill="#FFFFFF" filter="drop-shadow(0 0 8px rgba(255,255,255,0.85))"/>
+          <line x1="0" y1="0" x2="0" y2="-44" stroke="rgba(255, 255, 255, 0.65)" stroke-width="0.5" stroke-dasharray="5 4"/>
+          <text x="0" y="-56" font-size="12" fill="#FFFFFF" text-anchor="middle">35.9</text>
+        </g>
+
+        <!-- Point: −8.6 yrs (bottom area, the "lowering" message) -->
+        <g transform="translate(1320, 670)">
+          <circle r="3.5" fill="#FFFFFF" filter="drop-shadow(0 0 10px rgba(255,255,255,1))"/>
+          <line x1="0" y1="0" x2="0" y2="42" stroke="rgba(255, 255, 255, 0.7)" stroke-width="0.5" stroke-dasharray="5 4"/>
+          <text x="0" y="56" font-size="11" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.1em">−8.6 YRS</text>
+        </g>
+
+        <!-- Point: 0.87× (aging rate, bottom-left) -->
+        <g transform="translate(180, 720)">
+          <circle r="2.5" fill="#FFFFFF" opacity="0.75"/>
+          <line x1="0" y1="0" x2="0" y2="-30" stroke="rgba(255, 255, 255, 0.55)" stroke-width="0.5" stroke-dasharray="5 4"/>
+          <text x="0" y="-40" font-size="11" fill="rgba(255, 255, 255, 0.9)" text-anchor="middle">0.87×</text>
+        </g>
+
+        <!-- Decorative micro-points (no labels) -->
+        <circle cx="450" cy="400" r="1.6" fill="rgba(255, 255, 255, 0.75)"/>
+        <circle cx="780" cy="250" r="1.6" fill="rgba(255, 255, 255, 0.75)"/>
+        <circle cx="1100" cy="510" r="1.6" fill="rgba(255, 255, 255, 0.75)"/>
+        <circle cx="340" cy="620" r="1.6" fill="rgba(255, 255, 255, 0.65)"/>
+        <circle cx="1450" cy="260" r="1.6" fill="rgba(255, 255, 255, 0.65)"/>
+      </g>
+    </svg>
   </div>
 
-  <!-- Hero decorative element — empty placeholder, waiting for new inspiration -->
-  <div class="hero-rune" aria-hidden="true"></div>
+  <!-- Asymmetric corner accents — fine 0.5px sage borders -->
+  <div class="hero-corner hero-corner-tl" aria-hidden="true"></div>
+  <div class="hero-corner hero-corner-br" aria-hidden="true"></div>
 
   <div class="hero-content">
-    <h1 class="hero-headline">
-      <span class="brand-mark">
-        <span>EV</span><span class="bm-flip">E</span><span class="bm-flip">R</span><span class="bm-lab">LAB</span>
-      </span>
-    </h1>
-    <p class="hero-subline">הדרך שלך <span class="em">ללונג'ביטי.</span></p>
+    <h1 class="hero-subline">הדרך שלך <span class="em">ללונג'ביטי.</span></h1>
     <p class="hero-claim">לחיות את <span class="em">הגרסה הטובה ביותר</span> שלך.</p>
   </div>
 
@@ -3550,8 +4173,14 @@
   </div>
 
   <div class="hero-meta-tag">
-    <span class="lg">הרצליה</span>
-    Members Club · 150 Seats
+    <span class="lg">
+      <svg class="meta-pin" viewBox="0 0 24 32" aria-hidden="true" focusable="false">
+        <path d="M12 30 C6.5 21 2 16 2 11 C2 6 6 2 12 2 C18 2 22 6 22 11 C22 16 17.5 21 12 30 Z"
+              fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        <circle cx="12" cy="11" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      הרצליה
+    </span>
   </div>
 </section>
 
@@ -3625,7 +4254,19 @@
 
 
 <section class="chapter" id="step-map" data-journey-step="0">
-  <div class="chapter-eyebrow">The Method</div>
+  <!-- Section index marker (top-right corner) — Bio-Tech Luxury layer -->
+  <div class="chapter-index" aria-hidden="true">01 / 03</div>
+
+  <!-- Vertical data line (decorative, asymmetric) — Bio-Tech Luxury layer -->
+  <div class="chapter-dataline" aria-hidden="true">
+    <span class="cdl-dot cdl-dot-top"></span>
+    <span class="cdl-dot cdl-dot-bottom"></span>
+  </div>
+
+  <div class="chapter-eyebrow">
+    <span class="eyebrow-line" aria-hidden="true"></span>
+    <span>The Method</span>
+  </div>
   <h2 class="chapter-title">
     איך עובדת <span class="hl">השיטה שלנו?</span>
   </h2>
@@ -3656,11 +4297,23 @@
 
 <!-- ============== MEASURE / AGE SCAN MAIN SECTION ============== -->
 <section class="vital measure" id="step-measure" data-journey-step="1">
+  <!-- Section index marker (Bio-Tech Luxury layer) -->
+  <div class="chapter-index measure-index" aria-hidden="true">02 / 03</div>
+
   <div class="vital-frame">
     <!-- Centered header (matches Chapter / Plan sections) -->
     <div class="vital-top">
-      <div class="chapter-eyebrow">The Assessment</div>
+      <div class="chapter-eyebrow">
+        <span class="eyebrow-line" aria-hidden="true"></span>
+        <span>The Assessment</span>
+      </div>
       <h3>מבדק גיל ביולוגי תפקודי:<span class="em-step">נקודת ההתחלה</span></h3>
+    </div>
+
+    <!-- Sample report tag above the bio-report -->
+    <div class="report-tag" aria-hidden="true">
+      <span class="rt-dot"></span>
+      דוגמת דוח · בדיקת גיל ביולוגי
     </div>
 
     <!-- Sample bio-age report — focal centered visual -->
@@ -3787,29 +4440,26 @@
       <div>
         <div class="vexpand-eyebrow">האבחון הראשוני · 550 ₪</div>
         <h2 class="vexpand-title">
-          ארבע קטגוריות.
-          <span class="em">גיל ביולוגי תפקודי אחד.</span>
+          <span class="em">למה הגיל הביולוגי כל כך חשוב?</span>
         </h2>
       </div>
     </div>
 
     <!-- WHY — why this matters -->
     <div class="vexpand-context">
-      <h3 class="vexpand-question">למה הגיל הביולוגי התפקודי כל כך חשוב?</h3>
       <p class="vexpand-answer">
-        הגיל הביולוגי התפקודי חוזה את הסיכון שלך למחלות, ירידה תפקודית והזדקנות קוגניטיבית, הרבה יותר מהתאריך בתעודת הזהות. <strong>לדעת את המספר שלך ולשפר אותו</strong> זה המפתח לחיים ארוכים, בריאים וחזקים יותר.
-      </p>
-      <p class="vexpand-evidence">
-        בדיקת גיל ביולוגי תפקודי מבוססת על <strong>מדדים פיזיולוגיים שנחקרו לאורך שנים</strong> ומשמשים כיום במחקרי אריכות חיים, כדי להעריך תפקוד, חוסן וקצב הזדקנות ביולוגי.
+        בעוד שהגיל הכרונולוגי מתקדם באותו קצב אצל כולנו, קצב ההזדקנות הביולוגית מושפע מהבחירות שאנחנו עושים מדי יום – כמו פעילות גופנית, תזונה, איכות השינה ואורח החיים. לכן, שני אנשים בני אותו גיל יכולים להיות שונים לחלוטין באופן שבו הגוף שלהם מתפקד. המטרה היא לא לעצור את הזמן, אלא להאט את קצב ההזדקנות של הגוף ולשמור על תפקוד מיטבי לאורך החיים.
       </p>
     </div>
 
     <!-- HOW — our methodology -->
     <p class="vexpand-how">
-      <strong>איך אנחנו עושים את זה:</strong> האבחון הראשוני שלנו מורכב מארבע קטגוריות עיקריות למדידת גיל ביולוגי תפקודי. <strong>האלגוריתם הייחודי של EVER LAB</strong> מסכם את כל המדדים למספר יחיד, ממנו נבנית התוכנית האישית, ואותו מודדים מחדש כל 90 יום כדי לראות בדיוק עד כמה התוכנית עובדת.
+      לונג'ביטי הוא מסע מתמשך, לא יעד. מבדק הגיל הביולוגי מאפשר להתחיל עם נקודת פתיחה ברורה, להבין מה הגוף שלכם צריך, מה כדאי לשפר, מה חשוב לשמר, ואילו תחומים דורשים יותר תשומת לב. חזרה על המבדק לאורך הדרך מאפשרת לעקוב אחר ההתקדמות ולוודא שהמאמצים שלכם מתורגמים לתוצאות מדידות.
     </p>
 
-    <div class="vexpand-grid cols-2">
+    <h3 class="vexpand-subtitle">מה כוללת בדיקת גיל ביולוגי תפקודי של EVER LAB?</h3>
+
+    <div class="vexpand-grid cols-3">
 
       <article class="tech-card">
         <div class="tech-icon">
@@ -3831,28 +4481,7 @@
           </ul>
           <div class="tech-stat">
             <span class="stat-label">% מסת שריר</span>
-            <span class="stat-num">SCAN</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="tech-card">
-        <div class="tech-icon">
-          <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M60 92 C34 76, 22 58, 22 42 C22 30, 32 22, 42 24 C52 25, 58 32, 60 38 C62 32, 68 25, 78 24 C88 22, 98 30, 98 42 C98 58, 86 76, 60 92 Z"/>
-            <path d="M30 54 L46 54 L51 44 L57 64 L64 48 L70 58 L74 54 L90 54"/>
-          </svg>
-        </div>
-        <div class="tech-content">
-          <div class="tech-label">02 · Aerobic Capacity</div>
-          <h3 class="tech-title">יכולת אירובית</h3>
-          <ul class="tech-bullets">
-            <li><strong>VO₂max, דופק מקסימלי, סף אנאירובי.</strong></li>
-            <li>VO₂max הוא המדד היחיד עם <strong>קורלציה ישירה לתוחלת חיים</strong>. כל שיפור של יחידה אחת מפחית את הסיכון הקרדיווסקולרי ב־2% עד 5%. זה המדד שפשוט הכי משתלם לשפר.</li>
-          </ul>
-          <div class="tech-stat">
-            <span class="stat-label">ml/kg/min</span>
-            <span class="stat-num">VO₂max</span>
+            <span class="stat-num">BODY SCAN</span>
           </div>
         </div>
       </article>
@@ -3868,7 +4497,7 @@
           </svg>
         </div>
         <div class="tech-content">
-          <div class="tech-label">03 · Functional Strength</div>
+          <div class="tech-label">02 · Functional Strength</div>
           <h3 class="tech-title">כוח ותפקוד שרירי</h3>
           <ul class="tech-bullets">
             <li><strong>חוזק אחיזה, כוח גפיים עליונות ותחתונות.</strong></li>
@@ -3876,7 +4505,7 @@
           </ul>
           <div class="tech-stat">
             <span class="stat-label">kg · אחיזה</span>
-            <span class="stat-num">GRIP</span>
+            <span class="stat-num">STRENGTH</span>
           </div>
         </div>
       </article>
@@ -3894,7 +4523,7 @@
           </svg>
         </div>
         <div class="tech-content">
-          <div class="tech-label">04 · Neuromuscular</div>
+          <div class="tech-label">03 · Neuromuscular</div>
           <h3 class="tech-title">תפקוד נוירו־מוטורי</h3>
           <ul class="tech-bullets">
             <li><strong>זמן תגובה, יציבה, קואורדינציה.</strong></li>
@@ -3913,9 +4542,15 @@
 
 <!-- ============== PLAN OVERVIEW — התוכנית של EVER LAB ============== -->
 <section class="plan-overview" id="step-plan" data-journey-step="2">
+  <!-- Section index marker (Bio-Tech Luxury layer) -->
+  <div class="chapter-index plan-index" aria-hidden="true">03 / 03</div>
+
   <div class="plan-inner">
     <div class="plan-header">
-      <div class="plan-eyebrow">The Program</div>
+      <div class="plan-eyebrow">
+        <span class="eyebrow-line" aria-hidden="true"></span>
+        <span>The Program</span>
+      </div>
       <h2 class="plan-title">
         התוכנית של <span class="hl">EVER LAB</span>
       </h2>
@@ -3961,10 +4596,18 @@
 </section>
 
 <section class="vital-expand" id="vital-expand">
+  <!-- Section index marker (Bio-Tech Luxury layer) -->
+  <div class="chapter-index expand-index" aria-hidden="true">PROGRAM · TECHNOLOGY</div>
+
   <div class="vexpand-inner">
     <div class="vexpand-header centered">
+      <div class="chapter-eyebrow">
+        <span class="eyebrow-line" aria-hidden="true"></span>
+        <span>The Technology</span>
+      </div>
+      <h2 class="vexpand-title-new">טכנולוגיות האימון</h2>
       <p class="vexpand-intro">
-        שלוש מערכות אימון מבוססות בינה מלאכותית שמרכיבות את האימונים השבועיים שלך. הן מתאימות את העומס, הקצב ווקטור התנועה לגוף שלך, בזמן אמת. אימון קצר, מדויק, ואפקטיבי פי כמה מכל תוכנית אימונים שניסית.
+        האימונים ב־<strong>EVER LAB</strong> מבוססים על טכנולוגיות מתקדמות שנבחרו בזכות יכולתן להפיק תוצאות טובות יותר בפחות זמן. מערכות האימון מודדות את הביצועים בזמן אמת, מתאימות את העומס ליכולת האישית של כל מתאמן ומאפשרות להגיע לגירוי שרירי ואירובי מיטבי תוך הפחתת עומס מיותר על המפרקים. כך כל אימון הופך ל<strong>מדויק, בטוח ויעיל יותר</strong>.
       </p>
     </div>
 
@@ -4044,8 +4687,16 @@
 
 <!-- ============== RECOVERY EXPANSION ============== -->
 <section class="vital-expand" id="recover-expand">
+  <!-- Section index marker (Bio-Tech Luxury layer) -->
+  <div class="chapter-index expand-index" aria-hidden="true">PROGRAM · RECOVERY</div>
+
   <div class="vexpand-inner">
     <div class="vexpand-header centered">
+      <div class="chapter-eyebrow">
+        <span class="eyebrow-line" aria-hidden="true"></span>
+        <span>The Recovery</span>
+      </div>
+      <h2 class="vexpand-title-new">טיפולי התאוששות</h2>
       <p class="vexpand-intro">
         טיפולי התאוששות הם חלק בלתי נפרד מתוכנית האימון, ותפקידם להעצים את תוצאות האימונים. חשיפה לקור, אור אדום ועיסוי לימפטי מפעילים שרשרת ביולוגית שמשפרת את תפקוד המיטוכונדריה, מפחיתה דלקתיות כרונית ומאיצה תהליכי ניקוי תאיים. אלו המנגנונים שקובעים את הגיל הביולוגי של התא שלך.
       </p>
@@ -4069,7 +4720,7 @@
       </article>
 
       <article class="tech-card">
-        <div class="tech-img" style="background-image:url('img/pouch.jpg')"></div>
+        <div class="tech-img" style="background-image:url('img/pouch.jpg'); background-position: center 70%;"></div>
         <div class="tech-content">
           <div class="tech-label">Lymphatic Drainage</div>
           <h3 class="tech-title">THE POUCH</h3>
@@ -4084,7 +4735,7 @@
       </article>
 
       <article class="tech-card">
-        <div class="tech-img" style="background-image:url('img/ice.jpg')"></div>
+        <div class="tech-img" style="background-image:url('img/ice.jpg'); background-position: center 30%;"></div>
         <div class="tech-content">
           <div class="tech-label">Cold Shock Activation</div>
           <h3 class="tech-title">THE ICE CUBE</h3>
@@ -4155,17 +4806,45 @@
 
 <!-- Closing band -->
 <section class="closing-band">
-  <div class="closing-box">
-    <div class="closing-inner">
-      <h2 class="closing-manifesto">
-        את <strong>הגיל הכרונולוגי</strong> אי אפשר לעצור.<br>
-        על <strong>הגיל הביולוגי</strong> אפשר להשפיע.<br>
-        ו<em>אף פעם לא מאוחר להתחיל</em>.
-      </h2>
-      <a href="#" class="closing-cta">
-        לקביעת מבדק גיל ביולוגי תפקודי ←
-      </a>
+  <div class="closing-inner">
+    <div class="chapter-eyebrow">
+      <span class="eyebrow-line" aria-hidden="true"></span>
+      <span>The First Step</span>
     </div>
+    <h2 class="closing-manifesto">
+      את הגיל הכרונולוגי אי אפשר לעצור.<br>
+      על הגיל הביולוגי אפשר להשפיע.<br>
+      ואף פעם לא מאוחר להתחיל.
+    </h2>
+
+    <form class="closing-form" novalidate>
+      <div class="cf-row">
+        <label class="cf-field">
+          <span class="cf-label">שם מלא</span>
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+        <label class="cf-field">
+          <span class="cf-label">טלפון</span>
+          <input type="tel" name="phone" autocomplete="tel" required>
+        </label>
+      </div>
+      <label class="cf-field">
+        <span class="cf-label">אימייל</span>
+        <input type="email" name="email" autocomplete="email" required>
+      </label>
+
+      <label class="cf-consent">
+        <input type="checkbox" name="consent" required>
+        <span class="cf-consent-mark" aria-hidden="true"></span>
+        <span class="cf-consent-text">
+          אני מאשר/ת קבלת דיוור פרסומי מ-EVER LAB ומסכים/ה ל<a href="#" class="cf-link">תנאי השימוש</a> ול<a href="#" class="cf-link">מדיניות הפרטיות</a>.
+        </span>
+      </label>
+
+      <button type="submit" class="cf-submit">
+        לקביעת מבדק גיל ביולוגי תפקודי ←
+      </button>
+    </form>
   </div>
 </section>
 
