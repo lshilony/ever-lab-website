@@ -1085,6 +1085,41 @@
     padding: 140px 32px 120px;
     text-align: center;
     position: relative;
+    overflow: hidden;
+  }
+
+  /* Data rain — closing bookend, even more subtle than hero */
+  .closing-data-rain {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 38%;
+    height: 320px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .closing-data-rain text {
+    font-family: 'Space Mono', monospace;
+    fill: var(--sage-deep);
+    letter-spacing: 0.08em;
+    opacity: 0;
+    animation: closingRainfall var(--dur, 18s) linear infinite;
+    transform-box: fill-box;
+  }
+  .closing-data-rain .cn-1 { animation-delay: 0s;    --dur: 17s; }
+  .closing-data-rain .cn-2 { animation-delay: 2.8s;  --dur: 20s; }
+  .closing-data-rain .cn-3 { animation-delay: 5.6s;  --dur: 16s; }
+  .closing-data-rain .cn-4 { animation-delay: 8.4s;  --dur: 19s; }
+  .closing-data-rain .cn-5 { animation-delay: 11.2s; --dur: 18s; }
+  .closing-data-rain .cn-6 { animation-delay: 14s;   --dur: 21s; }
+  @keyframes closingRainfall {
+    0%   { opacity: 0; transform: translateY(-25px); }
+    14%  { opacity: var(--peak, 0.2); }
+    82%  { opacity: var(--peak, 0.2); }
+    100% { opacity: 0; transform: translateY(280px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .closing-data-rain text { animation: none; opacity: var(--peak, 0.14); }
   }
   /* Top divider — subtle horizontal line to mark the new section */
   .closing-band::before {
@@ -4850,6 +4885,16 @@
 
 <!-- Closing band -->
 <section class="closing-band">
+  <svg class="closing-data-rain" viewBox="0 0 600 320" preserveAspectRatio="xMaxYMin slice" aria-hidden="true" focusable="false">
+    <g>
+      <text class="cn-1" x="60"  y="38" font-size="13" text-anchor="start" style="--peak:0.22">+12 yrs</text>
+      <text class="cn-2" x="200" y="60" font-size="12" text-anchor="start" style="--peak:0.18">0.78×</text>
+      <text class="cn-3" x="350" y="42" font-size="13" text-anchor="start" style="--peak:0.20">94 bpm</text>
+      <text class="cn-4" x="120" y="80" font-size="12" text-anchor="start" style="--peak:0.16">41.2 %</text>
+      <text class="cn-5" x="440" y="70" font-size="13" text-anchor="start" style="--peak:0.20">−6.4 yrs</text>
+      <text class="cn-6" x="280" y="50" font-size="12" text-anchor="start" style="--peak:0.18">8.1 ms</text>
+    </g>
+  </svg>
   <div class="closing-inner">
     <div class="chapter-eyebrow">
       <span class="eyebrow-line" aria-hidden="true"></span>
