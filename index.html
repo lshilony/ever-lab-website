@@ -1486,66 +1486,72 @@
     .journey-nav { display: none; }
   }
 
-  /* ═══════════ FLUID NAVIGATION — circular expanding menu (top-right, RTL-friendly) ═══════════ */
-  nav.fluid-nav {
-    position: fixed;
-    top: 90px;
-    right: 32px;
-    bottom: auto;
-    left: auto;
-    width: 60px;
-    height: 60px;
-    padding: 0;
-    background: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border-bottom: none;
-    box-shadow: none;
-    display: block;
-    z-index: 100;
-    direction: ltr;
+  /* ═══════════ FLUID NAVIGATION — toggle in main <nav>, items panel below ═══════════ */
+  /* Logo centered absolutely inside main nav; toggle and CTA sit on flex edges */
+  nav .logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
   }
-  .fnav-toggle {
+  /* Toggle button — circular, sage-deep, fits inside main nav */
+  nav .fnav-toggle {
     position: relative;
-    width: 60px;
-    height: 60px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     border: none;
     background: var(--sage-deep);
     color: #FFFFFF;
     cursor: pointer;
-    box-shadow: 0 8px 24px rgba(20, 20, 20, 0.18), 0 2px 6px rgba(20, 20, 20, 0.10);
+    padding: 0;
+    box-shadow: 0 4px 14px rgba(20, 20, 20, 0.15), 0 1px 3px rgba(20, 20, 20, 0.08);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 101;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+    z-index: 3;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, background-color 0.25s ease;
   }
-  .fnav-toggle:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 30px rgba(20, 20, 20, 0.22), 0 3px 8px rgba(20, 20, 20, 0.12);
+  nav .fnav-toggle:hover {
+    transform: scale(1.06);
+    box-shadow: 0 6px 18px rgba(20, 20, 20, 0.2), 0 2px 5px rgba(20, 20, 20, 0.1);
   }
-  .fnav-toggle:focus-visible {
-    outline: 2px solid rgba(255, 255, 255, 0.7);
+  nav .fnav-toggle:focus-visible {
+    outline: 2px solid var(--sage-deep);
     outline-offset: 3px;
   }
-  .fnav-toggle svg {
+  nav .fnav-toggle svg {
     position: absolute;
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.8;
     transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .fnav-toggle .fnav-icon-close {
+  nav .fnav-toggle .fnav-icon-close {
     opacity: 0;
     transform: rotate(-90deg) scale(0.6);
   }
-  .fluid-nav[data-state="open"] .fnav-toggle .fnav-icon-open {
+  nav .fnav-toggle[aria-expanded="true"] .fnav-icon-open {
     opacity: 0;
     transform: rotate(90deg) scale(0.6);
   }
-  .fluid-nav[data-state="open"] .fnav-toggle .fnav-icon-close {
+  nav .fnav-toggle[aria-expanded="true"] .fnav-icon-close {
     opacity: 1;
     transform: rotate(0) scale(1);
+  }
+
+  /* Items panel — fixed-position drop-down below the toggle */
+  .fluid-nav {
+    position: fixed;
+    top: 88px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    z-index: 99;
+    direction: ltr;
+    pointer-events: none;
   }
 
   /* Items container — items start collapsed at toggle position, expand downward */
@@ -1609,12 +1615,12 @@
     pointer-events: auto;
     transform: translateY(var(--offset, 0)) scale(1);
   }
-  /* Staggered offsets — each item drops further than the previous, with delay */
-  .fluid-nav[data-state="open"] .fnav-item:nth-child(1) { --offset: 72px;  transition-delay: 40ms; }
-  .fluid-nav[data-state="open"] .fnav-item:nth-child(2) { --offset: 140px; transition-delay: 80ms; }
-  .fluid-nav[data-state="open"] .fnav-item:nth-child(3) { --offset: 208px; transition-delay: 120ms; }
-  .fluid-nav[data-state="open"] .fnav-item:nth-child(4) { --offset: 276px; transition-delay: 160ms; }
-  .fluid-nav[data-state="open"] .fnav-item:nth-child(5) { --offset: 344px; transition-delay: 200ms; }
+  /* Staggered offsets — items cascade DOWN from below the main nav bar */
+  .fluid-nav[data-state="open"] .fnav-item:nth-child(1) { --offset: 0px;   transition-delay: 40ms; }
+  .fluid-nav[data-state="open"] .fnav-item:nth-child(2) { --offset: 68px;  transition-delay: 80ms; }
+  .fluid-nav[data-state="open"] .fnav-item:nth-child(3) { --offset: 136px; transition-delay: 120ms; }
+  .fluid-nav[data-state="open"] .fnav-item:nth-child(4) { --offset: 204px; transition-delay: 160ms; }
+  .fluid-nav[data-state="open"] .fnav-item:nth-child(5) { --offset: 272px; transition-delay: 200ms; }
 
   /* Tooltip label on hover — appears to the LEFT of the item (RTL-friendly, nav at right edge) */
   .fnav-item .fnav-label {
@@ -1644,17 +1650,17 @@
   }
 
   @media (max-width: 768px) {
-    nav.fluid-nav { top: 76px; right: 18px; width: 52px; height: 52px; }
-    .fnav-toggle { width: 52px; height: 52px; }
-    .fnav-toggle svg { width: 19px; height: 19px; }
+    nav .fnav-toggle { width: 42px; height: 42px; }
+    nav .fnav-toggle svg { width: 17px; height: 17px; }
+    .fluid-nav { top: 72px; right: 18px; width: 52px; height: 52px; }
     .fnav-items, .fnav-item { width: 52px; }
     .fnav-item { height: 52px; }
     .fnav-item svg { width: 19px; height: 19px; }
-    .fluid-nav[data-state="open"] .fnav-item:nth-child(1) { --offset: 62px; }
-    .fluid-nav[data-state="open"] .fnav-item:nth-child(2) { --offset: 122px; }
-    .fluid-nav[data-state="open"] .fnav-item:nth-child(3) { --offset: 182px; }
-    .fluid-nav[data-state="open"] .fnav-item:nth-child(4) { --offset: 242px; }
-    .fluid-nav[data-state="open"] .fnav-item:nth-child(5) { --offset: 302px; }
+    .fluid-nav[data-state="open"] .fnav-item:nth-child(1) { --offset: 0px; }
+    .fluid-nav[data-state="open"] .fnav-item:nth-child(2) { --offset: 60px; }
+    .fluid-nav[data-state="open"] .fnav-item:nth-child(3) { --offset: 120px; }
+    .fluid-nav[data-state="open"] .fnav-item:nth-child(4) { --offset: 180px; }
+    .fluid-nav[data-state="open"] .fnav-item:nth-child(5) { --offset: 240px; }
     .fnav-item .fnav-label { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -4315,6 +4321,17 @@
 <body>
 
 <nav>
+  <button type="button" class="fnav-toggle" aria-label="פתח ניווט" aria-expanded="false" aria-controls="fluid-nav-panel">
+    <svg class="fnav-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="4" y1="7" x2="20" y2="7"/>
+      <line x1="4" y1="12" x2="20" y2="12"/>
+      <line x1="4" y1="17" x2="20" y2="17"/>
+    </svg>
+    <svg class="fnav-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="6" y1="6" x2="18" y2="18"/>
+      <line x1="18" y1="6" x2="6" y2="18"/>
+    </svg>
+  </button>
   <a href="#" class="logo">
     <span>EV</span><span class="flip">E</span><span class="flip">R</span>
     <span class="lab">LAB</span>
@@ -5265,8 +5282,8 @@
   })();
 </script>
 
-<!-- ═══════════ FLUID NAVIGATION — circular expanding menu ═══════════ -->
-<nav class="fluid-nav" data-state="closed" aria-label="ניווט מהיר">
+<!-- ═══════════ FLUID NAVIGATION — items panel (toggle lives inside main <nav>) ═══════════ -->
+<div id="fluid-nav-panel" class="fluid-nav" data-state="closed" aria-label="ניווט מהיר">
   <div class="fnav-items">
     <a href="#hero" class="fnav-item" data-target="hero" aria-label="התחלה">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -5310,24 +5327,13 @@
       <span class="fnav-label">קביעת מבדק</span>
     </a>
   </div>
-  <button type="button" class="fnav-toggle" aria-label="פתח ניווט" aria-expanded="false">
-    <svg class="fnav-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <line x1="4" y1="7" x2="20" y2="7"/>
-      <line x1="4" y1="12" x2="20" y2="12"/>
-      <line x1="4" y1="17" x2="20" y2="17"/>
-    </svg>
-    <svg class="fnav-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <line x1="6" y1="6" x2="18" y2="18"/>
-      <line x1="18" y1="6" x2="6" y2="18"/>
-    </svg>
-  </button>
-</nav>
+</div>
 
 <script>
   (function() {
     const nav = document.querySelector('.fluid-nav');
     if (!nav) return;
-    const toggle = nav.querySelector('.fnav-toggle');
+    const toggle = document.querySelector('nav .fnav-toggle');
     const items = Array.from(nav.querySelectorAll('.fnav-item'));
 
     const setState = (open) => {
@@ -5355,9 +5361,9 @@
       }
     });
 
-    // Close when clicking outside
+    // Close when clicking outside (toggle is in main <nav>, items panel is .fluid-nav)
     document.addEventListener('click', (e) => {
-      if (nav.dataset.state === 'open' && !nav.contains(e.target)) {
+      if (nav.dataset.state === 'open' && !nav.contains(e.target) && !toggle.contains(e.target)) {
         setState(false);
       }
     });
