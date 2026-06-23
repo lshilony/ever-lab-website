@@ -1486,6 +1486,169 @@
     .journey-nav { display: none; }
   }
 
+  /* ═══════════ FLUID NAVIGATION — circular expanding menu (bottom-left) ═══════════ */
+  .fluid-nav {
+    position: fixed;
+    bottom: 32px;
+    left: 32px;
+    z-index: 100;
+    direction: ltr;
+  }
+  .fnav-toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background: var(--sage-deep);
+    color: #FFFFFF;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(20, 20, 20, 0.18), 0 2px 6px rgba(20, 20, 20, 0.10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 101;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+  }
+  .fnav-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(20, 20, 20, 0.22), 0 3px 8px rgba(20, 20, 20, 0.12);
+  }
+  .fnav-toggle:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.7);
+    outline-offset: 3px;
+  }
+  .fnav-toggle svg {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .fnav-toggle .fnav-icon-close {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.6);
+  }
+  .fluid-nav[data-state="open"] .fnav-toggle .fnav-icon-open {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.6);
+  }
+  .fluid-nav[data-state="open"] .fnav-toggle .fnav-icon-close {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+
+  /* Items container — items start collapsed at toggle position, expand upward */
+  .fnav-items {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    pointer-events: none;
+  }
+  .fnav-item {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1px solid rgba(107, 139, 112, 0.2);
+    color: var(--sage-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(20, 20, 20, 0.08);
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.35s ease,
+                background-color 0.25s ease,
+                border-color 0.25s ease,
+                color 0.25s ease;
+    will-change: transform, opacity;
+    pointer-events: none;
+  }
+  .fnav-item svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.6;
+    transition: stroke-width 0.25s ease;
+  }
+  .fnav-item:hover {
+    background: var(--sage-soft);
+    border-color: var(--sage);
+    color: var(--sage-deep);
+  }
+  .fnav-item:hover svg {
+    stroke-width: 2.2;
+  }
+  .fnav-item:focus-visible {
+    outline: 2px solid var(--sage-deep);
+    outline-offset: 3px;
+  }
+  .fnav-item.active {
+    background: var(--sage-deep);
+    border-color: var(--sage-deep);
+    color: #FFFFFF;
+  }
+  .fluid-nav[data-state="open"] .fnav-item {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(var(--offset, 0)) scale(1);
+  }
+  /* Staggered offsets — each item rises further than the previous, with delay */
+  .fluid-nav[data-state="open"] .fnav-item:nth-child(1) { --offset: -72px;  transition-delay: 40ms; }
+  .fluid-nav[data-state="open"] .fnav-item:nth-child(2) { --offset: -140px; transition-delay: 80ms; }
+  .fluid-nav[data-state="open"] .fnav-item:nth-child(3) { --offset: -208px; transition-delay: 120ms; }
+  .fluid-nav[data-state="open"] .fnav-item:nth-child(4) { --offset: -276px; transition-delay: 160ms; }
+  .fluid-nav[data-state="open"] .fnav-item:nth-child(5) { --offset: -344px; transition-delay: 200ms; }
+
+  /* Tooltip label on hover — appears to the right of the item */
+  .fnav-item .fnav-label {
+    position: absolute;
+    left: 72px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(20, 20, 20, 0.88);
+    color: #FFFFFF;
+    font-family: 'Heebo', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    padding: 7px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+    direction: rtl;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+  .fnav-item:hover .fnav-label,
+  .fnav-item:focus-visible .fnav-label {
+    opacity: 1;
+    transform: translateY(-50%) translateX(4px);
+  }
+
+  @media (max-width: 768px) {
+    .fluid-nav { bottom: 22px; left: 22px; }
+    .fnav-toggle { width: 52px; height: 52px; }
+    .fnav-toggle svg { width: 19px; height: 19px; }
+    .fnav-items, .fnav-item { width: 52px; }
+    .fnav-item { height: 52px; }
+    .fnav-item svg { width: 19px; height: 19px; }
+    .fluid-nav[data-state="open"] .fnav-item:nth-child(1) { --offset: -62px; }
+    .fluid-nav[data-state="open"] .fnav-item:nth-child(2) { --offset: -122px; }
+    .fluid-nav[data-state="open"] .fnav-item:nth-child(3) { --offset: -182px; }
+    .fluid-nav[data-state="open"] .fnav-item:nth-child(4) { --offset: -242px; }
+    .fluid-nav[data-state="open"] .fnav-item:nth-child(5) { --offset: -302px; }
+    .fnav-item .fnav-label { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fnav-toggle, .fnav-toggle svg, .fnav-item { transition: none; }
+  }
+
   /* ───── Decorative city map (SVG, behind chapter text) ───── */
   .chapter-map-svg {
     position: absolute;
@@ -4171,7 +4334,7 @@
   </ol>
 </nav>
 
-<section class="hero">
+<section class="hero" id="hero">
   <div class="hero-frame">
     <div class="hero-img"></div>
 
@@ -4917,7 +5080,7 @@
 </script>
 
 <!-- Closing band -->
-<section class="closing-band">
+<section class="closing-band" id="contact">
   <svg class="closing-data-rain" viewBox="0 0 600 320" preserveAspectRatio="xMaxYMin slice" aria-hidden="true" focusable="false">
     <g>
       <text class="cn-1" x="60"  y="38" font-size="15" text-anchor="start" style="--peak:0.42">+12 yrs</text>
@@ -5087,6 +5250,124 @@
       });
     }, { threshold: 0.3 });
     observer.observe(report);
+  })();
+</script>
+
+<!-- ═══════════ FLUID NAVIGATION — circular expanding menu ═══════════ -->
+<nav class="fluid-nav" data-state="closed" aria-label="ניווט מהיר">
+  <div class="fnav-items">
+    <a href="#hero" class="fnav-item" data-target="hero" aria-label="התחלה">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 12 L12 4 L21 12"/>
+        <path d="M5 11 V20 H19 V11"/>
+      </svg>
+      <span class="fnav-label">התחלה</span>
+    </a>
+    <a href="#step-map" class="fnav-item" data-target="step-map" aria-label="השיטה שלנו">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/>
+        <circle cx="12" cy="12" r="3.5"/>
+        <line x1="12" y1="3" x2="12" y2="6.5"/>
+        <line x1="12" y1="17.5" x2="12" y2="21"/>
+        <line x1="3" y1="12" x2="6.5" y2="12"/>
+        <line x1="17.5" y1="12" x2="21" y2="12"/>
+      </svg>
+      <span class="fnav-label">השיטה שלנו</span>
+    </a>
+    <a href="#step-measure" class="fnav-item" data-target="step-measure" aria-label="מבדק גיל ביולוגי">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 20 V4"/>
+        <path d="M3 20 H21"/>
+        <rect x="6" y="13" width="3" height="6"/>
+        <rect x="11" y="9" width="3" height="10"/>
+        <rect x="16" y="6" width="3" height="13"/>
+      </svg>
+      <span class="fnav-label">מבדק גיל ביולוגי</span>
+    </a>
+    <a href="#step-plan" class="fnav-item" data-target="step-plan" aria-label="התוכנית">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20.84 4.6a5.5 5.5 0 0 0 -7.78 0L12 5.67l-1.06-1.07a5.5 5.5 0 0 0 -7.78 7.78l1.07 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.79z"/>
+      </svg>
+      <span class="fnav-label">התוכנית</span>
+    </a>
+    <a href="#contact" class="fnav-item" data-target="contact" aria-label="קביעת מבדק">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 6 L20 6 L20 18 L4 18 Z"/>
+        <path d="M4 7 L12 13 L20 7"/>
+      </svg>
+      <span class="fnav-label">קביעת מבדק</span>
+    </a>
+  </div>
+  <button type="button" class="fnav-toggle" aria-label="פתח ניווט" aria-expanded="false">
+    <svg class="fnav-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="4" y1="7" x2="20" y2="7"/>
+      <line x1="4" y1="12" x2="20" y2="12"/>
+      <line x1="4" y1="17" x2="20" y2="17"/>
+    </svg>
+    <svg class="fnav-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="6" y1="6" x2="18" y2="18"/>
+      <line x1="18" y1="6" x2="6" y2="18"/>
+    </svg>
+  </button>
+</nav>
+
+<script>
+  (function() {
+    const nav = document.querySelector('.fluid-nav');
+    if (!nav) return;
+    const toggle = nav.querySelector('.fnav-toggle');
+    const items = Array.from(nav.querySelectorAll('.fnav-item'));
+
+    const setState = (open) => {
+      nav.dataset.state = open ? 'open' : 'closed';
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'סגור ניווט' : 'פתח ניווט');
+    };
+
+    toggle.addEventListener('click', () => {
+      setState(nav.dataset.state !== 'open');
+    });
+
+    // Close on item click + smooth scroll handled by browser anchor + close
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        setState(false);
+      });
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.dataset.state === 'open') {
+        setState(false);
+        toggle.focus();
+      }
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (nav.dataset.state === 'open' && !nav.contains(e.target)) {
+        setState(false);
+      }
+    });
+
+    // Active section tracking via IntersectionObserver
+    const targetIds = items.map(i => i.dataset.target);
+    const sections = targetIds.map(id => document.getElementById(id)).filter(Boolean);
+    if (sections.length) {
+      const setActive = (id) => {
+        items.forEach(item => {
+          item.classList.toggle('active', item.dataset.target === id);
+        });
+      };
+      const observer = new IntersectionObserver((entries) => {
+        // Pick the entry with the largest intersection ratio that is intersecting
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(visible.target.id);
+      }, { threshold: [0.25, 0.5], rootMargin: '-30% 0px -30% 0px' });
+      sections.forEach(s => observer.observe(s));
+    }
   })();
 </script>
 
