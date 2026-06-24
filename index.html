@@ -885,14 +885,15 @@
   }
   .section-divider-img {
     position: absolute;
-    inset: 0;
+    /* 20% overflow so the image can translate vertically without exposing edges */
+    inset: -10% 0;
     width: 100%;
-    height: 100%;
+    height: 120%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* Parallax: image stays put while page scrolls past */
-    background-attachment: fixed;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
   }
   /* Subtle vignette + top/bottom fade — softens the visual transition into adjacent cream sections */
   .section-divider::before {
@@ -923,11 +924,9 @@
   }
   @media (max-width: 768px) {
     .section-divider { height: 280px; }
-    /* Mobile: fixed attachment is buggy on iOS, fall back to scroll */
-    .section-divider-img { background-attachment: scroll; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .section-divider-img { background-attachment: scroll; }
+    .section-divider-img { background-attachment: scroll; transform: none !important; }
   }
 
   /* ═══════════ PLAN OVERVIEW — התוכנית של EVER LAB ═══════════ */
@@ -5342,6 +5341,44 @@
       });
     }, { threshold: 0.3 });
     observer.observe(report);
+  })();
+
+  /* Cross-device parallax for section dividers — JS handles iOS where bg-attachment:fixed fails */
+  (function() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const dividers = document.querySelectorAll('.section-divider');
+    if (!dividers.length) return;
+
+    const items = Array.from(dividers).map(div => ({
+      div,
+      img: div.querySelector('.section-divider-img'),
+    })).filter(i => i.img);
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const vh = window.innerHeight;
+      items.forEach(({div, img}) => {
+        const rect = div.getBoundingClientRect();
+        // Skip when far from viewport
+        if (rect.bottom < -100 || rect.top > vh + 100) return;
+        // Progress: 0 when div top hits viewport bottom, 1 when div bottom hits viewport top
+        const progress = (vh - rect.top) / (vh + rect.height);
+        // Map 0→1 onto -8%→+8% translation (image shifts within the 20% overflow)
+        const shift = (progress - 0.5) * 16;
+        img.style.transform = 'translate3d(0, ' + shift.toFixed(2) + '%, 0)';
+      });
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    update();
   })();
 </script>
 
