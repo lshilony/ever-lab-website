@@ -2962,14 +2962,20 @@
     gap: 18px;
     align-items: stretch;
   }
-  /* ─── Main focal card ─── */
+  /* ─── Main focal card — sage gradient with atmospheric depth ─── */
   .brv2-hero {
     position: relative;
-    background: var(--paper);
+    background:
+      radial-gradient(ellipse at 28% 22%, rgba(205, 223, 183, 0.42) 0%, transparent 55%),
+      radial-gradient(ellipse at 78% 78%, rgba(48, 70, 53, 0.45) 0%, transparent 58%),
+      linear-gradient(135deg, #6B8B70 0%, #4A6B53 60%, #3D5A47 100%);
     border-radius: 24px;
     padding: 56px 36px 44px;
-    box-shadow: 0 4px 20px rgba(20, 20, 20, 0.05), 0 1px 3px rgba(20, 20, 20, 0.04);
-    border: 1px solid rgba(20, 20, 20, 0.06);
+    box-shadow:
+      0 12px 36px rgba(48, 70, 53, 0.22),
+      0 2px 8px rgba(48, 70, 53, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     text-align: center;
     overflow: hidden;
     display: flex;
@@ -2977,7 +2983,21 @@
     align-items: center;
     justify-content: center;
     min-height: 380px;
+    color: #FFFFFF;
   }
+  /* Subtle organic light streak — adds "life" without noise */
+  .brv2-hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 60%;
+    height: 80%;
+    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.10) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .brv2-hero > * { position: relative; z-index: 1; }
   .brv2-arc {
     width: 80%;
     max-width: 280px;
@@ -2985,21 +3005,24 @@
     margin-bottom: -50px;
     pointer-events: none;
   }
+  .brv2-arc path { stroke: rgba(255, 255, 255, 0.5) !important; }
+  .brv2-arc circle { fill: #FFFFFF !important; }
   .brv2-hero-num {
     font-family: 'Frank Ruhl Libre', serif;
     font-weight: 300;
     font-size: clamp(108px, 12vw, 156px);
     line-height: 0.85;
     letter-spacing: -0.04em;
-    color: var(--ink);
+    color: #FFFFFF;
     margin-bottom: 22px;
+    text-shadow: 0 1px 24px rgba(0, 0, 0, 0.15);
   }
   .brv2-hero-title {
     font-family: 'Heebo', sans-serif;
     font-weight: 500;
     font-size: clamp(17px, 1.7vw, 20px);
     letter-spacing: 0.02em;
-    color: var(--ink);
+    color: #FFFFFF;
     margin-bottom: 8px;
   }
   .brv2-hero-sub {
@@ -3007,7 +3030,7 @@
     font-weight: 300;
     font-size: clamp(13px, 1.2vw, 15px);
     letter-spacing: 0.01em;
-    color: var(--ink-soft);
+    color: rgba(255, 255, 255, 0.72);
   }
 
   /* ─── Side stack of small stat cards ─── */
