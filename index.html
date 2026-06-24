@@ -2960,7 +2960,8 @@
   }
   .brv2-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    /* Side stack first (1fr, right in RTL), hero second (1.5fr, left in RTL) */
+    grid-template-columns: 1fr 1.5fr;
     gap: 18px;
     align-items: stretch;
   }
@@ -4908,29 +4909,10 @@
       <h3>מבדק גיל ביולוגי תפקודי:<span class="em-step">נקודת ההתחלה</span></h3>
     </div>
 
-    <!-- Sample report tag above the bio-report -->
-    <div class="report-tag" aria-hidden="true">
-      <span class="rt-dot"></span>
-      דוגמת דוח · בדיקת גיל ביולוגי
-    </div>
-
     <!-- Sample bio-age report — focal centered visual -->
     <div class="bio-report bio-report-v2" aria-label="דוגמה לדוח המבדק">
       <div class="brv2-grid">
-        <!-- ─── Main focal card — Biological Age ─── -->
-        <article class="brv2-hero">
-          <svg class="brv2-arc" viewBox="0 0 280 200" aria-hidden="true">
-            <path d="M 30 160 A 110 110 0 0 1 250 160"
-                  fill="none" stroke="rgba(107, 139, 112, 0.38)" stroke-width="1.4"/>
-            <circle cx="30" cy="160" r="4.5" fill="var(--sage-deep)"/>
-            <circle cx="250" cy="160" r="4.5" fill="var(--sage-deep)"/>
-          </svg>
-          <div class="brv2-hero-num">53</div>
-          <div class="brv2-hero-title">גיל ביולוגי</div>
-          <div class="brv2-hero-sub">8 שנים צעיר מהגיל הכרונולוגי</div>
-        </article>
-
-        <!-- ─── Side stack — small stat cards ─── -->
+        <!-- ─── Side stack — small stat cards (appears on RIGHT in RTL) ─── -->
         <div class="brv2-side">
           <article class="brv2-stat brv2-stat-muscle">
             <header class="brv2-stat-head">
@@ -4969,6 +4951,19 @@
             </div>
           </article>
         </div>
+
+        <!-- ─── Main focal card — Biological Age (appears on LEFT in RTL) ─── -->
+        <article class="brv2-hero">
+          <svg class="brv2-arc" viewBox="0 0 280 200" aria-hidden="true">
+            <path d="M 30 160 A 110 110 0 0 1 250 160"
+                  fill="none" stroke="rgba(107, 139, 112, 0.38)" stroke-width="1.4"/>
+            <circle cx="30" cy="160" r="4.5" fill="var(--sage-deep)"/>
+            <circle cx="250" cy="160" r="4.5" fill="var(--sage-deep)"/>
+          </svg>
+          <div class="brv2-hero-num">53</div>
+          <div class="brv2-hero-title">גיל ביולוגי</div>
+          <div class="brv2-hero-sub">8 שנים צעיר מהגיל הכרונולוגי</div>
+        </article>
       </div>
 
       <!-- ─── Confirmation pill ─── -->
