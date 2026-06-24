@@ -4635,11 +4635,11 @@
 </head>
 <body>
 
-<!-- Hidden SVG filter — horizontal motion blur for section dividers, driven by JS on scroll -->
+<!-- Hidden SVG filter — constant horizontal motion blur on section dividers (baked-in long-exposure look) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <filter id="hmotion-blur" x="-5%" y="0" width="110%" height="100%">
-      <feGaussianBlur id="hmotion-blur-amt" in="SourceGraphic" stdDeviation="0 0"/>
+      <feGaussianBlur id="hmotion-blur-amt" in="SourceGraphic" stdDeviation="4 0"/>
     </filter>
   </defs>
 </svg>
@@ -5584,9 +5584,8 @@
     observer.observe(report);
   })();
 
-  /* Section dividers — parallax (JS) + directional horizontal motion blur via SVG filter
-   *  - Sharp when still
-   *  - Horizontal streaks ONLY when scrolling fast — like a long-exposure photo of motion */
+  /* Section dividers — parallax (JS-driven, works on iOS where bg-attachment:fixed fails)
+   *  Horizontal motion-blur is constant (baked into the SVG filter), not scroll-driven */
   (function() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const dividers = document.querySelectorAll('.section-divider');
@@ -5597,30 +5596,10 @@
       img: div.querySelector('.section-divider-img'),
     })).filter(i => i.img);
 
-    const blurEl = document.getElementById('hmotion-blur-amt');
-
-    const MAX_H_BLUR = 9;        // peak horizontal stdDeviation (px)
-    const VELOCITY_GAIN = 0.22;  // scroll px-per-frame → blur magnitude
-    const DECAY = 0.78;          // velocity decay per frame (fast fade-back to sharp)
-
-    let lastScrollY = window.scrollY;
-    let velocity = 0;
-    let rafScheduled = false;
-
-    const tick = () => {
-      rafScheduled = false;
+    let ticking = false;
+    const update = () => {
+      ticking = false;
       const vh = window.innerHeight;
-      const currentY = window.scrollY;
-
-      // Track velocity with exponential decay so blur fades smoothly after scroll stops
-      const delta = Math.abs(currentY - lastScrollY);
-      velocity = Math.max(delta, velocity * DECAY);
-      lastScrollY = currentY;
-
-      // Horizontal blur amount only — vertical stays at 0 (true motion-streak look)
-      const hBlur = Math.min(velocity * VELOCITY_GAIN, MAX_H_BLUR);
-      if (blurEl) blurEl.setAttribute('stdDeviation', hBlur.toFixed(2) + ' 0');
-
       items.forEach(({div, img}) => {
         const rect = div.getBoundingClientRect();
         if (rect.bottom < -100 || rect.top > vh + 100) return;
@@ -5628,23 +5607,17 @@
         const shift = (progress - 0.5) * 16;
         img.style.transform = 'translate3d(0, ' + shift.toFixed(2) + '%, 0)';
       });
-
-      // Keep ticking while velocity is still meaningful (so blur completes its decay)
-      if (velocity > 0.4) {
-        rafScheduled = true;
-        requestAnimationFrame(tick);
-      }
     };
 
     const onScroll = () => {
-      if (!rafScheduled) {
-        rafScheduled = true;
-        requestAnimationFrame(tick);
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
       }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
-    tick();
+    update();
   })();
 </script>
 
