@@ -4185,15 +4185,12 @@
      ═══════════════════════════════════════════════════════════════════ */
   @media (max-width: 768px) {
     /* ─── Nav ─── */
-    nav { padding: 14px 18px; }
-    nav.scrolled { padding: 12px 18px; }
-    .nav-cta {
-      padding: 10px 14px;
-      font-size: 11px;
-      letter-spacing: 0.04em;
-      gap: 8px;
-    }
-    .nav-cta span:first-child { font-size: 11px; }
+    nav { padding: 14px 16px; }
+    nav.scrolled { padding: 12px 16px; }
+    /* CTA hidden on mobile — accessible via fluid-nav 'Contact' and hero-box button */
+    nav .nav-cta { display: none; }
+    /* Logo recenters absolutely; only toggle remains as flex child */
+    nav .logo { transform: translate(-50%, -50%); }
 
     /* ─── Hero — completely rebuild for mobile ─── */
     .hero {
