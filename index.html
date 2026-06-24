@@ -892,10 +892,8 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    will-change: transform, filter;
+    will-change: transform;
     transform: translate3d(0, 0, 0);
-    /* Directional horizontal motion blur — only kicks in when scrolling fast */
-    filter: url(#hmotion-blur);
   }
   /* Subtle vignette + top/bottom fade — softens the visual transition into adjacent cream sections */
   .section-divider::before {
@@ -4634,15 +4632,6 @@
 </style>
 </head>
 <body>
-
-<!-- Hidden SVG filter — constant horizontal motion blur on section dividers (baked-in long-exposure look) -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <filter id="hmotion-blur" x="-5%" y="0" width="110%" height="100%">
-      <feGaussianBlur id="hmotion-blur-amt" in="SourceGraphic" stdDeviation="4 0"/>
-    </filter>
-  </defs>
-</svg>
 
 <nav>
   <button type="button" class="fnav-toggle" aria-label="פתח ניווט" aria-expanded="false" aria-controls="fluid-nav-panel">
