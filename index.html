@@ -885,15 +885,18 @@
   }
   .section-divider-img {
     position: absolute;
-    /* 20% overflow so the image can translate vertically without exposing edges */
-    inset: -10% 0;
+    inset: 0;
     width: 100%;
-    height: 120%;
+    height: 100%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
+    /* Background pinned to viewport — image stays still while content scrolls past (parallax window effect) */
+    background-attachment: fixed;
+  }
+  /* iOS Safari has spotty support for fixed bg-attachment — fallback to scroll there */
+  @supports (-webkit-touch-callout: none) {
+    .section-divider-img { background-attachment: scroll; }
   }
   /* Subtle vignette + top/bottom fade — softens the visual transition into adjacent cream sections */
   .section-divider::before {
@@ -5627,41 +5630,8 @@
     observer.observe(report);
   })();
 
-  /* Section dividers — parallax (JS-driven, works on iOS where bg-attachment:fixed fails)
-   *  Horizontal motion-blur is constant (baked into the SVG filter), not scroll-driven */
-  (function() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const dividers = document.querySelectorAll('.section-divider');
-    if (!dividers.length) return;
-
-    const items = Array.from(dividers).map(div => ({
-      div,
-      img: div.querySelector('.section-divider-img'),
-    })).filter(i => i.img);
-
-    let ticking = false;
-    const update = () => {
-      ticking = false;
-      const vh = window.innerHeight;
-      items.forEach(({div, img}) => {
-        const rect = div.getBoundingClientRect();
-        if (rect.bottom < -100 || rect.top > vh + 100) return;
-        const progress = (vh - rect.top) / (vh + rect.height);
-        const shift = (progress - 0.5) * 16;
-        img.style.transform = 'translate3d(0, ' + shift.toFixed(2) + '%, 0)';
-      });
-    };
-
-    const onScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(update);
-        ticking = true;
-      }
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-    update();
-  })();
+  /* Section divider parallax — handled by CSS background-attachment: fixed (desktop)
+   * iOS uses background-attachment: scroll fallback (defined in CSS @supports block) */
 </script>
 
 <!-- ═══════════ FLUID NAVIGATION — items panel (toggle lives inside main <nav>) ═══════════ -->
