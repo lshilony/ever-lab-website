@@ -892,8 +892,11 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    will-change: transform;
+    will-change: transform, filter;
     transform: translate3d(0, 0, 0);
+    /* Subtle baseline blur — cinematic, futuristic softness */
+    filter: blur(1.2px) saturate(1.08);
+    transition: filter 0.18s ease-out;
   }
   /* Subtle vignette + top/bottom fade — softens the visual transition into adjacent cream sections */
   .section-divider::before {
@@ -5550,7 +5553,9 @@
     observer.observe(report);
   })();
 
-  /* Cross-device parallax for section dividers — JS handles iOS where bg-attachment:fixed fails */
+  /* Cross-device parallax + motion-blur for section dividers
+   * - JS-driven parallax (works on iOS where bg-attachment:fixed fails)
+   * - Scroll velocity drives blur amount → "motion" feel; decays when scroll stops */
   (function() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const dividers = document.querySelectorAll('.section-divider');
@@ -5561,31 +5566,54 @@
       img: div.querySelector('.section-divider-img'),
     })).filter(i => i.img);
 
-    let ticking = false;
-    const update = () => {
-      ticking = false;
+    const BASE_BLUR = 1.2;      // matches CSS baseline
+    const MAX_BLUR = 6;         // peak motion blur
+    const VELOCITY_GAIN = 0.18; // scroll px-per-frame → blur px multiplier
+    const DECAY = 0.82;         // per-frame velocity decay (fades blur when scroll stops)
+
+    let lastScrollY = window.scrollY;
+    let velocity = 0;
+    let rafScheduled = false;
+
+    const tick = () => {
+      rafScheduled = false;
       const vh = window.innerHeight;
+      const currentY = window.scrollY;
+
+      // Update velocity: instantaneous delta + exponential decay
+      const delta = Math.abs(currentY - lastScrollY);
+      velocity = Math.max(delta, velocity * DECAY);
+      lastScrollY = currentY;
+
+      // Compute target blur (baseline + velocity contribution, capped)
+      const blur = Math.min(BASE_BLUR + velocity * VELOCITY_GAIN, MAX_BLUR);
+
       items.forEach(({div, img}) => {
         const rect = div.getBoundingClientRect();
-        // Skip when far from viewport
         if (rect.bottom < -100 || rect.top > vh + 100) return;
-        // Progress: 0 when div top hits viewport bottom, 1 when div bottom hits viewport top
+        // Parallax: 0→1 progress → -8%→+8% translation
         const progress = (vh - rect.top) / (vh + rect.height);
-        // Map 0→1 onto -8%→+8% translation (image shifts within the 20% overflow)
         const shift = (progress - 0.5) * 16;
         img.style.transform = 'translate3d(0, ' + shift.toFixed(2) + '%, 0)';
+        img.style.filter = 'blur(' + blur.toFixed(2) + 'px) saturate(1.08)';
       });
+
+      // Keep ticking while velocity is still meaningful (blur still elevated)
+      if (velocity > 0.5) {
+        rafScheduled = true;
+        requestAnimationFrame(tick);
+      }
     };
 
     const onScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(update);
-        ticking = true;
+      if (!rafScheduled) {
+        rafScheduled = true;
+        requestAnimationFrame(tick);
       }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
-    update();
+    tick();
   })();
 </script>
 
