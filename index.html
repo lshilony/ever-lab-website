@@ -3761,6 +3761,60 @@
     height: 96px;
   }
 
+  /* ═══════════ Measure-expand category cards — sage gradient (matches bio-age hero) ═══════════ */
+  #measure-expand .tech-card {
+    background:
+      radial-gradient(ellipse 60% 55% at 22% 18%, rgba(244, 240, 235, 0.22) 0%, rgba(244, 240, 235, 0) 65%),
+      radial-gradient(ellipse 70% 60% at 78% 32%, rgba(107, 139, 112, 0.30) 0%, rgba(107, 139, 112, 0) 70%),
+      radial-gradient(ellipse 80% 70% at 70% 100%, rgba(107, 139, 112, 0.40) 0%, rgba(107, 139, 112, 0) 78%),
+      linear-gradient(135deg, #9BB89F 0%, #8DAE92 48%, #7FA086 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow:
+      0 12px 32px rgba(107, 139, 112, 0.18),
+      0 2px 8px rgba(107, 139, 112, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.16);
+    color: #FFFFFF;
+  }
+  #measure-expand .tech-card:hover {
+    box-shadow:
+      0 16px 40px rgba(107, 139, 112, 0.24),
+      0 3px 10px rgba(107, 139, 112, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  }
+  #measure-expand .tech-icon {
+    background: rgba(255, 255, 255, 0.10);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+  }
+  #measure-expand .tech-label {
+    color: rgba(255, 255, 255, 0.78);
+  }
+  #measure-expand .tech-title {
+    color: #FFFFFF;
+    border-bottom-color: rgba(255, 255, 255, 0.22);
+  }
+  #measure-expand .tech-bullets li {
+    color: rgba(255, 255, 255, 0.88);
+  }
+  #measure-expand .tech-bullets li strong {
+    color: #FFFFFF;
+  }
+  #measure-expand .tech-bullets li::before {
+    color: rgba(255, 255, 255, 0.65);
+  }
+  #measure-expand .tech-stat {
+    border-top-color: rgba(255, 255, 255, 0.22);
+  }
+  #measure-expand .tech-stat .stat-label {
+    color: rgba(255, 255, 255, 0.78);
+  }
+  #measure-expand .tech-stat .stat-num {
+    color: #FFFFFF;
+    text-shadow:
+      0 0 18px rgba(255, 255, 255, 0.35),
+      0 0 36px rgba(205, 223, 183, 0.20);
+  }
+
   /* 2-column grid variant for 4 cards */
   .vexpand-grid.cols-2 {
     grid-template-columns: repeat(2, 1fr);
