@@ -913,75 +913,9 @@
     background-image: url('img/redlight.jpg');
     background-position: center 35%;
   }
-  .section-divider-pouch .section-divider-img {
-    background-image: url('img/pouch.jpg');
-    background-position: center 30%;
-  }
-
-  /* ═══════════ BRAND MARQUEE — slow scrolling ribbon of brand pillars ═══════════ */
-  .brand-marquee {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    background: var(--paper);
-    padding: 38px 0;
-    border-top: 1px solid rgba(20, 20, 20, 0.06);
-    border-bottom: 1px solid rgba(20, 20, 20, 0.06);
-    direction: ltr;
-  }
-  /* Soft edge fades so words appear/disappear gently rather than getting clipped */
-  .brand-marquee::before,
-  .brand-marquee::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 120px;
-    z-index: 2;
-    pointer-events: none;
-  }
-  .brand-marquee::before {
-    left: 0;
-    background: linear-gradient(to right, var(--paper), transparent);
-  }
-  .brand-marquee::after {
-    right: 0;
-    background: linear-gradient(to left, var(--paper), transparent);
-  }
-  .marquee-track {
-    display: inline-flex;
-    align-items: center;
-    gap: 48px;
-    white-space: nowrap;
-    animation: marqueeScroll 38s linear infinite;
-    will-change: transform;
-  }
-  .marquee-item {
-    font-family: 'Frank Ruhl Libre', serif;
-    font-weight: 300;
-    font-style: italic;
-    font-size: clamp(28px, 3.2vw, 44px);
-    line-height: 1;
-    color: var(--sage-deep);
-    letter-spacing: 0.04em;
-  }
-  .marquee-dot {
-    font-family: 'Frank Ruhl Libre', serif;
-    font-size: clamp(28px, 3.2vw, 44px);
-    color: var(--sage);
-    opacity: 0.6;
-  }
-  @keyframes marqueeScroll {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
-  @media (max-width: 768px) {
-    .brand-marquee { padding: 28px 0; }
-    .marquee-track { gap: 32px; animation-duration: 30s; }
-    .brand-marquee::before, .brand-marquee::after { width: 60px; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .marquee-track { animation: none; }
+  .section-divider-everlabred .section-divider-img {
+    background-image: url('img/everlabred.jpg');
+    background-position: center center;
   }
   @media (max-width: 768px) {
     .section-divider { height: 280px; }
@@ -5226,40 +5160,9 @@
   })();
 </script>
 
-<!-- ============== INTERSTITIAL — Pouch / lymphatic recovery divider ============== -->
-<div class="section-divider section-divider-pouch" aria-hidden="true">
+<!-- ============== INTERSTITIAL — EVER LAB facility in red light ambiance ============== -->
+<div class="section-divider section-divider-everlabred" aria-hidden="true">
   <div class="section-divider-img"></div>
-</div>
-
-<!-- ============== MARQUEE — gentle scrolling ribbon of brand pillars ============== -->
-<div class="brand-marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span class="marquee-item">LONGEVITY</span>
-    <span class="marquee-dot">·</span>
-    <span class="marquee-item">BIO-AGE</span>
-    <span class="marquee-dot">·</span>
-    <span class="marquee-item">VITALITY</span>
-    <span class="marquee-dot">·</span>
-    <span class="marquee-item">STRENGTH</span>
-    <span class="marquee-dot">·</span>
-    <span class="marquee-item">RECOVERY</span>
-    <span class="marquee-dot">·</span>
-    <span class="marquee-item">MEASURE</span>
-    <span class="marquee-dot">·</span>
-    <!-- Duplicate set for seamless infinite loop -->
-    <span class="marquee-item">LONGEVITY</span>
-    <span class="marquee-dot">·</span>
-    <span class="marquee-item">BIO-AGE</span>
-    <span class="marquee-dot">·</span>
-    <span class="marquee-item">VITALITY</span>
-    <span class="marquee-dot">·</span>
-    <span class="marquee-item">STRENGTH</span>
-    <span class="marquee-dot">·</span>
-    <span class="marquee-item">RECOVERY</span>
-    <span class="marquee-dot">·</span>
-    <span class="marquee-item">MEASURE</span>
-    <span class="marquee-dot">·</span>
-  </div>
 </div>
 
 <!-- Closing band -->
