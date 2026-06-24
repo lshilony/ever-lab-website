@@ -875,6 +875,53 @@
     to { transform: translate(-50%, -50%) rotate(-360deg); }
   }
 
+  /* ═══════════ SECTION DIVIDERS — full-width interstitial images ═══════════ */
+  .section-divider {
+    position: relative;
+    width: 100%;
+    height: 440px;
+    overflow: hidden;
+    background-color: #000;
+  }
+  .section-divider-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Parallax: image stays put while page scrolls past */
+    background-attachment: fixed;
+  }
+  /* Subtle vignette + top/bottom fade — softens the visual transition into adjacent cream sections */
+  .section-divider::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom,
+        rgba(237, 232, 227, 0.18) 0%,
+        transparent 12%,
+        transparent 88%,
+        rgba(237, 232, 227, 0.18) 100%),
+      radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.18) 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .section-divider-redlight .section-divider-img {
+    background-image: url('img/redlight.jpg');
+    background-position: center 35%;
+  }
+  @media (max-width: 768px) {
+    .section-divider { height: 280px; }
+    /* Mobile: fixed attachment is buggy on iOS, fall back to scroll */
+    .section-divider-img { background-attachment: scroll; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .section-divider-img { background-attachment: scroll; }
+  }
+
   /* ═══════════ PLAN OVERVIEW — התוכנית של EVER LAB ═══════════ */
   .plan-overview {
     /* Warmer cream tone — creates a clear chapter break from the Measure section */
@@ -4600,6 +4647,11 @@
     </svg>
   </div>
 </section>
+
+<!-- ============== INTERSTITIAL — Red light therapy divider ============== -->
+<div class="section-divider section-divider-redlight" aria-hidden="true">
+  <div class="section-divider-img"></div>
+</div>
 
 <!-- ============== MEASURE / AGE SCAN MAIN SECTION ============== -->
 <section class="vital measure" id="step-measure" data-journey-step="1">
