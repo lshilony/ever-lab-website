@@ -2962,20 +2962,25 @@
     gap: 18px;
     align-items: stretch;
   }
-  /* ─── Main focal card — sage gradient with atmospheric depth ─── */
+  /* ─── Main focal card — lighter sage gradient (matches hero box) ─── */
   .brv2-hero {
     position: relative;
     background:
-      radial-gradient(ellipse at 28% 22%, rgba(205, 223, 183, 0.42) 0%, transparent 55%),
-      radial-gradient(ellipse at 78% 78%, rgba(48, 70, 53, 0.45) 0%, transparent 58%),
-      linear-gradient(135deg, #6B8B70 0%, #4A6B53 60%, #3D5A47 100%);
+      /* Top-left warm highlight (natural light) */
+      radial-gradient(ellipse 60% 55% at 22% 18%, rgba(244, 240, 235, 0.25) 0%, rgba(244, 240, 235, 0) 65%),
+      /* Soft sage glow upper-right */
+      radial-gradient(ellipse 70% 60% at 78% 32%, rgba(107, 139, 112, 0.30) 0%, rgba(107, 139, 112, 0) 70%),
+      /* Bottom shadow for depth */
+      radial-gradient(ellipse 80% 70% at 70% 100%, rgba(107, 139, 112, 0.40) 0%, rgba(107, 139, 112, 0) 78%),
+      /* Base diagonal — same as hero-box */
+      linear-gradient(135deg, #9BB89F 0%, #8DAE92 48%, #7FA086 100%);
     border-radius: 24px;
     padding: 56px 36px 44px;
     box-shadow:
-      0 12px 36px rgba(48, 70, 53, 0.22),
-      0 2px 8px rgba(48, 70, 53, 0.14),
-      inset 0 1px 0 rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+      0 12px 36px rgba(107, 139, 112, 0.22),
+      0 2px 8px rgba(107, 139, 112, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     text-align: center;
     overflow: hidden;
     display: flex;
