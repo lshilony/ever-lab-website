@@ -360,6 +360,8 @@
     line-height: 1.85;
     color: var(--ink-soft);
     margin-bottom: 28px;
+    /* Min-height aligns divider line across all cards regardless of copy length */
+    min-height: calc(3 * 1.85em);
   }
   .package.featured .package-desc { color: rgba(255, 255, 255, 0.88); }
 
@@ -383,6 +385,8 @@
     list-style: none;
     margin-bottom: 32px;
     flex: 1;
+    /* Align bottom price/CTA across cards even when bullet counts differ */
+    min-height: calc(2 * 2.4em);
   }
   .package-includes li {
     position: relative;
@@ -728,7 +732,7 @@
           </div>
         </div>
         <div class="package-body">
-          <h2>Longevity Escape <span class="accent">for Two</span></h2>
+          <h2>Longevity <span class="accent">Escape</span></h2>
           <div class="package-subtitle">4 טיפולי התחדשות זוגיים</div>
           <p class="package-desc">
             חוויה זוגית של התאוששות, רוגע והתחדשות לגוף ולמערכת העצבים.
