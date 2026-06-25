@@ -143,6 +143,36 @@
   }
   .nav-plus:hover { background: var(--ink); transform: rotate(90deg); }
 
+  .nav-left-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .nav-link {
+    font-family: 'Heebo', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 6px 4px;
+    position: relative;
+    transition: color 0.2s ease;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--sage-deep);
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+    transform-origin: center;
+  }
+  .nav-link:hover { color: var(--sage-deep); }
+  .nav-link:hover::after { transform: scaleX(1); }
   .nav-cta {
     background: var(--sage-deep);
     color: var(--paper);
@@ -2321,6 +2351,7 @@
   .fluid-nav[data-state="open"] .fnav-item:nth-child(3) { --offset: 136px; transition-delay: 120ms; }
   .fluid-nav[data-state="open"] .fnav-item:nth-child(4) { --offset: 204px; transition-delay: 160ms; }
   .fluid-nav[data-state="open"] .fnav-item:nth-child(5) { --offset: 272px; transition-delay: 200ms; }
+  .fluid-nav[data-state="open"] .fnav-item:nth-child(6) { --offset: 340px; transition-delay: 240ms; }
 
   /* Tooltip label on hover — appears to the LEFT of the item (RTL-friendly, nav at right edge) */
   .fnav-item .fnav-label {
@@ -2361,6 +2392,7 @@
     .fluid-nav[data-state="open"] .fnav-item:nth-child(3) { --offset: 120px; }
     .fluid-nav[data-state="open"] .fnav-item:nth-child(4) { --offset: 180px; }
     .fluid-nav[data-state="open"] .fnav-item:nth-child(5) { --offset: 240px; }
+    .fluid-nav[data-state="open"] .fnav-item:nth-child(6) { --offset: 300px; }
     .fnav-item .fnav-label { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -5123,8 +5155,8 @@
     /* ─── Nav ─── */
     nav { padding: 14px 16px; }
     nav.scrolled { padding: 12px 16px; }
-    /* CTA hidden on mobile — accessible via fluid-nav 'Contact' and hero-box button */
-    nav .nav-cta { display: none; }
+    /* CTA + nav-link hidden on mobile — accessible via fluid-nav */
+    nav .nav-left-group { display: none; }
     /* Logo recenters absolutely; only toggle remains as flex child */
     nav .logo { transform: translate(-50%, -50%); }
 
@@ -5323,7 +5355,10 @@
   <a href="#" class="logo" aria-label="EVER LAB">
     <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="logo-img">
   </a>
-  <a href="#" class="nav-cta"><span>קבעו מבדק גיל ביולוגי תפקודי</span> <span class="arr">←</span></a>
+  <div class="nav-left-group">
+    <a href="experiences.html" class="nav-link">חוויות ומחירים</a>
+    <a href="#contact" class="nav-cta"><span>קבעו מבדק גיל ביולוגי תפקודי</span> <span class="arr">←</span></a>
+  </div>
 </nav>
 
 <!-- ═══════════ JOURNEY WAYFINDING — sticky left-side progress indicator ═══════════ -->
@@ -6332,6 +6367,14 @@
         <line x1="8.5" y1="19" x2="15" y2="19"/>
       </svg>
       <span class="fnav-label">התוכנית</span>
+    </a>
+    <a href="experiences.html" class="fnav-item" aria-label="חוויות ומחירים">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 8 L12 4 L19 8 L19 16 L12 20 L5 16 Z"/>
+        <path d="M5 8 L12 12 L19 8"/>
+        <path d="M12 12 L12 20"/>
+      </svg>
+      <span class="fnav-label">חוויות ומחירים</span>
     </a>
     <a href="#contact" class="fnav-item" data-target="contact" aria-label="קביעת מבדק">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

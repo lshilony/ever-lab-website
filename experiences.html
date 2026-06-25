@@ -313,17 +313,43 @@
     font-family: 'Heebo', sans-serif;
     font-size: 12px;
     color: var(--warm-gray);
-    margin-bottom: 22px;
+    margin-bottom: 18px;
   }
   .package.featured .package-price-note { color: rgba(255, 255, 255, 0.7); }
 
+  /* Validity note — gentle reminder of voucher terms */
+  .package-validity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 22px;
+  }
+  .package-validity::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--sage);
+  }
+  .package.featured .package-validity { color: rgba(255, 255, 255, 0.78); }
+  .package.featured .package-validity::before { background: rgba(255, 255, 255, 0.5); }
+
+  /* Dual-button CTA row */
+  .package-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
   .package-cta {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background: var(--sage-deep);
-    color: #FFFFFF;
     text-decoration: none;
     padding: 16px 24px;
     border-radius: 999px;
@@ -331,14 +357,39 @@
     font-weight: 500;
     font-size: 15px;
     letter-spacing: 0.01em;
-    transition: background-color 0.25s ease, transform 0.25s ease;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    border: 1px solid transparent;
   }
-  .package-cta:hover { background: #5c7860; }
-  .package.featured .package-cta {
+  .package-cta-primary {
+    background: var(--sage-deep);
+    color: #FFFFFF;
+    border-color: var(--sage-deep);
+  }
+  .package-cta-primary:hover { background: #5c7860; border-color: #5c7860; }
+  .package-cta-secondary {
+    background: transparent;
+    color: var(--ink);
+    border-color: rgba(20, 20, 20, 0.18);
+  }
+  .package-cta-secondary:hover {
+    background: rgba(20, 20, 20, 0.04);
+    border-color: rgba(20, 20, 20, 0.3);
+  }
+  .package.featured .package-cta-primary {
     background: #FFFFFF;
     color: var(--sage-deep);
+    border-color: #FFFFFF;
   }
-  .package.featured .package-cta:hover { background: rgba(255, 255, 255, 0.92); }
+  .package.featured .package-cta-primary:hover { background: rgba(255, 255, 255, 0.92); }
+  .package.featured .package-cta-secondary {
+    background: transparent;
+    color: #FFFFFF;
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  .package.featured .package-cta-secondary:hover {
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.7);
+  }
   .package-cta .arr { font-size: 18px; }
 
   .featured-badge {
@@ -495,10 +546,16 @@
           <li>2 טיפולי התחדשות לבחירה</li>
         </ul>
         <div class="package-price">₪ ___</div>
-        <div class="package-price-note">להזמנה ולתיאום פגישה</div>
-        <a href="https://wa.me/9726299299?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%2F%D7%AA%20%D7%91%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Longevity%20Discovery" class="package-cta" target="_blank" rel="noopener noreferrer">
-          להזמנה <span class="arr">←</span>
-        </a>
+        <div class="package-price-note">שובר מתנה זמין לרכישה</div>
+        <div class="package-validity">תוקף שובר · 24 חודשים</div>
+        <div class="package-actions">
+          <a href="#" data-purchase="discovery" class="package-cta package-cta-primary">
+            רכישה <span class="arr">←</span>
+          </a>
+          <a href="https://wa.me/9726299299?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%2F%D7%AA%20%D7%91%D7%99%D7%99%D7%A2%D7%95%D7%A5%20%D7%A2%D7%9C%20%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Longevity%20Discovery" class="package-cta package-cta-secondary" target="_blank" rel="noopener noreferrer">
+            ייעוץ ב-WhatsApp
+          </a>
+        </div>
       </article>
 
       <!-- 2. Longevity Experience (featured) -->
@@ -517,10 +574,16 @@
           <li>2 טיפולי התחדשות לבחירה</li>
         </ul>
         <div class="package-price">₪ ___</div>
-        <div class="package-price-note">להזמנה ולתיאום פגישה</div>
-        <a href="https://wa.me/9726299299?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%2F%D7%AA%20%D7%91%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Longevity%20Experience" class="package-cta" target="_blank" rel="noopener noreferrer">
-          להזמנה <span class="arr">←</span>
-        </a>
+        <div class="package-price-note">שובר מתנה זמין לרכישה</div>
+        <div class="package-validity">תוקף שובר · 24 חודשים</div>
+        <div class="package-actions">
+          <a href="#" data-purchase="experience" class="package-cta package-cta-primary">
+            רכישה <span class="arr">←</span>
+          </a>
+          <a href="https://wa.me/9726299299?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%2F%D7%AA%20%D7%91%D7%99%D7%99%D7%A2%D7%95%D7%A5%20%D7%A2%D7%9C%20%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Longevity%20Experience" class="package-cta package-cta-secondary" target="_blank" rel="noopener noreferrer">
+            ייעוץ ב-WhatsApp
+          </a>
+        </div>
       </article>
 
       <!-- 3. Longevity Escape for Two -->
@@ -537,10 +600,16 @@
           <li>4 טיפולי התחדשות זוגיים לבחירה מתוך מגוון הטיפולים במתחם</li>
         </ul>
         <div class="package-price">₪ ___</div>
-        <div class="package-price-note">להזמנה ולתיאום פגישה</div>
-        <a href="https://wa.me/9726299299?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%2F%D7%AA%20%D7%91%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Longevity%20Escape%20for%20Two" class="package-cta" target="_blank" rel="noopener noreferrer">
-          להזמנה <span class="arr">←</span>
-        </a>
+        <div class="package-price-note">שובר מתנה זמין לרכישה</div>
+        <div class="package-validity">תוקף שובר · 24 חודשים</div>
+        <div class="package-actions">
+          <a href="#" data-purchase="escape-for-two" class="package-cta package-cta-primary">
+            רכישה <span class="arr">←</span>
+          </a>
+          <a href="https://wa.me/9726299299?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%2F%D7%AA%20%D7%91%D7%99%D7%99%D7%A2%D7%95%D7%A5%20%D7%A2%D7%9C%20%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Longevity%20Escape%20for%20Two" class="package-cta package-cta-secondary" target="_blank" rel="noopener noreferrer">
+            ייעוץ ב-WhatsApp
+          </a>
+        </div>
       </article>
 
     </div>
