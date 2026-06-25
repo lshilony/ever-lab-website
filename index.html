@@ -148,19 +148,19 @@
     align-items: center;
     gap: 20px;
   }
-  /* Nav voucher button — same gradient & dotted inner border as gift cards on /experiences */
+  /* Nav voucher button — gradient (no dotted border) + larger size for prominence */
   .nav-link {
     position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     font-family: 'Heebo', sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
     letter-spacing: 0.04em;
     color: var(--sage-deep);
     text-decoration: none;
-    padding: 13px 26px;
+    padding: 16px 32px;
     border-radius: 14px;
     background:
       linear-gradient(115deg,
@@ -170,35 +170,25 @@
         rgba(208, 198, 184, 0.92) 100%);
     border: 1px solid rgba(255, 255, 255, 0.65);
     box-shadow:
-      0 6px 16px rgba(60, 50, 35, 0.14),
-      0 2px 4px rgba(60, 50, 35, 0.08),
+      0 10px 24px rgba(60, 50, 35, 0.18),
+      0 3px 6px rgba(60, 50, 35, 0.10),
       inset 0 1px 0 rgba(255, 255, 255, 0.85);
-    min-height: 44px;
     overflow: hidden;
     transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
   }
-  /* Dotted inner border — voucher motif */
-  .nav-link::before {
-    content: '';
-    position: absolute;
-    inset: 4px;
-    border: 1px dashed rgba(107, 139, 112, 0.32);
-    border-radius: 10px;
-    pointer-events: none;
-  }
   .nav-link::after {
     content: '←';
-    font-size: 15px;
-    position: relative;
-    z-index: 1;
+    font-size: 16px;
+    transition: transform 0.25s ease;
   }
   .nav-link:hover {
     transform: translateY(-2px);
     box-shadow:
-      0 10px 22px rgba(60, 50, 35, 0.18),
-      0 3px 6px rgba(60, 50, 35, 0.10),
+      0 14px 30px rgba(60, 50, 35, 0.22),
+      0 4px 8px rgba(60, 50, 35, 0.12),
       inset 0 1px 0 rgba(255, 255, 255, 0.9);
   }
+  .nav-link:hover::after { transform: translateX(-4px); }
   .nav-cta {
     background: var(--sage-deep);
     color: var(--paper);
@@ -5533,7 +5523,7 @@
     <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="logo-img">
   </a>
   <div class="nav-left-group">
-    <a href="experiences.html" class="nav-link">לרכישה</a>
+    <a href="experiences.html" class="nav-link">להתחדש</a>
     <a href="#contact" class="nav-cta"><span>קבעו מבדק גיל ביולוגי תפקודי</span> <span class="arr">←</span></a>
   </div>
 </nav>
