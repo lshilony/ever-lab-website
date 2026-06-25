@@ -109,6 +109,16 @@
       radial-gradient(ellipse at 50% 0%, rgba(205, 223, 183, 0.20) 0%, transparent 60%),
       var(--bg);
   }
+  /* Secondary hero (EVER BEST section title) — less top padding, no background tint */
+  .exp-hero.exp-hero-secondary {
+    padding: 100px 32px 50px;
+    background: var(--bg);
+    border-top: 1px solid rgba(20, 20, 20, 0.06);
+    margin-top: 40px;
+  }
+  .exp-hero.exp-hero-secondary h1 {
+    font-size: clamp(36px, 4.6vw, 60px);
+  }
   .exp-eyebrow {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
@@ -778,6 +788,115 @@
           <div class="package-price-extra">חבילה זוגית מלאה</div>
           <div class="package-actions">
             <a href="https://ever-lab.co/product/longevity-escape-for-two/" data-purchase="escape-for-two" class="package-cta package-cta-primary">
+              רכישה <span class="arr">←</span>
+            </a>
+          </div>
+          <div class="package-validity">תוקף שובר · 24 חודשים</div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Section divider with EVER BEST title -->
+  <section class="exp-hero exp-hero-secondary">
+    <div class="exp-eyebrow"><span>The Combined Experience</span></div>
+    <h1>EVER <span class="accent">BEST</span></h1>
+    <p>
+      אימון אחד וכמה טיפולי התאוששות במסלול אחד — לחוויה משלימה של תנועה ורגיעה במתחם אבר לאב.
+    </p>
+  </section>
+
+  <!-- EVER BEST packages -->
+  <section class="packages packages-ever-best">
+    <div class="package-grid">
+
+      <!-- EVER BEST 4 (4 treatments — biggest first in RTL = appears on right) -->
+      <article class="package">
+        <div class="package-image">
+          <div class="voucher-card">
+            <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
+            <div class="voucher-tagline">Gift Voucher · EVER BEST 4</div>
+          </div>
+        </div>
+        <div class="package-body">
+          <h2>EVER <span class="accent">BEST 4</span></h2>
+          <div class="package-subtitle">אימון התנסות + 4 טיפולי התחדשות</div>
+          <p class="package-desc">
+            התוכנית המקיפה — אימון התנסות אישי לצד ארבעה טיפולי התאוששות לבחירה. החוויה השלמה של אבר לאב.
+          </p>
+          <div class="package-divider"></div>
+          <div class="package-includes-title">החבילה כוללת</div>
+          <ul class="package-includes">
+            <li>אימון התנסות אישי</li>
+            <li>4 טיפולי התחדשות לבחירה מתוך מגוון הטיפולים במתחם</li>
+          </ul>
+          <div class="package-price">845<span class="package-price-currency">₪</span></div>
+          <div class="package-price-extra">חיסכון של כ-46% לסשן</div>
+          <div class="package-actions">
+            <a href="https://ever-lab.co/product/ever-best-4/" data-purchase="ever-best-4" class="package-cta package-cta-primary">
+              רכישה <span class="arr">←</span>
+            </a>
+          </div>
+          <div class="package-validity">תוקף שובר · 24 חודשים</div>
+        </div>
+      </article>
+
+      <!-- EVER BEST 3 -->
+      <article class="package">
+        <div class="package-image">
+          <div class="voucher-card">
+            <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
+            <div class="voucher-tagline">Gift Voucher · EVER BEST 3</div>
+          </div>
+        </div>
+        <div class="package-body">
+          <h2>EVER <span class="accent">BEST 3</span></h2>
+          <div class="package-subtitle">אימון התנסות + 3 טיפולי התחדשות</div>
+          <p class="package-desc">
+            מסלול מאוזן — אימון התנסות לצד שלושה טיפולי התאוששות לבחירה. להעמקה בעולם של אבר לאב.
+          </p>
+          <div class="package-divider"></div>
+          <div class="package-includes-title">החבילה כוללת</div>
+          <ul class="package-includes">
+            <li>אימון התנסות אישי</li>
+            <li>3 טיפולי התחדשות לבחירה מתוך מגוון הטיפולים במתחם</li>
+          </ul>
+          <div class="package-price">720<span class="package-price-currency">₪</span></div>
+          <div class="package-price-extra">חיסכון של כ-33% לסשן</div>
+          <div class="package-actions">
+            <a href="https://ever-lab.co/product/ever-best-3/" data-purchase="ever-best-3" class="package-cta package-cta-primary">
+              רכישה <span class="arr">←</span>
+            </a>
+          </div>
+          <div class="package-validity">תוקף שובר · 24 חודשים</div>
+        </div>
+      </article>
+
+      <!-- EVER BEST 2 -->
+      <article class="package">
+        <div class="package-image">
+          <div class="voucher-card">
+            <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
+            <div class="voucher-tagline">Gift Voucher · EVER BEST 2</div>
+          </div>
+        </div>
+        <div class="package-body">
+          <h2>EVER <span class="accent">BEST 2</span></h2>
+          <div class="package-subtitle">אימון התנסות + 2 טיפולי התחדשות</div>
+          <p class="package-desc">
+            המסלול ההתחלתי — אימון התנסות לצד שני טיפולי התאוששות לבחירה. ההיכרות הראשונה עם השיטה.
+          </p>
+          <div class="package-divider"></div>
+          <div class="package-includes-title">החבילה כוללת</div>
+          <ul class="package-includes">
+            <li>אימון התנסות אישי</li>
+            <li>2 טיפולי התחדשות לבחירה מתוך מגוון הטיפולים במתחם</li>
+          </ul>
+          <div class="package-price">600<span class="package-price-currency">₪</span></div>
+          <div class="package-price-extra">נקודת הכניסה לעולם</div>
+          <div class="package-actions">
+            <a href="https://ever-lab.co/product/ever-best-2/" data-purchase="ever-best-2" class="package-cta package-cta-primary">
               רכישה <span class="arr">←</span>
             </a>
           </div>
