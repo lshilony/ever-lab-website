@@ -437,6 +437,36 @@
     color: var(--ink);
     margin-bottom: 6px;
     letter-spacing: -0.02em;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .package-price-currency { font-size: 26px; opacity: 0.6; }
+  .package-price-suffix {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--ink-soft);
+    letter-spacing: 0.01em;
+  }
+  .package-price-extra {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--sage-deep);
+    letter-spacing: 0.01em;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 18px;
+  }
+  .package-price-extra::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--sage);
   }
   .package.featured .package-price { color: #FFFFFF; }
   .package-price-note {
@@ -682,7 +712,8 @@
             <li>בדיקת גיל ביולוגי תפקודי</li>
             <li>2 טיפולי התחדשות לבחירה מתוך מגוון הטיפולים במתחם</li>
           </ul>
-          <div class="package-price">₪ ___</div>
+          <div class="package-price"><span class="package-price-currency">₪</span>920</div>
+          <div class="package-price-extra">ברכישה זוגית · 10% הנחה</div>
           <div class="package-actions">
             <!-- WooCommerce product page — adjust slug if it differs -->
             <a href="https://ever-lab.co/product/longevity-discovery/" data-purchase="discovery" class="package-cta package-cta-primary">
@@ -713,7 +744,8 @@
             <li>אימון התנסות אישי</li>
             <li>2 טיפולי התחדשות לבחירה מתוך מגוון הטיפולים במתחם</li>
           </ul>
-          <div class="package-price">₪ ___</div>
+          <div class="package-price"><span class="package-price-currency">₪</span>720</div>
+          <div class="package-price-extra">ברכישה זוגית · 10% הנחה</div>
           <div class="package-actions">
             <a href="https://ever-lab.co/product/longevity-experience/" data-purchase="experience" class="package-cta package-cta-primary">
               רכישה <span class="arr">←</span>
@@ -742,7 +774,8 @@
           <ul class="package-includes">
             <li>4 טיפולי התחדשות זוגיים</li>
           </ul>
-          <div class="package-price">₪ ___</div>
+          <div class="package-price"><span class="package-price-currency">₪</span>990 <span class="package-price-suffix">לזוג</span></div>
+          <div class="package-price-extra">חבילה זוגית מלאה</div>
           <div class="package-actions">
             <a href="https://ever-lab.co/product/longevity-escape-for-two/" data-purchase="escape-for-two" class="package-cta package-cta-primary">
               רכישה <span class="arr">←</span>
