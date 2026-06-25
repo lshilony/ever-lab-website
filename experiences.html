@@ -197,11 +197,64 @@
     background: var(--sage-deep);
     opacity: 0.45;
   }
-  /* 2-column variant of package-grid for individual items */
-  .package-grid.cols-2 {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 820px;
+  /* 4-column variant for individual items — compact, less scroll */
+  .package-grid.cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1280px;
     margin: 0 auto;
+  }
+  /* Compact card modifier — square-ish, no includes list */
+  .package.package-compact .package-image { aspect-ratio: 16 / 10; }
+  .package.package-compact .package-body { padding: 22px 24px 24px; }
+  .package.package-compact h2 {
+    font-size: clamp(20px, 1.8vw, 23px);
+    margin-bottom: 6px;
+  }
+  .package.package-compact .package-subtitle {
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+  .package.package-compact .package-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    min-height: calc(2 * 1.7em);
+    margin-bottom: 16px;
+  }
+  .package.package-compact .package-divider,
+  .package.package-compact .package-includes-title,
+  .package.package-compact .package-includes,
+  .package.package-compact .package-price-extra {
+    display: none;
+  }
+  .package.package-compact .package-footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid rgba(20, 20, 20, 0.08);
+  }
+  .package.package-compact .package-price {
+    font-size: 24px;
+    margin: 0;
+  }
+  .package.package-compact .package-price-currency { font-size: 18px; }
+  .package.package-compact .package-cta {
+    padding: 10px 18px;
+    font-size: 13.5px;
+  }
+  .package.package-compact .package-validity {
+    font-size: 11.5px;
+    margin-top: 10px;
+    justify-content: center;
+  }
+  @media (max-width: 1100px) {
+    .package-grid.cols-4 { grid-template-columns: repeat(2, 1fr); max-width: 720px; }
+  }
+  @media (max-width: 600px) {
+    .package-grid.cols-4 { grid-template-columns: 1fr; max-width: 420px; }
   }
   .items-section-head {
     text-align: center;
@@ -961,140 +1014,93 @@
   <section class="individual-items">
     <div class="items-wrap">
 
-      <!-- Category: Tests — same card language as packages -->
-      <div class="items-category-block">
-        <h3 class="single-category-title">בדיקות</h3>
-        <div class="package-grid cols-2">
+      <!-- All 4 items in a single 4-col compact row -->
+      <div class="package-grid cols-4">
 
-          <article class="package">
-            <div class="package-image">
-              <div class="voucher-card">
-                <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
-                <div class="voucher-tagline">Gift Voucher · Body Composition</div>
-              </div>
+        <article class="package package-compact">
+          <div class="package-image">
+            <div class="voucher-card">
+              <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
+              <div class="voucher-tagline">Body Composition</div>
             </div>
-            <div class="package-body">
-              <h2>בדיקת <span class="accent">הרכב גוף</span></h2>
-              <div class="package-subtitle">סריקת InBody · 15 דקות</div>
-              <p class="package-desc">
-                סריקה מקצועית לניתוח אחוזי שומן, מסת שריר, מים ומאזן אלקטרוליטים. נקודת התחלה למסע הלונג'ביטי.
-              </p>
-              <div class="package-divider"></div>
-              <div class="package-includes-title">הבדיקה כוללת</div>
-              <ul class="package-includes">
-                <li>סריקת הרכב גוף מלאה במכשיר InBody</li>
-                <li>דוח אישי מפורט עם ניתוח התוצאות</li>
-              </ul>
+          </div>
+          <div class="package-body">
+            <h2>בדיקת <span class="accent">הרכב גוף</span></h2>
+            <div class="package-subtitle">בדיקה · 15 דקות</div>
+            <p class="package-desc">סריקת InBody לניתוח אחוזי שומן, מסת שריר, מים ומאזן אלקטרוליטים.</p>
+            <div class="package-footer-row">
               <div class="package-price">200<span class="package-price-currency">₪</span></div>
-              <div class="package-price-extra">תשלום מאובטח · אישור מיידי</div>
-              <div class="package-actions">
-                <a href="https://ever-lab.co/product/body-composition/" data-purchase="body-composition" class="package-cta package-cta-primary">
-                  רכישה <span class="arr">←</span>
-                </a>
-              </div>
-              <div class="package-validity">תוקף שובר · 24 חודשים</div>
+              <a href="https://ever-lab.co/product/body-composition/" data-purchase="body-composition" class="package-cta package-cta-primary">
+                רכישה <span class="arr">←</span>
+              </a>
             </div>
-          </article>
+            <div class="package-validity">תוקף · 24 חודשים</div>
+          </div>
+        </article>
 
-          <article class="package">
-            <div class="package-image">
-              <div class="voucher-card">
-                <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
-                <div class="voucher-tagline">Gift Voucher · Bio Age Test</div>
-              </div>
+        <article class="package package-compact">
+          <div class="package-image">
+            <div class="voucher-card">
+              <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
+              <div class="voucher-tagline">Bio Age Test</div>
             </div>
-            <div class="package-body">
-              <h2>בדיקת גיל <span class="accent">ביולוגי</span></h2>
-              <div class="package-subtitle">אבחון תפקודי · 45 דקות</div>
-              <p class="package-desc">
-                אבחון מקיף המשלב הרכב גוף, מדדים תפקודיים ואלגוריתם ייחודי לחישוב הגיל הביולוגי האמיתי שלך.
-              </p>
-              <div class="package-divider"></div>
-              <div class="package-includes-title">הבדיקה כוללת</div>
-              <ul class="package-includes">
-                <li>בדיקת הרכב גוף + מדדים תפקודיים</li>
-                <li>דוח גיל ביולוגי תפקודי אישי</li>
-              </ul>
+          </div>
+          <div class="package-body">
+            <h2>בדיקת גיל <span class="accent">ביולוגי</span></h2>
+            <div class="package-subtitle">בדיקה · 45 דקות</div>
+            <p class="package-desc">אבחון מקיף המשלב הרכב גוף ומדדים תפקודיים לחישוב הגיל הביולוגי האמיתי שלך.</p>
+            <div class="package-footer-row">
               <div class="package-price">550<span class="package-price-currency">₪</span></div>
-              <div class="package-price-extra">תשלום מאובטח · אישור מיידי</div>
-              <div class="package-actions">
-                <a href="https://ever-lab.co/product/bio-age-test/" data-purchase="bio-age-test" class="package-cta package-cta-primary">
-                  רכישה <span class="arr">←</span>
-                </a>
-              </div>
-              <div class="package-validity">תוקף שובר · 24 חודשים</div>
+              <a href="https://ever-lab.co/product/bio-age-test/" data-purchase="bio-age-test" class="package-cta package-cta-primary">
+                רכישה <span class="arr">←</span>
+              </a>
             </div>
-          </article>
+            <div class="package-validity">תוקף · 24 חודשים</div>
+          </div>
+        </article>
 
-        </div>
-      </div>
-
-      <!-- Category: Tastings — same card language -->
-      <div class="items-category-block">
-        <h3 class="single-category-title">טעימות</h3>
-        <div class="package-grid cols-2">
-
-          <article class="package">
-            <div class="package-image">
-              <div class="voucher-card">
-                <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
-                <div class="voucher-tagline">Gift Voucher · Trial Workout</div>
-              </div>
+        <article class="package package-compact">
+          <div class="package-image">
+            <div class="voucher-card">
+              <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
+              <div class="voucher-tagline">Trial Workout</div>
             </div>
-            <div class="package-body">
-              <h2>אימון <span class="accent">התנסות</span></h2>
-              <div class="package-subtitle">סשן אישי · 30 דקות</div>
-              <p class="package-desc">
-                אימון פרטי עם מאמן/ת מקצועי על ציוד טכנולוגי מתקדם — Vasper, ARX, CAROL ועוד.
-              </p>
-              <div class="package-divider"></div>
-              <div class="package-includes-title">האימון כולל</div>
-              <ul class="package-includes">
-                <li>אימון אישי עם מאמן/ת מקצועי</li>
-                <li>שימוש בציוד טכנולוגי מתקדם של אבר לאב</li>
-              </ul>
+          </div>
+          <div class="package-body">
+            <h2>אימון <span class="accent">התנסות</span></h2>
+            <div class="package-subtitle">טעימה · 30 דקות</div>
+            <p class="package-desc">אימון פרטי עם מאמן/ת מקצועי על ציוד טכנולוגי מתקדם — Vasper, ARX, CAROL ועוד.</p>
+            <div class="package-footer-row">
               <div class="package-price">350<span class="package-price-currency">₪</span></div>
-              <div class="package-price-extra">תשלום מאובטח · אישור מיידי</div>
-              <div class="package-actions">
-                <a href="https://ever-lab.co/product/trial-workout/" data-purchase="trial-workout" class="package-cta package-cta-primary">
-                  רכישה <span class="arr">←</span>
-                </a>
-              </div>
-              <div class="package-validity">תוקף שובר · 24 חודשים</div>
+              <a href="https://ever-lab.co/product/trial-workout/" data-purchase="trial-workout" class="package-cta package-cta-primary">
+                רכישה <span class="arr">←</span>
+              </a>
             </div>
-          </article>
+            <div class="package-validity">תוקף · 24 חודשים</div>
+          </div>
+        </article>
 
-          <article class="package">
-            <div class="package-image">
-              <div class="voucher-card">
-                <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
-                <div class="voucher-tagline">Gift Voucher · Single Recovery</div>
-              </div>
+        <article class="package package-compact">
+          <div class="package-image">
+            <div class="voucher-card">
+              <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
+              <div class="voucher-tagline">Single Recovery</div>
             </div>
-            <div class="package-body">
-              <h2>טיפול <span class="accent">התחדשות</span></h2>
-              <div class="package-subtitle">טיפול יחיד · 30-45 דקות</div>
-              <p class="package-desc">
-                בחירה של טיפול אחד מתוך מגוון הטיפולים במתחם — סאונה אינפרא־רד, NAP POD, ICE CUBE, מסקס לימפטי ועוד.
-              </p>
-              <div class="package-divider"></div>
-              <div class="package-includes-title">הטיפול כולל</div>
-              <ul class="package-includes">
-                <li>טיפול התחדשות אחד לבחירה מתוך המגוון</li>
-                <li>סשן אישי בקצב שלך, בלי לחץ</li>
-              </ul>
+          </div>
+          <div class="package-body">
+            <h2>טיפול <span class="accent">התחדשות</span></h2>
+            <div class="package-subtitle">טעימה · 30-45 דקות</div>
+            <p class="package-desc">בחירה של טיפול אחד מבין מגוון הטיפולים במתחם — סאונה, NAP POD, ICE CUBE ועוד.</p>
+            <div class="package-footer-row">
               <div class="package-price">200<span class="package-price-currency">₪</span></div>
-              <div class="package-price-extra">תשלום מאובטח · אישור מיידי</div>
-              <div class="package-actions">
-                <a href="https://ever-lab.co/product/single-recovery/" data-purchase="single-recovery" class="package-cta package-cta-primary">
-                  רכישה <span class="arr">←</span>
-                </a>
-              </div>
-              <div class="package-validity">תוקף שובר · 24 חודשים</div>
+              <a href="https://ever-lab.co/product/single-recovery/" data-purchase="single-recovery" class="package-cta package-cta-primary">
+                רכישה <span class="arr">←</span>
+              </a>
             </div>
-          </article>
+            <div class="package-validity">תוקף · 24 חודשים</div>
+          </div>
+        </article>
 
-        </div>
       </div>
     </div>
   </section>
