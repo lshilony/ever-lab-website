@@ -102,23 +102,27 @@
 
   /* ─── Hero ─── */
   .exp-hero {
-    padding: 180px 32px 80px;
+    padding: 130px 32px 36px;
     text-align: center;
     position: relative;
     background:
       radial-gradient(ellipse at 50% 0%, rgba(205, 223, 183, 0.20) 0%, transparent 60%),
       var(--bg);
   }
-  /* Secondary hero (EVER BEST section title) — less top padding, no background tint */
+  /* Secondary hero — section title, very compact */
   .exp-hero.exp-hero-secondary {
-    padding: 100px 32px 50px;
+    padding: 50px 32px 24px;
     background: var(--bg);
     border-top: 1px solid rgba(20, 20, 20, 0.06);
-    margin-top: 40px;
+    margin-top: 28px;
   }
   .exp-hero.exp-hero-secondary h1 {
-    font-size: clamp(36px, 4.6vw, 60px);
+    font-size: clamp(32px, 3.8vw, 48px);
   }
+  .exp-hero.exp-hero-secondary p {
+    font-size: 15px;
+  }
+  .exp-hero.exp-hero-secondary .exp-eyebrow { margin-bottom: 18px; }
   .exp-eyebrow {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
@@ -165,7 +169,7 @@
 
   /* ─── À la carte items — same card language as packages ─── */
   .individual-items {
-    padding: 20px 32px 80px;
+    padding: 0 32px 50px;
     background: var(--bg);
   }
   .items-wrap {
@@ -474,7 +478,7 @@
 
   /* ─── Packages grid ─── */
   .packages {
-    padding: 60px 32px 120px;
+    padding: 0 32px 50px;
     max-width: 1280px;
     margin: 0 auto;
   }
