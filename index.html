@@ -1540,6 +1540,295 @@
     .journey-nav { display: none; }
   }
 
+  /* ═══════════ COOKIE CONSENT — GDPR-compliant banner + settings modal ═══════════ */
+  .cookie-banner {
+    position: fixed;
+    bottom: 22px;
+    left: 22px;
+    right: 22px;
+    max-width: 720px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1px solid rgba(20, 20, 20, 0.08);
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(20, 20, 20, 0.16), 0 4px 12px rgba(20, 20, 20, 0.06);
+    padding: 22px 26px;
+    z-index: 998;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    pointer-events: none;
+  }
+  .cookie-banner.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .cookie-banner-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 18px;
+    align-items: center;
+  }
+  .cookie-banner-text {
+    direction: rtl;
+  }
+  .cookie-banner-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: 20px;
+    margin: 0 0 6px;
+    color: var(--ink);
+  }
+  .cookie-banner-text p {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .cookie-banner-text a {
+    color: var(--sage-deep);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .cookie-banner-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+    min-width: 180px;
+  }
+  .cookie-btn {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.01em;
+    padding: 11px 18px;
+    border-radius: 999px;
+    border: 1px solid;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+  }
+  .cookie-btn-primary {
+    background: var(--sage-deep);
+    color: #FFFFFF;
+    border-color: var(--sage-deep);
+  }
+  .cookie-btn-primary:hover {
+    background: #5c7860;
+    border-color: #5c7860;
+  }
+  .cookie-btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border-color: rgba(20, 20, 20, 0.18);
+  }
+  .cookie-btn-secondary:hover {
+    background: rgba(20, 20, 20, 0.04);
+    border-color: rgba(20, 20, 20, 0.3);
+  }
+  .cookie-btn:focus-visible {
+    outline: 2px solid var(--sage-deep);
+    outline-offset: 2px;
+  }
+
+  /* ─── Modal (settings) ─── */
+  .cookie-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(20, 20, 20, 0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s 0.3s;
+  }
+  .cookie-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s;
+  }
+  .cookie-modal-card {
+    background: var(--paper);
+    border-radius: 20px;
+    max-width: 580px;
+    width: 100%;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    padding: 32px 36px;
+    box-shadow: 0 28px 80px rgba(20, 20, 20, 0.32);
+    direction: rtl;
+    transform: translateY(20px) scale(0.98);
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .cookie-modal.is-open .cookie-modal-card {
+    transform: translateY(0) scale(1);
+  }
+  .cookie-modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  .cookie-modal-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: 28px;
+    color: var(--ink);
+    margin: 0;
+  }
+  .cookie-modal-close {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(20, 20, 20, 0.04);
+    border: none;
+    color: var(--ink-soft);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  .cookie-modal-close:hover {
+    background: rgba(20, 20, 20, 0.08);
+    color: var(--ink);
+  }
+  .cookie-modal-close svg {
+    width: 16px;
+    height: 16px;
+  }
+  .cookie-modal-intro {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+  }
+  .cookie-category {
+    padding: 18px 0;
+    border-top: 1px solid rgba(20, 20, 20, 0.08);
+  }
+  .cookie-category-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .cookie-category-name {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .cookie-category-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    background: rgba(141, 174, 146, 0.18);
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .cookie-category-desc {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* ─── Toggle switch ─── */
+  .cookie-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .cookie-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .cookie-switch-track {
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 20, 20, 0.15);
+    border-radius: 999px;
+    transition: background-color 0.25s;
+  }
+  .cookie-switch-track::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: #FFFFFF;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(20, 20, 20, 0.18);
+  }
+  .cookie-switch input:checked + .cookie-switch-track {
+    background: var(--sage-deep);
+  }
+  .cookie-switch input:checked + .cookie-switch-track::before {
+    transform: translateX(20px);
+  }
+  .cookie-switch input:focus-visible + .cookie-switch-track {
+    box-shadow: 0 0 0 3px rgba(107, 139, 112, 0.25);
+  }
+  .cookie-modal-foot {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 26px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(20, 20, 20, 0.08);
+  }
+
+  @media (max-width: 768px) {
+    .cookie-banner {
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      padding: 18px 20px;
+    }
+    .cookie-banner-inner {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .cookie-banner-actions {
+      min-width: 0;
+    }
+    .cookie-modal-card {
+      padding: 26px 22px;
+      max-height: calc(100vh - 32px);
+    }
+    .cookie-modal-title {
+      font-size: 24px;
+    }
+    .cookie-modal-foot {
+      flex-direction: column-reverse;
+    }
+    .cookie-modal-foot .cookie-btn {
+      width: 100%;
+    }
+  }
+
   /* ═══════════ FLUID NAVIGATION — toggle in main <nav>, items panel below ═══════════ */
   /* Logo centered absolutely inside main nav; toggle and CTA sit on flex edges */
   nav .logo {
@@ -5751,6 +6040,171 @@
       }, { threshold: [0.25, 0.5], rootMargin: '-30% 0px -30% 0px' });
       sections.forEach(s => observer.observe(s));
     }
+  })();
+</script>
+
+<!-- ═══════════ COOKIE CONSENT — GDPR / Israeli law compliant ═══════════ -->
+<aside id="cookie-banner" class="cookie-banner" aria-hidden="true" aria-label="הסכמה לשימוש בעוגיות">
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-text">
+      <h3 class="cookie-banner-title">העוגיות שלנו</h3>
+      <p>
+        אנחנו משתמשים בעוגיות כדי לשפר את חוויית הגלישה, להבין כיצד האתר נמצא בשימוש, ולהציע תוכן רלוונטי. עוגיות חיוניות פועלות תמיד. את יכולה לבחור לאשר את כל היתר, לדחות אותן, או להתאים בעצמך. פרטים נוספים ב<a href="https://ever-lab.co/privacy-policy/" target="_blank" rel="noopener noreferrer">מדיניות הפרטיות</a>.
+      </p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button type="button" class="cookie-btn cookie-btn-secondary" data-action="reject-all">אישור הנדרשות בלבד</button>
+      <button type="button" class="cookie-btn cookie-btn-secondary" data-action="customize">התאמה אישית</button>
+      <button type="button" class="cookie-btn cookie-btn-primary" data-action="accept-all">אישור הכל</button>
+    </div>
+  </div>
+</aside>
+
+<div id="cookie-modal" class="cookie-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
+  <div class="cookie-modal-card">
+    <header class="cookie-modal-head">
+      <h2 id="cookie-modal-title" class="cookie-modal-title">הגדרות עוגיות</h2>
+      <button type="button" class="cookie-modal-close" data-action="close" aria-label="סגור">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <line x1="6" y1="6" x2="18" y2="18"/>
+          <line x1="18" y1="6" x2="6" y2="18"/>
+        </svg>
+      </button>
+    </header>
+
+    <p class="cookie-modal-intro">
+      בחרי אילו עוגיות תרצי שיופעלו. ההגדרות נשמרות במכשיר שלך ואת יכולה לשנות אותן בכל עת.
+    </p>
+
+    <div class="cookie-category">
+      <div class="cookie-category-head">
+        <span class="cookie-category-name">חיוניות</span>
+        <span class="cookie-category-badge">תמיד פעיל</span>
+      </div>
+      <p class="cookie-category-desc">
+        עוגיות שמאפשרות לאתר לפעול — שמירת העדפות, מצב טופס, ביטחון. בלעדיהן האתר לא יעבוד תקין.
+      </p>
+    </div>
+
+    <div class="cookie-category">
+      <div class="cookie-category-head">
+        <span class="cookie-category-name">אנליטיקה</span>
+        <label class="cookie-switch">
+          <input type="checkbox" id="cookie-toggle-analytics">
+          <span class="cookie-switch-track"></span>
+        </label>
+      </div>
+      <p class="cookie-category-desc">
+        עוזרות לנו להבין כיצד האתר נמצא בשימוש (Google Analytics וכדומה) — דפים נצפים, זמני שהייה — כדי לשפר אותו.
+      </p>
+    </div>
+
+    <div class="cookie-category">
+      <div class="cookie-category-head">
+        <span class="cookie-category-name">שיווק</span>
+        <label class="cookie-switch">
+          <input type="checkbox" id="cookie-toggle-marketing">
+          <span class="cookie-switch-track"></span>
+        </label>
+      </div>
+      <p class="cookie-category-desc">
+        מאפשרות להציג מודעות מותאמות אישית ולמדוד את אפקטיביות הקמפיינים שלנו (Meta Pixel, Google Ads וכדומה).
+      </p>
+    </div>
+
+    <footer class="cookie-modal-foot">
+      <button type="button" class="cookie-btn cookie-btn-secondary" data-action="save">שמירת הבחירה</button>
+      <button type="button" class="cookie-btn cookie-btn-primary" data-action="accept-all">אישור הכל</button>
+    </footer>
+  </div>
+</div>
+
+<script>
+  /* COOKIE CONSENT — GDPR / Israeli privacy law compliant (isolated script block) */
+  (function() {
+    const STORAGE_KEY = 'everlab-cookie-consent';
+    const banner = document.getElementById('cookie-banner');
+    const modal = document.getElementById('cookie-modal');
+    if (!banner || !modal) return;
+
+    const readPrefs = () => {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || null; } catch (e) { return null; }
+    };
+    const showBanner = () => {
+      banner.classList.add('is-visible');
+      banner.removeAttribute('aria-hidden');
+    };
+    const hideBanner = () => {
+      banner.classList.remove('is-visible');
+      banner.setAttribute('aria-hidden', 'true');
+    };
+    const openModal = () => {
+      modal.classList.add('is-open');
+      modal.removeAttribute('aria-hidden');
+      const prefs = readPrefs() || {};
+      modal.querySelector('#cookie-toggle-analytics').checked = !!prefs.analytics;
+      modal.querySelector('#cookie-toggle-marketing').checked = !!prefs.marketing;
+      document.body.style.overflow = 'hidden';
+    };
+    const closeModal = () => {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+    const savePrefs = (prefs) => {
+      const data = {
+        necessary: true,
+        analytics: !!prefs.analytics,
+        marketing: !!prefs.marketing,
+        timestamp: new Date().toISOString(),
+      };
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
+      window.dispatchEvent(new CustomEvent('everlab:consent-updated', { detail: data }));
+      hideBanner();
+      closeModal();
+    };
+
+    if (!readPrefs()) {
+      setTimeout(showBanner, 800);
+    }
+
+    banner.querySelector('[data-action="accept-all"]').addEventListener('click', function() {
+      savePrefs({ analytics: true, marketing: true });
+    });
+    banner.querySelector('[data-action="reject-all"]').addEventListener('click', function() {
+      savePrefs({ analytics: false, marketing: false });
+    });
+    banner.querySelector('[data-action="customize"]').addEventListener('click', openModal);
+
+    modal.querySelector('[data-action="save"]').addEventListener('click', function() {
+      savePrefs({
+        analytics: modal.querySelector('#cookie-toggle-analytics').checked,
+        marketing: modal.querySelector('#cookie-toggle-marketing').checked,
+      });
+    });
+    modal.querySelector('[data-action="accept-all"]').addEventListener('click', function() {
+      savePrefs({ analytics: true, marketing: true });
+    });
+    modal.querySelector('[data-action="close"]').addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+
+    document.querySelectorAll('[data-cookie-prefs]').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    window.everlabConsent = {
+      get: readPrefs,
+      reset: function() { localStorage.removeItem(STORAGE_KEY); showBanner(); },
+      openSettings: openModal,
+    };
   })();
 </script>
 
