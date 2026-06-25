@@ -286,6 +286,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 18px;
+    margin-top: 4px;
   }
   .item-duration {
     font-family: 'Space Mono', monospace;
@@ -304,25 +305,65 @@
     border-radius: 50%;
     background: var(--sage);
   }
+  .item-buy-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  /* The main purchase CTA — bold, inviting, no-brainer */
   .item-buy {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    color: var(--sage-deep);
+    gap: 10px;
+    background: var(--sage-deep);
+    color: #FFFFFF;
     text-decoration: none;
-    padding: 6px 0;
+    padding: 14px 28px;
+    border-radius: 999px;
     font-family: 'Heebo', sans-serif;
     font-weight: 500;
-    font-size: 13.5px;
-    letter-spacing: 0.04em;
-    border-bottom: 1px solid transparent;
-    transition: color 0.2s, border-color 0.2s;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    box-shadow: 0 6px 16px rgba(107, 139, 112, 0.30), 0 2px 4px rgba(107, 139, 112, 0.18);
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 0.25s ease,
+                background-color 0.25s ease;
   }
   .item-buy:hover {
-    color: var(--ink);
-    border-bottom-color: var(--sage-deep);
+    background: #5c7860;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(107, 139, 112, 0.40), 0 4px 8px rgba(107, 139, 112, 0.22);
   }
-  .item-buy .arr { font-size: 15px; }
+  .item-buy:focus-visible {
+    outline: 2px solid var(--sage-deep);
+    outline-offset: 3px;
+  }
+  .item-buy .arr {
+    font-size: 17px;
+    transition: transform 0.25s ease;
+  }
+  .item-buy:hover .arr { transform: translateX(-3px); }
+
+  /* Trust signal under the button — quiet but reassuring */
+  .item-trust {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 400;
+    font-size: 11.5px;
+    letter-spacing: 0.02em;
+    color: var(--warm-gray);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .item-trust::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--sage);
+    opacity: 0.7;
+  }
 
   @media (max-width: 768px) {
     .items-categories { gap: 40px; }
@@ -331,7 +372,20 @@
     .item-price { font-size: 18px; }
     .item-leader { margin: 0 8px 4px; }
     .item-desc { font-size: 14.5px; }
-    .item-foot { flex-direction: column; align-items: stretch; gap: 10px; }
+    .item-foot {
+      flex-direction: column-reverse;
+      align-items: stretch;
+      gap: 14px;
+    }
+    .item-buy-block { align-items: stretch; }
+    .item-buy {
+      justify-content: center;
+      width: 100%;
+      padding: 16px 28px;
+      font-size: 16px;
+    }
+    .item-trust { justify-content: center; align-self: center; }
+    .item-duration { text-align: center; justify-content: center; }
   }
 
   /* ─── Packages grid ─── */
@@ -891,7 +945,10 @@
               <p class="item-desc">סריקת InBody לניתוח אחוזי שומן, מסת שריר, מים ומאזן אלקטרוליטים.</p>
               <div class="item-foot">
                 <span class="item-duration">כ-15 דקות</span>
-                <a href="https://ever-lab.co/product/body-composition/" class="item-buy">רכישה <span class="arr">←</span></a>
+                <div class="item-buy-block">
+                  <a href="https://ever-lab.co/product/body-composition/" class="item-buy">רכישה <span class="arr">←</span></a>
+                  <span class="item-trust">תשלום מאובטח · אישור במייל מיידי</span>
+                </div>
               </div>
             </li>
 
@@ -904,7 +961,10 @@
               <p class="item-desc">אבחון מקיף המשלב הרכב גוף, מדדים תפקודיים ואלגוריתם ייחודי לחישוב הגיל הביולוגי האמיתי שלך.</p>
               <div class="item-foot">
                 <span class="item-duration">כ-45 דקות</span>
-                <a href="https://ever-lab.co/product/bio-age-test/" class="item-buy">רכישה <span class="arr">←</span></a>
+                <div class="item-buy-block">
+                  <a href="https://ever-lab.co/product/bio-age-test/" class="item-buy">רכישה <span class="arr">←</span></a>
+                  <span class="item-trust">תשלום מאובטח · אישור במייל מיידי</span>
+                </div>
               </div>
             </li>
 
@@ -925,7 +985,10 @@
               <p class="item-desc">סשן אישי עם מאמן/ת על ציוד טכנולוגי מתקדם — Vasper, ARX, CAROL ועוד.</p>
               <div class="item-foot">
                 <span class="item-duration">כ-30 דקות</span>
-                <a href="https://ever-lab.co/product/trial-workout/" class="item-buy">רכישה <span class="arr">←</span></a>
+                <div class="item-buy-block">
+                  <a href="https://ever-lab.co/product/trial-workout/" class="item-buy">רכישה <span class="arr">←</span></a>
+                  <span class="item-trust">תשלום מאובטח · אישור במייל מיידי</span>
+                </div>
               </div>
             </li>
 
@@ -938,7 +1001,10 @@
               <p class="item-desc">בחירה אחת מבין מגוון הטיפולים במתחם: סאונה אינפרא־רד, NAP POD, ICE CUBE, מסקס לימפטי ועוד.</p>
               <div class="item-foot">
                 <span class="item-duration">30-45 דקות</span>
-                <a href="https://ever-lab.co/product/single-recovery/" class="item-buy">רכישה <span class="arr">←</span></a>
+                <div class="item-buy-block">
+                  <a href="https://ever-lab.co/product/single-recovery/" class="item-buy">רכישה <span class="arr">←</span></a>
+                  <span class="item-trust">תשלום מאובטח · אישור במייל מיידי</span>
+                </div>
               </div>
             </li>
 
