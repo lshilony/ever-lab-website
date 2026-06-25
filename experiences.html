@@ -163,6 +163,124 @@
     margin: 0 auto;
   }
 
+  /* ─── Individual items (à la carte) — single sessions and tests ─── */
+  .individual-items {
+    padding: 20px 32px 60px;
+    background: var(--bg);
+  }
+  .items-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .items-section-head {
+    text-align: center;
+    margin-bottom: 38px;
+  }
+  .items-section-head h2 {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 12px 0 14px;
+  }
+  .items-section-head p {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .items-categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .items-category {
+    background: var(--paper);
+    border: 1px solid rgba(20, 20, 20, 0.06);
+    border-radius: 18px;
+    padding: 26px 28px 14px;
+    box-shadow: 0 4px 16px rgba(20, 20, 20, 0.03);
+  }
+  .items-category-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    margin: 0 0 18px;
+    text-align: right;
+  }
+  .items-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(20, 20, 20, 0.07);
+    gap: 14px;
+  }
+  .item-row:last-child { border-bottom: none; }
+  .item-name {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--ink);
+    flex: 1;
+  }
+  .item-meta {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-shrink: 0;
+  }
+  .item-price {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: 24px;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+    letter-spacing: -0.01em;
+  }
+  .item-currency {
+    font-size: 17px;
+    opacity: 0.6;
+  }
+  .item-buy {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--sage-deep);
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    transition: background-color 0.25s ease;
+  }
+  .item-buy:hover { background: #5c7860; }
+  .item-buy .arr { font-size: 14px; }
+
+  @media (max-width: 768px) {
+    .items-categories { grid-template-columns: 1fr; gap: 16px; }
+    .item-row { flex-wrap: wrap; gap: 10px; }
+    .item-name { width: 100%; font-size: 16px; }
+    .item-meta { width: 100%; justify-content: space-between; }
+  }
+
   /* ─── Packages grid ─── */
   .packages {
     padding: 60px 32px 120px;
@@ -696,6 +814,63 @@
     <p>
       שלוש חוויות בנויות בקפידה — מהמדידה הראשונה דרך אימון התנסות ועד התאוששות זוגית. כל חבילה היא הזמנה להכיר את העולם של אבר לאב על בשרך.
     </p>
+  </section>
+
+  <!-- Individual items (à la carte) -->
+  <section class="individual-items">
+    <div class="items-wrap">
+      <div class="items-section-head">
+        <div class="exp-eyebrow"><span>À la carte</span></div>
+        <h2>פריטים בודדים</h2>
+        <p>בדיקות וסשנים בודדים לרכישה נפרדת — מתאים למי שמכיר ויודע מה רוצה.</p>
+      </div>
+
+      <div class="items-categories">
+
+        <!-- Category 1: Tests -->
+        <div class="items-category">
+          <h3 class="items-category-title">בדיקות</h3>
+          <ul class="items-list">
+            <li class="item-row">
+              <div class="item-name">בדיקת הרכב גוף</div>
+              <div class="item-meta">
+                <span class="item-price">200<span class="item-currency">₪</span></span>
+                <a href="https://ever-lab.co/product/body-composition/" class="item-buy">רכישה <span class="arr">←</span></a>
+              </div>
+            </li>
+            <li class="item-row">
+              <div class="item-name">בדיקת גיל ביולוגי תפקודי</div>
+              <div class="item-meta">
+                <span class="item-price">550<span class="item-currency">₪</span></span>
+                <a href="https://ever-lab.co/product/bio-age-test/" class="item-buy">רכישה <span class="arr">←</span></a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Category 2: Single sessions -->
+        <div class="items-category">
+          <h3 class="items-category-title">סשנים בודדים</h3>
+          <ul class="items-list">
+            <li class="item-row">
+              <div class="item-name">אימון התנסות</div>
+              <div class="item-meta">
+                <span class="item-price">350<span class="item-currency">₪</span></span>
+                <a href="https://ever-lab.co/product/trial-workout/" class="item-buy">רכישה <span class="arr">←</span></a>
+              </div>
+            </li>
+            <li class="item-row">
+              <div class="item-name">טיפול התחדשות יחיד</div>
+              <div class="item-meta">
+                <span class="item-price">200<span class="item-currency">₪</span></span>
+                <a href="https://ever-lab.co/product/single-recovery/" class="item-buy">רכישה <span class="arr">←</span></a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
   </section>
 
   <!-- Packages -->
