@@ -169,11 +169,42 @@
     background: var(--paper);
     border: 1px solid rgba(20, 20, 20, 0.06);
     border-radius: 24px;
-    padding: 44px 36px 36px;
+    padding: 0;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     box-shadow: 0 8px 28px rgba(20, 20, 20, 0.04);
     transition: transform 0.4s, box-shadow 0.4s;
+  }
+  .package-body {
+    padding: 30px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  /* Image area at top of card */
+  .package-image {
+    aspect-ratio: 4 / 3;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid rgba(20, 20, 20, 0.06);
+    position: relative;
+  }
+  .package-image-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--sage-deep);
+    padding: 6px 12px;
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
   .package:hover {
     transform: translateY(-4px);
@@ -533,82 +564,92 @@
 
       <!-- 1. Longevity Discovery -->
       <article class="package">
-        <div class="package-tag">Package 01</div>
-        <h2>Longevity <span class="accent">Discovery</span></h2>
-        <div class="package-subtitle">בדיקת גיל ביולוגי + 2 טיפולי התחדשות</div>
-        <p class="package-desc">
-          הדרך לגלות איך הגוף שלך באמת מתפקד היום, ולטעום מעולם ההתאוששות והלונג'ביטי.
-        </p>
-        <div class="package-divider"></div>
-        <div class="package-includes-title">החבילה כוללת</div>
-        <ul class="package-includes">
-          <li>בדיקת גיל ביולוגי תפקודי</li>
-          <li>2 טיפולי התחדשות לבחירה</li>
-        </ul>
-        <div class="package-price">₪ ___</div>
-        <div class="package-price-note">שובר מתנה זמין לרכישה</div>
-        <div class="package-validity">תוקף שובר · 24 חודשים</div>
-        <div class="package-actions">
-          <a href="#" data-purchase="discovery" class="package-cta package-cta-primary">
-            רכישה <span class="arr">←</span>
-          </a>
-          <a href="https://wa.me/9726299299?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%2F%D7%AA%20%D7%91%D7%99%D7%99%D7%A2%D7%95%D7%A5%20%D7%A2%D7%9C%20%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Longevity%20Discovery" class="package-cta package-cta-secondary" target="_blank" rel="noopener noreferrer">
-            ייעוץ ב-WhatsApp
-          </a>
+        <div class="package-image" style="background-image: url('img/vasperdata.jpg');"></div>
+        <div class="package-body">
+          <div class="package-tag">Package 01</div>
+          <h2>Longevity <span class="accent">Discovery</span></h2>
+          <div class="package-subtitle">בדיקת גיל ביולוגי + 2 טיפולי התחדשות</div>
+          <p class="package-desc">
+            הדרך לגלות איך הגוף שלך באמת מתפקד היום, ולטעום מעולם ההתאוששות והלונג'ביטי.
+          </p>
+          <div class="package-divider"></div>
+          <div class="package-includes-title">החבילה כוללת</div>
+          <ul class="package-includes">
+            <li>בדיקת גיל ביולוגי תפקודי</li>
+            <li>2 טיפולי התחדשות לבחירה</li>
+          </ul>
+          <div class="package-price">₪ ___</div>
+          <div class="package-price-note">שובר מתנה זמין לרכישה</div>
+          <div class="package-validity">תוקף שובר · 24 חודשים</div>
+          <div class="package-actions">
+            <a href="#" data-purchase="discovery" class="package-cta package-cta-primary">
+              רכישה <span class="arr">←</span>
+            </a>
+            <a href="https://wa.me/9726299299?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%2F%D7%AA%20%D7%91%D7%99%D7%99%D7%A2%D7%95%D7%A5%20%D7%A2%D7%9C%20%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Longevity%20Discovery" class="package-cta package-cta-secondary" target="_blank" rel="noopener noreferrer">
+              ייעוץ ב-WhatsApp
+            </a>
+          </div>
         </div>
       </article>
 
       <!-- 2. Longevity Experience (featured) -->
       <article class="package featured">
-        <span class="featured-badge">Most Popular</span>
-        <div class="package-tag">Package 02</div>
-        <h2>Longevity <span class="accent">Experience</span></h2>
-        <div class="package-subtitle">אימון התנסות + 2 טיפולי התחדשות</div>
-        <p class="package-desc">
-          חוויה עתידנית המשלבת אימון מבוסס טכנולוגיה עם טיפולי התאוששות מתקדמים.
-        </p>
-        <div class="package-divider"></div>
-        <div class="package-includes-title">החבילה כוללת</div>
-        <ul class="package-includes">
-          <li>אימון התנסות אישי</li>
-          <li>2 טיפולי התחדשות לבחירה</li>
-        </ul>
-        <div class="package-price">₪ ___</div>
-        <div class="package-price-note">שובר מתנה זמין לרכישה</div>
-        <div class="package-validity">תוקף שובר · 24 חודשים</div>
-        <div class="package-actions">
-          <a href="#" data-purchase="experience" class="package-cta package-cta-primary">
-            רכישה <span class="arr">←</span>
-          </a>
-          <a href="https://wa.me/9726299299?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%2F%D7%AA%20%D7%91%D7%99%D7%99%D7%A2%D7%95%D7%A5%20%D7%A2%D7%9C%20%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Longevity%20Experience" class="package-cta package-cta-secondary" target="_blank" rel="noopener noreferrer">
-            ייעוץ ב-WhatsApp
-          </a>
+        <div class="package-image" style="background-image: url('img/train.jpg'); background-position: center 30%;">
+          <span class="package-image-badge">Most Popular</span>
+        </div>
+        <div class="package-body">
+          <div class="package-tag">Package 02</div>
+          <h2>Longevity <span class="accent">Experience</span></h2>
+          <div class="package-subtitle">אימון התנסות + 2 טיפולי התחדשות</div>
+          <p class="package-desc">
+            חוויה עתידנית המשלבת אימון מבוסס טכנולוגיה עם טיפולי התאוששות מתקדמים.
+          </p>
+          <div class="package-divider"></div>
+          <div class="package-includes-title">החבילה כוללת</div>
+          <ul class="package-includes">
+            <li>אימון התנסות אישי</li>
+            <li>2 טיפולי התחדשות לבחירה</li>
+          </ul>
+          <div class="package-price">₪ ___</div>
+          <div class="package-price-note">שובר מתנה זמין לרכישה</div>
+          <div class="package-validity">תוקף שובר · 24 חודשים</div>
+          <div class="package-actions">
+            <a href="#" data-purchase="experience" class="package-cta package-cta-primary">
+              רכישה <span class="arr">←</span>
+            </a>
+            <a href="https://wa.me/9726299299?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%2F%D7%AA%20%D7%91%D7%99%D7%99%D7%A2%D7%95%D7%A5%20%D7%A2%D7%9C%20%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Longevity%20Experience" class="package-cta package-cta-secondary" target="_blank" rel="noopener noreferrer">
+              ייעוץ ב-WhatsApp
+            </a>
+          </div>
         </div>
       </article>
 
       <!-- 3. Longevity Escape for Two -->
       <article class="package">
-        <div class="package-tag">Package 03</div>
-        <h2>Longevity Escape <span class="accent">for Two</span></h2>
-        <div class="package-subtitle">4 טיפולי התחדשות זוגיים</div>
-        <p class="package-desc">
-          חוויה זוגית של התאוששות, רוגע והתחדשות לגוף ולמערכת העצבים.
-        </p>
-        <div class="package-divider"></div>
-        <div class="package-includes-title">החבילה כוללת</div>
-        <ul class="package-includes">
-          <li>4 טיפולי התחדשות זוגיים לבחירה מתוך מגוון הטיפולים במתחם</li>
-        </ul>
-        <div class="package-price">₪ ___</div>
-        <div class="package-price-note">שובר מתנה זמין לרכישה</div>
-        <div class="package-validity">תוקף שובר · 24 חודשים</div>
-        <div class="package-actions">
-          <a href="#" data-purchase="escape-for-two" class="package-cta package-cta-primary">
-            רכישה <span class="arr">←</span>
-          </a>
-          <a href="https://wa.me/9726299299?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%2F%D7%AA%20%D7%91%D7%99%D7%99%D7%A2%D7%95%D7%A5%20%D7%A2%D7%9C%20%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Longevity%20Escape%20for%20Two" class="package-cta package-cta-secondary" target="_blank" rel="noopener noreferrer">
-            ייעוץ ב-WhatsApp
-          </a>
+        <div class="package-image" style="background-image: url('img/recover.jpg'); background-position: center 30%;"></div>
+        <div class="package-body">
+          <div class="package-tag">Package 03</div>
+          <h2>Longevity Escape <span class="accent">for Two</span></h2>
+          <div class="package-subtitle">4 טיפולי התחדשות זוגיים</div>
+          <p class="package-desc">
+            חוויה זוגית של התאוששות, רוגע והתחדשות לגוף ולמערכת העצבים.
+          </p>
+          <div class="package-divider"></div>
+          <div class="package-includes-title">החבילה כוללת</div>
+          <ul class="package-includes">
+            <li>4 טיפולי התחדשות זוגיים לבחירה מתוך מגוון הטיפולים במתחם</li>
+          </ul>
+          <div class="package-price">₪ ___</div>
+          <div class="package-price-note">שובר מתנה זמין לרכישה</div>
+          <div class="package-validity">תוקף שובר · 24 חודשים</div>
+          <div class="package-actions">
+            <a href="#" data-purchase="escape-for-two" class="package-cta package-cta-primary">
+              רכישה <span class="arr">←</span>
+            </a>
+            <a href="https://wa.me/9726299299?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%A0%2F%D7%AA%20%D7%91%D7%99%D7%99%D7%A2%D7%95%D7%A5%20%D7%A2%D7%9C%20%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Longevity%20Escape%20for%20Two" class="package-cta package-cta-secondary" target="_blank" rel="noopener noreferrer">
+              ייעוץ ב-WhatsApp
+            </a>
+          </div>
         </div>
       </article>
 
