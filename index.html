@@ -148,31 +148,29 @@
     align-items: center;
     gap: 20px;
   }
+  /* Secondary nav button — outline, smaller than the main CTA but a clear button */
   .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-family: 'Heebo', sans-serif;
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.04em;
-    color: var(--ink);
+    color: var(--sage-deep);
     text-decoration: none;
-    padding: 6px 4px;
-    position: relative;
-    transition: color 0.2s ease;
+    padding: 13px 22px;
+    border: 1px solid var(--sage-deep);
+    border-radius: 14px;
+    background: transparent;
+    transition: background-color 0.25s ease, color 0.25s ease;
+    min-height: 44px;
   }
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
+  .nav-link::after { content: '←'; font-size: 14px; }
+  .nav-link:hover {
     background: var(--sage-deep);
-    transform: scaleX(0);
-    transition: transform 0.25s ease;
-    transform-origin: center;
+    color: #FFFFFF;
   }
-  .nav-link:hover { color: var(--sage-deep); }
-  .nav-link:hover::after { transform: scaleX(1); }
   .nav-cta {
     background: var(--sage-deep);
     color: var(--paper);
@@ -6304,27 +6302,6 @@
 <div class="section-divider section-divider-everlabred" aria-hidden="true">
   <div class="section-divider-img"></div>
 </div>
-
-<!-- ═══════════ PRICING CTA — gateway to packages page ═══════════ -->
-<section class="pricing-cta">
-  <div class="pricing-cta-inner">
-    <div class="pricing-cta-eyebrow">
-      <span class="eyebrow-line" aria-hidden="true"></span>
-      <span>Shop</span>
-      <span class="eyebrow-line" aria-hidden="true"></span>
-    </div>
-    <h2 class="pricing-cta-title">
-      גלו חבילות <span class="hl">ומחירים</span>
-    </h2>
-    <p class="pricing-cta-sub">
-      בדיקות, טעימות וחבילות חוויה — לרכישה עצמית או למתנה. שוברי מתנה בתוקף ל-24 חודשים.
-    </p>
-    <a href="experiences.html" class="pricing-cta-btn">
-      <span>גלו חבילות ומחירים</span>
-      <span class="pricing-cta-arr" aria-hidden="true">←</span>
-    </a>
-  </div>
-</section>
 
 <!-- Closing band -->
 <section class="closing-band" id="contact">
