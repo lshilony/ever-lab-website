@@ -347,7 +347,7 @@
   .package-subtitle {
     font-family: 'Heebo', sans-serif;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     color: var(--sage-deep);
     margin-bottom: 22px;
     letter-spacing: 0.01em;
@@ -372,11 +372,11 @@
 
   .package-includes-title {
     font-family: 'Space Mono', monospace;
-    font-size: 10.5px;
+    font-size: 12px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--warm-gray);
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
   .package.featured .package-includes-title { color: rgba(255, 255, 255, 0.7); }
   .package-includes {
@@ -387,11 +387,11 @@
   .package-includes li {
     position: relative;
     padding-right: 28px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     font-family: 'Heebo', sans-serif;
     font-weight: 300;
-    font-size: 15.5px;
-    line-height: 1.7;
+    font-size: 16.5px;
+    line-height: 1.75;
     color: var(--ink);
   }
   .package.featured .package-includes li { color: #FFFFFF; }
@@ -443,17 +443,18 @@
   }
   .package.featured .package-price-note { color: rgba(255, 255, 255, 0.7); }
 
-  /* Validity note — gentle reminder of voucher terms */
+  /* Validity note — sits below purchase button, larger and readable */
   .package-validity {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    font-family: 'Space Mono', monospace;
-    font-size: 10.5px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--warm-gray);
-    margin-bottom: 22px;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+    margin-top: 16px;
   }
   .package-validity::before {
     content: '';
@@ -666,7 +667,6 @@
           </div>
         </div>
         <div class="package-body">
-          <div class="package-tag">Package 01</div>
           <h2>Longevity <span class="accent">Discovery</span></h2>
           <div class="package-subtitle">בדיקת גיל ביולוגי + 2 טיפולי התחדשות</div>
           <p class="package-desc">
@@ -679,14 +679,13 @@
             <li>2 טיפולי התחדשות לבחירה</li>
           </ul>
           <div class="package-price">₪ ___</div>
-          <div class="package-price-note">שובר מתנה זמין לרכישה</div>
-          <div class="package-validity">תוקף שובר · 24 חודשים</div>
           <div class="package-actions">
             <!-- WooCommerce product page — adjust slug if it differs -->
             <a href="https://ever-lab.co/product/longevity-discovery/" data-purchase="discovery" class="package-cta package-cta-primary">
               רכישה <span class="arr">←</span>
             </a>
           </div>
+          <div class="package-validity">תוקף שובר · 24 חודשים</div>
         </div>
       </article>
 
@@ -699,7 +698,6 @@
           </div>
         </div>
         <div class="package-body">
-          <div class="package-tag">Package 02</div>
           <h2>Longevity <span class="accent">Experience</span></h2>
           <div class="package-subtitle">אימון התנסות + 2 טיפולי התחדשות</div>
           <p class="package-desc">
@@ -712,13 +710,12 @@
             <li>2 טיפולי התחדשות לבחירה</li>
           </ul>
           <div class="package-price">₪ ___</div>
-          <div class="package-price-note">שובר מתנה זמין לרכישה</div>
-          <div class="package-validity">תוקף שובר · 24 חודשים</div>
           <div class="package-actions">
             <a href="https://ever-lab.co/product/longevity-experience/" data-purchase="experience" class="package-cta package-cta-primary">
               רכישה <span class="arr">←</span>
             </a>
           </div>
+          <div class="package-validity">תוקף שובר · 24 חודשים</div>
         </div>
       </article>
 
@@ -731,7 +728,6 @@
           </div>
         </div>
         <div class="package-body">
-          <div class="package-tag">Package 03</div>
           <h2>Longevity Escape <span class="accent">for Two</span></h2>
           <div class="package-subtitle">4 טיפולי התחדשות זוגיים</div>
           <p class="package-desc">
@@ -743,13 +739,12 @@
             <li>4 טיפולי התחדשות זוגיים לבחירה מתוך מגוון הטיפולים במתחם</li>
           </ul>
           <div class="package-price">₪ ___</div>
-          <div class="package-price-note">שובר מתנה זמין לרכישה</div>
-          <div class="package-validity">תוקף שובר · 24 חודשים</div>
           <div class="package-actions">
             <a href="https://ever-lab.co/product/longevity-escape-for-two/" data-purchase="escape-for-two" class="package-cta package-cta-primary">
               רכישה <span class="arr">←</span>
             </a>
           </div>
+          <div class="package-validity">תוקף שובר · 24 חודשים</div>
         </div>
       </article>
 
