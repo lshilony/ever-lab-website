@@ -1164,6 +1164,105 @@
   }
 
   /* ═══════════ CLOSING SECTION — integrated like Chapter / Plan ═══════════ */
+  /* ═══════════ PRICING CTA — sage gradient banner leading to packages page ═══════════ */
+  .pricing-cta {
+    position: relative;
+    padding: 110px 32px 120px;
+    background:
+      radial-gradient(ellipse 60% 60% at 22% 18%, rgba(244, 240, 235, 0.20) 0%, rgba(244, 240, 235, 0) 60%),
+      radial-gradient(ellipse 70% 60% at 78% 32%, rgba(107, 139, 112, 0.32) 0%, rgba(107, 139, 112, 0) 65%),
+      radial-gradient(ellipse 80% 70% at 70% 100%, rgba(48, 70, 53, 0.34) 0%, rgba(48, 70, 53, 0) 75%),
+      linear-gradient(135deg, #9BB89F 0%, #8DAE92 48%, #7FA086 100%);
+    overflow: hidden;
+    color: #FFFFFF;
+    text-align: center;
+  }
+  .pricing-cta-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .pricing-cta-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.82);
+    margin-bottom: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .pricing-cta-eyebrow .eyebrow-line {
+    width: 40px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.65);
+  }
+  .pricing-cta-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: clamp(38px, 4.8vw, 60px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    margin: 0 0 22px;
+    text-shadow: 0 1px 18px rgba(0, 0, 0, 0.10);
+  }
+  .pricing-cta-title .hl {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 300;
+  }
+  .pricing-cta-sub {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    font-size: clamp(16px, 1.4vw, 18px);
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.92);
+    max-width: 560px;
+    margin: 0 auto 40px;
+  }
+  .pricing-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: #FFFFFF;
+    color: var(--sage-deep);
+    text-decoration: none;
+    padding: 20px 40px;
+    border-radius: 999px;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    letter-spacing: 0.02em;
+    box-shadow: 0 12px 30px rgba(48, 70, 53, 0.20), 0 4px 8px rgba(48, 70, 53, 0.10);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 0.3s ease,
+                background-color 0.25s ease;
+  }
+  .pricing-cta-btn:hover {
+    background: var(--paper);
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(48, 70, 53, 0.28), 0 6px 14px rgba(48, 70, 53, 0.14);
+  }
+  .pricing-cta-btn:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.7);
+    outline-offset: 4px;
+  }
+  .pricing-cta-arr {
+    font-size: 22px;
+    transition: transform 0.25s ease;
+  }
+  .pricing-cta-btn:hover .pricing-cta-arr {
+    transform: translateX(-5px);
+  }
+  @media (max-width: 768px) {
+    .pricing-cta { padding: 80px 22px 90px; }
+    .pricing-cta-btn { padding: 18px 32px; font-size: 16px; width: 100%; justify-content: center; max-width: 360px; }
+  }
+
   .closing-band {
     background: var(--paper);
     padding: 140px 32px 120px;
@@ -2339,6 +2438,31 @@
     background: var(--sage-deep);
     border-color: var(--sage-deep);
     color: #FFFFFF;
+  }
+  /* "Shop" item — distinct sage-deep fill always (signals primary commerce action) */
+  .fnav-item.fnav-item-shop {
+    background: var(--sage-deep);
+    border-color: var(--sage-deep);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(107, 139, 112, 0.30), 0 1px 3px rgba(20, 20, 20, 0.10);
+  }
+  .fnav-item.fnav-item-shop:hover {
+    background: #5c7860;
+    border-color: #5c7860;
+    color: #FFFFFF;
+  }
+  .fnav-item.fnav-item-shop svg { stroke: #FFFFFF; }
+  /* Small "shop" indicator dot — top-right corner of the shop item */
+  .fnav-item.fnav-item-shop::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sage-soft);
+    border: 2px solid var(--sage-deep);
   }
   .fluid-nav[data-state="open"] .fnav-item {
     opacity: 1;
@@ -5356,7 +5480,7 @@
     <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="logo-img">
   </a>
   <div class="nav-left-group">
-    <a href="experiences.html" class="nav-link">חוויות ומחירים</a>
+    <a href="experiences.html" class="nav-link">חבילות ומחירים</a>
     <a href="#contact" class="nav-cta"><span>קבעו מבדק גיל ביולוגי תפקודי</span> <span class="arr">←</span></a>
   </div>
 </nav>
@@ -6154,6 +6278,27 @@
   <div class="section-divider-img"></div>
 </div>
 
+<!-- ═══════════ PRICING CTA — gateway to packages page ═══════════ -->
+<section class="pricing-cta">
+  <div class="pricing-cta-inner">
+    <div class="pricing-cta-eyebrow">
+      <span class="eyebrow-line" aria-hidden="true"></span>
+      <span>Shop</span>
+      <span class="eyebrow-line" aria-hidden="true"></span>
+    </div>
+    <h2 class="pricing-cta-title">
+      גלו חבילות <span class="hl">ומחירים</span>
+    </h2>
+    <p class="pricing-cta-sub">
+      בדיקות, טעימות וחבילות חוויה — לרכישה עצמית או למתנה. שוברי מתנה בתוקף ל-24 חודשים.
+    </p>
+    <a href="experiences.html" class="pricing-cta-btn">
+      <span>גלו חבילות ומחירים</span>
+      <span class="pricing-cta-arr" aria-hidden="true">←</span>
+    </a>
+  </div>
+</section>
+
 <!-- Closing band -->
 <section class="closing-band" id="contact">
   <svg class="closing-data-rain" viewBox="0 0 600 320" preserveAspectRatio="xMaxYMin slice" aria-hidden="true" focusable="false">
@@ -6368,13 +6513,13 @@
       </svg>
       <span class="fnav-label">התוכנית</span>
     </a>
-    <a href="experiences.html" class="fnav-item" aria-label="חוויות ומחירים">
+    <a href="experiences.html" class="fnav-item fnav-item-shop" aria-label="חבילות ומחירים">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M5 8 L12 4 L19 8 L19 16 L12 20 L5 16 Z"/>
         <path d="M5 8 L12 12 L19 8"/>
         <path d="M12 12 L12 20"/>
       </svg>
-      <span class="fnav-label">חוויות ומחירים</span>
+      <span class="fnav-label">חבילות ומחירים</span>
     </a>
     <a href="#contact" class="fnav-item" data-target="contact" aria-label="קביעת מבדק">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
