@@ -189,29 +189,44 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.9);
   }
   .nav-link:hover::after { transform: translateX(-4px); }
+  /* Main nav CTA — voucher gradient (matches gift cards in /experiences shop) */
   .nav-cta {
-    background: var(--sage-deep);
-    color: var(--paper);
-    border: none;
-    padding: 14px 22px;
-    border-radius: 14px;
-    font-family: 'Heebo', sans-serif;
-    font-size: 13px;
-    letter-spacing: 0.04em;
-    cursor: pointer;
-    transition: all 0.3s;
-    text-decoration: none;
+    position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    background:
+      linear-gradient(115deg,
+        rgba(255, 255, 255, 0.98) 0%,
+        rgba(244, 240, 235, 0.96) 35%,
+        rgba(230, 222, 210, 0.94) 70%,
+        rgba(208, 198, 184, 0.92) 100%);
+    color: var(--sage-deep);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    padding: 18px 38px;
+    border-radius: 14px;
+    font-family: 'Heebo', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.04em;
     font-weight: 500;
-    min-height: 44px;
+    cursor: pointer;
+    text-decoration: none;
+    min-height: 56px;
+    box-shadow:
+      0 12px 28px rgba(60, 50, 35, 0.20),
+      0 4px 8px rgba(60, 50, 35, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.28s ease;
   }
-  .nav-cta:hover {
-    background: var(--ink);
-  }
+  .nav-cta .arr { transition: transform 0.25s ease; font-size: 18px; }
   .nav-cta:hover .arr { transform: translateX(-4px); }
-  .nav-cta .arr { transition: transform 0.3s; display: inline-block; }
+  .nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 16px 34px rgba(60, 50, 35, 0.26),
+      0 6px 12px rgba(60, 50, 35, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
 
   /* --- HERO (VOSK-style restraint, light bg, framed image) --- */
   .hero {
