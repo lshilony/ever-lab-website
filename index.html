@@ -1540,65 +1540,95 @@
     .journey-nav { display: none; }
   }
 
-  /* ═══════════ COOKIE CONSENT — GDPR-compliant banner + settings modal ═══════════ */
+  /* ═══════════ COOKIE CONSENT — centered banner card + settings modal ═══════════ */
   .cookie-banner {
     position: fixed;
-    bottom: 22px;
-    left: 22px;
-    right: 22px;
+    bottom: 28px;
+    left: 50%;
+    transform: translate(-50%, 20px);
+    width: calc(100% - 44px);
     max-width: 720px;
-    margin: 0 auto;
     background: var(--paper);
     border: 1px solid rgba(20, 20, 20, 0.08);
     border-radius: 18px;
     box-shadow: 0 20px 60px rgba(20, 20, 20, 0.16), 0 4px 12px rgba(20, 20, 20, 0.06);
-    padding: 22px 26px;
+    padding: 28px 32px 22px;
     z-index: 998;
     opacity: 0;
-    transform: translateY(20px);
     transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     pointer-events: none;
+    direction: rtl;
+    text-align: center;
   }
   .cookie-banner.is-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(-50%, 0);
     pointer-events: auto;
   }
-  .cookie-banner-inner {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 18px;
+  .cookie-banner-close {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: var(--ink-soft);
+    cursor: pointer;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s;
   }
-  .cookie-banner-text {
-    direction: rtl;
+  .cookie-banner-close:hover {
+    background: rgba(20, 20, 20, 0.05);
+    color: var(--ink);
+  }
+  .cookie-banner-close svg {
+    width: 16px;
+    height: 16px;
   }
   .cookie-banner-title {
     font-family: 'Frank Ruhl Libre', serif;
     font-weight: 300;
-    font-size: 20px;
-    margin: 0 0 6px;
+    font-size: 24px;
+    margin: 0 0 10px;
     color: var(--ink);
+    text-align: center;
   }
-  .cookie-banner-text p {
+  .cookie-banner-text {
     font-family: 'Heebo', sans-serif;
     font-weight: 300;
-    font-size: 14px;
-    line-height: 1.7;
+    font-size: 14.5px;
+    line-height: 1.75;
     color: var(--ink-soft);
-    margin: 0;
+    margin: 0 auto 22px;
+    max-width: 540px;
+    text-align: center;
   }
-  .cookie-banner-text a {
+  .cookie-banner-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .cookie-banner-links {
+    font-family: 'Heebo', sans-serif;
+    font-size: 12.5px;
+    font-weight: 300;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+  .cookie-banner-links a {
     color: var(--sage-deep);
     text-decoration: underline;
     text-underline-offset: 2px;
   }
-  .cookie-banner-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: stretch;
-    min-width: 180px;
+  .cookie-banner-sep {
+    margin: 0 8px;
+    opacity: 0.5;
   }
   .cookie-btn {
     font-family: 'Heebo', sans-serif;
@@ -1803,16 +1833,21 @@
   @media (max-width: 768px) {
     .cookie-banner {
       bottom: 16px;
-      left: 16px;
-      right: 16px;
-      padding: 18px 20px;
+      width: calc(100% - 32px);
+      padding: 24px 20px 18px;
     }
-    .cookie-banner-inner {
-      grid-template-columns: 1fr;
-      gap: 14px;
+    .cookie-banner-title {
+      font-size: 20px;
+    }
+    .cookie-banner-text {
+      font-size: 14px;
     }
     .cookie-banner-actions {
-      min-width: 0;
+      flex-direction: column-reverse;
+      gap: 8px;
+    }
+    .cookie-banner-actions .cookie-btn {
+      width: 100%;
     }
     .cookie-modal-card {
       padding: 26px 22px;
@@ -1827,6 +1862,67 @@
     .cookie-modal-foot .cookie-btn {
       width: 100%;
     }
+  }
+
+  /* ═══════════ WHATSAPP FLOATING BUTTON ═══════════ */
+  .wa-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: #25D366;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.40), 0 3px 8px rgba(20, 20, 20, 0.18);
+    z-index: 99;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, background-color 0.25s ease;
+    direction: ltr;
+  }
+  .wa-float:hover {
+    background: #1FB959;
+    transform: scale(1.06);
+    box-shadow: 0 12px 32px rgba(37, 211, 102, 0.48), 0 4px 10px rgba(20, 20, 20, 0.20);
+  }
+  .wa-float:focus-visible {
+    outline: 3px solid rgba(37, 211, 102, 0.5);
+    outline-offset: 3px;
+  }
+  .wa-float-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .wa-float-label {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    font-size: 11.5px;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    direction: rtl;
+  }
+  @media (max-width: 768px) {
+    .wa-float {
+      bottom: 22px;
+      right: 18px;
+      width: 64px;
+      height: 64px;
+    }
+    .wa-float-icon {
+      width: 24px;
+      height: 24px;
+    }
+    .wa-float-label {
+      font-size: 10.5px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wa-float { transition: none; }
   }
 
   /* ═══════════ FLUID NAVIGATION — toggle in main <nav>, items panel below ═══════════ */
@@ -6045,20 +6141,39 @@
 
 <!-- ═══════════ COOKIE CONSENT — GDPR / Israeli law compliant ═══════════ -->
 <aside id="cookie-banner" class="cookie-banner" aria-hidden="true" aria-label="הסכמה לשימוש בעוגיות">
-  <div class="cookie-banner-inner">
-    <div class="cookie-banner-text">
-      <h3 class="cookie-banner-title">העוגיות שלנו</h3>
-      <p>
-        אנחנו משתמשים בעוגיות כדי לשפר את חוויית הגלישה, להבין כיצד האתר נמצא בשימוש, ולהציע תוכן רלוונטי. עוגיות חיוניות פועלות תמיד. אפשר לאשר את כל היתר, לדחות אותן, או להתאים את ההגדרות. פרטים נוספים ב<a href="https://ever-lab.co/privacy-policy/" target="_blank" rel="noopener noreferrer">מדיניות הפרטיות</a>.
-      </p>
-    </div>
-    <div class="cookie-banner-actions">
-      <button type="button" class="cookie-btn cookie-btn-secondary" data-action="reject-all">אישור הנדרשות בלבד</button>
-      <button type="button" class="cookie-btn cookie-btn-secondary" data-action="customize">התאמה אישית</button>
-      <button type="button" class="cookie-btn cookie-btn-primary" data-action="accept-all">אישור הכל</button>
-    </div>
+  <button type="button" class="cookie-banner-close" data-action="reject-all" aria-label="סגור">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+      <line x1="6" y1="6" x2="18" y2="18"/>
+      <line x1="18" y1="6" x2="6" y2="18"/>
+    </svg>
+  </button>
+  <h3 class="cookie-banner-title">העוגיות של EVER LAB</h3>
+  <p class="cookie-banner-text">
+    אנחנו משתמשים בעוגיות כדי לשפר את החוויה שלכם באתר. ההסכמה שלכם עוזרת לנו להתאים את התוכן בצורה הטובה ביותר עבורכם.
+  </p>
+  <div class="cookie-banner-actions">
+    <button type="button" class="cookie-btn cookie-btn-secondary" data-action="customize">ניהול העדפות</button>
+    <button type="button" class="cookie-btn cookie-btn-secondary" data-action="reject-all">סירוב</button>
+    <button type="button" class="cookie-btn cookie-btn-primary" data-action="accept-all">הבנתי, תודה</button>
+  </div>
+  <div class="cookie-banner-links">
+    <a href="https://ever-lab.co/privacy-policy/" target="_blank" rel="noopener noreferrer">מדיניות פרטיות האתר</a>
+    <span class="cookie-banner-sep">·</span>
+    <a href="https://ever-lab.co/cookie-policy/" target="_blank" rel="noopener noreferrer">Cookie Policy</a>
   </div>
 </aside>
+
+<!-- ═══════════ WHATSAPP FLOATING BUTTON — direct line to EVER LAB ═══════════ -->
+<a href="https://wa.me/972500000000?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20EVER%20LAB"
+   class="wa-float"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="שאלות? פנו אלינו בוואטסאפ">
+  <svg class="wa-float-icon" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+    <path d="M16.001 0.001c-8.836 0-16 7.164-16 16 0 2.823 0.733 5.594 2.127 8.041l-2.262 8.262 8.461-2.219c2.353 1.283 5.013 1.961 7.718 1.961h0.006c8.836 0 16-7.164 16-16s-7.164-16.045-16.05-16.045zM16.001 29.336h-0.005c-2.414 0-4.78-0.65-6.847-1.876l-0.491-0.292-5.085 1.334 1.359-4.961-0.32-0.508c-1.346-2.141-2.058-4.616-2.057-7.154 0-7.414 6.034-13.448 13.453-13.448 3.591 0 6.965 1.4 9.504 3.942 2.539 2.541 3.937 5.916 3.935 9.508 0 7.414-6.034 13.453-13.448 13.453zM23.382 19.226c-0.404-0.202-2.393-1.181-2.764-1.317-0.371-0.135-0.641-0.202-0.911 0.203-0.27 0.404-1.045 1.317-1.281 1.587-0.236 0.27-0.472 0.304-0.876 0.101-0.404-0.202-1.708-0.629-3.252-2.006-1.202-1.073-2.014-2.398-2.25-2.803-0.236-0.404-0.025-0.624 0.178-0.825 0.182-0.181 0.404-0.472 0.607-0.708 0.202-0.236 0.27-0.404 0.404-0.674 0.135-0.27 0.067-0.506-0.034-0.708-0.101-0.202-0.911-2.194-1.248-3.003-0.328-0.787-0.662-0.68-0.911-0.692-0.236-0.012-0.506-0.014-0.776-0.014-0.27 0-0.708 0.101-1.079 0.506-0.371 0.404-1.416 1.384-1.416 3.376 0 1.992 1.45 3.916 1.652 4.186 0.202 0.27 2.853 4.356 6.913 6.111 0.966 0.417 1.72 0.666 2.307 0.853 0.969 0.308 1.852 0.265 2.55 0.161 0.778-0.116 2.393-0.978 2.731-1.923 0.337-0.945 0.337-1.756 0.236-1.923-0.101-0.169-0.371-0.27-0.776-0.472z"/>
+  </svg>
+  <span class="wa-float-label">שאלות?</span>
+</a>
 
 <div id="cookie-modal" class="cookie-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
   <div class="cookie-modal-card">
