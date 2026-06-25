@@ -163,23 +163,23 @@
     margin: 0 auto;
   }
 
-  /* ─── Individual items (à la carte) — single sessions and tests ─── */
+  /* ─── À la carte items — spa-menu style with leader dots & descriptions ─── */
   .individual-items {
-    padding: 20px 32px 60px;
+    padding: 20px 32px 80px;
     background: var(--bg);
   }
   .items-wrap {
-    max-width: 1100px;
+    max-width: 980px;
     margin: 0 auto;
   }
   .items-section-head {
     text-align: center;
-    margin-bottom: 38px;
+    margin-bottom: 56px;
   }
   .items-section-head h2 {
     font-family: 'Frank Ruhl Libre', serif;
     font-weight: 300;
-    font-size: clamp(28px, 3vw, 38px);
+    font-size: clamp(28px, 3vw, 40px);
     line-height: 1.2;
     color: var(--ink);
     margin: 12px 0 14px;
@@ -195,25 +195,35 @@
   }
   .items-categories {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    grid-template-columns: 1fr;
+    gap: 56px;
   }
   .items-category {
-    background: var(--paper);
-    border: 1px solid rgba(20, 20, 20, 0.06);
-    border-radius: 18px;
-    padding: 26px 28px 14px;
-    box-shadow: 0 4px 16px rgba(20, 20, 20, 0.03);
+    /* No card — just a menu page */
+    padding: 0;
   }
   .items-category-title {
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(26px, 2.6vw, 34px);
     color: var(--sage-deep);
-    margin: 0 0 18px;
-    text-align: right;
+    margin: 0 0 28px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    position: relative;
+    padding-bottom: 18px;
+  }
+  .items-category-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 1px;
+    background: var(--sage-deep);
+    opacity: 0.45;
   }
   .items-list {
     list-style: none;
@@ -221,64 +231,107 @@
     padding: 0;
   }
   .item-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(20, 20, 20, 0.07);
-    gap: 14px;
+    padding: 24px 0;
+    border-bottom: 1px dotted rgba(20, 20, 20, 0.18);
   }
   .item-row:last-child { border-bottom: none; }
-  .item-name {
-    font-family: 'Heebo', sans-serif;
-    font-weight: 500;
-    font-size: 17px;
-    color: var(--ink);
-    flex: 1;
-  }
-  .item-meta {
+  .item-head {
     display: flex;
-    align-items: center;
-    gap: 18px;
-    flex-shrink: 0;
+    align-items: baseline;
+    gap: 0;
+    margin-bottom: 8px;
+  }
+  .item-name {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 500;
+    font-size: clamp(20px, 1.9vw, 24px);
+    line-height: 1.2;
+    color: var(--ink);
+    letter-spacing: 0.005em;
+  }
+  /* Dotted leader between name and price — classic menu style */
+  .item-leader {
+    flex: 1;
+    border-bottom: 1px dotted rgba(20, 20, 20, 0.28);
+    margin: 0 14px 6px;
+    align-self: end;
+    min-width: 40px;
   }
   .item-price {
     font-family: 'Frank Ruhl Libre', serif;
     font-weight: 300;
-    font-size: 24px;
+    font-size: clamp(20px, 1.9vw, 24px);
     color: var(--ink);
     display: inline-flex;
     align-items: baseline;
-    gap: 4px;
+    gap: 3px;
     letter-spacing: -0.01em;
+    flex-shrink: 0;
   }
   .item-currency {
-    font-size: 17px;
-    opacity: 0.6;
+    font-size: 0.7em;
+    opacity: 0.55;
+  }
+  .item-desc {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin: 0 0 12px;
+    max-width: 640px;
+  }
+  .item-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+  }
+  .item-duration {
+    font-family: 'Space Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .item-duration::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--sage);
   }
   .item-buy {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: var(--sage-deep);
-    color: #FFFFFF;
+    color: var(--sage-deep);
     text-decoration: none;
-    padding: 9px 18px;
-    border-radius: 999px;
+    padding: 6px 0;
     font-family: 'Heebo', sans-serif;
     font-weight: 500;
-    font-size: 13px;
-    letter-spacing: 0.02em;
-    transition: background-color 0.25s ease;
+    font-size: 13.5px;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
   }
-  .item-buy:hover { background: #5c7860; }
-  .item-buy .arr { font-size: 14px; }
+  .item-buy:hover {
+    color: var(--ink);
+    border-bottom-color: var(--sage-deep);
+  }
+  .item-buy .arr { font-size: 15px; }
 
   @media (max-width: 768px) {
-    .items-categories { grid-template-columns: 1fr; gap: 16px; }
-    .item-row { flex-wrap: wrap; gap: 10px; }
-    .item-name { width: 100%; font-size: 16px; }
-    .item-meta { width: 100%; justify-content: space-between; }
+    .items-categories { gap: 40px; }
+    .item-head { flex-wrap: nowrap; gap: 8px; }
+    .item-name { font-size: 18px; }
+    .item-price { font-size: 18px; }
+    .item-leader { margin: 0 8px 4px; }
+    .item-desc { font-size: 14.5px; }
+    .item-foot { flex-direction: column; align-items: stretch; gap: 10px; }
   }
 
   /* ─── Packages grid ─── */
@@ -828,20 +881,33 @@
         <div class="items-category">
           <h3 class="items-category-title">בדיקות</h3>
           <ul class="items-list">
+
             <li class="item-row">
-              <div class="item-name">בדיקת הרכב גוף</div>
-              <div class="item-meta">
+              <div class="item-head">
+                <span class="item-name">בדיקת הרכב גוף</span>
+                <span class="item-leader" aria-hidden="true"></span>
                 <span class="item-price">200<span class="item-currency">₪</span></span>
+              </div>
+              <p class="item-desc">סריקת InBody לניתוח אחוזי שומן, מסת שריר, מים ומאזן אלקטרוליטים.</p>
+              <div class="item-foot">
+                <span class="item-duration">כ-15 דקות</span>
                 <a href="https://ever-lab.co/product/body-composition/" class="item-buy">רכישה <span class="arr">←</span></a>
               </div>
             </li>
+
             <li class="item-row">
-              <div class="item-name">בדיקת גיל ביולוגי תפקודי</div>
-              <div class="item-meta">
+              <div class="item-head">
+                <span class="item-name">בדיקת גיל ביולוגי תפקודי</span>
+                <span class="item-leader" aria-hidden="true"></span>
                 <span class="item-price">550<span class="item-currency">₪</span></span>
+              </div>
+              <p class="item-desc">אבחון מקיף המשלב הרכב גוף, מדדים תפקודיים ואלגוריתם ייחודי לחישוב הגיל הביולוגי האמיתי שלך.</p>
+              <div class="item-foot">
+                <span class="item-duration">כ-45 דקות</span>
                 <a href="https://ever-lab.co/product/bio-age-test/" class="item-buy">רכישה <span class="arr">←</span></a>
               </div>
             </li>
+
           </ul>
         </div>
 
@@ -849,20 +915,33 @@
         <div class="items-category">
           <h3 class="items-category-title">טעימות</h3>
           <ul class="items-list">
+
             <li class="item-row">
-              <div class="item-name">אימון התנסות</div>
-              <div class="item-meta">
+              <div class="item-head">
+                <span class="item-name">אימון התנסות</span>
+                <span class="item-leader" aria-hidden="true"></span>
                 <span class="item-price">350<span class="item-currency">₪</span></span>
+              </div>
+              <p class="item-desc">סשן אישי עם מאמן/ת על ציוד טכנולוגי מתקדם — Vasper, ARX, CAROL ועוד.</p>
+              <div class="item-foot">
+                <span class="item-duration">כ-30 דקות</span>
                 <a href="https://ever-lab.co/product/trial-workout/" class="item-buy">רכישה <span class="arr">←</span></a>
               </div>
             </li>
+
             <li class="item-row">
-              <div class="item-name">טיפול התחדשות יחיד</div>
-              <div class="item-meta">
+              <div class="item-head">
+                <span class="item-name">טיפול התחדשות יחיד</span>
+                <span class="item-leader" aria-hidden="true"></span>
                 <span class="item-price">200<span class="item-currency">₪</span></span>
+              </div>
+              <p class="item-desc">בחירה אחת מבין מגוון הטיפולים במתחם: סאונה אינפרא־רד, NAP POD, ICE CUBE, מסקס לימפטי ועוד.</p>
+              <div class="item-foot">
+                <span class="item-duration">30-45 דקות</span>
                 <a href="https://ever-lab.co/product/single-recovery/" class="item-buy">רכישה <span class="arr">←</span></a>
               </div>
             </li>
+
           </ul>
         </div>
 
