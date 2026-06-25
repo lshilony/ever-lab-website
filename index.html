@@ -1225,27 +1225,54 @@
     margin: 0 auto 40px;
   }
   .pricing-cta-btn {
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 14px;
-    background: #FFFFFF;
+    /* Voucher-card gradient — echoes the gift cards on /experiences */
+    background:
+      linear-gradient(115deg,
+        rgba(255, 255, 255, 0.98) 0%,
+        rgba(244, 240, 235, 0.96) 35%,
+        rgba(230, 222, 210, 0.94) 70%,
+        rgba(208, 198, 184, 0.92) 100%);
     color: var(--sage-deep);
     text-decoration: none;
     padding: 20px 40px;
     border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.65);
     font-family: 'Heebo', sans-serif;
     font-weight: 500;
     font-size: 17px;
     letter-spacing: 0.02em;
-    box-shadow: 0 12px 30px rgba(48, 70, 53, 0.20), 0 4px 8px rgba(48, 70, 53, 0.10);
+    box-shadow:
+      0 12px 30px rgba(48, 70, 53, 0.22),
+      0 4px 8px rgba(48, 70, 53, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.85);
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-                box-shadow 0.3s ease,
-                background-color 0.25s ease;
+                box-shadow 0.3s ease;
+    overflow: hidden;
   }
+  /* Holographic shimmer band — same as voucher cards */
+  .pricing-cta-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.55) 48%,
+      rgba(255, 255, 255, 0.25) 56%,
+      transparent 72%);
+    pointer-events: none;
+    border-radius: inherit;
+  }
+  .pricing-cta-btn > * { position: relative; z-index: 1; }
   .pricing-cta-btn:hover {
-    background: var(--paper);
     transform: translateY(-3px);
-    box-shadow: 0 18px 40px rgba(48, 70, 53, 0.28), 0 6px 14px rgba(48, 70, 53, 0.14);
+    box-shadow:
+      0 18px 40px rgba(48, 70, 53, 0.30),
+      0 6px 14px rgba(48, 70, 53, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
   }
   .pricing-cta-btn:focus-visible {
     outline: 3px solid rgba(255, 255, 255, 0.7);
