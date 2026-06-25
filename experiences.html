@@ -182,15 +182,109 @@
     flex-direction: column;
     flex: 1;
   }
-  /* Image area at top of card */
+  /* Image area at top of card — gift voucher visual */
   .package-image {
     aspect-ratio: 4 / 3;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     border-bottom: 1px solid rgba(20, 20, 20, 0.06);
     position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 30% 25%, rgba(255, 255, 255, 0.6) 0%, transparent 55%),
+      linear-gradient(135deg, #EFE9DE 0%, #E5DCCB 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
   }
+  /* Subtle ambient light from top-right */
+  .package-image::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -20%;
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(circle, rgba(205, 223, 183, 0.20) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  /* The gift voucher card itself */
+  .voucher-card {
+    width: 72%;
+    aspect-ratio: 1.62 / 1;
+    background:
+      linear-gradient(115deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(244, 240, 235, 0.92) 35%,
+        rgba(230, 222, 210, 0.88) 70%,
+        rgba(208, 198, 184, 0.85) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 14px;
+    box-shadow:
+      0 30px 50px rgba(60, 50, 35, 0.18),
+      0 12px 24px rgba(60, 50, 35, 0.12),
+      0 2px 4px rgba(60, 50, 35, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    transform: rotate3d(0.3, -1, -0.05, 16deg);
+    transform-style: preserve-3d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 20px;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .package:hover .voucher-card {
+    transform: rotate3d(0.3, -1, -0.05, 12deg) translateY(-4px);
+  }
+  /* Holographic shimmer band */
+  .voucher-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.55) 48%,
+      rgba(255, 255, 255, 0.25) 56%,
+      transparent 72%);
+    pointer-events: none;
+    border-radius: inherit;
+  }
+  /* Subtle ridge along the edge */
+  .voucher-card::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px dashed rgba(107, 139, 112, 0.20);
+    border-radius: 10px;
+    pointer-events: none;
+  }
+  .voucher-logo {
+    width: 70%;
+    max-width: 200px;
+    height: auto;
+    display: block;
+    mix-blend-mode: multiply;
+    position: relative;
+    z-index: 2;
+  }
+  .voucher-tagline {
+    font-family: 'Space Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    margin-top: 6px;
+    opacity: 0.85;
+    position: relative;
+    z-index: 2;
+  }
+  /* Per-package tint (subtle) */
+  .package:nth-child(1) .voucher-card { background-image: linear-gradient(115deg, rgba(255,255,255,0.95) 0%, rgba(244,240,235,0.92) 35%, rgba(230,222,210,0.88) 70%, rgba(208,198,184,0.85) 100%); }
+  .package:nth-child(2) .voucher-card { background-image: linear-gradient(115deg, rgba(255,255,255,0.95) 0%, rgba(244,242,232,0.92) 35%, rgba(225,218,195,0.88) 70%, rgba(195,180,150,0.85) 100%); }
+  .package:nth-child(3) .voucher-card { background-image: linear-gradient(115deg, rgba(255,255,255,0.95) 0%, rgba(244,236,235,0.92) 35%, rgba(230,212,210,0.88) 70%, rgba(208,184,180,0.85) 100%); }
+
   .package-image-badge {
     position: absolute;
     top: 16px;
@@ -205,6 +299,7 @@
     border-radius: 999px;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    z-index: 3;
   }
   .package:hover {
     transform: translateY(-4px);
@@ -564,7 +659,12 @@
 
       <!-- 1. Longevity Discovery -->
       <article class="package">
-        <div class="package-image" style="background-image: url('img/vasperdata.jpg');"></div>
+        <div class="package-image">
+          <div class="voucher-card">
+            <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
+            <div class="voucher-tagline">Gift Voucher · Discovery</div>
+          </div>
+        </div>
         <div class="package-body">
           <div class="package-tag">Package 01</div>
           <h2>Longevity <span class="accent">Discovery</span></h2>
@@ -595,8 +695,12 @@
 
       <!-- 2. Longevity Experience (featured) -->
       <article class="package featured">
-        <div class="package-image" style="background-image: url('img/train.jpg'); background-position: center 30%;">
+        <div class="package-image">
           <span class="package-image-badge">Most Popular</span>
+          <div class="voucher-card">
+            <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
+            <div class="voucher-tagline">Gift Voucher · Experience</div>
+          </div>
         </div>
         <div class="package-body">
           <div class="package-tag">Package 02</div>
@@ -627,7 +731,12 @@
 
       <!-- 3. Longevity Escape for Two -->
       <article class="package">
-        <div class="package-image" style="background-image: url('img/recover.jpg'); background-position: center 30%;"></div>
+        <div class="package-image">
+          <div class="voucher-card">
+            <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
+            <div class="voucher-tagline">Gift Voucher · Escape for Two</div>
+          </div>
+        </div>
         <div class="package-body">
           <div class="package-tag">Package 03</div>
           <h2>Longevity Escape <span class="accent">for Two</span></h2>
