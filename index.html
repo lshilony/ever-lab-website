@@ -1848,6 +1848,64 @@
   }
 
   /* ═══════════════════════════════════════════════════════════════════════
+     CHAPTER DATA RAIN — drifting biometric numbers in the background
+     Same Space Mono aesthetic as the hero hero-data-float, but adapted
+     for the #step-map section: spread across the section width, very
+     subtle (low max opacity) so they live behind the journey-line.
+     ═══════════════════════════════════════════════════════════════════════ */
+  .chapter-data-rain {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .cdr-float text {
+    font-family: 'Space Mono', monospace;
+    fill: var(--sage-deep);
+    letter-spacing: 0.08em;
+    opacity: 0;
+    animation: cdrDrift var(--dur, 14s) linear infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .cdr-float .cdr-1  { animation-delay: 0s;    --dur: 14s; }
+  .cdr-float .cdr-2  { animation-delay: 1.8s;  --dur: 16s; }
+  .cdr-float .cdr-3  { animation-delay: 3.6s;  --dur: 13s; }
+  .cdr-float .cdr-4  { animation-delay: 5.4s;  --dur: 17s; }
+  .cdr-float .cdr-5  { animation-delay: 7.2s;  --dur: 15s; }
+  .cdr-float .cdr-6  { animation-delay: 9s;    --dur: 18s; }
+  .cdr-float .cdr-7  { animation-delay: 10.8s; --dur: 14s; }
+  .cdr-float .cdr-8  { animation-delay: 12.6s; --dur: 16s; }
+  .cdr-float .cdr-9  { animation-delay: 2.7s;  --dur: 19s; }
+  .cdr-float .cdr-10 { animation-delay: 8.1s;  --dur: 15s; }
+  @keyframes cdrDrift {
+    0%   { opacity: 0; transform: translateY(-40px); }
+    14%  { opacity: var(--peak, 0.35); }
+    82%  { opacity: var(--peak, 0.35); }
+    100% { opacity: 0; transform: translateY(540px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cdr-float text { animation: none; opacity: var(--peak, 0.18); }
+  }
+  /* Hide on mobile — section is too narrow and floating data would crowd the timeline */
+  @media (max-width: 720px) {
+    .chapter-data-rain { display: none; }
+  }
+
+  /* Ensure section content sits above the data rain */
+  .chapter > .chapter-eyebrow,
+  .chapter > .chapter-title,
+  .chapter > .chapter-intro,
+  .chapter > .journey-line,
+  .chapter > .stage-bridge {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════
      JOURNEY LINE — minimal 3-node timeline for #step-map section
      Inspired by reference: thin horizontal axis + small square markers
      + huge serif numbers below each marker + brief description text
@@ -6430,6 +6488,22 @@
 
 
 <section class="chapter" id="step-map" data-journey-step="0">
+  <!-- Background biometric data rain — slow drifting numbers like in the hero -->
+  <svg class="chapter-data-rain" aria-hidden="true" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
+    <g class="cdr-float">
+      <text class="cdr-1"  x="80"   y="60"  font-size="13" style="--peak:0.4">42.3 yrs</text>
+      <text class="cdr-2"  x="280"  y="40"  font-size="12" style="--peak:0.32">7.4 ms</text>
+      <text class="cdr-3"  x="1080" y="80"  font-size="14" style="--peak:0.42">38.6 %</text>
+      <text class="cdr-4"  x="180"  y="100" font-size="11" style="--peak:0.28">96 bpm</text>
+      <text class="cdr-5"  x="920"  y="50"  font-size="13" style="--peak:0.38">−4.2 yrs</text>
+      <text class="cdr-6"  x="760"  y="90"  font-size="12" style="--peak:0.32">0.87×</text>
+      <text class="cdr-7"  x="60"   y="120" font-size="11" style="--peak:0.26">94 % O₂</text>
+      <text class="cdr-8"  x="1140" y="30"  font-size="13" style="--peak:0.36">28.4 °C</text>
+      <text class="cdr-9"  x="420"  y="70"  font-size="12" style="--peak:0.3">134/82</text>
+      <text class="cdr-10" x="600"  y="50"  font-size="11" style="--peak:0.28">61 % BF</text>
+    </g>
+  </svg>
+
   <div class="chapter-eyebrow">
     <span class="eyebrow-line" aria-hidden="true"></span>
     <span>The Method</span>
