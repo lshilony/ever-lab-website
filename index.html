@@ -1847,6 +1847,116 @@
     .method-step-arrow { bottom: 14px; inset-inline-end: 14px; }
   }
 
+  /* ═══════════════════════════════════════════════════════════════════════
+     JOURNEY LINE — minimal 3-node timeline for #step-map section
+     Inspired by reference: thin horizontal axis + small square markers
+     + huge serif numbers below each marker + brief description text
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  .journey-line {
+    max-width: 980px;
+    margin: 64px auto 56px;
+    padding: 0 24px;
+  }
+
+  /* Horizontal track: 3 stations connected by thin segments */
+  .jl-track {
+    display: flex;
+    align-items: flex-start;
+  }
+  .jl-station {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .jl-segment {
+    flex: 0 1 140px;
+    height: 1.5px;
+    background: rgba(141, 174, 146, 0.5);
+    /* Center the line vertically on the node (node is 22px tall, line at node center) */
+    margin-top: 10px;
+    align-self: flex-start;
+  }
+
+  /* The square marker on the line */
+  .jl-node {
+    width: 22px;
+    height: 22px;
+    background: var(--sage-deep);
+    border-radius: 3px;
+    position: relative;
+    flex-shrink: 0;
+    margin-bottom: 44px;
+  }
+  .jl-node::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 5px;
+    height: 5px;
+    background: var(--paper);
+    border-radius: 50%;
+  }
+
+  /* Text block under each marker */
+  .jl-block {
+    max-width: 260px;
+  }
+  .jl-num {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: 64px;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+  .jl-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 1.32;
+    color: var(--ink);
+    margin: 0 0 10px;
+  }
+  .jl-text {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: #666;
+    margin: 0;
+  }
+
+  /* Mobile: stack stations vertically, vertical connector line */
+  @media (max-width: 720px) {
+    .journey-line { margin: 36px auto 44px; padding: 0 20px; }
+    .jl-track {
+      flex-direction: column;
+      align-items: center;
+    }
+    .jl-station {
+      flex: 0 0 auto;
+      max-width: 320px;
+      width: 100%;
+    }
+    .jl-segment {
+      flex: 0 0 36px;
+      width: 1.5px;
+      height: 36px;
+      margin: 0;
+      align-self: center;
+    }
+    .jl-node { margin-bottom: 22px; }
+    .jl-num { font-size: 52px; margin-bottom: 14px; }
+    .jl-title { font-size: 18px; }
+    .jl-block { max-width: 280px; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .method-step, .method-step::before, .method-step-icon, .method-step-arrow { transition: none; }
     .method-step:hover { transform: none; }
@@ -6333,13 +6443,43 @@
     באמצעות אבחון מתקדם של <strong>הרכב הגוף</strong> ומדדי התפקוד המשפיעים על אריכות ואיכות החיים, אנו יוצרים את <strong>מפת הלונג'ביטי האישית שלך</strong> – תמונה מקיפה של מצבך כיום.
   </p>
 
-  <p class="chapter-intro">
-    המפה כוללת הערכה של <strong>הגיל הביולוגי התפקודי</strong>, מזהה את נקודות החוזקה ואת התחומים שבהם ניתן להשיג את <strong>ההשפעה הגדולה ביותר</strong>.
-  </p>
+  <!-- ═══════════ Journey Line — minimal 3-node horizontal timeline ═══════════ -->
+  <div class="journey-line" aria-label="שלבי השיטה">
+    <div class="jl-track">
 
-  <p class="chapter-intro">
-    על בסיס מפת הלונג'ביטי שלך נבנית <strong>תוכנית אישית</strong> המשלבת <strong>אימונים, טיפולי התאוששות ושינוי בהרגלי חיים</strong>, ומלווה ב<strong>מדידות חוזרות</strong> לאורך הדרך, כדי לוודא שהגוף שלך מתקדם בכיוון הנכון.
-  </p>
+      <div class="jl-station">
+        <span class="jl-node" aria-hidden="true"></span>
+        <article class="jl-block">
+          <div class="jl-num">01</div>
+          <h3 class="jl-title">מבדק גיל ביולוגי תפקודי</h3>
+          <p class="jl-text">מזהה את נקודות החוזקה ואת התחומים שבהם ניתן להשיג את ההשפעה הגדולה ביותר.</p>
+        </article>
+      </div>
+
+      <span class="jl-segment" aria-hidden="true"></span>
+
+      <div class="jl-station">
+        <span class="jl-node" aria-hidden="true"></span>
+        <article class="jl-block">
+          <div class="jl-num">02</div>
+          <h3 class="jl-title">תוכנית מותאמת אישית</h3>
+          <p class="jl-text">משלבת אימונים וטיפולי התאוששות.</p>
+        </article>
+      </div>
+
+      <span class="jl-segment" aria-hidden="true"></span>
+
+      <div class="jl-station">
+        <span class="jl-node" aria-hidden="true"></span>
+        <article class="jl-block">
+          <div class="jl-num">03</div>
+          <h3 class="jl-title">מדידה חוזרת</h3>
+          <p class="jl-text">כדי לוודא שהגוף שלך מתקדם בכיוון הנכון.</p>
+        </article>
+      </div>
+
+    </div>
+  </div>
 
   <!-- Bridge to first stage — visually connects chapter to next section -->
   <div class="stage-bridge">
