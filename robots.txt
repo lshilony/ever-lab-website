@@ -1,0 +1,33 @@
+# EVER LAB — robots.txt
+# Welcoming all search engines and AI crawlers
+
+User-agent: *
+Allow: /
+Disallow: /accessibility.html
+
+# Specific AI crawlers — explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://ever-lab.co/sitemap.xml
