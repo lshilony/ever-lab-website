@@ -1917,16 +1917,27 @@
     padding: 0 24px;
   }
 
-  /* Horizontal track: 3 stations connected by thin segments
-     direction: ltr flips the natural Hebrew/RTL flow so that:
+  /* Horizontal track: 3 stations on a single CONTINUOUS LINE
+     direction: ltr flips Hebrew/RTL so that:
        Station 01 (מבדק) appears on the LEFT
        Station 02 (תוכנית) in the MIDDLE
-       Station 03 (מדידה חוזרת) on the RIGHT
-     This matches the reference design where step 1 is on the left. */
+       Station 03 (מדידה חוזרת) on the RIGHT */
   .jl-track {
     display: flex;
     align-items: flex-start;
     direction: ltr;
+    position: relative;
+  }
+  /* Single continuous horizontal line running through all 3 nodes */
+  .jl-track::before {
+    content: '';
+    position: absolute;
+    top: 8px; /* vertically centered on the 16px circle node */
+    left: 16.67%; /* center of first node's column (1/6 of width) */
+    right: 16.67%; /* center of last node's column */
+    height: 1.5px;
+    background: rgba(141, 174, 146, 0.55);
+    z-index: 0;
   }
   .jl-station {
     display: flex;
@@ -1936,35 +1947,19 @@
     flex: 1 1 0;
     min-width: 0;
     direction: rtl; /* keep Hebrew text inside each station RTL */
-  }
-  .jl-segment {
-    flex: 0 1 140px;
-    height: 1.5px;
-    background: rgba(141, 174, 146, 0.5);
-    /* Center the line vertically on the node (node is 22px tall, line at node center) */
-    margin-top: 10px;
-    align-self: flex-start;
+    position: relative;
+    z-index: 1;
   }
 
-  /* The square marker on the line */
+  /* The round dot marker on the line */
   .jl-node {
-    width: 22px;
-    height: 22px;
+    width: 16px;
+    height: 16px;
     background: var(--sage-deep);
-    border-radius: 3px;
-    position: relative;
-    flex-shrink: 0;
-    margin-bottom: 26px; /* tighter connection between line and the big number below */
-  }
-  .jl-node::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    width: 5px;
-    height: 5px;
-    background: var(--paper);
     border-radius: 50%;
+    flex-shrink: 0;
+    margin-bottom: 26px;
+    box-shadow: 0 0 0 4px var(--bg); /* halo cuts the line under the dot for a clean look */
   }
 
   /* Text block under each marker */
@@ -1997,24 +1992,28 @@
     margin: 0;
   }
 
-  /* Mobile: stack stations vertically, vertical connector line */
+  /* Mobile: stack stations vertically with a thin vertical connector line */
   @media (max-width: 720px) {
     .journey-line { margin: 36px auto 44px; padding: 0 20px; }
     .jl-track {
       flex-direction: column;
       align-items: center;
+      gap: 40px;
+    }
+    /* Re-route the continuous line to vertical on mobile */
+    .jl-track::before {
+      top: 8px;
+      bottom: 8px;
+      left: 50%;
+      right: auto;
+      width: 1.5px;
+      height: auto;
+      transform: translateX(-50%);
     }
     .jl-station {
       flex: 0 0 auto;
       max-width: 320px;
       width: 100%;
-    }
-    .jl-segment {
-      flex: 0 0 36px;
-      width: 1.5px;
-      height: 36px;
-      margin: 0;
-      align-self: center;
     }
     .jl-node { margin-bottom: 22px; }
     .jl-num { font-size: 52px; margin-bottom: 14px; }
@@ -6488,19 +6487,19 @@
 
 
 <section class="chapter" id="step-map" data-journey-step="0">
-  <!-- Background biometric data rain — slow drifting numbers like in the hero -->
+  <!-- Background biometric data rain — slow drifting numbers like in the hero (smaller + softer) -->
   <svg class="chapter-data-rain" aria-hidden="true" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
     <g class="cdr-float">
-      <text class="cdr-1"  x="80"   y="60"  font-size="13" style="--peak:0.4">42.3 yrs</text>
-      <text class="cdr-2"  x="280"  y="40"  font-size="12" style="--peak:0.32">7.4 ms</text>
-      <text class="cdr-3"  x="1080" y="80"  font-size="14" style="--peak:0.42">38.6 %</text>
-      <text class="cdr-4"  x="180"  y="100" font-size="11" style="--peak:0.28">96 bpm</text>
-      <text class="cdr-5"  x="920"  y="50"  font-size="13" style="--peak:0.38">−4.2 yrs</text>
-      <text class="cdr-6"  x="760"  y="90"  font-size="12" style="--peak:0.32">0.87×</text>
-      <text class="cdr-7"  x="60"   y="120" font-size="11" style="--peak:0.26">94 % O₂</text>
-      <text class="cdr-8"  x="1140" y="30"  font-size="13" style="--peak:0.36">28.4 °C</text>
-      <text class="cdr-9"  x="420"  y="70"  font-size="12" style="--peak:0.3">134/82</text>
-      <text class="cdr-10" x="600"  y="50"  font-size="11" style="--peak:0.28">61 % BF</text>
+      <text class="cdr-1"  x="80"   y="60"  font-size="10"   style="--peak:0.28">42.3 yrs</text>
+      <text class="cdr-2"  x="280"  y="40"  font-size="9"    style="--peak:0.22">7.4 ms</text>
+      <text class="cdr-3"  x="1080" y="80"  font-size="10.5" style="--peak:0.3">38.6 %</text>
+      <text class="cdr-4"  x="180"  y="100" font-size="8.5"  style="--peak:0.2">96 bpm</text>
+      <text class="cdr-5"  x="920"  y="50"  font-size="10"   style="--peak:0.26">−4.2 yrs</text>
+      <text class="cdr-6"  x="760"  y="90"  font-size="9"    style="--peak:0.22">0.87×</text>
+      <text class="cdr-7"  x="60"   y="120" font-size="8.5"  style="--peak:0.18">94 % O₂</text>
+      <text class="cdr-8"  x="1140" y="30"  font-size="10"   style="--peak:0.26">28.4 °C</text>
+      <text class="cdr-9"  x="420"  y="70"  font-size="9"    style="--peak:0.22">134/82</text>
+      <text class="cdr-10" x="600"  y="50"  font-size="8.5"  style="--peak:0.2">61 % BF</text>
     </g>
   </svg>
 
@@ -6529,8 +6528,6 @@
         </article>
       </div>
 
-      <span class="jl-segment" aria-hidden="true"></span>
-
       <div class="jl-station">
         <span class="jl-node" aria-hidden="true"></span>
         <article class="jl-block">
@@ -6539,8 +6536,6 @@
           <p class="jl-text">משלבת אימונים וטיפולי התאוששות.</p>
         </article>
       </div>
-
-      <span class="jl-segment" aria-hidden="true"></span>
 
       <div class="jl-station">
         <span class="jl-node" aria-hidden="true"></span>
