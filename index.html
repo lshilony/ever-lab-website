@@ -1859,10 +1859,16 @@
     padding: 0 24px;
   }
 
-  /* Horizontal track: 3 stations connected by thin segments */
+  /* Horizontal track: 3 stations connected by thin segments
+     direction: ltr flips the natural Hebrew/RTL flow so that:
+       Station 01 (מבדק) appears on the LEFT
+       Station 02 (תוכנית) in the MIDDLE
+       Station 03 (מדידה חוזרת) on the RIGHT
+     This matches the reference design where step 1 is on the left. */
   .jl-track {
     display: flex;
     align-items: flex-start;
+    direction: ltr;
   }
   .jl-station {
     display: flex;
@@ -1871,6 +1877,7 @@
     text-align: center;
     flex: 1 1 0;
     min-width: 0;
+    direction: rtl; /* keep Hebrew text inside each station RTL */
   }
   .jl-segment {
     flex: 0 1 140px;
@@ -1889,7 +1896,7 @@
     border-radius: 3px;
     position: relative;
     flex-shrink: 0;
-    margin-bottom: 44px;
+    margin-bottom: 26px; /* tighter connection between line and the big number below */
   }
   .jl-node::after {
     content: '';
@@ -6423,14 +6430,6 @@
 
 
 <section class="chapter" id="step-map" data-journey-step="0">
-  <!-- Vertical data line (decorative, asymmetric) — Bio-Tech Luxury layer -->
-  <div class="chapter-dataline" aria-hidden="true">
-    <span class="cdl-dot cdl-dot-top"></span>
-    <span class="cdl-dot cdl-dot-bottom"></span>
-    <span class="cdl-marker cdl-marker-1" data-val="0.87×"></span>
-    <span class="cdl-marker cdl-marker-2" data-val="42.3 yrs"></span>
-  </div>
-
   <div class="chapter-eyebrow">
     <span class="eyebrow-line" aria-hidden="true"></span>
     <span>The Method</span>
