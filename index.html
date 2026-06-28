@@ -1498,6 +1498,155 @@
     .pricing-cta-btn { padding: 18px 32px; font-size: 16px; width: 100%; justify-content: center; max-width: 360px; }
   }
 
+  /* ============== FAQ Section ============== */
+  .faq-section {
+    background: var(--paper);
+    padding: 120px 32px 100px;
+    position: relative;
+  }
+  .faq-inner {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .faq-eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 24px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--sage-deep);
+    text-transform: uppercase;
+  }
+  .faq-eyebrow .eyebrow-line {
+    flex: 0 0 56px;
+    height: 1px;
+    background: var(--sage);
+    opacity: 0.55;
+  }
+  .faq-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.15;
+    text-align: center;
+    margin: 0 0 56px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .faq-title .hl {
+    color: var(--sage-deep);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid rgba(141, 174, 146, 0.18);
+  }
+  .faq-item {
+    border-bottom: 1px solid rgba(141, 174, 146, 0.18);
+    transition: background 0.3s ease;
+  }
+  .faq-item[open] {
+    background: linear-gradient(180deg, rgba(205, 223, 183, 0.08) 0%, rgba(205, 223, 183, 0) 100%);
+  }
+  .faq-q {
+    cursor: pointer;
+    list-style: none;
+    padding: 28px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.45;
+    color: var(--ink);
+    transition: color 0.2s ease;
+    user-select: none;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q:hover { color: var(--sage-deep); }
+  .faq-icon {
+    flex: 0 0 32px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--sage-soft);
+    color: var(--sage-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
+  }
+  .faq-item[open] .faq-icon {
+    transform: rotate(45deg);
+    background: var(--sage);
+    color: #fff;
+  }
+  .faq-a {
+    padding: 0 8px 28px;
+    color: #444;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+    animation: faqFadeIn 0.4s ease;
+  }
+  .faq-a p {
+    margin: 0 0 12px;
+  }
+  .faq-a p:last-child { margin-bottom: 0; }
+  .faq-a strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .faq-a ul {
+    margin: 8px 0 12px;
+    padding-inline-start: 20px;
+    list-style: none;
+  }
+  .faq-a ul li {
+    position: relative;
+    padding-inline-start: 18px;
+    margin-bottom: 6px;
+  }
+  .faq-a ul li::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    top: 11px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--sage);
+  }
+  @keyframes faqFadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 768px) {
+    .faq-section { padding: 80px 22px 70px; }
+    .faq-title { margin-bottom: 36px; }
+    .faq-q { font-size: 16px; padding: 22px 4px; gap: 16px; }
+    .faq-icon { flex-basis: 28px; width: 28px; height: 28px; font-size: 20px; }
+    .faq-a { padding: 0 4px 22px; font-size: 15px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .faq-icon, .faq-item { transition: none; }
+    .faq-a { animation: none; }
+  }
+
   .closing-band {
     background: var(--paper);
     padding: 140px 32px 120px;
@@ -2711,6 +2860,7 @@
   .fluid-nav[data-state="open"] .fnav-item:nth-child(4) { --offset: 204px; transition-delay: 160ms; }
   .fluid-nav[data-state="open"] .fnav-item:nth-child(5) { --offset: 272px; transition-delay: 200ms; }
   .fluid-nav[data-state="open"] .fnav-item:nth-child(6) { --offset: 340px; transition-delay: 240ms; }
+  .fluid-nav[data-state="open"] .fnav-item:nth-child(7) { --offset: 408px; transition-delay: 280ms; }
 
   /* Tooltip label on hover — appears to the LEFT of the item (RTL-friendly, nav at right edge) */
   .fnav-item .fnav-label {
@@ -2752,6 +2902,7 @@
     .fluid-nav[data-state="open"] .fnav-item:nth-child(4) { --offset: 180px; }
     .fluid-nav[data-state="open"] .fnav-item:nth-child(5) { --offset: 240px; }
     .fluid-nav[data-state="open"] .fnav-item:nth-child(6) { --offset: 300px; }
+    .fluid-nav[data-state="open"] .fnav-item:nth-child(7) { --offset: 360px; }
     .fnav-item .fnav-label { display: none; }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -6505,6 +6656,215 @@
   })();
 </script>
 
+<!-- ============== FAQ — שאלות ותשובות (SEO + AI optimization) ============== -->
+<section class="faq-section" id="faq" aria-labelledby="faq-title">
+  <div class="faq-inner">
+    <div class="faq-eyebrow">
+      <span class="eyebrow-line" aria-hidden="true"></span>
+      <span>FAQ</span>
+      <span class="eyebrow-line" aria-hidden="true"></span>
+    </div>
+    <h2 id="faq-title" class="faq-title">שאלות <span class="hl">נפוצות</span></h2>
+
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>מה זה גיל ביולוגי תפקודי ובמה הוא שונה מהכרונולוגי?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="faq-a">
+          <p>הגיל הכרונולוגי הוא המספר בתעודת הזהות. הגיל הביולוגי <strong>התפקודי</strong> משקף איך הגוף שלך באמת מתפקד — הרכב גוף, מסת שריר, כוח אחיזה, זמן תגובה ויציבה. שני אנשים בני 50 יכולים להיות שונים מאוד ביולוגית — אחד בן 38 והשני בן 62. המספר הזה הוא חזאי טוב יותר של תוחלת חיים תפקודית.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>למי מתאימה בדיקת הגיל הביולוגי התפקודי?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="faq-a">
+          <p>הבדיקה רלוונטית לכל אדם שרוצה לדעת את <strong>"המספר האמיתי"</strong> של הגוף ולהבין על מה לעבוד. מומלצת במיוחד לגילאי 35-65 שמעוניינים באופטימיזציה של הבריאות, אנשים שמסיימים תקופה של עומס, או כל מי שמתחיל מסע לונג'ביטי.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>כמה זמן לוקח לקבל את התוצאות?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="faq-a">
+          <p>הבדיקה אורכת כ-<strong>60 דקות</strong>. את הדוח האישי המלא מקבלים מיד בסיומה — כולל הגיל הביולוגי שלך, ניתוח לפי 3 קטגוריות (הרכב גוף, כוח תפקודי, תפקוד נוירו־מוטורי) והמלצות מעשיות להמשך.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>מה הציוד שלכם ובמה הוא שונה מחדר כושר רגיל?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="faq-a">
+          <p>אצלנו ציוד טכנולוגי מתקדם שמשמש את <strong>חוקרי הלונג'ביטי המובילים בעולם</strong>:</p>
+          <ul>
+            <li><strong>Vasper</strong> — אימון אירובי דחוס של 21 דקות עם ערך שיווה לשעה מלאה</li>
+            <li><strong>ARX</strong> — מכונת התנגדות מסתגלת מבוססת AI</li>
+            <li><strong>CAROL Bike</strong> — HIIT אופטימלי של 8 דקות 40 שניות</li>
+            <li><strong>QuickBoard</strong> — אימון נוירו-קוגניטיבי</li>
+          </ul>
+          <p>הציוד מאפשר תוצאות טובות יותר ב<strong>פחות זמן</strong> ובסיכון נמוך לפציעה.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>אילו טיפולי התאוששות יש במתחם?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="faq-a">
+          <p>מגוון רחב של טיפולי ריקברי מתקדמים:</p>
+          <ul>
+            <li><strong>סאונה אינפרא־רד</strong> — חימום עמוק להפעלת חלבוני הלם חום</li>
+            <li><strong>NAP POD</strong> — מערכת שינה משקמת להתחדשות מערכת העצבים</li>
+            <li><strong>ICE CUBE</strong> — טבילה קרה להפעלת הורמסיס</li>
+            <li><strong>אור אדום (Red Light Therapy)</strong> — לתפקוד תאי</li>
+            <li><strong>מסקס לימפטי</strong> — לדלקת ותנועתיות לימפה</li>
+          </ul>
+          <p>כל טיפול נבחר בזכות יכולתו לזרז התאוששות ולהאט תהליכי הזדקנות.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>מה תוקף שובר המתנה?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="faq-a">
+          <p>שוברי המתנה תקפים ל-<strong>24 חודשים</strong> מיום הרכישה. השובר מועבר במייל מיד לאחר התשלום, וניתן לממש בכל עת בתיאום מראש בוואטסאפ.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>האם ניתן לרכוש חבילה כמתנה?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="faq-a">
+          <p>בהחלט. כל החבילות שלנו זמינות כ<strong>שוברי מתנה דיגיטליים</strong> — מקבלים PDF מעוצב שאפשר להעביר במייל, להדפיס, או לצרף לכרטיס מתנה פיזי. מתנה מעולה למישהו שאוהבים — מתנה של בריאות וזמן.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>איך מתחילים? צריך לתאם פגישה מראש?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="faq-a">
+          <p>הדרך הקלה ביותר: <strong>רוכשים פריט או חבילה אונליין</strong>, ולאחר התשלום מתאמים את הביקור בוואטסאפ — 079-629-9299. אנחנו עונים תוך 24 שעות בשעות הפעילות.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span>איפה המתחם נמצא ומה שעות הפעילות?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="faq-a">
+          <p><strong>אריק אינשטיין 3, בניין B קומה 6, הרצליה.</strong></p>
+          <p>שעות פתיחה:</p>
+          <ul>
+            <li>ראשון, שלישי, חמישי, שישי: 08:00 - 14:00</li>
+            <li>שני, רביעי: 08:00 - 20:00</li>
+            <li>שבת: סגור</li>
+          </ul>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Schema.org JSON-LD — for Google rich results + AI quotability -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "מה זה גיל ביולוגי תפקודי ובמה הוא שונה מהכרונולוגי?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "הגיל הכרונולוגי הוא המספר בתעודת הזהות. הגיל הביולוגי התפקודי משקף איך הגוף באמת מתפקד — הרכב גוף, מסת שריר, כוח אחיזה, זמן תגובה ויציבה. שני אנשים בני 50 יכולים להיות שונים מאוד ביולוגית — אחד בן 38 והשני בן 62. המספר הזה הוא חזאי טוב יותר של תוחלת חיים תפקודית."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "למי מתאימה בדיקת הגיל הביולוגי התפקודי?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "הבדיקה רלוונטית לכל אדם שרוצה לדעת את 'המספר האמיתי' של הגוף ולהבין על מה לעבוד. מומלצת במיוחד לגילאי 35-65 שמעוניינים באופטימיזציה של הבריאות, אנשים שמסיימים תקופה של עומס, או כל מי שמתחיל מסע לונג'ביטי."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "כמה זמן לוקח לקבל את התוצאות?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "הבדיקה אורכת כ-60 דקות. את הדוח האישי המלא מקבלים מיד בסיומה — כולל הגיל הביולוגי, ניתוח לפי 3 קטגוריות (הרכב גוף, כוח תפקודי, תפקוד נוירו־מוטורי) והמלצות מעשיות להמשך."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "מה הציוד של אבר לאב ובמה הוא שונה מחדר כושר רגיל?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ב-EVER LAB ציוד טכנולוגי מתקדם שמשמש את חוקרי הלונג'ביטי המובילים בעולם — Vasper (אימון אירובי דחוס של 21 דקות), ARX (התנגדות מסתגלת מבוססת AI), CAROL Bike (HIIT אופטימלי של 8 דקות 40 שניות), QuickBoard (אימון נוירו-קוגניטיבי). הציוד מאפשר תוצאות טובות יותר בפחות זמן ובסיכון נמוך לפציעה."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "אילו טיפולי התאוששות יש במתחם?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "מגוון טיפולי ריקברי מתקדמים: סאונה אינפרא־רד, NAP POD (מערכת שינה משקמת), ICE CUBE (טבילה קרה), אור אדום (Red Light Therapy), ומסקס לימפטי. כל טיפול נבחר בזכות יכולתו לזרז התאוששות ולהאט תהליכי הזדקנות."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "מה תוקף שובר המתנה?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "שוברי המתנה של EVER LAB תקפים ל-24 חודשים מיום הרכישה. השובר מועבר במייל מיד לאחר התשלום, וניתן לממש בכל עת בתיאום מראש."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "האם ניתן לרכוש חבילה כמתנה?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "כן. כל החבילות זמינות כשוברי מתנה דיגיטליים — מקבלים PDF מעוצב שאפשר להעביר במייל, להדפיס, או לצרף לכרטיס מתנה פיזי."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "איך מתחילים בעבודה עם EVER LAB?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "רוכשים פריט או חבילה אונליין דרך עמוד החנות, ולאחר התשלום מתאמים את הביקור בוואטסאפ במספר 079-629-9299. מענה תוך 24 שעות בשעות הפעילות."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "איפה ממוקם EVER LAB ומה שעות הפעילות?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "המתחם נמצא ברחוב אריק אינשטיין 3, בניין B קומה 6, הרצליה. שעות פתיחה: ראשון/שלישי/חמישי/שישי 08:00-14:00, שני/רביעי 08:00-20:00. שבת סגור."
+      }
+    }
+  ]
+}
+</script>
+
 <!-- ============== INTERSTITIAL — EVER LAB facility in red light ambiance ============== -->
 <div class="section-divider section-divider-everlabred" aria-hidden="true">
   <div class="section-divider-img"></div>
@@ -6731,6 +7091,13 @@
         <path d="M12 12 L12 20"/>
       </svg>
       <span class="fnav-label">חבילות ומחירים</span>
+    </a>
+    <a href="#faq" class="fnav-item" data-target="faq" aria-label="שאלות נפוצות">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M9 9 a3 3 0 1 1 4.5 2.6 c-1 0.6 -1.5 1.2 -1.5 2.4"/>
+        <line x1="12" y1="17.5" x2="12" y2="17.6"/>
+      </svg>
+      <span class="fnav-label">שאלות נפוצות</span>
     </a>
     <a href="#contact" class="fnav-item" data-target="contact" aria-label="קביעת מבדק">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
