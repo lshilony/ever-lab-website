@@ -2037,6 +2037,54 @@
     margin: 0;
   }
 
+  /* ─────── Scroll-driven progressive reveal ───────
+     Initial state: only station 01 visible, line collapsed to its origin.
+     As the user scrolls into the section, .jl-reveal-2 then .jl-reveal-3
+     are added (via JS), revealing each subsequent station and extending
+     the axis line to its position. */
+  .journey-line .jl-track::before {
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 0.95s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .journey-line .jl-track::after {
+    opacity: 0;
+    transition: opacity 0.9s ease 0.2s;
+  }
+  .journey-line .jl-station {
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .journey-line .jl-station:nth-child(2),
+  .journey-line .jl-station:nth-child(3) {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .journey-line.jl-reveal-2 .jl-track::before {
+    transform: scaleX(0.5);
+  }
+  .journey-line.jl-reveal-2 .jl-track::after {
+    opacity: 1;
+  }
+  .journey-line.jl-reveal-2 .jl-station:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.15s;
+  }
+  .journey-line.jl-reveal-3 .jl-track::before {
+    transform: scaleX(1);
+  }
+  .journey-line.jl-reveal-3 .jl-station:nth-child(3) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.15s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .journey-line .jl-track::before { transform: scaleX(1); transition: none; }
+    .journey-line .jl-track::after { opacity: 1; transition: none; }
+    .journey-line .jl-station { opacity: 1 !important; transform: none !important; transition: none; }
+  }
+
   /* Mobile: stack stations vertically with a thin vertical connector line */
   @media (max-width: 720px) {
     .journey-line { margin: 36px auto 44px; padding: 0 20px; }
@@ -2053,7 +2101,14 @@
       right: auto;
       width: 1.5px;
       height: auto;
-      transform: translateX(-50%);
+      transform: translateX(-50%) scaleY(0);
+      transform-origin: top center;
+    }
+    .journey-line.jl-reveal-2 .jl-track::before {
+      transform: translateX(-50%) scaleY(0.5);
+    }
+    .journey-line.jl-reveal-3 .jl-track::before {
+      transform: translateX(-50%) scaleY(1);
     }
     .jl-station {
       flex: 0 0 auto;
@@ -7125,6 +7180,58 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
     }
+  })();
+</script>
+
+<!-- Journey-line progressive reveal: only step 01 visible at first, steps 02 and 03 reveal as the user scrolls into the section -->
+<script>
+  (function () {
+    const journeyLine = document.querySelector('.journey-line');
+    if (!journeyLine) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      // Skip the staged reveal; just show everything immediately
+      journeyLine.classList.add('jl-reveal-2', 'jl-reveal-3');
+      return;
+    }
+
+    let revealed2 = false;
+    let revealed3 = false;
+    let scheduled = false;
+
+    function check() {
+      scheduled = false;
+      const rect = journeyLine.getBoundingClientRect();
+      const viewportH = window.innerHeight;
+
+      // progress: 0 = journey-line top is at viewport bottom (first visible),
+      //          1 = journey-line bottom is at viewport top (just scrolled past)
+      const progress = Math.max(0, Math.min(1,
+        (viewportH - rect.top) / (viewportH + rect.height)
+      ));
+
+      if (!revealed2 && progress > 0.25) {
+        journeyLine.classList.add('jl-reveal-2');
+        revealed2 = true;
+      }
+      if (!revealed3 && progress > 0.42) {
+        journeyLine.classList.add('jl-reveal-3');
+        revealed3 = true;
+      }
+      if (revealed2 && revealed3) {
+        window.removeEventListener('scroll', onScroll);
+      }
+    }
+
+    function onScroll() {
+      if (scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(check);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    check(); // initial check (in case page loads mid-scroll past the section)
   })();
 </script>
 
