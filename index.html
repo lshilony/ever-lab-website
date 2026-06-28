@@ -1939,6 +1939,42 @@
     background: rgba(141, 174, 146, 0.55);
     z-index: 0;
   }
+  /* Ruler-style tick marks at regular intervals along the axis (research/lab feel) */
+  .jl-track::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 16.67%;
+    right: 16.67%;
+    height: 12px;
+    background-image:
+      linear-gradient(to right, rgba(141, 174, 146, 0.45) 0.75px, transparent 0.75px);
+    background-size: 32px 100%;
+    background-repeat: repeat-x;
+    background-position: center;
+    z-index: 0;
+    pointer-events: none;
+    /* Mask the ticks to fade out near each main node so the tick pattern
+       reads as ruler increments BETWEEN the stations, not noise on top */
+    -webkit-mask-image:
+      linear-gradient(to right,
+        transparent 0%, transparent 4%,
+        #000 12%, #000 22%,
+        transparent 30%, transparent 36%,
+        #000 44%, #000 56%,
+        transparent 64%, transparent 70%,
+        #000 78%, #000 88%,
+        transparent 96%, transparent 100%);
+    mask-image:
+      linear-gradient(to right,
+        transparent 0%, transparent 4%,
+        #000 12%, #000 22%,
+        transparent 30%, transparent 36%,
+        #000 44%, #000 56%,
+        transparent 64%, transparent 70%,
+        #000 78%, #000 88%,
+        transparent 96%, transparent 100%);
+  }
   .jl-station {
     display: flex;
     flex-direction: column;
@@ -1951,15 +1987,24 @@
     z-index: 1;
   }
 
-  /* The round dot marker on the line */
+  /* Concentric measurement marker on the line — outer ring + smaller inner dot */
   .jl-node {
     width: 12px;
     height: 12px;
-    background: var(--sage-deep);
+    background: transparent;
+    border: 1.4px solid var(--sage-deep);
     border-radius: 50%;
     flex-shrink: 0;
     margin-bottom: 26px;
-    box-shadow: 0 0 0 4px var(--bg); /* halo cuts the line under the dot for a clean look */
+    box-shadow: 0 0 0 4px var(--bg); /* cream halo cuts the line under the marker */
+    position: relative;
+  }
+  .jl-node::after {
+    content: '';
+    position: absolute;
+    inset: 2.2px;
+    background: var(--sage-deep);
+    border-radius: 50%;
   }
 
   /* Text block under each marker */
