@@ -1321,29 +1321,48 @@
     margin: 0;
   }
 
-  /* Arrow indicator (bottom-end corner, appears on hover) */
-  .cat-card-arrow {
-    position: absolute;
-    bottom: 24px;
-    inset-inline-end: 24px;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(4px);
-    color: #fff;
+  /* 2 buttons at bottom of card */
+  .cat-card-actions {
     display: flex;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .cat-btn {
+    flex: 1;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    transform: translateX(8px);
-    transition: opacity 0.35s ease, transform 0.35s ease, background 0.35s ease;
+    padding: 11px 14px;
+    border-radius: 6px;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    font-size: 13.5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    border: none;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1;
   }
-  .cat-card-arrow svg { width: 12px; height: 12px; }
-  .cat-card:hover .cat-card-arrow {
-    opacity: 1;
-    transform: translateX(0);
-    background: rgba(255, 255, 255, 0.22);
+  /* Primary — solid cream/white, sage-deep text */
+  .cat-btn-primary {
+    background: #FFFFFF;
+    color: var(--sage-deep);
+  }
+  .cat-btn-primary:hover {
+    background: #F4F0EB;
+    color: var(--ink);
+  }
+  /* Secondary — transparent with white border */
+  .cat-btn-secondary {
+    background: transparent;
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+  }
+  .cat-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.85);
   }
 
   /* Make text + num distinct from labels in dark card (4) */
@@ -1378,9 +1397,191 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .cat-card, .cat-card-icon, .cat-card-arrow { transition: none; }
+    .cat-card, .cat-card-icon { transition: none; }
     .cat-card:hover { transform: none; }
     .cat-card:hover .cat-card-icon { transform: none; }
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     CATEGORY MODALS — details popup for each cat-card
+     ═══════════════════════════════════════════════════════════════════════ */
+  .cat-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .cat-modal[aria-hidden="false"] {
+    display: flex;
+    animation: catModalFade 0.25s ease;
+  }
+  @keyframes catModalFade { from { opacity: 0; } to { opacity: 1; } }
+
+  .cat-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(40, 50, 40, 0.55);
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+  }
+  .cat-modal-panel {
+    position: relative;
+    background: #FFFFFF;
+    color: var(--ink);
+    max-width: 540px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: 10px;
+    padding: 48px 44px 40px;
+    box-shadow: 0 30px 80px -20px rgba(40, 50, 40, 0.4);
+    animation: catModalRise 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @keyframes catModalRise {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .cat-modal-close {
+    position: absolute;
+    top: 18px;
+    inset-inline-end: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid rgba(141, 174, 146, 0.4);
+    color: var(--sage-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .cat-modal-close svg { width: 16px; height: 16px; }
+  .cat-modal-close:hover {
+    background: var(--sage-soft);
+    border-color: var(--sage);
+  }
+  .cat-modal-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    color: var(--sage-deep);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .cat-modal-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0 0 18px;
+    letter-spacing: -0.01em;
+  }
+  .cat-modal-desc {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: #555;
+    margin: 0 0 24px;
+  }
+  .cat-modal-section {
+    margin-bottom: 24px;
+  }
+  .cat-modal-section-title {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--sage-deep);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 12px;
+  }
+  .cat-modal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .cat-modal-list li {
+    position: relative;
+    padding-inline-start: 18px;
+    margin-bottom: 7px;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: #555;
+  }
+  .cat-modal-list li::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--sage);
+  }
+  .cat-modal-list-rich li {
+    padding-block: 4px;
+    font-size: 14px;
+  }
+  .cat-modal-list-rich strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .cat-modal-meta {
+    display: flex;
+    gap: 24px;
+    padding: 18px 0;
+    border-top: 1px solid rgba(141, 174, 146, 0.25);
+    border-bottom: 1px solid rgba(141, 174, 146, 0.25);
+    margin-bottom: 24px;
+  }
+  .cat-modal-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .cat-modal-meta-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: #888;
+    text-transform: uppercase;
+  }
+  .cat-modal-meta-value {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 20px;
+    color: var(--ink);
+  }
+  .cat-modal-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px 24px;
+    background: var(--sage-deep);
+    color: #FFFFFF;
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    transition: background 0.25s ease;
+  }
+  .cat-modal-cta:hover {
+    background: var(--ink);
+  }
+  @media (max-width: 540px) {
+    .cat-modal-panel { padding: 40px 24px 28px; max-height: 92vh; }
+    .cat-modal-title { font-size: 24px; }
+    .cat-modal-meta { gap: 16px; padding: 14px 0; }
   }
 </style>
 </head>
@@ -1416,19 +1617,16 @@
       <div class="cat-grid">
 
         <!-- 01 · המבדק (Assessment) — lightest sage -->
-        <a href="#section-items" class="cat-card cat-card-1" aria-label="בדיקת גיל ביולוגי תפקודי">
+        <article class="cat-card cat-card-1">
           <div class="cat-card-icon" aria-hidden="true">
             <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-              <!-- Measurement axis: vertical line with target circle (top) and precise reading (bottom) -->
               <line x1="30" y1="14" x2="30" y2="46"/>
               <circle cx="30" cy="20" r="4.2"/>
               <circle cx="30" cy="40" r="4.2"/>
               <circle cx="30" cy="40" r="2" fill="currentColor"/>
-              <!-- Tick marks left -->
               <line x1="19" y1="20" x2="22" y2="20" opacity="0.7"/>
               <line x1="20" y1="30" x2="22" y2="30" opacity="0.5"/>
               <line x1="19" y1="40" x2="22" y2="40" opacity="0.7"/>
-              <!-- Tick marks right -->
               <line x1="38" y1="20" x2="41" y2="20" opacity="0.7"/>
               <line x1="38" y1="30" x2="40" y2="30" opacity="0.5"/>
               <line x1="38" y1="40" x2="41" y2="40" opacity="0.7"/>
@@ -1438,20 +1636,18 @@
             <span class="cat-card-num">01</span>
             <span class="cat-card-label">The Assessment</span>
             <h3 class="cat-card-title">המבדק</h3>
-            <p class="cat-card-desc">גיל ביולוגי תפקודי + הרכב גוף</p>
+            <p class="cat-card-desc">בדיקת גיל ביולוגי תפקודי</p>
           </div>
-          <span class="cat-card-arrow" aria-hidden="true">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M11 4 L5 8 L11 12"/>
-            </svg>
-          </span>
-        </a>
+          <div class="cat-card-actions">
+            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-assessment">לפרטים</button>
+            <a href="https://ever-lab.co/product/bio-age-test/" class="cat-btn cat-btn-primary">לרכישה</a>
+          </div>
+        </article>
 
         <!-- 02 · האימון (Training) — warm sage -->
-        <a href="#section-items" class="cat-card cat-card-2" aria-label="אימון אישי">
+        <article class="cat-card cat-card-2">
           <div class="cat-card-icon" aria-hidden="true">
             <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-              <!-- Radiant burst — energy/movement emanating from center -->
               <circle cx="30" cy="30" r="3" fill="currentColor"/>
               <line x1="30" y1="14" x2="30" y2="19"/>
               <line x1="30" y1="41" x2="30" y2="46"/>
@@ -1470,18 +1666,16 @@
             <h3 class="cat-card-title">האימון</h3>
             <p class="cat-card-desc">אימון אישי מבוסס נתונים</p>
           </div>
-          <span class="cat-card-arrow" aria-hidden="true">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M11 4 L5 8 L11 12"/>
-            </svg>
-          </span>
-        </a>
+          <div class="cat-card-actions">
+            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-training">לפרטים</button>
+            <a href="https://ever-lab.co/product/trial-workout/" class="cat-btn cat-btn-primary">לרכישה</a>
+          </div>
+        </article>
 
         <!-- 03 · ההתאוששות (Recovery) — cool sage -->
-        <a href="#section-items" class="cat-card cat-card-3" aria-label="טיפולי התאוששות">
+        <article class="cat-card cat-card-3">
           <div class="cat-card-icon" aria-hidden="true">
             <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-              <!-- Three flowing waves — calm, restorative -->
               <path d="M 12 22 Q 21 16, 30 22 T 48 22"/>
               <path d="M 12 30 Q 21 24, 30 30 T 48 30" opacity="0.75"/>
               <path d="M 12 38 Q 21 32, 30 38 T 48 38" opacity="0.55"/>
@@ -1493,21 +1687,18 @@
             <h3 class="cat-card-title">ההתאוששות</h3>
             <p class="cat-card-desc">טיפולים מתקדמים להתחדשות</p>
           </div>
-          <span class="cat-card-arrow" aria-hidden="true">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M11 4 L5 8 L11 12"/>
-            </svg>
-          </span>
-        </a>
+          <div class="cat-card-actions">
+            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-recovery">לפרטים</button>
+            <a href="https://ever-lab.co/product/single-recovery/" class="cat-btn cat-btn-primary">לרכישה</a>
+          </div>
+        </article>
 
         <!-- 04 · החוויה המשולבת (Combined / couples) — deep sage -->
-        <a href="#section-packages" class="cat-card cat-card-4" aria-label="חבילות והחוויה המשולבת">
+        <article class="cat-card cat-card-4">
           <div class="cat-card-icon" aria-hidden="true">
             <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-              <!-- Two interlocking circles — connection, partnership, combined experience -->
               <circle cx="23" cy="30" r="11"/>
               <circle cx="37" cy="30" r="11"/>
-              <!-- Small dot at the overlap center -->
               <circle cx="30" cy="30" r="1.2" fill="currentColor"/>
             </svg>
           </div>
@@ -1517,16 +1708,121 @@
             <h3 class="cat-card-title">חוויה משולבת</h3>
             <p class="cat-card-desc">חבילות חוויה לבד או בזוג</p>
           </div>
-          <span class="cat-card-arrow" aria-hidden="true">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M11 4 L5 8 L11 12"/>
-            </svg>
-          </span>
-        </a>
+          <div class="cat-card-actions">
+            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-combined">לפרטים</button>
+            <a href="#section-packages" class="cat-btn cat-btn-primary">לחבילות</a>
+          </div>
+        </article>
 
       </div>
     </div>
   </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       CATEGORY MODALS — opened by 'לפרטים' buttons in cat-cards
+       ═══════════════════════════════════════════════════════════════════════ -->
+
+  <div class="cat-modal" id="modal-assessment" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-assessment-title">
+    <div class="cat-modal-backdrop" data-modal-close></div>
+    <div class="cat-modal-panel" role="document">
+      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
+      <div class="cat-modal-eyebrow">01 · The Assessment</div>
+      <h3 id="modal-assessment-title" class="cat-modal-title">בדיקת גיל ביולוגי תפקודי</h3>
+      <p class="cat-modal-desc">המבדק הוא נקודת ההתחלה של כל מסע לונג'ביטי. הוא מספק תמונה מקיפה ומדויקת של מצב הגוף שלך כיום, ועל בסיסו נבנית התוכנית האישית להמשך.</p>
+      <div class="cat-modal-section">
+        <h4 class="cat-modal-section-title">מה נבדק במבדק:</h4>
+        <ul class="cat-modal-list">
+          <li>הרכב גוף ומסת השריר</li>
+          <li>כוח ותפקוד שרירי</li>
+          <li>שיווי משקל ויציבות</li>
+          <li>מהירות תגובה ותפקוד קוגניטיבי</li>
+          <li>מדדי כושר ותנועה</li>
+        </ul>
+      </div>
+      <div class="cat-modal-meta">
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">60 דקות</span></div>
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">550 ₪</span></div>
+      </div>
+      <a href="https://ever-lab.co/product/bio-age-test/" class="cat-modal-cta">לרכישת המבדק</a>
+    </div>
+  </div>
+
+  <div class="cat-modal" id="modal-training" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-training-title">
+    <div class="cat-modal-backdrop" data-modal-close></div>
+    <div class="cat-modal-panel" role="document">
+      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
+      <div class="cat-modal-eyebrow">02 · The Training</div>
+      <h3 id="modal-training-title" class="cat-modal-title">אימון התנסות אישי</h3>
+      <p class="cat-modal-desc">סשן אישי 1:1 על הציוד הטכנולוגי המתקדם של אבר לאב. אימון קצר, יעיל ומדויק שעובד על המרכיבים החשובים ביותר ללונג'ביטי: כוח, כושר אירובי, שיווי משקל ומהירות תגובה.</p>
+      <div class="cat-modal-section">
+        <h4 class="cat-modal-section-title">מה כלול:</h4>
+        <ul class="cat-modal-list">
+          <li>אימון 1:1 עם מאמן מוסמך</li>
+          <li>שימוש בציוד מתקדם: Vasper, ARX, CAROL Bike</li>
+          <li>אימון מותאם ליכולת ולמטרות שלך</li>
+          <li>מדידת ביצועים בזמן אמת</li>
+        </ul>
+      </div>
+      <div class="cat-modal-meta">
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">60 דקות</span></div>
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">350 ₪</span></div>
+      </div>
+      <a href="https://ever-lab.co/product/trial-workout/" class="cat-modal-cta">לרכישת אימון התנסות</a>
+    </div>
+  </div>
+
+  <div class="cat-modal" id="modal-recovery" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-recovery-title">
+    <div class="cat-modal-backdrop" data-modal-close></div>
+    <div class="cat-modal-panel" role="document">
+      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
+      <div class="cat-modal-eyebrow">03 · The Recovery</div>
+      <h3 id="modal-recovery-title" class="cat-modal-title">טיפול התאוששות בודד</h3>
+      <p class="cat-modal-desc">בחירה מתוך מגוון טיפולי ההתאוששות המתקדמים שלנו. כל טיפול נבחר בקפידה בזכות יכולתו לזרז התאוששות, להאיץ את תהליכי ההתחדשות ולתמוך במטרות הלונג'ביטי.</p>
+      <div class="cat-modal-section">
+        <h4 class="cat-modal-section-title">הטיפולים הזמינים:</h4>
+        <ul class="cat-modal-list">
+          <li>סאונה אינפרא אדום</li>
+          <li>תא קור</li>
+          <li>עיסוי לימפטי</li>
+          <li>פוד מדיטציה</li>
+          <li>עיסוי שרירים עמוק</li>
+        </ul>
+      </div>
+      <div class="cat-modal-meta">
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">20-30 דקות</span></div>
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">200 ₪</span></div>
+      </div>
+      <a href="https://ever-lab.co/product/single-recovery/" class="cat-modal-cta">לרכישת טיפול</a>
+    </div>
+  </div>
+
+  <div class="cat-modal" id="modal-combined" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-combined-title">
+    <div class="cat-modal-backdrop" data-modal-close></div>
+    <div class="cat-modal-panel" role="document">
+      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
+      <div class="cat-modal-eyebrow">04 · The Experience</div>
+      <h3 id="modal-combined-title" class="cat-modal-title">חבילות החוויה</h3>
+      <p class="cat-modal-desc">שילובים מובנים של המבדק, האימונים והטיפולים שלנו — לרכישה כחבילה אחת בערך מצוין. מתאים גם לרכישה כמתנה, ובאופציות לבד או בזוג.</p>
+      <div class="cat-modal-section">
+        <h4 class="cat-modal-section-title">החבילות הזמינות:</h4>
+        <ul class="cat-modal-list cat-modal-list-rich">
+          <li><strong>Longevity Discovery</strong> · גיל ביולוגי + 2 טיפולים · 920 ₪</li>
+          <li><strong>Longevity Experience</strong> · אימון + 2 טיפולים · 720 ₪</li>
+          <li><strong>Longevity Escape for Two</strong> · 4 טיפולים זוגיים · 990 ₪</li>
+          <li><strong>EVER BEST 2/3/4</strong> · אימון + 2-4 טיפולים · 600-845 ₪</li>
+        </ul>
+      </div>
+      <a href="#section-packages" class="cat-modal-cta" data-modal-close>גלי את כל החבילות</a>
+    </div>
+  </div>
 
   <!-- Individual items (à la carte) — same card language as packages -->
   <section class="exp-hero exp-hero-secondary" id="section-items">
@@ -1856,6 +2152,52 @@
   </section>
 
 </main>
+
+<!-- Category modal open/close behavior -->
+<script>
+  (function () {
+    const openers = document.querySelectorAll('[data-modal-open]');
+    const closers = document.querySelectorAll('[data-modal-close]');
+    let lastFocused = null;
+
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      if (!modal) return;
+      lastFocused = document.activeElement;
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      // Focus the close button for accessibility
+      const closeBtn = modal.querySelector('.cat-modal-close');
+      if (closeBtn) setTimeout(() => closeBtn.focus(), 30);
+    }
+    function closeModal(modal) {
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    openers.forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        openModal(btn.getAttribute('data-modal-open'));
+      });
+    });
+    closers.forEach(el => {
+      el.addEventListener('click', e => {
+        // If element is a link with href (like "גלי את כל החבילות") — let it navigate AFTER closing
+        const modal = el.closest('.cat-modal');
+        if (modal) closeModal(modal);
+        // If it's a link with anchor, navigation happens naturally
+      });
+    });
+    // Esc key closes any open modal
+    document.addEventListener('keydown', e => {
+      if (e.key !== 'Escape') return;
+      const open = document.querySelector('.cat-modal[aria-hidden="false"]');
+      if (open) closeModal(open);
+    });
+  })();
+</script>
 
 </body>
 </html>
