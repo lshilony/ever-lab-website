@@ -1204,6 +1204,12 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 22px;
   }
+  /* Section with 3 cards instead of 4 — use a 3-col layout */
+  .cat-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 980px;
+    margin: 0 auto;
+  }
 
   /* Card base — shared shell */
   .cat-card {
@@ -1604,16 +1610,40 @@
     <h1>The Ever Lab<br>Longevity Experience</h1>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════════════════
-       CATEGORY CARDS — 4 entry points organized by EVER LAB philosophy:
-       Measure → Train → Recover → Together (couples)
-       Sage gradient variants keep brand cohesion; elegant line-art icons.
-       ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- Individual items (à la carte) — same card language as packages -->
+  <section class="exp-hero exp-hero-secondary" id="section-items">
+    <div class="exp-eyebrow"><span>À la carte</span></div>
+    <h1>טעם של עוד...</h1>
+    <p>בדיקות וטעימות מהעולם של אבר לאב — לרכישה נפרדת.</p>
+  </section>
+
   <section class="cat-section">
     <div class="cat-inner">
       <div class="cat-grid">
 
-        <!-- 01 · המבדק (Assessment) — lightest sage -->
+        <article class="cat-card cat-card-4">
+          <div class="cat-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="14" y1="22" x2="46" y2="22" stroke-width="1" opacity="0.45"/>
+              <line x1="14" y1="22" x2="36" y2="22" stroke-width="2.2"/>
+              <line x1="14" y1="30" x2="46" y2="30" stroke-width="1" opacity="0.45"/>
+              <line x1="14" y1="30" x2="28" y2="30" stroke-width="2.2"/>
+              <line x1="14" y1="38" x2="46" y2="38" stroke-width="1" opacity="0.45"/>
+              <line x1="14" y1="38" x2="42" y2="38" stroke-width="2.2"/>
+            </svg>
+          </div>
+          <div class="cat-card-body">
+            <span class="cat-card-num">01</span>
+            <span class="cat-card-label">Body Composition</span>
+            <h3 class="cat-card-title">בדיקת הרכב גוף</h3>
+            <p class="cat-card-desc">סריקת InBody · 30 דקות · 200 ₪</p>
+          </div>
+          <div class="cat-card-actions">
+            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-body-comp">לפרטים</button>
+            <a href="https://ever-lab.co/product/body-composition/" class="cat-btn cat-btn-primary">לרכישה</a>
+          </div>
+        </article>
+
         <article class="cat-card cat-card-1">
           <div class="cat-card-icon" aria-hidden="true">
             <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1630,18 +1660,17 @@
             </svg>
           </div>
           <div class="cat-card-body">
-            <span class="cat-card-num">01</span>
-            <span class="cat-card-label">The Assessment</span>
-            <h3 class="cat-card-title">המבדק</h3>
-            <p class="cat-card-desc">בדיקת גיל ביולוגי תפקודי</p>
+            <span class="cat-card-num">02</span>
+            <span class="cat-card-label">Bio Age Test</span>
+            <h3 class="cat-card-title">גיל ביולוגי תפקודי</h3>
+            <p class="cat-card-desc">אבחון מקיף · 60 דקות · 550 ₪</p>
           </div>
           <div class="cat-card-actions">
-            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-assessment">לפרטים</button>
+            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-bio-age">לפרטים</button>
             <a href="https://ever-lab.co/product/bio-age-test/" class="cat-btn cat-btn-primary">לרכישה</a>
           </div>
         </article>
 
-        <!-- 02 · האימון (Training) — warm sage -->
         <article class="cat-card cat-card-2">
           <div class="cat-card-icon" aria-hidden="true">
             <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1658,18 +1687,17 @@
             </svg>
           </div>
           <div class="cat-card-body">
-            <span class="cat-card-num">02</span>
-            <span class="cat-card-label">The Training</span>
-            <h3 class="cat-card-title">האימון</h3>
-            <p class="cat-card-desc">אימון אישי מבוסס נתונים</p>
+            <span class="cat-card-num">03</span>
+            <span class="cat-card-label">Trial Workout</span>
+            <h3 class="cat-card-title">אימון התנסות</h3>
+            <p class="cat-card-desc">אימון פרטי · 60 דקות · 350 ₪</p>
           </div>
           <div class="cat-card-actions">
-            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-training">לפרטים</button>
+            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-trial-workout">לפרטים</button>
             <a href="https://ever-lab.co/product/trial-workout/" class="cat-btn cat-btn-primary">לרכישה</a>
           </div>
         </article>
 
-        <!-- 03 · ההתאוששות (Recovery) — cool sage -->
         <article class="cat-card cat-card-3">
           <div class="cat-card-icon" aria-hidden="true">
             <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1679,242 +1707,14 @@
             </svg>
           </div>
           <div class="cat-card-body">
-            <span class="cat-card-num">03</span>
-            <span class="cat-card-label">The Recovery</span>
-            <h3 class="cat-card-title">ההתאוששות</h3>
-            <p class="cat-card-desc">טיפולים מתקדמים להתחדשות</p>
-          </div>
-          <div class="cat-card-actions">
-            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-recovery">לפרטים</button>
-            <a href="https://ever-lab.co/product/single-recovery/" class="cat-btn cat-btn-primary">לרכישה</a>
-          </div>
-        </article>
-
-        <!-- 04 · החוויה המשולבת (Combined / couples) — deep sage -->
-        <article class="cat-card cat-card-4">
-          <div class="cat-card-icon" aria-hidden="true">
-            <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="23" cy="30" r="11"/>
-              <circle cx="37" cy="30" r="11"/>
-              <circle cx="30" cy="30" r="1.2" fill="currentColor"/>
-            </svg>
-          </div>
-          <div class="cat-card-body">
             <span class="cat-card-num">04</span>
-            <span class="cat-card-label">The Experience</span>
-            <h3 class="cat-card-title">חוויה משולבת</h3>
-            <p class="cat-card-desc">חבילות חוויה לבד או בזוג</p>
+            <span class="cat-card-label">Single Recovery</span>
+            <h3 class="cat-card-title">טיפול התחדשות</h3>
+            <p class="cat-card-desc">טיפול בודד · 20-30 דקות · 200 ₪</p>
           </div>
           <div class="cat-card-actions">
-            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-combined">לפרטים</button>
-            <a href="#section-packages" class="cat-btn cat-btn-primary">לחבילות</a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════════════════════
-       CATEGORY MODALS — opened by 'לפרטים' buttons in cat-cards
-       ═══════════════════════════════════════════════════════════════════════ -->
-
-  <div class="cat-modal" id="modal-assessment" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-assessment-title">
-    <div class="cat-modal-backdrop" data-modal-close></div>
-    <div class="cat-modal-panel" role="document">
-      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
-      </button>
-      <div class="cat-modal-eyebrow">01 · The Assessment</div>
-      <h3 id="modal-assessment-title" class="cat-modal-title">בדיקת גיל ביולוגי תפקודי</h3>
-      <p class="cat-modal-desc">המבדק הוא נקודת ההתחלה של כל מסע לונג'ביטי. הוא מספק תמונה מקיפה ומדויקת של מצב הגוף שלך כיום, ועל בסיסו נבנית התוכנית האישית להמשך.</p>
-      <div class="cat-modal-section">
-        <h4 class="cat-modal-section-title">מה נבדק במבדק:</h4>
-        <ul class="cat-modal-list">
-          <li>הרכב גוף ומסת השריר</li>
-          <li>כוח ותפקוד שרירי</li>
-          <li>שיווי משקל ויציבות</li>
-          <li>מהירות תגובה ותפקוד קוגניטיבי</li>
-          <li>מדדי כושר ותנועה</li>
-        </ul>
-      </div>
-      <div class="cat-modal-meta">
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">60 דקות</span></div>
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">550 ₪</span></div>
-      </div>
-      <a href="https://ever-lab.co/product/bio-age-test/" class="cat-modal-cta">לרכישת המבדק</a>
-    </div>
-  </div>
-
-  <div class="cat-modal" id="modal-training" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-training-title">
-    <div class="cat-modal-backdrop" data-modal-close></div>
-    <div class="cat-modal-panel" role="document">
-      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
-      </button>
-      <div class="cat-modal-eyebrow">02 · The Training</div>
-      <h3 id="modal-training-title" class="cat-modal-title">אימון התנסות אישי</h3>
-      <p class="cat-modal-desc">סשן אישי 1:1 על הציוד הטכנולוגי המתקדם של אבר לאב. אימון קצר, יעיל ומדויק שעובד על המרכיבים החשובים ביותר ללונג'ביטי: כוח, כושר אירובי, שיווי משקל ומהירות תגובה.</p>
-      <div class="cat-modal-section">
-        <h4 class="cat-modal-section-title">מה כלול:</h4>
-        <ul class="cat-modal-list">
-          <li>אימון 1:1 עם מאמן מוסמך</li>
-          <li>שימוש בציוד מתקדם: Vasper, ARX, CAROL Bike</li>
-          <li>אימון מותאם ליכולת ולמטרות שלך</li>
-          <li>מדידת ביצועים בזמן אמת</li>
-        </ul>
-      </div>
-      <div class="cat-modal-meta">
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">60 דקות</span></div>
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">350 ₪</span></div>
-      </div>
-      <a href="https://ever-lab.co/product/trial-workout/" class="cat-modal-cta">לרכישת אימון התנסות</a>
-    </div>
-  </div>
-
-  <div class="cat-modal" id="modal-recovery" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-recovery-title">
-    <div class="cat-modal-backdrop" data-modal-close></div>
-    <div class="cat-modal-panel" role="document">
-      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
-      </button>
-      <div class="cat-modal-eyebrow">03 · The Recovery</div>
-      <h3 id="modal-recovery-title" class="cat-modal-title">טיפול התאוששות בודד</h3>
-      <p class="cat-modal-desc">בחירה מתוך מגוון טיפולי ההתאוששות המתקדמים שלנו. כל טיפול נבחר בקפידה בזכות יכולתו לזרז התאוששות, להאיץ את תהליכי ההתחדשות ולתמוך במטרות הלונג'ביטי.</p>
-      <div class="cat-modal-section">
-        <h4 class="cat-modal-section-title">הטיפולים הזמינים:</h4>
-        <ul class="cat-modal-list">
-          <li>סאונה אינפרא אדום</li>
-          <li>תא קור</li>
-          <li>עיסוי לימפטי</li>
-          <li>פוד מדיטציה</li>
-          <li>עיסוי שרירים עמוק</li>
-        </ul>
-      </div>
-      <div class="cat-modal-meta">
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">20-30 דקות</span></div>
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">200 ₪</span></div>
-      </div>
-      <a href="https://ever-lab.co/product/single-recovery/" class="cat-modal-cta">לרכישת טיפול</a>
-    </div>
-  </div>
-
-  <div class="cat-modal" id="modal-combined" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-combined-title">
-    <div class="cat-modal-backdrop" data-modal-close></div>
-    <div class="cat-modal-panel" role="document">
-      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
-      </button>
-      <div class="cat-modal-eyebrow">04 · The Experience</div>
-      <h3 id="modal-combined-title" class="cat-modal-title">חבילות החוויה</h3>
-      <p class="cat-modal-desc">שילובים מובנים של המבדק, האימונים והטיפולים שלנו — לרכישה כחבילה אחת בערך מצוין. מתאים גם לרכישה כמתנה, ובאופציות לבד או בזוג.</p>
-      <div class="cat-modal-section">
-        <h4 class="cat-modal-section-title">החבילות הזמינות:</h4>
-        <ul class="cat-modal-list cat-modal-list-rich">
-          <li><strong>Longevity Discovery</strong> · גיל ביולוגי + 2 טיפולים · 920 ₪</li>
-          <li><strong>Longevity Experience</strong> · אימון + 2 טיפולים · 720 ₪</li>
-          <li><strong>Longevity Escape for Two</strong> · 4 טיפולים זוגיים · 990 ₪</li>
-          <li><strong>EVER BEST 2/3/4</strong> · אימון + 2-4 טיפולים · 600-845 ₪</li>
-        </ul>
-      </div>
-      <a href="#section-packages" class="cat-modal-cta" data-modal-close>גלי את כל החבילות</a>
-    </div>
-  </div>
-
-  <!-- Individual items (à la carte) — same card language as packages -->
-  <section class="exp-hero exp-hero-secondary" id="section-items">
-    <div class="exp-eyebrow"><span>À la carte</span></div>
-    <h1>טעם של עוד...</h1>
-    <p>בדיקות וטעימות מהעולם של אבר לאב — לרכישה נפרדת.</p>
-  </section>
-
-  <section class="individual-items">
-    <div class="items-wrap">
-
-      <!-- All 4 items in a single 4-col compact row -->
-      <div class="package-grid cols-4">
-
-        <article class="package package-compact">
-          <div class="package-image">
-            <div class="voucher-card">
-              <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
-              <div class="voucher-tagline">Body Composition</div>
-            </div>
-          </div>
-          <div class="package-body">
-            <h2>בדיקת <span class="accent">הרכב גוף</span></h2>
-            <div class="package-subtitle">30 דקות</div>
-            <p class="package-desc">סריקת InBody לניתוח אחוזי שומן, מסת שריר, מים ומאזן אלקטרוליטים.</p>
-            <div class="package-footer-row">
-              <div class="package-price">200<span class="package-price-currency">₪</span></div>
-              <a href="https://ever-lab.co/product/body-composition/" data-purchase="body-composition" class="package-cta package-cta-primary">
-                רכישה <span class="arr">←</span>
-              </a>
-            </div>
-            <div class="package-validity">תוקף · 24 חודשים</div>
-          </div>
-        </article>
-
-        <article class="package package-compact">
-          <div class="package-image">
-            <div class="voucher-card">
-              <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
-              <div class="voucher-tagline">Bio Age Test</div>
-            </div>
-          </div>
-          <div class="package-body">
-            <h2>בדיקת <span class="accent">גיל ביולוגי תפקודי</span></h2>
-            <div class="package-subtitle">60 דקות</div>
-            <p class="package-desc">אבחון מקיף המשלב הרכב גוף ומדדים תפקודיים לחישוב הגיל הביולוגי האמיתי שלך.</p>
-            <div class="package-footer-row">
-              <div class="package-price">550<span class="package-price-currency">₪</span></div>
-              <a href="https://ever-lab.co/product/bio-age-test/" data-purchase="bio-age-test" class="package-cta package-cta-primary">
-                רכישה <span class="arr">←</span>
-              </a>
-            </div>
-            <div class="package-validity">תוקף · 24 חודשים</div>
-          </div>
-        </article>
-
-        <article class="package package-compact">
-          <div class="package-image">
-            <div class="voucher-card">
-              <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
-              <div class="voucher-tagline">Trial Workout</div>
-            </div>
-          </div>
-          <div class="package-body">
-            <h2>אימון <span class="accent">התנסות</span></h2>
-            <div class="package-subtitle">60 דקות</div>
-            <p class="package-desc">אימון פרטי עם מאמן/ת מקצועי על ציוד טכנולוגי מתקדם — Vasper, ARX, CAROL ועוד.</p>
-            <div class="package-footer-row">
-              <div class="package-price">350<span class="package-price-currency">₪</span></div>
-              <a href="https://ever-lab.co/product/trial-workout/" data-purchase="trial-workout" class="package-cta package-cta-primary">
-                רכישה <span class="arr">←</span>
-              </a>
-            </div>
-            <div class="package-validity">תוקף · 24 חודשים</div>
-          </div>
-        </article>
-
-        <article class="package package-compact">
-          <div class="package-image">
-            <div class="voucher-card">
-              <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
-              <div class="voucher-tagline">Single Recovery</div>
-            </div>
-          </div>
-          <div class="package-body">
-            <h2>טיפול <span class="accent">התחדשות</span></h2>
-            <div class="package-subtitle">20-30 דקות</div>
-            <p class="package-desc">בחירה של טיפול אחד מבין מגוון הטיפולים במתחם — סאונה, NAP POD, ICE CUBE ועוד.</p>
-            <div class="package-footer-row">
-              <div class="package-price">200<span class="package-price-currency">₪</span></div>
-              <a href="https://ever-lab.co/product/single-recovery/" data-purchase="single-recovery" class="package-cta package-cta-primary">
-                רכישה <span class="arr">←</span>
-              </a>
-            </div>
-            <div class="package-validity">תוקף · 24 חודשים</div>
+            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-single-recovery">לפרטים</button>
+            <a href="https://ever-lab.co/product/single-recovery/" class="cat-btn cat-btn-primary">לרכישה</a>
           </div>
         </article>
 
@@ -1929,101 +1729,84 @@
   </section>
 
   <!-- Packages -->
-  <section class="packages">
-    <div class="package-grid">
+  <section class="cat-section">
+    <div class="cat-inner">
+      <div class="cat-grid cat-grid-3">
 
-      <!-- 1. Longevity Discovery -->
-      <article class="package package-compact">
-        <div class="package-image">
-          <div class="voucher-card">
-            <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
-            <div class="voucher-tagline">Gift Voucher · Discovery</div>
+        <article class="cat-card cat-card-1">
+          <div class="cat-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="34"/>
+              <circle cx="18" cy="22" r="2.4"/>
+              <circle cx="18" cy="32" r="2.4" fill="currentColor"/>
+              <line x1="27" y1="27" x2="33" y2="27"/>
+              <line x1="30" y1="24" x2="30" y2="30"/>
+              <path d="M 38 24 Q 41 22, 44 24 T 50 24"/>
+              <path d="M 38 28 Q 41 26, 44 28 T 50 28" opacity="0.75"/>
+              <path d="M 38 32 Q 41 30, 44 32 T 50 32" opacity="0.55"/>
+            </svg>
           </div>
-        </div>
-        <div class="package-body">
-          <h2>Longevity Discovery</h2>
-          <div class="package-subtitle">בדיקת גיל ביולוגי + 2 טיפולי התחדשות · 90 דקות</div>
-          <p class="package-desc">
-            הדרך לגלות איך הגוף שלך באמת מתפקד היום, ולטעום מעולם ההתאוששות והלונג'ביטי.
-          </p>
-          <div class="package-divider"></div>
-          <div class="package-includes-title">החבילה כוללת</div>
-          <ul class="package-includes">
-            <li>בדיקת גיל ביולוגי תפקודי</li>
-            <li>2 טיפולי התחדשות לבחירה מתוך מגוון הטיפולים במתחם</li>
-          </ul>
-          <div class="package-price-extra">ברכישה זוגית · 10% הנחה</div>
-          <div class="package-footer-row">
-            <div class="package-price">920<span class="package-price-currency">₪</span></div>
-            <a href="https://ever-lab.co/product/longevity-discovery/" data-purchase="discovery" class="package-cta package-cta-primary">
-              רכישה <span class="arr">←</span>
-            </a>
+          <div class="cat-card-body">
+            <span class="cat-card-num">01</span>
+            <span class="cat-card-label">Longevity Discovery</span>
+            <h3 class="cat-card-title">חבילת היכרות</h3>
+            <p class="cat-card-desc">גיל ביולוגי + 2 טיפולים · 90 דקות · 920 ₪</p>
           </div>
-          <div class="package-validity">תוקף שובר · 24 חודשים</div>
-        </div>
-      </article>
+          <div class="cat-card-actions">
+            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-discovery">לפרטים</button>
+            <a href="https://ever-lab.co/product/longevity-discovery/" class="cat-btn cat-btn-primary">לרכישה</a>
+          </div>
+        </article>
 
-      <!-- 2. Longevity Experience -->
-      <article class="package package-compact">
-        <div class="package-image">
-          <div class="voucher-card">
-            <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
-            <div class="voucher-tagline">Gift Voucher · Experience</div>
+        <article class="cat-card cat-card-2">
+          <div class="cat-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="30" r="2.4" fill="currentColor"/>
+              <line x1="18" y1="22" x2="18" y2="25"/>
+              <line x1="18" y1="35" x2="18" y2="38"/>
+              <line x1="10" y1="30" x2="13" y2="30"/>
+              <line x1="23" y1="30" x2="26" y2="30"/>
+              <circle cx="18" cy="30" r="7" opacity="0.45" stroke-dasharray="1.5 3"/>
+              <line x1="27" y1="27" x2="33" y2="27"/>
+              <line x1="30" y1="24" x2="30" y2="30"/>
+              <path d="M 38 24 Q 41 22, 44 24 T 50 24"/>
+              <path d="M 38 28 Q 41 26, 44 28 T 50 28" opacity="0.75"/>
+              <path d="M 38 32 Q 41 30, 44 32 T 50 32" opacity="0.55"/>
+            </svg>
           </div>
-        </div>
-        <div class="package-body">
-          <h2>Longevity Experience</h2>
-          <div class="package-subtitle">אימון התנסות + 2 טיפולי התחדשות · 90 דקות</div>
-          <p class="package-desc">
-            חוויה עתידנית המשלבת אימון מבוסס טכנולוגיה עם טיפולי התאוששות מתקדמים.
-          </p>
-          <div class="package-divider"></div>
-          <div class="package-includes-title">החבילה כוללת</div>
-          <ul class="package-includes">
-            <li>אימון התנסות אישי</li>
-            <li>2 טיפולי התחדשות לבחירה מתוך מגוון הטיפולים במתחם</li>
-          </ul>
-          <div class="package-price-extra">ברכישה זוגית · 10% הנחה</div>
-          <div class="package-footer-row">
-            <div class="package-price">720<span class="package-price-currency">₪</span></div>
-            <a href="https://ever-lab.co/product/longevity-experience/" data-purchase="experience" class="package-cta package-cta-primary">
-              רכישה <span class="arr">←</span>
-            </a>
+          <div class="cat-card-body">
+            <span class="cat-card-num">02</span>
+            <span class="cat-card-label">Longevity Experience</span>
+            <h3 class="cat-card-title">חבילת החוויה</h3>
+            <p class="cat-card-desc">אימון + 2 טיפולים · 90 דקות · 720 ₪</p>
           </div>
-          <div class="package-validity">תוקף שובר · 24 חודשים</div>
-        </div>
-      </article>
+          <div class="cat-card-actions">
+            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-experience">לפרטים</button>
+            <a href="https://ever-lab.co/product/longevity-experience/" class="cat-btn cat-btn-primary">לרכישה</a>
+          </div>
+        </article>
 
-      <!-- 3. Longevity Escape for Two -->
-      <article class="package package-compact">
-        <div class="package-image">
-          <div class="voucher-card">
-            <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
-            <div class="voucher-tagline">Gift Voucher · Escape for Two</div>
+        <article class="cat-card cat-card-4">
+          <div class="cat-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="23" cy="30" r="11"/>
+              <circle cx="37" cy="30" r="11"/>
+              <circle cx="30" cy="30" r="1.2" fill="currentColor"/>
+            </svg>
           </div>
-        </div>
-        <div class="package-body">
-          <h2>Longevity Escape</h2>
-          <div class="package-subtitle">4 טיפולי התחדשות זוגיים · 90 דקות</div>
-          <p class="package-desc">
-            חוויה זוגית של התאוששות, רוגע והתחדשות לגוף ולמערכת העצבים.
-          </p>
-          <div class="package-divider"></div>
-          <div class="package-includes-title">החבילה כוללת</div>
-          <ul class="package-includes">
-            <li>4 טיפולי התחדשות זוגיים</li>
-          </ul>
-          <div class="package-price-extra">חבילה זוגית מלאה</div>
-          <div class="package-footer-row">
-            <div class="package-price">990<span class="package-price-currency">₪</span> <span class="package-price-suffix">לזוג</span></div>
-            <a href="https://ever-lab.co/product/longevity-escape-for-two/" data-purchase="escape-for-two" class="package-cta package-cta-primary">
-              רכישה <span class="arr">←</span>
-            </a>
+          <div class="cat-card-body">
+            <span class="cat-card-num">03</span>
+            <span class="cat-card-label">Longevity Escape for Two</span>
+            <h3 class="cat-card-title">חבילה זוגית</h3>
+            <p class="cat-card-desc">4 טיפולים זוגיים · 90 דקות · 990 ₪</p>
           </div>
-          <div class="package-validity">תוקף שובר · 24 חודשים</div>
-        </div>
-      </article>
+          <div class="cat-card-actions">
+            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-escape">לפרטים</button>
+            <a href="https://ever-lab.co/product/longevity-escape-for-two/" class="cat-btn cat-btn-primary">לרכישה</a>
+          </div>
+        </article>
 
+      </div>
     </div>
   </section>
 
@@ -2037,102 +1820,93 @@
   </section>
 
   <!-- EVER BEST packages -->
-  <section class="packages packages-ever-best">
-    <div class="package-grid">
+  <section class="cat-section">
+    <div class="cat-inner">
+      <div class="cat-grid cat-grid-3">
 
-      <!-- EVER BEST 4 (4 treatments — biggest first in RTL = appears on right) -->
-      <article class="package package-compact">
-        <div class="package-image">
-          <div class="voucher-card">
-            <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
-            <div class="voucher-tagline">Gift Voucher · EVER BEST 4</div>
+        <!-- BEST 4 first (RTL: appears on right when 3-col, largest at top) -->
+        <article class="cat-card cat-card-4">
+          <div class="cat-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="30" cy="22" r="3" fill="currentColor"/>
+              <line x1="30" y1="12" x2="30" y2="17"/>
+              <line x1="20" y1="22" x2="23" y2="22"/>
+              <line x1="37" y1="22" x2="40" y2="22"/>
+              <line x1="22" y1="14" x2="24.5" y2="16.5" opacity="0.7"/>
+              <line x1="35.5" y1="16.5" x2="38" y2="14" opacity="0.7"/>
+              <circle cx="30" cy="22" r="8" opacity="0.4" stroke-dasharray="1.5 3"/>
+              <circle cx="17" cy="42" r="2.4"/>
+              <circle cx="25" cy="42" r="2.4"/>
+              <circle cx="35" cy="42" r="2.4"/>
+              <circle cx="43" cy="42" r="2.4"/>
+            </svg>
           </div>
-        </div>
-        <div class="package-body">
-          <h2>EVER <span class="accent">BEST 4</span></h2>
-          <div class="package-subtitle">אימון התנסות + 4 טיפולי התחדשות</div>
-          <p class="package-desc">
-            אימון התנסות אישי לצד ארבעה טיפולי התאוששות לבחירה. החוויה השלמה של אבר לאב.
-          </p>
-          <div class="package-divider"></div>
-          <div class="package-includes-title">החבילה כוללת</div>
-          <ul class="package-includes">
-            <li>אימון התנסות אישי</li>
-            <li>4 טיפולי התחדשות לבחירה מתוך מגוון הטיפולים במתחם</li>
-          </ul>
-          <div class="package-price-extra">חיסכון של כ-46% לסשן</div>
-          <div class="package-footer-row">
-            <div class="package-price">845<span class="package-price-currency">₪</span></div>
-            <a href="https://ever-lab.co/product/ever-best-4/" data-purchase="ever-best-4" class="package-cta package-cta-primary">
-              רכישה <span class="arr">←</span>
-            </a>
+          <div class="cat-card-body">
+            <span class="cat-card-num">01</span>
+            <span class="cat-card-label">EVER BEST 4</span>
+            <h3 class="cat-card-title">החוויה השלמה</h3>
+            <p class="cat-card-desc">אימון + 4 טיפולים · 845 ₪ · חיסכון 46%</p>
           </div>
-          <div class="package-validity">תוקף שובר · 24 חודשים</div>
-        </div>
-      </article>
+          <div class="cat-card-actions">
+            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-best-4">לפרטים</button>
+            <a href="https://ever-lab.co/product/ever-best-4/" class="cat-btn cat-btn-primary">לרכישה</a>
+          </div>
+        </article>
 
-      <!-- EVER BEST 3 -->
-      <article class="package package-compact">
-        <div class="package-image">
-          <div class="voucher-card">
-            <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
-            <div class="voucher-tagline">Gift Voucher · EVER BEST 3</div>
+        <article class="cat-card cat-card-3">
+          <div class="cat-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="30" cy="22" r="3" fill="currentColor"/>
+              <line x1="30" y1="12" x2="30" y2="17"/>
+              <line x1="20" y1="22" x2="23" y2="22"/>
+              <line x1="37" y1="22" x2="40" y2="22"/>
+              <line x1="22" y1="14" x2="24.5" y2="16.5" opacity="0.7"/>
+              <line x1="35.5" y1="16.5" x2="38" y2="14" opacity="0.7"/>
+              <circle cx="30" cy="22" r="8" opacity="0.4" stroke-dasharray="1.5 3"/>
+              <circle cx="20" cy="42" r="2.4"/>
+              <circle cx="30" cy="42" r="2.4"/>
+              <circle cx="40" cy="42" r="2.4"/>
+            </svg>
           </div>
-        </div>
-        <div class="package-body">
-          <h2>EVER <span class="accent">BEST 3</span></h2>
-          <div class="package-subtitle">אימון התנסות + 3 טיפולי התחדשות</div>
-          <p class="package-desc">
-            אימון התנסות לצד שלושה טיפולי התאוששות לבחירה. להעמקה בעולם של אבר לאב.
-          </p>
-          <div class="package-divider"></div>
-          <div class="package-includes-title">החבילה כוללת</div>
-          <ul class="package-includes">
-            <li>אימון התנסות אישי</li>
-            <li>3 טיפולי התחדשות לבחירה מתוך מגוון הטיפולים במתחם</li>
-          </ul>
-          <div class="package-price-extra">חיסכון של כ-33% לסשן</div>
-          <div class="package-footer-row">
-            <div class="package-price">720<span class="package-price-currency">₪</span></div>
-            <a href="https://ever-lab.co/product/ever-best-3/" data-purchase="ever-best-3" class="package-cta package-cta-primary">
-              רכישה <span class="arr">←</span>
-            </a>
+          <div class="cat-card-body">
+            <span class="cat-card-num">02</span>
+            <span class="cat-card-label">EVER BEST 3</span>
+            <h3 class="cat-card-title">חבילה מעמיקה</h3>
+            <p class="cat-card-desc">אימון + 3 טיפולים · 720 ₪ · חיסכון 33%</p>
           </div>
-          <div class="package-validity">תוקף שובר · 24 חודשים</div>
-        </div>
-      </article>
+          <div class="cat-card-actions">
+            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-best-3">לפרטים</button>
+            <a href="https://ever-lab.co/product/ever-best-3/" class="cat-btn cat-btn-primary">לרכישה</a>
+          </div>
+        </article>
 
-      <!-- EVER BEST 2 -->
-      <article class="package package-compact">
-        <div class="package-image">
-          <div class="voucher-card">
-            <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="voucher-logo">
-            <div class="voucher-tagline">Gift Voucher · EVER BEST 2</div>
+        <article class="cat-card cat-card-2">
+          <div class="cat-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="30" cy="22" r="3" fill="currentColor"/>
+              <line x1="30" y1="12" x2="30" y2="17"/>
+              <line x1="20" y1="22" x2="23" y2="22"/>
+              <line x1="37" y1="22" x2="40" y2="22"/>
+              <line x1="22" y1="14" x2="24.5" y2="16.5" opacity="0.7"/>
+              <line x1="35.5" y1="16.5" x2="38" y2="14" opacity="0.7"/>
+              <circle cx="30" cy="22" r="8" opacity="0.4" stroke-dasharray="1.5 3"/>
+              <circle cx="25" cy="42" r="2.4"/>
+              <circle cx="35" cy="42" r="2.4"/>
+            </svg>
           </div>
-        </div>
-        <div class="package-body">
-          <h2>EVER <span class="accent">BEST 2</span></h2>
-          <div class="package-subtitle">אימון התנסות + 2 טיפולי התחדשות</div>
-          <p class="package-desc">
-            אימון התנסות לצד שני טיפולי התאוששות לבחירה. ההיכרות הראשונה עם השיטה.
-          </p>
-          <div class="package-divider"></div>
-          <div class="package-includes-title">החבילה כוללת</div>
-          <ul class="package-includes">
-            <li>אימון התנסות אישי</li>
-            <li>2 טיפולי התחדשות לבחירה מתוך מגוון הטיפולים במתחם</li>
-          </ul>
-          <div class="package-price-extra">נקודת הכניסה לעולם</div>
-          <div class="package-footer-row">
-            <div class="package-price">600<span class="package-price-currency">₪</span></div>
-            <a href="https://ever-lab.co/product/ever-best-2/" data-purchase="ever-best-2" class="package-cta package-cta-primary">
-              רכישה <span class="arr">←</span>
-            </a>
+          <div class="cat-card-body">
+            <span class="cat-card-num">03</span>
+            <span class="cat-card-label">EVER BEST 2</span>
+            <h3 class="cat-card-title">היכרות עם השיטה</h3>
+            <p class="cat-card-desc">אימון + 2 טיפולים · 600 ₪</p>
           </div>
-          <div class="package-validity">תוקף שובר · 24 חודשים</div>
-        </div>
-      </article>
+          <div class="cat-card-actions">
+            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-best-2">לפרטים</button>
+            <a href="https://ever-lab.co/product/ever-best-2/" class="cat-btn cat-btn-primary">לרכישה</a>
+          </div>
+        </article>
 
+      </div>
     </div>
   </section>
 
@@ -2147,6 +1921,244 @@
       שיחת ייעוץ ללא עלות <span style="font-size: 18px;">←</span>
     </a>
   </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       PRODUCT MODALS — opened by 'לפרטים' buttons (one per product)
+       ═══════════════════════════════════════════════════════════════════════ -->
+
+  <div class="cat-modal" id="modal-body-comp" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="cat-modal-backdrop" data-modal-close></div>
+    <div class="cat-modal-panel" role="document">
+      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+      <div class="cat-modal-eyebrow">Body Composition</div>
+      <h3 class="cat-modal-title">בדיקת הרכב גוף</h3>
+      <p class="cat-modal-desc">סריקת InBody מקצועית לניתוח מקיף של מצב הגוף — אחוזי שומן, מסת שריר, מאזן מים ואלקטרוליטים. הבסיס להבנה של היכן הגוף שלך עומד היום.</p>
+      <div class="cat-modal-section">
+        <h4 class="cat-modal-section-title">הבדיקה כוללת:</h4>
+        <ul class="cat-modal-list">
+          <li>אחוז שומן ומסת שומן</li>
+          <li>מסת שריר ופירוט לפי איברים</li>
+          <li>מאזן מים תוך-תאי וחוץ-תאי</li>
+          <li>פירוט אלקטרוליטים</li>
+          <li>דוח אישי מודפס</li>
+        </ul>
+      </div>
+      <div class="cat-modal-meta">
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">30 דקות</span></div>
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">200 ₪</span></div>
+      </div>
+      <a href="https://ever-lab.co/product/body-composition/" class="cat-modal-cta">לרכישת הבדיקה</a>
+    </div>
+  </div>
+
+  <div class="cat-modal" id="modal-bio-age" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="cat-modal-backdrop" data-modal-close></div>
+    <div class="cat-modal-panel" role="document">
+      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+      <div class="cat-modal-eyebrow">Bio Age Test</div>
+      <h3 class="cat-modal-title">בדיקת גיל ביולוגי תפקודי</h3>
+      <p class="cat-modal-desc">המבדק המקיף שמשלב הרכב גוף עם מדדים תפקודיים. הוא משקף את מצב הגוף שלך כיום ומספק את הדאטה הבסיסית לבניית תוכנית אישית.</p>
+      <div class="cat-modal-section">
+        <h4 class="cat-modal-section-title">מה נבדק:</h4>
+        <ul class="cat-modal-list">
+          <li>הרכב גוף ומסת שריר</li>
+          <li>כוח ותפקוד שרירי</li>
+          <li>שיווי משקל ויציבות</li>
+          <li>מהירות תגובה ותפקוד קוגניטיבי</li>
+          <li>מדדי כושר ותנועה</li>
+        </ul>
+      </div>
+      <div class="cat-modal-meta">
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">60 דקות</span></div>
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">550 ₪</span></div>
+      </div>
+      <a href="https://ever-lab.co/product/bio-age-test/" class="cat-modal-cta">לרכישת המבדק</a>
+    </div>
+  </div>
+
+  <div class="cat-modal" id="modal-trial-workout" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="cat-modal-backdrop" data-modal-close></div>
+    <div class="cat-modal-panel" role="document">
+      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+      <div class="cat-modal-eyebrow">Trial Workout</div>
+      <h3 class="cat-modal-title">אימון התנסות אישי</h3>
+      <p class="cat-modal-desc">סשן אישי 1:1 על הציוד הטכנולוגי המתקדם של אבר לאב — אימון קצר, יעיל ומותאם שעובד על המרכיבים החשובים ביותר ללונג'ביטי.</p>
+      <div class="cat-modal-section">
+        <h4 class="cat-modal-section-title">מה כלול:</h4>
+        <ul class="cat-modal-list">
+          <li>אימון 1:1 עם מאמן מוסמך</li>
+          <li>שימוש בציוד: Vasper, ARX, CAROL Bike</li>
+          <li>אימון מותאם ליכולת ולמטרות שלך</li>
+          <li>מדידת ביצועים בזמן אמת</li>
+        </ul>
+      </div>
+      <div class="cat-modal-meta">
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">60 דקות</span></div>
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">350 ₪</span></div>
+      </div>
+      <a href="https://ever-lab.co/product/trial-workout/" class="cat-modal-cta">לרכישת האימון</a>
+    </div>
+  </div>
+
+  <div class="cat-modal" id="modal-single-recovery" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="cat-modal-backdrop" data-modal-close></div>
+    <div class="cat-modal-panel" role="document">
+      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+      <div class="cat-modal-eyebrow">Single Recovery</div>
+      <h3 class="cat-modal-title">טיפול התחדשות בודד</h3>
+      <p class="cat-modal-desc">בחירה מתוך מגוון הטיפולים המתקדמים שלנו. כל טיפול נבחר בקפידה בזכות יכולתו לזרז התאוששות, להאיץ את תהליכי ההתחדשות ולתמוך במטרות הלונג'ביטי.</p>
+      <div class="cat-modal-section">
+        <h4 class="cat-modal-section-title">הטיפולים הזמינים:</h4>
+        <ul class="cat-modal-list">
+          <li>סאונה אינפרא אדום</li>
+          <li>תא קור</li>
+          <li>עיסוי לימפטי</li>
+          <li>פוד מדיטציה</li>
+          <li>עיסוי שרירים עמוק</li>
+        </ul>
+      </div>
+      <div class="cat-modal-meta">
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">20-30 דקות</span></div>
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">200 ₪</span></div>
+      </div>
+      <a href="https://ever-lab.co/product/single-recovery/" class="cat-modal-cta">לרכישת הטיפול</a>
+    </div>
+  </div>
+
+  <div class="cat-modal" id="modal-discovery" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="cat-modal-backdrop" data-modal-close></div>
+    <div class="cat-modal-panel" role="document">
+      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+      <div class="cat-modal-eyebrow">Longevity Discovery</div>
+      <h3 class="cat-modal-title">חבילת היכרות</h3>
+      <p class="cat-modal-desc">הדרך לגלות איך הגוף שלך באמת מתפקד היום, ולטעום מעולם ההתאוששות והלונג'ביטי. שילוב של הבדיקה המקיפה עם שני טיפולים לבחירה.</p>
+      <div class="cat-modal-section">
+        <h4 class="cat-modal-section-title">החבילה כוללת:</h4>
+        <ul class="cat-modal-list">
+          <li>בדיקת גיל ביולוגי תפקודי מלאה</li>
+          <li>2 טיפולי התחדשות לבחירה</li>
+          <li>דוח אישי עם המלצות</li>
+          <li>ברכישה זוגית · 10% הנחה</li>
+        </ul>
+      </div>
+      <div class="cat-modal-meta">
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">90 דקות</span></div>
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">920 ₪</span></div>
+      </div>
+      <a href="https://ever-lab.co/product/longevity-discovery/" class="cat-modal-cta">לרכישת החבילה</a>
+    </div>
+  </div>
+
+  <div class="cat-modal" id="modal-experience" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="cat-modal-backdrop" data-modal-close></div>
+    <div class="cat-modal-panel" role="document">
+      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+      <div class="cat-modal-eyebrow">Longevity Experience</div>
+      <h3 class="cat-modal-title">חבילת החוויה</h3>
+      <p class="cat-modal-desc">חוויה עתידנית המשלבת אימון התנסות מבוסס טכנולוגיה עם שני טיפולי התאוששות מתקדמים. ההיכרות המלאה עם השפה של אבר לאב.</p>
+      <div class="cat-modal-section">
+        <h4 class="cat-modal-section-title">החבילה כוללת:</h4>
+        <ul class="cat-modal-list">
+          <li>אימון התנסות אישי על ציוד מתקדם</li>
+          <li>2 טיפולי התחדשות לבחירה</li>
+          <li>ברכישה זוגית · 10% הנחה</li>
+        </ul>
+      </div>
+      <div class="cat-modal-meta">
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">90 דקות</span></div>
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">720 ₪</span></div>
+      </div>
+      <a href="https://ever-lab.co/product/longevity-experience/" class="cat-modal-cta">לרכישת החבילה</a>
+    </div>
+  </div>
+
+  <div class="cat-modal" id="modal-escape" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="cat-modal-backdrop" data-modal-close></div>
+    <div class="cat-modal-panel" role="document">
+      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+      <div class="cat-modal-eyebrow">Longevity Escape for Two</div>
+      <h3 class="cat-modal-title">חבילה זוגית</h3>
+      <p class="cat-modal-desc">חוויה זוגית של התאוששות, רוגע והתחדשות לגוף ולמערכת העצבים. ארבעה טיפולי התחדשות זוגיים — חוויה משותפת באבר לאב.</p>
+      <div class="cat-modal-section">
+        <h4 class="cat-modal-section-title">החבילה כוללת:</h4>
+        <ul class="cat-modal-list">
+          <li>4 טיפולי התחדשות זוגיים לבחירה</li>
+          <li>חוויה משותפת בחדרים פרטיים</li>
+          <li>שובר זוגי דיגיטלי</li>
+        </ul>
+      </div>
+      <div class="cat-modal-meta">
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">90 דקות</span></div>
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">990 ₪ לזוג</span></div>
+      </div>
+      <a href="https://ever-lab.co/product/longevity-escape-for-two/" class="cat-modal-cta">לרכישת החבילה הזוגית</a>
+    </div>
+  </div>
+
+  <div class="cat-modal" id="modal-best-2" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="cat-modal-backdrop" data-modal-close></div>
+    <div class="cat-modal-panel" role="document">
+      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+      <div class="cat-modal-eyebrow">EVER BEST 2</div>
+      <h3 class="cat-modal-title">היכרות עם השיטה</h3>
+      <p class="cat-modal-desc">נקודת הכניסה לעולם של אבר לאב — אימון התנסות לצד שני טיפולי התאוששות לבחירה. ההזדמנות הראשונה להרגיש את השפה של אבר לאב.</p>
+      <div class="cat-modal-section">
+        <h4 class="cat-modal-section-title">החבילה כוללת:</h4>
+        <ul class="cat-modal-list">
+          <li>אימון התנסות אישי</li>
+          <li>2 טיפולי התחדשות לבחירה</li>
+        </ul>
+      </div>
+      <div class="cat-modal-meta">
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">600 ₪</span></div>
+      </div>
+      <a href="https://ever-lab.co/product/ever-best-2/" class="cat-modal-cta">לרכישת EVER BEST 2</a>
+    </div>
+  </div>
+
+  <div class="cat-modal" id="modal-best-3" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="cat-modal-backdrop" data-modal-close></div>
+    <div class="cat-modal-panel" role="document">
+      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+      <div class="cat-modal-eyebrow">EVER BEST 3</div>
+      <h3 class="cat-modal-title">חבילה מעמיקה</h3>
+      <p class="cat-modal-desc">להעמקה בעולם של אבר לאב — אימון התנסות לצד שלושה טיפולי התאוששות לבחירה. הזדמנות לחוויה רחבה ומעמיקה.</p>
+      <div class="cat-modal-section">
+        <h4 class="cat-modal-section-title">החבילה כוללת:</h4>
+        <ul class="cat-modal-list">
+          <li>אימון התנסות אישי</li>
+          <li>3 טיפולי התחדשות לבחירה</li>
+          <li>חיסכון של כ-33% לסשן</li>
+        </ul>
+      </div>
+      <div class="cat-modal-meta">
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">720 ₪</span></div>
+      </div>
+      <a href="https://ever-lab.co/product/ever-best-3/" class="cat-modal-cta">לרכישת EVER BEST 3</a>
+    </div>
+  </div>
+
+  <div class="cat-modal" id="modal-best-4" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="cat-modal-backdrop" data-modal-close></div>
+    <div class="cat-modal-panel" role="document">
+      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+      <div class="cat-modal-eyebrow">EVER BEST 4</div>
+      <h3 class="cat-modal-title">החוויה השלמה</h3>
+      <p class="cat-modal-desc">החוויה המלאה של אבר לאב — אימון התנסות אישי לצד ארבעה טיפולי התאוששות לבחירה. ההזדמנות לטעום את כל מה שיש לנו להציע.</p>
+      <div class="cat-modal-section">
+        <h4 class="cat-modal-section-title">החבילה כוללת:</h4>
+        <ul class="cat-modal-list">
+          <li>אימון התנסות אישי</li>
+          <li>4 טיפולי התחדשות לבחירה</li>
+          <li>חיסכון של כ-46% לסשן</li>
+        </ul>
+      </div>
+      <div class="cat-modal-meta">
+        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">845 ₪</span></div>
+      </div>
+      <a href="https://ever-lab.co/product/ever-best-4/" class="cat-modal-cta">לרכישת EVER BEST 4</a>
+    </div>
+  </div>
 
 </main>
 
