@@ -1159,6 +1159,229 @@
     .package { padding: 32px 26px 28px; }
     .exp-closing { padding: 70px 22px 80px; }
   }
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     CATEGORY CARDS — 4 sage gradient cards with elegant line-art icons
+     Inspired by the wellness premium aesthetic (Function Health, Levels)
+     ═══════════════════════════════════════════════════════════════════════ */
+  .cat-section {
+    padding: 80px 32px 100px;
+    background: var(--bg);
+    position: relative;
+  }
+  .cat-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+  .cat-eyebrow {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 22px;
+  }
+  .cat-eyebrow span {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    color: var(--sage-deep);
+    text-transform: uppercase;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(141, 174, 146, 0.4);
+  }
+  .cat-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: clamp(26px, 3vw, 38px);
+    line-height: 1.2;
+    color: var(--ink);
+    text-align: center;
+    margin: 0 auto 56px;
+    max-width: 720px;
+    letter-spacing: -0.01em;
+  }
+
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+
+  /* Card base — shared shell */
+  .cat-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 5 / 6;
+    padding: 32px 28px;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.45s ease;
+    box-shadow:
+      0 1px 2px rgba(40, 50, 40, 0.04),
+      0 8px 24px -12px rgba(40, 50, 40, 0.12);
+  }
+  /* Subtle inner highlight on top to give depth */
+  .cat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 45%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  .cat-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 1px 2px rgba(40, 50, 40, 0.05),
+      0 22px 48px -16px rgba(60, 80, 65, 0.32);
+  }
+  .cat-card:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 4px;
+  }
+
+  /* 4 sage gradient variants */
+  .cat-card-1 {
+    /* Lightest, fresh sage — Assessment / clean precision */
+    background: linear-gradient(135deg, #C5D9AF 0%, #98B585 100%);
+  }
+  .cat-card-2 {
+    /* Warm sage / olive — Training / kinetic energy */
+    background: linear-gradient(135deg, #C5BA8F 0%, #9D9468 100%);
+  }
+  .cat-card-3 {
+    /* Cool sage / slate-sage — Recovery / calm */
+    background: linear-gradient(135deg, #94A8A6 0%, #6F8B89 100%);
+  }
+  .cat-card-4 {
+    /* Deep sage — Premium / combined experience */
+    background: linear-gradient(135deg, #6B8B70 0%, #4F6A56 100%);
+  }
+
+  /* Icon area (top of card, mostly empty space) */
+  .cat-card-icon {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    opacity: 0.95;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+  }
+  .cat-card-icon svg {
+    width: 64px;
+    height: 64px;
+    display: block;
+  }
+  .cat-card:hover .cat-card-icon {
+    transform: translateY(-4px) scale(1.04);
+    opacity: 1;
+  }
+
+  /* Body — title + descriptor at the bottom */
+  .cat-card-body {
+    text-align: start;
+    color: #fff;
+  }
+  .cat-card-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: rgba(255, 255, 255, 0.7);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .cat-card-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: rgba(255, 255, 255, 0.65);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .cat-card-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.18;
+    color: #fff;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+  }
+  .cat-card-desc {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+  }
+
+  /* Arrow indicator (bottom-end corner, appears on hover) */
+  .cat-card-arrow {
+    position: absolute;
+    bottom: 24px;
+    inset-inline-end: 24px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateX(8px);
+    transition: opacity 0.35s ease, transform 0.35s ease, background 0.35s ease;
+  }
+  .cat-card-arrow svg { width: 12px; height: 12px; }
+  .cat-card:hover .cat-card-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    background: rgba(255, 255, 255, 0.22);
+  }
+
+  /* Make text + num distinct from labels in dark card (4) */
+  .cat-card-4 .cat-card-num,
+  .cat-card-4 .cat-card-label {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Responsive — tablet: 2x2 */
+  @media (max-width: 980px) {
+    .cat-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .cat-card {
+      aspect-ratio: 4 / 5;
+    }
+  }
+  @media (max-width: 540px) {
+    .cat-section { padding: 60px 20px 80px; }
+    .cat-title { margin-bottom: 36px; font-size: 22px; }
+    .cat-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .cat-card {
+      aspect-ratio: 5 / 4;  /* shorter / wider on mobile single column */
+      padding: 28px 24px;
+    }
+    .cat-card-icon svg { width: 52px; height: 52px; }
+    .cat-card-title { font-size: 22px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cat-card, .cat-card-icon, .cat-card-arrow { transition: none; }
+    .cat-card:hover { transform: none; }
+    .cat-card:hover .cat-card-icon { transform: none; }
+  }
 </style>
 </head>
 <body>
@@ -1180,8 +1403,133 @@
     <h1>The Ever Lab<br>Longevity Experience</h1>
   </section>
 
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       CATEGORY CARDS — 4 entry points organized by EVER LAB philosophy:
+       Measure → Train → Recover → Together (couples)
+       Sage gradient variants keep brand cohesion; elegant line-art icons.
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <section class="cat-section">
+    <div class="cat-inner">
+      <div class="cat-eyebrow"><span>Choose Your Journey</span></div>
+      <h2 class="cat-title">ארבעה כיוונים. תוכנית אחת בנויה במדויק עבורך.</h2>
+
+      <div class="cat-grid">
+
+        <!-- 01 · המבדק (Assessment) — lightest sage -->
+        <a href="#section-items" class="cat-card cat-card-1" aria-label="בדיקת גיל ביולוגי תפקודי">
+          <div class="cat-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Measurement axis: vertical line with target circle (top) and precise reading (bottom) -->
+              <line x1="30" y1="14" x2="30" y2="46"/>
+              <circle cx="30" cy="20" r="4.2"/>
+              <circle cx="30" cy="40" r="4.2"/>
+              <circle cx="30" cy="40" r="2" fill="currentColor"/>
+              <!-- Tick marks left -->
+              <line x1="19" y1="20" x2="22" y2="20" opacity="0.7"/>
+              <line x1="20" y1="30" x2="22" y2="30" opacity="0.5"/>
+              <line x1="19" y1="40" x2="22" y2="40" opacity="0.7"/>
+              <!-- Tick marks right -->
+              <line x1="38" y1="20" x2="41" y2="20" opacity="0.7"/>
+              <line x1="38" y1="30" x2="40" y2="30" opacity="0.5"/>
+              <line x1="38" y1="40" x2="41" y2="40" opacity="0.7"/>
+            </svg>
+          </div>
+          <div class="cat-card-body">
+            <span class="cat-card-num">01</span>
+            <span class="cat-card-label">The Assessment</span>
+            <h3 class="cat-card-title">המבדק</h3>
+            <p class="cat-card-desc">גיל ביולוגי תפקודי + הרכב גוף</p>
+          </div>
+          <span class="cat-card-arrow" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4 L5 8 L11 12"/>
+            </svg>
+          </span>
+        </a>
+
+        <!-- 02 · האימון (Training) — warm sage -->
+        <a href="#section-items" class="cat-card cat-card-2" aria-label="אימון אישי">
+          <div class="cat-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Radiant burst — energy/movement emanating from center -->
+              <circle cx="30" cy="30" r="3" fill="currentColor"/>
+              <line x1="30" y1="14" x2="30" y2="19"/>
+              <line x1="30" y1="41" x2="30" y2="46"/>
+              <line x1="14" y1="30" x2="19" y2="30"/>
+              <line x1="41" y1="30" x2="46" y2="30"/>
+              <line x1="18.5" y1="18.5" x2="22" y2="22" opacity="0.7"/>
+              <line x1="38" y1="38" x2="41.5" y2="41.5" opacity="0.7"/>
+              <line x1="18.5" y1="41.5" x2="22" y2="38" opacity="0.7"/>
+              <line x1="38" y1="22" x2="41.5" y2="18.5" opacity="0.7"/>
+              <circle cx="30" cy="30" r="9" opacity="0.45" stroke-dasharray="1.5 3"/>
+            </svg>
+          </div>
+          <div class="cat-card-body">
+            <span class="cat-card-num">02</span>
+            <span class="cat-card-label">The Training</span>
+            <h3 class="cat-card-title">האימון</h3>
+            <p class="cat-card-desc">אימון אישי מבוסס נתונים</p>
+          </div>
+          <span class="cat-card-arrow" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4 L5 8 L11 12"/>
+            </svg>
+          </span>
+        </a>
+
+        <!-- 03 · ההתאוששות (Recovery) — cool sage -->
+        <a href="#section-items" class="cat-card cat-card-3" aria-label="טיפולי התאוששות">
+          <div class="cat-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Three flowing waves — calm, restorative -->
+              <path d="M 12 22 Q 21 16, 30 22 T 48 22"/>
+              <path d="M 12 30 Q 21 24, 30 30 T 48 30" opacity="0.75"/>
+              <path d="M 12 38 Q 21 32, 30 38 T 48 38" opacity="0.55"/>
+            </svg>
+          </div>
+          <div class="cat-card-body">
+            <span class="cat-card-num">03</span>
+            <span class="cat-card-label">The Recovery</span>
+            <h3 class="cat-card-title">ההתאוששות</h3>
+            <p class="cat-card-desc">טיפולים מתקדמים להתחדשות</p>
+          </div>
+          <span class="cat-card-arrow" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4 L5 8 L11 12"/>
+            </svg>
+          </span>
+        </a>
+
+        <!-- 04 · החוויה המשולבת (Combined / couples) — deep sage -->
+        <a href="#section-packages" class="cat-card cat-card-4" aria-label="חבילות והחוויה המשולבת">
+          <div class="cat-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Two interlocking circles — connection, partnership, combined experience -->
+              <circle cx="23" cy="30" r="11"/>
+              <circle cx="37" cy="30" r="11"/>
+              <!-- Small dot at the overlap center -->
+              <circle cx="30" cy="30" r="1.2" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="cat-card-body">
+            <span class="cat-card-num">04</span>
+            <span class="cat-card-label">The Experience</span>
+            <h3 class="cat-card-title">חוויה משולבת</h3>
+            <p class="cat-card-desc">חבילות חוויה לבד או בזוג</p>
+          </div>
+          <span class="cat-card-arrow" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4 L5 8 L11 12"/>
+            </svg>
+          </span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
   <!-- Individual items (à la carte) — same card language as packages -->
-  <section class="exp-hero exp-hero-secondary">
+  <section class="exp-hero exp-hero-secondary" id="section-items">
     <div class="exp-eyebrow"><span>À la carte</span></div>
     <h1>טעם של עוד...</h1>
     <p>בדיקות וטעימות מהעולם של אבר לאב — לרכישה נפרדת.</p>
@@ -1282,7 +1630,7 @@
   </section>
 
   <!-- Packages section header -->
-  <section class="exp-hero exp-hero-secondary">
+  <section class="exp-hero exp-hero-secondary" id="section-packages">
     <div class="exp-eyebrow"><span>Curated Experiences</span></div>
     <h1><span class="accent">חבילות</span></h1>
   </section>
