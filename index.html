@@ -1635,6 +1635,585 @@
     from { opacity: 0; transform: translateY(-4px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  /* ============== Method 2-Step Visual (inside FAQ accordion) ============== */
+  .method-intro {
+    margin: 4px 0 22px !important;
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+  }
+  .method-intro strong { color: var(--sage-deep); }
+
+  .method-steps {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: stretch;
+    gap: 0;
+    margin: 0 0 28px;
+  }
+  .method-step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 22px 26px;
+    background: #fff;
+    border: 1px solid rgba(141, 174, 146, 0.32);
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.28s ease, box-shadow 0.28s ease, transform 0.28s ease, background 0.28s ease;
+    overflow: hidden;
+  }
+  .method-step::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(205, 223, 183, 0) 0%, rgba(205, 223, 183, 0.18) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  .method-step:hover {
+    border-color: var(--sage);
+    box-shadow: 0 10px 32px -16px rgba(107, 139, 112, 0.42);
+    transform: translateY(-2px);
+  }
+  .method-step:hover::before { opacity: 1; }
+  .method-step:focus-visible {
+    outline: 2px solid var(--sage-deep);
+    outline-offset: 3px;
+  }
+  .method-step-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    color: var(--sage-deep);
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+  }
+  .method-step-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--sage-soft);
+    color: var(--sage-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .method-step-icon svg { width: 30px; height: 30px; }
+  .method-step:hover .method-step-icon {
+    background: var(--sage);
+    color: #fff;
+    transform: scale(1.06);
+  }
+  .method-step-body {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+  .method-step-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0 0 8px;
+  }
+  .method-step-desc {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: #555;
+    margin: 0 !important;
+  }
+  .method-step-arrow {
+    position: absolute;
+    bottom: 18px;
+    inset-inline-end: 18px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid rgba(141, 174, 146, 0.4);
+    color: var(--sage-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    z-index: 1;
+  }
+  .method-step-arrow svg { width: 12px; height: 12px; }
+  .method-step:hover .method-step-arrow {
+    background: var(--sage-deep);
+    color: #fff;
+    border-color: var(--sage-deep);
+    transform: translateX(-3px);
+  }
+
+  /* Connector between cards (the "+" combiner) */
+  .method-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 14px;
+    gap: 6px;
+  }
+  .method-connector-line {
+    width: 1px;
+    flex: 1;
+    background: linear-gradient(180deg, transparent 0%, rgba(141, 174, 146, 0.5) 50%, transparent 100%);
+    min-height: 30px;
+  }
+  .method-connector-plus {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--sage-deep);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1;
+    flex-shrink: 0;
+    box-shadow: 0 4px 14px -4px rgba(107, 139, 112, 0.55);
+  }
+
+  /* Synthesis banner */
+  .method-synthesis {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 24px;
+    background: linear-gradient(135deg, rgba(205, 223, 183, 0.45) 0%, rgba(205, 223, 183, 0.22) 100%);
+    border-inline-start: 3px solid var(--sage);
+    border-radius: 4px;
+    margin-top: 8px;
+  }
+  .method-synthesis-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 26px;
+    color: var(--sage-deep);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .method-synthesis p {
+    margin: 0 !important;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .method-synthesis-hl {
+    color: var(--sage-deep);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+  }
+
+  /* Mobile: stack cards vertically, rotate connector */
+  @media (max-width: 720px) {
+    .method-steps {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+    }
+    .method-connector {
+      flex-direction: row;
+      padding: 14px 0;
+      gap: 12px;
+    }
+    .method-connector-line {
+      width: auto;
+      height: 1px;
+      flex: 1;
+      min-height: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(141, 174, 146, 0.5) 50%, transparent 100%);
+    }
+    .method-step { padding: 22px 18px 24px; }
+    .method-step-arrow { bottom: 14px; inset-inline-end: 14px; }
+  }
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     METHOD TIMELINE — horizontal RTL axis with stations + cards + synthesis
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  .mtl-intro {
+    text-align: center;
+    max-width: 680px;
+    margin: 28px auto 72px;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #555;
+  }
+  .mtl-intro strong {
+    color: var(--sage-deep);
+    font-weight: 500;
+  }
+
+  .method-timeline {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ─────── Horizontal axis (desktop) ─────── */
+  .mtl-axis-wrap {
+    position: relative;
+    height: 160px;
+    margin: 0 0 18px;
+    /* No horizontal padding so the inner stations grid matches the cards grid width exactly */
+  }
+  .mtl-axis-line {
+    position: absolute;
+    top: 50%;
+    left: 60px;
+    right: 60px;
+    height: 1.5px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(141, 174, 146, 0.55) 8%,
+      rgba(141, 174, 146, 0.55) 92%,
+      transparent 100%
+    );
+    transform: translateY(-50%);
+    z-index: 0;
+  }
+
+  /* START marker — far right in RTL (rendered as the origin point) */
+  .mtl-start {
+    position: absolute;
+    top: 50%;
+    right: 60px;
+    width: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+  }
+  .mtl-start-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: var(--sage-deep);
+    margin-bottom: 16px;
+    white-space: nowrap;
+  }
+  .mtl-start-pulse {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--sage-deep);
+    box-shadow: 0 0 0 0 rgba(107, 139, 112, 0.45);
+    animation: mtl-pulse 2.6s ease-out infinite;
+    position: relative;
+  }
+  @keyframes mtl-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(107, 139, 112, 0.5); }
+    70%  { box-shadow: 0 0 0 20px rgba(107, 139, 112, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(107, 139, 112, 0); }
+  }
+
+  /* Future trail — far left in RTL */
+  .mtl-future {
+    position: absolute;
+    top: 50%;
+    left: 60px;
+    width: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+  }
+  .mtl-future-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: #888;
+    margin-bottom: 16px;
+    white-space: nowrap;
+    text-align: center;
+  }
+  .mtl-future-line {
+    width: 80px;
+    height: 1.5px;
+    background-image: linear-gradient(90deg, rgba(141, 174, 146, 0.65) 50%, transparent 50%);
+    background-size: 8px 1.5px;
+    background-repeat: repeat-x;
+    animation: mtl-flow 1.8s linear infinite;
+    transform: translateX(-50%);
+  }
+  @keyframes mtl-flow {
+    0%   { background-position: 0 0; }
+    100% { background-position: -16px 0; }
+  }
+
+  /* Stations laid out via grid to align with cards below */
+  .mtl-stations {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+  .mtl-station {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .mtl-station-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    color: var(--sage-deep);
+    margin-bottom: 14px;
+    white-space: nowrap;
+  }
+  .mtl-station-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--sage-deep);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    box-shadow: 0 8px 22px -10px rgba(107, 139, 112, 0.65);
+    border: 4px solid var(--paper);
+    z-index: 2;
+  }
+  .mtl-station-time {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: #888;
+    margin-top: 14px;
+    white-space: nowrap;
+  }
+
+  /* ─────── Cards aligned with stations ─────── */
+  .mtl-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 8px;
+  }
+  .mtl-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 30px 24px;
+    background: #fff;
+    border: 1px solid rgba(141, 174, 146, 0.3);
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+  }
+  .mtl-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(205, 223, 183, 0) 0%, rgba(205, 223, 183, 0.15) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  .mtl-card:hover {
+    border-color: var(--sage);
+    box-shadow: 0 14px 38px -18px rgba(107, 139, 112, 0.42);
+    transform: translateY(-3px);
+  }
+  .mtl-card:hover::before { opacity: 1; }
+  .mtl-card:focus-visible {
+    outline: 2px solid var(--sage-deep);
+    outline-offset: 3px;
+  }
+  .mtl-card-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 1.18;
+    color: var(--ink);
+    margin: 0 0 4px;
+    position: relative;
+    z-index: 1;
+  }
+  .mtl-card-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--sage-deep);
+    margin: 0 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .mtl-card-text {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: #555;
+    margin: 0 0 22px;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+  .mtl-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 1;
+  }
+  .mtl-card-tags span {
+    font-family: 'Space Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    color: var(--sage-deep);
+    background: rgba(205, 223, 183, 0.55);
+    padding: 5px 10px;
+    border-radius: 3px;
+  }
+  .mtl-card-link {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--sage-deep);
+    border-top: 1px solid rgba(141, 174, 146, 0.25);
+    padding-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s ease, gap 0.25s ease;
+    position: relative;
+    z-index: 1;
+  }
+  .mtl-card-link svg { width: 12px; height: 12px; }
+  .mtl-card:hover .mtl-card-link {
+    color: var(--ink);
+    gap: 10px;
+  }
+
+  /* Synthesis banner */
+  .mtl-synthesis {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 28px;
+    background: linear-gradient(135deg, rgba(205, 223, 183, 0.45) 0%, rgba(205, 223, 183, 0.2) 100%);
+    border-inline-start: 3px solid var(--sage);
+    border-radius: 4px;
+    max-width: 820px;
+    margin: 56px auto 0;
+  }
+  .mtl-synthesis-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--sage-deep);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .mtl-synthesis p {
+    margin: 0;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .mtl-synthesis-hl {
+    color: var(--sage-deep);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+  }
+
+  /* ─────── Mobile: hide horizontal axis, stack cards with inline badge ─────── */
+  @media (max-width: 820px) {
+    .mtl-intro { font-size: 16px; margin: 20px auto 36px; padding: 0 12px; }
+    .method-timeline { padding: 0 18px; }
+    .mtl-axis-wrap { display: none; }
+    .mtl-cards {
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+    .mtl-card {
+      padding: 56px 24px 22px;
+      position: relative;
+    }
+    .mtl-card::after {
+      content: attr(data-step);
+      position: absolute;
+      top: -18px;
+      inset-inline-end: 22px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--sage-deep);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 8px 18px -8px rgba(107, 139, 112, 0.5);
+      z-index: 2;
+    }
+    .mtl-card-title { font-size: 23px; }
+    .mtl-card-sub { font-size: 18px; }
+    .mtl-card-text { font-size: 15px; }
+    .mtl-synthesis {
+      padding: 18px 22px;
+      margin: 36px 12px 0;
+    }
+    .mtl-synthesis p { font-size: 15.5px; }
+    .mtl-synthesis-hl { font-size: 17px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mtl-start-pulse, .mtl-future-line { animation: none; }
+    .mtl-card { transition: none; }
+    .mtl-card:hover { transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .method-step, .method-step::before, .method-step-icon, .method-step-arrow { transition: none; }
+    .method-step:hover { transform: none; }
+    .method-step:hover .method-step-icon { transform: none; }
+    .method-step:hover .method-step-arrow { transform: none; }
+  }
+
   @media (max-width: 768px) {
     .faq-section { padding: 80px 22px 70px; }
     .faq-title { margin-bottom: 36px; }
@@ -6110,17 +6689,89 @@
     איך עובדת <span class="hl">השיטה שלנו?</span>
   </h2>
 
-  <p class="chapter-intro">
-    באמצעות אבחון מתקדם של <strong>הרכב הגוף</strong> ומדדי התפקוד המשפיעים על אריכות ואיכות החיים, אנו יוצרים את <strong>מפת הלונג'ביטי האישית שלך</strong> – תמונה מקיפה של מצבך כיום.
+  <p class="mtl-intro">
+    השיטה כוללת <strong>שני שלבים משלימים</strong> שיוצרים יחד תוכנית לונג'ביטי מבוססת נתונים.
   </p>
 
-  <p class="chapter-intro">
-    המפה כוללת הערכה של <strong>הגיל הביולוגי התפקודי</strong>, מזהה את נקודות החוזקה ואת התחומים שבהם ניתן להשיג את <strong>ההשפעה הגדולה ביותר</strong>.
-  </p>
+  <!-- ═══════════ Method Timeline — horizontal RTL: START on right, future on left ═══════════ -->
+  <div class="method-timeline">
 
-  <p class="chapter-intro">
-    על בסיס מפת הלונג'ביטי שלך נבנית <strong>תוכנית אישית</strong> המשלבת <strong>אימונים, טיפולי התאוששות ושינוי בהרגלי חיים</strong>, ומלווה ב<strong>מדידות חוזרות</strong> לאורך הדרך, כדי לוודא שהגוף שלך מתקדם בכיוון הנכון.
-  </p>
+    <!-- Axis with stations, START marker, and future trail -->
+    <div class="mtl-axis-wrap" aria-hidden="true">
+      <span class="mtl-axis-line"></span>
+
+      <!-- START marker (far right in RTL) -->
+      <div class="mtl-start">
+        <span class="mtl-start-label">START</span>
+        <span class="mtl-start-pulse"></span>
+      </div>
+
+      <!-- Future trail (far left in RTL) -->
+      <div class="mtl-future">
+        <span class="mtl-future-label">המסע ממשיך · מדידה חוזרת כל 90 יום ↻</span>
+        <span class="mtl-future-line"></span>
+      </div>
+
+      <!-- Two stations on the axis (DOM order: 01 first = right side in RTL) -->
+      <div class="mtl-stations">
+        <div class="mtl-station">
+          <span class="mtl-station-eyebrow">The Assessment</span>
+          <span class="mtl-station-circle">01</span>
+          <span class="mtl-station-time">T = 0</span>
+        </div>
+        <div class="mtl-station">
+          <span class="mtl-station-eyebrow">The Program</span>
+          <span class="mtl-station-circle">02</span>
+          <span class="mtl-station-time">T = 90+ ימים</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards aligned below the stations -->
+    <div class="mtl-cards">
+      <a href="#step-measure" class="mtl-card" data-step="01">
+        <h3 class="mtl-card-title">שלב האבחון</h3>
+        <p class="mtl-card-sub">מבדק גיל ביולוגי תפקודי</p>
+        <p class="mtl-card-text">
+          נקודת ההתחלה של כל לקוח. מדידה מקיפה של הרכב הגוף, כוח התפקוד ויכולת התגובה הנוירו-מוטורית. בסיומה דוח אישי שמציג את הגיל הביולוגי שלך וההמלצות לשלב הבא.
+        </p>
+        <div class="mtl-card-tags">
+          <span>הרכב גוף</span>
+          <span>כוח תפקודי</span>
+          <span>נוירו-מוטורי</span>
+        </div>
+        <span class="mtl-card-link">פרטים על המבדק
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M11 4 L5 8 L11 12"/>
+          </svg>
+        </span>
+      </a>
+
+      <a href="#step-plan" class="mtl-card" data-step="02">
+        <h3 class="mtl-card-title">שלב התוכנית</h3>
+        <p class="mtl-card-sub">אימונים + טיפולי התאוששות</p>
+        <p class="mtl-card-text">
+          תוכנית מותאמת אישית הנבנית על תוצאות האבחון. משלבת אימונים מבוססי טכנולוגיה (Vasper, ARX, CAROL) עם טיפולי התאוששות מתקדמים, ומלווה במדידות חוזרות לאורך הדרך.
+        </p>
+        <div class="mtl-card-tags">
+          <span>אימונים</span>
+          <span>ריקברי</span>
+          <span>מעקב מתמשך</span>
+        </div>
+        <span class="mtl-card-link">פרטים על התוכנית
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M11 4 L5 8 L11 12"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+
+    <!-- Synthesis banner -->
+    <div class="mtl-synthesis">
+      <span class="mtl-synthesis-mark" aria-hidden="true">✦</span>
+      <p>השילוב בין השלבים מאפשר לבנות תוכנית <span class="mtl-synthesis-hl">לונג'ביטי אמיתית וישומית</span></p>
+    </div>
+  </div>
 
   <!-- Bridge to first stage — visually connects chapter to next section -->
   <div class="stage-bridge">
@@ -6668,6 +7319,74 @@
 
     <div class="faq-list">
 
+      <details class="faq-item" open>
+        <summary class="faq-q">
+          <span>איך עובדת השיטה שלנו?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </summary>
+        <div class="faq-a">
+          <p class="method-intro">השיטה כוללת <strong>שני שלבים</strong>:</p>
+
+          <div class="method-steps">
+            <a href="#step-measure" class="method-step">
+              <span class="method-step-num">01</span>
+              <div class="method-step-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 26 L4 6"/>
+                  <path d="M4 26 L28 26"/>
+                  <rect x="8" y="18" width="3.5" height="6"/>
+                  <rect x="14.25" y="13" width="3.5" height="11"/>
+                  <rect x="20.5" y="9" width="3.5" height="15"/>
+                  <circle cx="9.75" cy="16" r="1.1"/>
+                  <circle cx="16" cy="11" r="1.1"/>
+                  <circle cx="22.25" cy="7" r="1.1"/>
+                </svg>
+              </div>
+              <div class="method-step-body">
+                <h3 class="method-step-title">שלב האבחון</h3>
+                <p class="method-step-desc">מבדק גיל ביולוגי תפקודי. נקודת ההתחלה והדאטה שעליה הכל נבנה.</p>
+              </div>
+              <span class="method-step-arrow" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 4 L5 8 L11 12"/>
+                </svg>
+              </span>
+            </a>
+
+            <div class="method-connector" aria-hidden="true">
+              <span class="method-connector-line"></span>
+              <span class="method-connector-plus">+</span>
+              <span class="method-connector-line"></span>
+            </div>
+
+            <a href="#step-plan" class="method-step">
+              <span class="method-step-num">02</span>
+              <div class="method-step-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="8" cy="9" r="2.4"/>
+                  <circle cx="22" cy="14" r="2.4"/>
+                  <circle cx="11" cy="23" r="2.4"/>
+                  <path d="M9.6 10.8 Q 14 11.5 19.6 13.4"/>
+                  <path d="M20.4 16 Q 17 19.5 12.4 21.6"/>
+                  <path d="M4 5 L28 5" stroke-dasharray="2 3" opacity="0.45"/>
+                  <path d="M4 27 L28 27" stroke-dasharray="2 3" opacity="0.45"/>
+                </svg>
+              </div>
+              <div class="method-step-body">
+                <h3 class="method-step-title">שלב התוכנית</h3>
+                <p class="method-step-desc">תוכנית מותאמת אישית שמשלבת אימונים וטיפולי התאוששות.</p>
+              </div>
+              <span class="method-step-arrow" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 4 L5 8 L11 12"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+
+        </div>
+      </details>
+
       <details class="faq-item">
         <summary class="faq-q">
           <span>מה זה גיל ביולוגי תפקודי ובמה הוא שונה מהכרונולוגי?</span>
@@ -6789,6 +7508,14 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "איך עובדת השיטה של EVER LAB?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "השיטה של EVER LAB כוללת שני שלבים: (1) שלב האבחון — מבדק גיל ביולוגי תפקודי שמהווה את נקודת ההתחלה ומספק את הדאטה הבסיסית. (2) שלב התוכנית — תוכנית מותאמת אישית שמשלבת אימונים מבוססי טכנולוגיה וטיפולי התאוששות. השילוב בין שני השלבים מאפשר לבנות תוכנית לונג'ביטי אמיתית וישומית."
+      }
+    },
     {
       "@type": "Question",
       "name": "מה זה גיל ביולוגי תפקודי ובמה הוא שונה מהכרונולוגי?",
