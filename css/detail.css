@@ -1,0 +1,443 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   EVER LAB — shared stylesheet for the detail pages
+   (bio-age.html, training.html, recovery.html)
+
+   These pages hold the in-depth content that used to live inside the
+   inline "expand" panels on the homepage. Making them real pages means
+   the user is never trapped ("how do I close this?") — a sticky top bar
+   with a persistent "back to home" link is always visible.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --bg: #EDE8E3;
+  --bg-warm: #E1DDD6;
+  --paper: #F4F0EB;
+  --sage-soft: #CDDFB7;
+  --sage:      #8DAE92;
+  --sage-deep: #6B8B70;
+  --ink: #141414;
+  --ink-soft: #3a3a36;
+  --warm-gray: #76726C;
+  --shadow-sm: 0 4px 18px rgba(20, 20, 20, 0.05);
+  --shadow-md: 0 12px 30px rgba(20, 20, 20, 0.10);
+  --shadow-lg: 0 24px 60px rgba(20, 20, 20, 0.16);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* Global brand rule — <strong>/<b> never stand out visually (semantic only) */
+strong, b { font-weight: inherit !important; color: inherit !important; }
+
+body {
+  font-family: 'Poppins', 'Assistant', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+::selection { background: var(--sage); color: #fff; }
+
+/* ─────────── Sticky top bar — always-visible "back to home" ─────────── */
+.detail-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: rgba(244, 240, 235, 0.92);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid rgba(107, 139, 112, 0.16);
+}
+.detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: 'Poppins', 'Assistant', sans-serif;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--sage-deep);
+  text-decoration: none;
+  padding: 9px 18px 9px 14px;
+  border: 1px solid rgba(107, 139, 112, 0.35);
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.detail-back svg { width: 15px; height: 15px; flex-shrink: 0; }
+.detail-back:hover {
+  background: var(--sage-deep);
+  color: #fff;
+  border-color: var(--sage-deep);
+}
+.detail-logo {
+  font-family: 'Poppins', 'Assistant', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.detail-logo .r-flip { display: inline-block; transform: scaleX(-1); }
+
+/* ─────────── Content wrapper ─────────── */
+.detail-main {
+  padding: 80px 32px 40px;
+  position: relative;
+}
+.vexpand-inner { max-width: 1320px; margin: 0 auto; }
+
+.chapter-eyebrow {
+  font-family: 'Poppins', 'Assistant', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+.chapter-eyebrow .eyebrow-line {
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: var(--sage-deep);
+  opacity: 0.5;
+}
+
+.vexpand-header { margin-bottom: 60px; }
+.vexpand-header.centered { display: block; text-align: center; }
+.vexpand-header.centered > div { max-width: 900px; margin: 0 auto; }
+
+.vexpand-eyebrow {
+  font-family: 'Poppins', 'Assistant', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.vexpand-eyebrow::before {
+  content: '';
+  width: 36px;
+  height: 1px;
+  background: var(--sage-deep);
+}
+
+.vexpand-title {
+  font-family: 'Poppins', 'Assistant', serif;
+  font-weight: 300;
+  font-size: clamp(32px, 3.5vw, 44px);
+  line-height: 1.15;
+  color: var(--ink);
+  letter-spacing: -0.022em;
+}
+.vexpand-title .em {
+  font-family: 'Poppins', 'Assistant', serif;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--sage-deep);
+  display: block;
+  margin-top: 4px;
+}
+.vexpand-title-new {
+  font-family: 'Poppins', 'Assistant', serif;
+  font-weight: 300;
+  font-size: clamp(32px, 3.5vw, 44px);
+  line-height: 1.15;
+  letter-spacing: -0.022em;
+  color: var(--ink);
+  margin: 0 0 24px;
+  text-align: center;
+}
+.vexpand-intro {
+  font-family: 'Poppins', 'Assistant', sans-serif;
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--ink-soft);
+  font-weight: 300;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.vexpand-context {
+  max-width: 780px;
+  margin: 0 auto 40px;
+  text-align: right;
+  padding: 0 32px;
+}
+.vexpand-how {
+  max-width: 780px;
+  margin: 0 auto 70px;
+  text-align: right;
+  font-family: 'Poppins', 'Assistant', sans-serif;
+  font-size: 18px;
+  line-height: 1.9;
+  color: var(--ink-soft);
+  font-weight: 300;
+  padding: 0 32px;
+}
+.vexpand-how strong { font-weight: 500; color: var(--ink); }
+.vexpand-answer {
+  font-family: 'Poppins', 'Assistant', sans-serif;
+  font-size: 18px;
+  line-height: 1.9;
+  color: var(--ink-soft);
+  font-weight: 300;
+  margin-bottom: 18px;
+}
+.vexpand-answer strong { font-weight: 500; color: var(--ink); }
+.vexpand-subtitle {
+  font-family: 'Poppins', 'Assistant', serif;
+  font-weight: 300;
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1.25;
+  color: var(--ink);
+  text-align: center;
+  letter-spacing: -0.01em;
+  max-width: 880px;
+  margin: 0 auto 44px;
+  padding: 0 32px;
+}
+
+/* ─────────── Cards grid ─────────── */
+.vexpand-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+.vexpand-grid.cols-2 { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.vexpand-grid.cols-2 .tech-img { aspect-ratio: 5/3; }
+.vexpand-grid.cols-3 { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.vexpand-grid.cols-3 .tech-img { aspect-ratio: 4/3; }
+
+.tech-card {
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s, box-shadow 0.4s;
+  align-self: stretch;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(20, 20, 20, 0.08);
+  box-shadow: var(--shadow-sm);
+}
+.tech-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.tech-card .tech-img { flex: 0 0 auto; }
+.tech-card .tech-content { flex: 1 1 auto; }
+.tech-img {
+  aspect-ratio: 4/3;
+  background-size: cover;
+  background-position: center;
+  margin: 14px 14px 0;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.tech-icon {
+  height: 200px;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sage-deep);
+  margin: 14px 14px 0;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.tech-icon svg { width: 152px; height: auto; max-height: 120px; }
+
+/* bio-age category cards — sage icon header on white card */
+.bio-cards .tech-card {
+  background: var(--paper);
+  border: 1px solid rgba(20, 20, 20, 0.06);
+  box-shadow: 0 8px 28px rgba(107, 139, 112, 0.10), 0 2px 6px rgba(107, 139, 112, 0.06);
+}
+.bio-cards .tech-icon {
+  background:
+    radial-gradient(ellipse 60% 55% at 22% 18%, rgba(244, 240, 235, 0.22) 0%, rgba(244, 240, 235, 0) 65%),
+    radial-gradient(ellipse 70% 60% at 78% 32%, rgba(107, 139, 112, 0.30) 0%, rgba(107, 139, 112, 0) 70%),
+    radial-gradient(ellipse 80% 70% at 70% 100%, rgba(107, 139, 112, 0.40) 0%, rgba(107, 139, 112, 0) 78%),
+    linear-gradient(135deg, #9BB89F 0%, #8DAE92 48%, #7FA086 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.tech-content {
+  padding: 42px 38px 44px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.tech-label {
+  font-family: 'Poppins', 'Assistant', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+  margin-bottom: 18px;
+  text-align: center;
+}
+.tech-title {
+  font-family: 'Poppins', 'Assistant', sans-serif;
+  font-weight: 500;
+  font-size: clamp(28px, 2.4vw, 36px);
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-align: center;
+  margin-bottom: 32px;
+  color: var(--ink);
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(20, 20, 20, 0.12);
+  direction: ltr;
+  min-height: calc(2 * 1.15em + 28px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.tech-bullets { list-style: none; margin: 0; padding: 0; }
+.tech-bullets li {
+  position: relative;
+  padding-right: 26px;
+  margin-bottom: 22px;
+  font-family: 'Poppins', 'Assistant', sans-serif;
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--ink-soft);
+  font-weight: 300;
+}
+.tech-bullets li:last-child { margin-bottom: 0; }
+.tech-bullets li::before {
+  content: '·';
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: var(--sage-deep);
+  font-weight: 500;
+  font-size: 1.4em;
+  line-height: 1;
+}
+.tech-bullets li strong { font-weight: 500; color: var(--ink); }
+.tech-paragraph {
+  margin: 0;
+  font-family: 'Poppins', 'Assistant', sans-serif;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink-soft);
+  font-weight: 300;
+  letter-spacing: -0.005em;
+}
+.tech-paragraph strong { font-weight: 500; color: var(--ink); }
+
+.tech-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: auto;
+  padding-top: 22px;
+  border-top: 1px solid rgba(20, 20, 20, 0.12);
+  direction: rtl;
+}
+.tech-stat .stat-label {
+  font-family: 'Poppins', 'Assistant', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.tech-stat .stat-num {
+  font-family: 'Poppins', 'Assistant', sans-serif;
+  font-size: 30px;
+  font-weight: 300;
+  color: var(--sage-deep);
+  letter-spacing: -0.012em;
+  direction: rtl;
+  unicode-bidi: isolate;
+  white-space: nowrap;
+  text-shadow: 0 0 18px rgba(107, 139, 112, 0.30), 0 0 36px rgba(205, 223, 183, 0.20);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.tech-stat .stat-num .arrow { font-size: 22px; color: var(--sage-deep); }
+.tech-stat .stat-num .arrow.down { color: var(--warm-gray); }
+
+/* ─────────── Bottom CTA band ─────────── */
+.detail-cta {
+  background: linear-gradient(135deg, var(--sage) 0%, var(--sage-deep) 100%);
+  color: #fff;
+  text-align: center;
+  padding: 80px 32px 88px;
+  margin-top: 60px;
+}
+.detail-cta h2 {
+  font-family: 'Poppins', 'Assistant', serif;
+  font-weight: 300;
+  font-size: clamp(26px, 3vw, 38px);
+  line-height: 1.25;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.detail-cta p {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 32px;
+  opacity: 0.92;
+}
+.detail-cta-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.detail-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 32px;
+  border-radius: 8px;
+  font-family: 'Poppins', 'Assistant', sans-serif;
+  font-weight: 600;
+  font-size: 15.5px;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.detail-cta-btn-primary { background: #fff; color: var(--sage-deep); }
+.detail-cta-btn-primary:hover { transform: translateY(-2px); background: #f4f0eb; }
+.detail-cta-btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+}
+.detail-cta-btn-secondary:hover { background: rgba(255, 255, 255, 0.14); border-color: #fff; }
+
+/* ─────────── Responsive ─────────── */
+@media (max-width: 900px) {
+  .detail-bar { padding: 12px 18px; }
+  .detail-main { padding: 56px 20px 30px; }
+  .vexpand-header { margin-bottom: 44px; }
+  .vexpand-grid,
+  .vexpand-grid.cols-2,
+  .vexpand-grid.cols-3 { grid-template-columns: 1fr; gap: 22px; }
+  .tech-content { padding: 32px 26px 34px; }
+  .detail-logo { font-size: 16px; }
+  .detail-cta { padding: 60px 22px 66px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .tech-card, .detail-back, .detail-cta-btn { transition: none; }
+  .tech-card:hover, .detail-cta-btn-primary:hover { transform: none; }
+}
