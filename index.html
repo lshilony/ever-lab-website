@@ -3254,9 +3254,10 @@
     width: 244px;
     z-index: 99;
     direction: rtl;
-    background: #1c1c1c;
+    background: var(--paper);
+    border: 1px solid rgba(107, 139, 112, 0.18);
     border-radius: 14px;
-    box-shadow: 0 24px 60px -14px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 24px 55px -16px rgba(60, 80, 65, 0.28), 0 2px 8px rgba(20, 20, 20, 0.06);
     overflow: hidden;
     opacity: 0;
     visibility: hidden;
@@ -3272,23 +3273,10 @@
     pointer-events: auto;
   }
 
-  /* Header row */
-  .fnav-header {
-    font-family: 'Poppins', 'Assistant', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    text-align: center;
-    padding: 18px 20px 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  }
-
   .fnav-items {
     display: flex;
     flex-direction: column;
-    padding: 6px 0 8px;
+    padding: 6px 0;
   }
 
   /* Each menu row — icon + label, always visible */
@@ -3298,9 +3286,9 @@
     align-items: center;
     gap: 14px;
     padding: 13px 22px;
-    color: #b0b0b0;
+    color: #4a4a4a;
     text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(107, 139, 112, 0.10);
     transition: background-color 0.2s ease, color 0.2s ease;
   }
   .fnav-items .fnav-item:last-child { border-bottom: none; }
@@ -3309,6 +3297,7 @@
     height: 20px;
     stroke-width: 1.7;
     flex-shrink: 0;
+    color: var(--sage-deep);
     transition: stroke-width 0.2s ease;
   }
   .fnav-label {
@@ -3319,18 +3308,18 @@
     white-space: nowrap;
   }
   .fnav-item:hover {
-    background: rgba(255, 255, 255, 0.05);
-    color: #FFFFFF;
+    background: rgba(205, 223, 183, 0.35);
+    color: var(--ink);
   }
   .fnav-item:hover svg { stroke-width: 2.1; }
   .fnav-item:focus-visible {
-    outline: 2px solid var(--sage);
+    outline: 2px solid var(--sage-deep);
     outline-offset: -2px;
   }
   /* Active section — sage accent bar on the right (RTL) + sage text */
   .fnav-item.active {
-    color: var(--sage);
-    background: rgba(141, 174, 146, 0.10);
+    color: var(--sage-deep);
+    background: rgba(141, 174, 146, 0.12);
   }
   .fnav-item.active::before {
     content: '';
@@ -3339,16 +3328,17 @@
     bottom: 0;
     right: 0;
     width: 3px;
-    background: var(--sage);
+    background: var(--sage-deep);
   }
 
   /* "Shop" item — primary commerce, filled sage row to stand out */
   .fnav-item.fnav-item-shop {
-    background: rgba(141, 174, 146, 0.16);
-    color: #d8e6cb;
+    background: var(--sage-deep);
+    color: #FFFFFF;
   }
+  .fnav-item.fnav-item-shop svg { color: #FFFFFF; }
   .fnav-item.fnav-item-shop:hover {
-    background: rgba(141, 174, 146, 0.26);
+    background: #5c7860;
     color: #FFFFFF;
   }
   .fnav-item.fnav-item-shop .fnav-label { font-weight: 600; }
@@ -7603,7 +7593,6 @@
 
 <!-- ═══════════ FLUID NAVIGATION — items panel (toggle lives inside main <nav>) ═══════════ -->
 <div id="fluid-nav-panel" class="fluid-nav" data-state="closed" aria-label="ניווט מהיר">
-  <div class="fnav-header">תפריט ניווט</div>
   <div class="fnav-items">
     <a href="#hero" class="fnav-item" data-target="hero" aria-label="בית">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
