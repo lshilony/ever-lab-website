@@ -3246,158 +3246,122 @@
     transform: rotate(0) scale(1);
   }
 
-  /* Items panel — fixed-position drop-down below the toggle */
+  /* ═══════ Panel-style dropdown menu — labeled rows, always readable ═══════ */
   .fluid-nav {
     position: fixed;
-    top: 88px;
+    top: 86px;
     right: 40px;
-    width: 60px;
-    height: 60px;
+    width: 244px;
     z-index: 99;
-    direction: ltr;
+    direction: rtl;
+    background: #1c1c1c;
+    border-radius: 14px;
+    box-shadow: 0 24px 60px -14px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px) scale(0.98);
+    transform-origin: top right;
+    transition: opacity 0.26s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.26s;
     pointer-events: none;
+  }
+  .fluid-nav[data-state="open"] {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
   }
 
-  /* Items container — items start collapsed at toggle position, expand downward */
-  .fnav-items {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 60px;
-    pointer-events: none;
+  /* Header row */
+  .fnav-header {
+    font-family: 'Poppins', 'Assistant', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 18px 20px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
+
+  .fnav-items {
+    display: flex;
+    flex-direction: column;
+    padding: 6px 0 8px;
+  }
+
+  /* Each menu row — icon + label, always visible */
   .fnav-item {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: var(--paper);
-    border: 1px solid rgba(107, 139, 112, 0.2);
-    color: var(--sage-deep);
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 14px;
+    padding: 13px 22px;
+    color: #b0b0b0;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(20, 20, 20, 0.08);
-    opacity: 0;
-    transform: translateY(0) scale(0.5);
-    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.35s ease,
-                background-color 0.25s ease,
-                border-color 0.25s ease,
-                color 0.25s ease;
-    will-change: transform, opacity;
-    pointer-events: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
+  .fnav-items .fnav-item:last-child { border-bottom: none; }
   .fnav-item svg {
-    width: 22px;
-    height: 22px;
-    stroke-width: 1.6;
-    transition: stroke-width 0.25s ease;
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.7;
+    flex-shrink: 0;
+    transition: stroke-width 0.2s ease;
+  }
+  .fnav-label {
+    font-family: 'Poppins', 'Assistant', sans-serif;
+    font-size: 14.5px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
   }
   .fnav-item:hover {
-    background: var(--sage-soft);
-    border-color: var(--sage);
-    color: var(--sage-deep);
+    background: rgba(255, 255, 255, 0.05);
+    color: #FFFFFF;
   }
-  .fnav-item:hover svg {
-    stroke-width: 2.2;
-  }
+  .fnav-item:hover svg { stroke-width: 2.1; }
   .fnav-item:focus-visible {
-    outline: 2px solid var(--sage-deep);
-    outline-offset: 3px;
+    outline: 2px solid var(--sage);
+    outline-offset: -2px;
   }
+  /* Active section — sage accent bar on the right (RTL) + sage text */
   .fnav-item.active {
-    background: var(--sage-deep);
-    border-color: var(--sage-deep);
-    color: #FFFFFF;
+    color: var(--sage);
+    background: rgba(141, 174, 146, 0.10);
   }
-  /* "Shop" item — distinct sage-deep fill always (signals primary commerce action) */
-  .fnav-item.fnav-item-shop {
-    background: var(--sage-deep);
-    border-color: var(--sage-deep);
-    color: #FFFFFF;
-    box-shadow: 0 4px 12px rgba(107, 139, 112, 0.30), 0 1px 3px rgba(20, 20, 20, 0.10);
-  }
-  .fnav-item.fnav-item-shop:hover {
-    background: #5c7860;
-    border-color: #5c7860;
-    color: #FFFFFF;
-  }
-  .fnav-item.fnav-item-shop svg { stroke: #FFFFFF; }
-  /* Small "shop" indicator dot — top-right corner of the shop item */
-  .fnav-item.fnav-item-shop::after {
+  .fnav-item.active::before {
     content: '';
     position: absolute;
-    top: 4px;
-    right: 4px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--sage-soft);
-    border: 2px solid var(--sage-deep);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 3px;
+    background: var(--sage);
   }
-  .fluid-nav[data-state="open"] .fnav-item {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(var(--offset, 0)) scale(1);
-  }
-  /* Staggered offsets — items cascade DOWN from below the main nav bar */
-  .fluid-nav[data-state="open"] .fnav-item:nth-child(1) { --offset: 0px;   transition-delay: 40ms; }
-  .fluid-nav[data-state="open"] .fnav-item:nth-child(2) { --offset: 68px;  transition-delay: 80ms; }
-  .fluid-nav[data-state="open"] .fnav-item:nth-child(3) { --offset: 136px; transition-delay: 120ms; }
-  .fluid-nav[data-state="open"] .fnav-item:nth-child(4) { --offset: 204px; transition-delay: 160ms; }
-  .fluid-nav[data-state="open"] .fnav-item:nth-child(5) { --offset: 272px; transition-delay: 200ms; }
-  .fluid-nav[data-state="open"] .fnav-item:nth-child(6) { --offset: 340px; transition-delay: 240ms; }
-  .fluid-nav[data-state="open"] .fnav-item:nth-child(7) { --offset: 408px; transition-delay: 280ms; }
 
-  /* Tooltip label on hover — appears to the LEFT of the item (RTL-friendly, nav at right edge) */
-  .fnav-item .fnav-label {
-    position: absolute;
-    right: 72px;
-    left: auto;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(20, 20, 20, 0.88);
+  /* "Shop" item — primary commerce, filled sage row to stand out */
+  .fnav-item.fnav-item-shop {
+    background: rgba(141, 174, 146, 0.16);
+    color: #d8e6cb;
+  }
+  .fnav-item.fnav-item-shop:hover {
+    background: rgba(141, 174, 146, 0.26);
     color: #FFFFFF;
-    font-family: 'Poppins', 'Assistant', sans-serif;
-    font-size: 13px;
-    font-weight: 300;
-    letter-spacing: 0.02em;
-    padding: 7px 14px;
-    border-radius: 999px;
-    white-space: nowrap;
-    direction: rtl;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.22s ease, transform 0.22s ease;
   }
-  .fnav-item:hover .fnav-label,
-  .fnav-item:focus-visible .fnav-label {
-    opacity: 1;
-    transform: translateY(-50%) translateX(-4px);
-  }
+  .fnav-item.fnav-item-shop .fnav-label { font-weight: 600; }
 
   @media (max-width: 768px) {
     nav .fnav-toggle { width: 42px; height: 42px; }
     nav .fnav-toggle svg { width: 17px; height: 17px; }
-    .fluid-nav { top: 72px; right: 18px; width: 52px; height: 52px; }
-    .fnav-items, .fnav-item { width: 52px; }
-    .fnav-item { height: 52px; }
-    .fnav-item svg { width: 19px; height: 19px; }
-    .fluid-nav[data-state="open"] .fnav-item:nth-child(1) { --offset: 0px; }
-    .fluid-nav[data-state="open"] .fnav-item:nth-child(2) { --offset: 60px; }
-    .fluid-nav[data-state="open"] .fnav-item:nth-child(3) { --offset: 120px; }
-    .fluid-nav[data-state="open"] .fnav-item:nth-child(4) { --offset: 180px; }
-    .fluid-nav[data-state="open"] .fnav-item:nth-child(5) { --offset: 240px; }
-    .fluid-nav[data-state="open"] .fnav-item:nth-child(6) { --offset: 300px; }
-    .fluid-nav[data-state="open"] .fnav-item:nth-child(7) { --offset: 360px; }
-    .fnav-item .fnav-label { display: none; }
+    .fluid-nav { top: 70px; right: 14px; width: 230px; }
+    .fnav-item { padding: 14px 20px; }
+    .fnav-label { font-size: 15px; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .fnav-toggle, .fnav-toggle svg, .fnav-item { transition: none; }
+    .fnav-toggle, .fnav-toggle svg, .fluid-nav, .fnav-item { transition: none; }
   }
 
   /* ───── Decorative city map (SVG, behind chapter text) ───── */
@@ -7639,6 +7603,7 @@
 
 <!-- ═══════════ FLUID NAVIGATION — items panel (toggle lives inside main <nav>) ═══════════ -->
 <div id="fluid-nav-panel" class="fluid-nav" data-state="closed" aria-label="ניווט מהיר">
+  <div class="fnav-header">תפריט ניווט</div>
   <div class="fnav-items">
     <a href="#hero" class="fnav-item" data-target="hero" aria-label="בית">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
