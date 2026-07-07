@@ -73,14 +73,19 @@ body {
   border-color: var(--sage-deep);
 }
 .detail-logo {
-  font-family: 'Poppins', 'Assistant', sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  letter-spacing: 0.14em;
-  color: var(--ink);
+  display: flex;
+  align-items: center;
   text-decoration: none;
+  line-height: 1;
 }
-.detail-logo .r-flip { display: inline-block; transform: scaleX(-1); }
+.detail-logo img {
+  height: 60px;
+  width: auto;
+  display: block;
+  margin: -16px 0;
+  /* Logo PNG ships with a white background; multiply blends it into the cream bar */
+  mix-blend-mode: multiply;
+}
 
 /* ─────────── Content wrapper ─────────── */
 .detail-main {
@@ -432,7 +437,7 @@ body {
   .vexpand-grid.cols-2,
   .vexpand-grid.cols-3 { grid-template-columns: 1fr; gap: 22px; }
   .tech-content { padding: 32px 26px 34px; }
-  .detail-logo { font-size: 16px; }
+  .detail-logo img { height: 50px; margin: -13px 0; }
   .detail-cta { padding: 60px 22px 66px; }
 }
 
