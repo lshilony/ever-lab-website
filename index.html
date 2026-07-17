@@ -2342,6 +2342,31 @@
     color: var(--paper);
     transform: translateY(-2px);
   }
+  .cf-submit[disabled] {
+    opacity: 0.6;
+    cursor: default;
+    transform: none;
+  }
+  /* Form submit status message */
+  .cf-status {
+    margin-top: 18px;
+    font-family: 'Poppins', 'Assistant', sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: center;
+    padding: 12px 18px;
+    border-radius: 8px;
+  }
+  .cf-status.is-success {
+    color: var(--sage-deep);
+    background: rgba(205, 223, 183, 0.4);
+    border: 1px solid rgba(107, 139, 112, 0.35);
+  }
+  .cf-status.is-error {
+    color: #8a3a3a;
+    background: rgba(180, 90, 90, 0.08);
+    border: 1px solid rgba(180, 90, 90, 0.3);
+  }
   @media (max-width: 600px) {
     .closing-form .cf-row { grid-template-columns: 1fr; gap: 14px; }
   }
@@ -7100,7 +7125,7 @@
       ואף פעם לא מאוחר להתחיל.
     </h2>
 
-    <form class="closing-form" novalidate>
+    <form class="closing-form" novalidate data-webhook="https://hook.eu1.make.com/r5rcmhps5s5agakxo3c07t8khfs8ausp">
       <div class="cf-row">
         <label class="cf-field">
           <span class="cf-label">שם מלא</span>
@@ -7127,6 +7152,8 @@
       <button type="submit" class="cf-submit">
         לקביעת מבדק גיל ביולוגי תפקודי ←
       </button>
+
+      <p class="cf-status" role="status" aria-live="polite" hidden></p>
     </form>
   </div>
 </section>
@@ -7741,6 +7768,85 @@
       reset: function() { writeState({}); apply({}); },
       open: openPanel,
     };
+  })();
+</script>
+
+<!-- ═══════════ CONTACT FORM → Make.com webhook (routes leads to Arbox CRM) ═══════════ -->
+<script>
+  (function () {
+    const form = document.querySelector('.closing-form');
+    if (!form) return;
+    const webhook = form.dataset.webhook;
+    const btn = form.querySelector('.cf-submit');
+    const status = form.querySelector('.cf-status');
+    const btnLabel = btn ? btn.textContent.trim() : '';
+
+    const showStatus = (msg, type) => {
+      if (!status) return;
+      status.textContent = msg;
+      status.className = 'cf-status is-' + type;
+      status.hidden = false;
+    };
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      if (!webhook) return;
+
+      const name = form.name.value.trim();
+      const phone = form.phone.value.trim();
+      const email = form.email.value.trim();
+      const consent = form.consent.checked;
+
+      // Validation
+      if (!name || !phone || !email) {
+        showStatus('נא למלא שם, טלפון ואימייל.', 'error');
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showStatus('כתובת האימייל אינה תקינה.', 'error');
+        return;
+      }
+      if (!/\d{7,}/.test(phone.replace(/\D/g, ''))) {
+        showStatus('מספר הטלפון אינו תקין.', 'error');
+        return;
+      }
+      if (!consent) {
+        showStatus('יש לאשר את קבלת הדיוור ותנאי השימוש.', 'error');
+        return;
+      }
+
+      // Submitting state
+      btn.disabled = true;
+      btn.textContent = 'שולח...';
+      if (status) status.hidden = true;
+
+      const payload = {
+        name: name,
+        phone: phone,
+        email: email,
+        consent: consent,
+        source: 'ever-lab.co homepage form',
+        page: window.location.href,
+        submitted_at: new Date().toISOString(),
+      };
+
+      try {
+        const res = await fetch(webhook, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        // Success — replace the fields with a thank-you, keep it clean
+        form.querySelectorAll('.cf-row, .cf-field, .cf-consent').forEach(el => { el.style.display = 'none'; });
+        btn.style.display = 'none';
+        showStatus('תודה! קיבלנו את הפרטים ונחזור אליכם בהקדם.', 'success');
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = btnLabel;
+        showStatus('אירעה שגיאה בשליחה. נסו שוב, או פנו אלינו בוואטסאפ.', 'error');
+      }
+    });
   })();
 </script>
 
