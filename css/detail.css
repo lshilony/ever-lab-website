@@ -445,6 +445,12 @@ body {
   .detail-cta { padding: 60px 22px 66px; }
 }
 
+/* Small mobile: compact the back pill so it clears the centered logo */
+@media (max-width: 600px) {
+  .detail-back { padding: 8px 14px 8px 11px; font-size: 13px; gap: 6px; }
+  .detail-back svg { width: 14px; height: 14px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .tech-card, .detail-back, .detail-cta-btn { transition: none; }

@@ -404,6 +404,19 @@
       0 6px 12px rgba(60, 50, 35, 0.16),
       inset 0 1px 0 rgba(255, 255, 255, 0.9);
   }
+  /* Mobile: compact the top-bar CTA + shrink the centered logo so they don't overlap */
+  @media (max-width: 600px) {
+    .nav-cta {
+      padding: 10px 16px;
+      font-size: 12.5px;
+      gap: 5px;
+      min-height: 0;
+      border-radius: 10px;
+      box-shadow: 0 6px 16px rgba(60, 50, 35, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+    .nav-cta .arr { font-size: 15px; }
+    nav .logo-img { height: 52px; margin: -13px 0; }
+  }
 
   /* --- HERO (VOSK-style restraint, light bg, framed image) --- */
   .hero {
