@@ -7139,6 +7139,10 @@
     </h2>
 
     <form class="closing-form" novalidate data-webhook="https://hook.eu1.make.com/r5rcmhps5s5agakxo3c07t8khfs8ausp">
+      <!-- Honeypot — hidden from humans; bots fill it and get silently rejected -->
+      <div aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;">
+        <label>אל תמלאו שדה זה<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>
+      </div>
       <div class="cf-row">
         <label class="cf-field">
           <span class="cf-label">שם מלא</span>
@@ -7804,6 +7808,15 @@
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
       if (!webhook) return;
+
+      // Honeypot — if the hidden field is filled, it's a bot. Fake success, send nothing.
+      const trap = form.querySelector('[name="company_website"]');
+      if (trap && trap.value) {
+        form.querySelectorAll('.cf-row, .cf-field, .cf-consent').forEach(el => { el.style.display = 'none'; });
+        btn.style.display = 'none';
+        showStatus('תודה! קיבלנו את הפרטים ונחזור אליכם בהקדם.', 'success');
+        return;
+      }
 
       const name = form.name.value.trim();
       const phone = form.phone.value.trim();
