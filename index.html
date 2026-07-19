@@ -6342,6 +6342,7 @@
     .chapter-intro { font-size: 17.5px; line-height: 1.75; }
   }
 </style>
+  <script src="js/utm-tracking.js" defer></script>
 </head>
 <body>
 
@@ -7861,13 +7862,22 @@
       btn.textContent = 'שולח...';
       if (status) status.hidden = true;
 
+      // Lead-source attribution captured on the landing page (UTM cookies)
+      const utm = (window.everlabUTM && window.everlabUTM.get) ? window.everlabUTM.get() : {};
+
       const payload = {
         name: name,
         phone: phone,
         email: email,
         consent: consent,
+        utm_source: utm.utm_source || '',
+        utm_medium: utm.utm_medium || '',
+        utm_campaign: utm.utm_campaign || '',
+        utm_term: utm.utm_term || '',
+        utm_content: utm.utm_content || '',
         source: 'ever-lab.co homepage form',
         page: window.location.href,
+        page_title: document.title,
         submitted_at: new Date().toISOString(),
       };
 
