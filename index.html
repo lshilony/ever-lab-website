@@ -2096,40 +2096,36 @@
     .journey-line .jl-station { opacity: 1 !important; transform: none !important; transition: none; }
   }
 
-  /* Mobile: stack stations vertically with a thin vertical connector line */
+  /* Mobile: stack stations vertically as clean numbered steps.
+     The horizontal axis line + tick marks + node dots are hidden here —
+     a centered vertical line would cut straight through the big 01/02/03
+     numbers, which looked broken. The large numbers + spacing + a subtle
+     divider between steps carry the sequence instead. */
   @media (max-width: 720px) {
-    .journey-line { margin: 36px auto 44px; padding: 0 20px; }
+    .journey-line { margin: 30px auto 40px; padding: 0 20px; }
     .jl-track {
       flex-direction: column;
       align-items: center;
-      gap: 40px;
+      gap: 0;
     }
-    /* Re-route the continuous line to vertical on mobile */
-    .jl-track::before {
-      top: 6px;
-      bottom: 6px;
-      left: 50%;
-      right: auto;
-      width: 1.5px;
-      height: auto;
-      transform: translateX(-50%) scaleY(0);
-      transform-origin: top center;
-    }
-    .journey-line.jl-reveal-2 .jl-track::before {
-      transform: translateX(-50%) scaleY(0.5);
-    }
-    .journey-line.jl-reveal-3 .jl-track::before {
-      transform: translateX(-50%) scaleY(1);
-    }
+    .jl-track::before,
+    .jl-track::after { display: none; }
+    .jl-node { display: none; }
+
     .jl-station {
       flex: 0 0 auto;
-      max-width: 320px;
+      max-width: 340px;
       width: 100%;
+      padding: 34px 0;
+      border-bottom: 1px solid rgba(141, 174, 146, 0.22);
     }
-    .jl-node { margin-bottom: 22px; }
-    .jl-num { font-size: 52px; margin-bottom: 14px; }
-    .jl-title { font-size: 18px; }
-    .jl-block { max-width: 280px; }
+    .jl-station:last-child { border-bottom: none; }
+    .jl-station:first-child { padding-top: 8px; }
+
+    .jl-num { font-size: 54px; margin-bottom: 12px; }
+    .jl-title { font-size: 20px; margin-bottom: 12px; }
+    .jl-text { font-size: 16px; line-height: 1.7; }
+    .jl-block { max-width: 300px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
