@@ -449,6 +449,13 @@ body {
 @media (max-width: 600px) {
   .detail-back { padding: 8px 14px 8px 11px; font-size: 13px; gap: 6px; }
   .detail-back svg { width: 14px; height: 14px; }
+
+  /* Larger text for the 40+ audience */
+  .tech-paragraph { font-size: 16.5px; line-height: 1.75; }
+  .tech-bullets li { font-size: 16.5px; line-height: 1.8; }
+  .vexpand-intro { font-size: 16.5px; line-height: 1.8; }
+  .detail-cta p { font-size: 16.5px; line-height: 1.7; }
+  .detail-cta-btn { font-size: 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
