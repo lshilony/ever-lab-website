@@ -1511,6 +1511,98 @@
     .pricing-cta-btn { padding: 18px 32px; font-size: 16px; width: 100%; justify-content: center; max-width: 360px; }
   }
 
+  /* ============== Story — video testimonial (centered, Lovable-style) ============== */
+  .story-section {
+    background: var(--paper);
+    padding: 112px 24px 118px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .story-inner {
+    max-width: 660px;
+    margin: 0 auto;
+  }
+  .story-eyebrow {
+    font-family: 'Poppins', 'Assistant', monospace;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    color: var(--sage-deep);
+    margin-bottom: 18px;
+  }
+  .story-title {
+    font-family: 'Poppins', 'Assistant', sans-serif;
+    font-weight: 700;
+    font-size: clamp(34px, 6vw, 56px);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0 0 46px;
+  }
+  .story-title .hl {
+    color: var(--sage-deep);
+    font-weight: 500;
+    font-style: italic;
+  }
+  .story-media {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .story-video-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 9 / 16;
+    border-radius: 26px;
+    overflow: hidden;
+    background: #0d0d0d;
+    box-shadow: 0 34px 70px -26px rgba(20, 20, 20, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+  .story-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .story-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, rgba(13, 13, 13, 0.12), rgba(13, 13, 13, 0.38));
+    border: 0;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+  .story-play-circle {
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.94);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.25s ease, background 0.25s ease;
+  }
+  .story-play:hover .story-play-circle,
+  .story-play:focus-visible .story-play-circle { transform: scale(1.07); background: #fff; }
+  .story-play-icon {
+    width: 26px;
+    height: 26px;
+    fill: var(--sage-deep);
+    margin-left: 3px; /* optical centering of the right-pointing triangle */
+  }
+  .story-video-wrap.is-playing .story-play { opacity: 0; pointer-events: none; }
+
+  @media (max-width: 700px) {
+    .story-section { padding: 78px 20px 84px; }
+    .story-title { margin-bottom: 34px; }
+    .story-video-wrap { max-width: 320px; border-radius: 22px; }
+  }
+
   /* ============== FAQ Section ============== */
   .faq-section {
     background: var(--paper);
@@ -6661,6 +6753,47 @@
             stroke-dasharray="4 7"/>
     </svg>
   </div>
+</section>
+
+<!-- ============== STORY — video testimonial (איילת) ============== -->
+<section class="story-section" id="story" aria-labelledby="story-title">
+  <div class="story-inner">
+    <div class="story-eyebrow">עדויות</div>
+    <h2 id="story-title" class="story-title">מה אומרות <span class="hl">המתאמנות</span></h2>
+
+    <div class="story-media">
+      <div class="story-video-wrap">
+        <video class="story-video" playsinline preload="metadata" controlslist="nodownload" poster="">
+          <source src="img/ayelet-testimonial.mp4#t=0.2" type="video/mp4">
+          הדפדפן שלך אינו תומך בהצגת וידאו. <a href="img/ayelet-testimonial.mp4">להורדת הסרטון</a>.
+        </video>
+        <button type="button" class="story-play" aria-label="הפעלת עדות הווידאו">
+          <span class="story-play-circle">
+            <svg class="story-play-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var wrap = document.querySelector('.story-video-wrap');
+      if (!wrap) return;
+      var video = wrap.querySelector('.story-video');
+      var btn = wrap.querySelector('.story-play');
+      function start() {
+        video.setAttribute('controls', '');
+        wrap.classList.add('is-playing');
+        var p = video.play();
+        if (p && typeof p.catch === 'function') { p.catch(function () {}); }
+      }
+      btn.addEventListener('click', start);
+      video.addEventListener('play', function () { wrap.classList.add('is-playing'); });
+    })();
+  </script>
 </section>
 
 <!-- ============== INTERSTITIAL — Red light therapy divider ============== -->
