@@ -151,10 +151,34 @@
   .wp-prose p:last-child { margin-bottom: 0; }
   .wp-prose strong { color: var(--ink); }
 
-  /* ─────── Testimonial ─────── */
+  /* ─────── Testimonial (video + quote) ─────── */
+  .wp-testimonial {
+    display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: center;
+    max-width: 900px; margin: 0 auto;
+  }
+  .wp-video-wrap {
+    position: relative; width: 300px; aspect-ratio: 9 / 16; flex-shrink: 0;
+    border-radius: 22px; overflow: hidden; background: #0d0d0d;
+    box-shadow: 0 30px 60px -22px rgba(20,20,20,0.45), 0 0 0 1px rgba(255,255,255,0.05);
+  }
+  .wp-video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .wp-video-play {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle at center, rgba(13,13,13,0.1), rgba(13,13,13,0.36));
+    border: 0; cursor: pointer; transition: opacity 0.3s ease;
+  }
+  .wp-video-play-c {
+    width: 68px; height: 68px; border-radius: 50%; background: rgba(255,255,255,0.94);
+    display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+    transition: transform 0.25s ease, background 0.25s ease;
+  }
+  .wp-video-play:hover .wp-video-play-c, .wp-video-play:focus-visible .wp-video-play-c { transform: scale(1.07); background: #fff; }
+  .wp-video-play svg { width: 24px; height: 24px; fill: var(--sage-deep); margin-left: 3px; }
+  .wp-video-wrap.is-playing .wp-video-play { opacity: 0; pointer-events: none; }
   .wp-quote {
     max-width: 720px; margin: 0 auto; text-align: center;
   }
+  .wp-testimonial .wp-quote { margin: 0; text-align: right; }
   .wp-quote-mark { font-family: 'Cormorant Garamond', serif; font-size: 80px; line-height: 0.6; color: var(--sage); opacity: 0.5; }
   .wp-quote p {
     font-family: 'Poppins','Assistant',serif; font-weight: 300; font-style: italic;
@@ -294,6 +318,9 @@
         linear-gradient(to top, rgba(16,16,16,0.85) 0%, rgba(16,16,16,0.55) 45%, rgba(16,16,16,0.15) 72%, rgba(16,16,16,0) 90%);
     }
     .wp-grid.cols-2, .wp-grid.cols-3, .wp-grid.cols-4, .wp-stages { grid-template-columns: 1fr; }
+    .wp-testimonial { grid-template-columns: 1fr; gap: 30px; justify-items: center; text-align: center; }
+    .wp-testimonial .wp-quote { text-align: center; }
+    .wp-video-wrap { width: 260px; }
     .wp-hero-sub, .wp-lead, .wp-prose p, .wp-card p, .wp-stage p, .wp-doc-bio p, .wp-trial-list li, .wp-faq-a p { font-size: 16.5px; }
     .wp-offer { padding: 36px 24px; }
     .wp-bar { padding: 12px 18px; }
@@ -360,12 +387,41 @@
 <!-- ═══════════ TESTIMONIAL ═══════════ -->
 <section class="wp-sec">
   <div class="wrap">
-    <div class="wp-quote">
-      <div class="wp-quote-mark" aria-hidden="true">”</div>
-      <p>כשהגעתי לפה הייתי עם 24% שומן, והיום אני בסביבות ה־15% שומן.</p>
-      <cite>א. כהן, 47</cite>
+    <div class="wp-testimonial">
+      <div class="wp-video-wrap">
+        <video class="wp-video" playsinline preload="metadata" poster="img/ayelet-poster.jpg" controlslist="nodownload">
+          <source src="img/ayelet-testimonial.mp4" type="video/mp4">
+          הדפדפן שלך אינו תומך בהצגת וידאו. <a href="img/ayelet-testimonial.mp4">להורדת הסרטון</a>.
+        </video>
+        <button type="button" class="wp-video-play" aria-label="הפעלת עדות הווידאו של איילת">
+          <span class="wp-video-play-c">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </button>
+      </div>
+      <div class="wp-quote">
+        <div class="wp-quote-mark" aria-hidden="true">”</div>
+        <p>כשהגעתי לפה הייתי עם 24% שומן, והיום אני בסביבות ה־15% שומן.</p>
+        <cite>איילת</cite>
+      </div>
     </div>
   </div>
+  <script>
+    (function () {
+      var wrap = document.querySelector('.wp-video-wrap');
+      if (!wrap) return;
+      var video = wrap.querySelector('.wp-video');
+      var btn = wrap.querySelector('.wp-video-play');
+      function start() {
+        video.setAttribute('controls', '');
+        wrap.classList.add('is-playing');
+        var p = video.play();
+        if (p && typeof p.catch === 'function') { p.catch(function () {}); }
+      }
+      btn.addEventListener('click', start);
+      video.addEventListener('play', function () { wrap.classList.add('is-playing'); });
+    })();
+  </script>
 </section>
 
 <!-- ═══════════ WHY NOTHING WORKS AT 40+ ═══════════ -->
