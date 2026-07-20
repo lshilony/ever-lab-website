@@ -285,10 +285,42 @@
   .wp-faq-a p:last-child { margin-bottom: 0; }
 
   /* ─────── Final CTA + footer ─────── */
-  .wp-final { text-align: center; }
+  .wp-final { text-align: center; position: relative; overflow: hidden; }
   .wp-final .wp-h2 { color: #fff; }
-  .wp-footer { background: var(--ink); color: rgba(255,255,255,0.7); text-align: center; padding: 48px 32px; }
-  .wp-footer-logo { font-family: 'Poppins','Assistant',sans-serif; font-weight: 600; letter-spacing: 0.16em; color: #fff; font-size: 18px; margin-bottom: 8px; }
+  /* Lead form (on the sage final section) */
+  .wp-form-card {
+    background: #fff; border-radius: 20px; padding: 34px 32px; max-width: 520px; margin: 0 auto;
+    box-shadow: 0 30px 60px -28px rgba(20,20,20,0.4); text-align: right;
+  }
+  .wp-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .wp-form-field { display: block; margin-bottom: 16px; }
+  .wp-form-label { display: block; font-size: 13px; font-weight: 500; color: var(--ink-soft); margin-bottom: 6px; }
+  .wp-form input[type="text"], .wp-form input[type="tel"], .wp-form input[type="email"] {
+    width: 100%; box-sizing: border-box; padding: 13px 14px; border: 1px solid rgba(20,20,20,0.16);
+    border-radius: 10px; font-family: inherit; font-size: 16px; color: var(--ink); background: var(--paper);
+    transition: border-color 0.2s;
+  }
+  .wp-form input:focus { outline: none; border-color: var(--sage-deep); }
+  .wp-form-consent { display: flex; gap: 10px; align-items: flex-start; margin: 4px 0 20px; font-size: 12.5px; line-height: 1.5; color: var(--warm-gray); }
+  .wp-form-consent input { margin-top: 3px; flex-shrink: 0; accent-color: var(--sage-deep); }
+  .wp-form-consent a { color: var(--sage-deep); }
+  .wp-form-submit {
+    width: 100%; background: var(--sage-deep); color: #fff; border: 0; border-radius: 12px; padding: 16px;
+    font-family: inherit; font-size: 17px; font-weight: 500; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.25s, transform 0.25s;
+  }
+  .wp-form-submit:hover { background: var(--ink); transform: translateY(-2px); }
+  .wp-form-submit:disabled { opacity: 0.6; cursor: default; transform: none; }
+  .wp-form-submit .arr { transition: transform 0.25s; }
+  .wp-form-submit:hover .arr { transform: translateX(-4px); }
+  .wp-form-status { margin: 14px 0 0; font-size: 14.5px; text-align: center; }
+  .wp-form-status.is-success { color: var(--sage-deep); font-weight: 600; }
+  .wp-form-status.is-error { color: #b83b3b; }
+  .wp-form-alt { text-align: center; margin: 22px 0 0; font-size: 15px; color: rgba(255,255,255,0.92); }
+  .wp-form-alt a { color: #fff; text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
+  /* Footer (light, blends with the page) */
+  .wp-footer { background: var(--paper); color: var(--warm-gray); text-align: center; padding: 48px 32px; border-top: 1px solid rgba(107,139,112,0.16); }
+  .wp-footer-logo { font-family: 'Poppins','Assistant',sans-serif; font-weight: 600; letter-spacing: 0.16em; color: var(--ink); font-size: 18px; margin-bottom: 8px; }
   .wp-footer p { font-size: 13px; margin-bottom: 4px; }
 
   /* WhatsApp float */
@@ -323,6 +355,8 @@
     .wp-video-wrap { width: 260px; }
     .wp-hero-sub, .wp-lead, .wp-prose p, .wp-card p, .wp-stage p, .wp-doc-bio p, .wp-trial-list li, .wp-faq-a p { font-size: 16.5px; }
     .wp-offer { padding: 36px 24px; }
+    .wp-form-card { padding: 26px 20px; }
+    .wp-form-row { grid-template-columns: 1fr; gap: 0; }
     .wp-bar { padding: 12px 18px; }
   }
   @media (max-width: 600px) {
@@ -656,12 +690,42 @@
 }
 </script>
 
-<!-- ═══════════ FINAL CTA ═══════════ -->
-<section class="wp-sec sage wp-final">
+<!-- ═══════════ FINAL CTA — lead form ═══════════ -->
+<section class="wp-sec sage wp-final" id="wp-contact">
   <div class="wrap">
     <h2 class="wp-h2">צעד ראשון. מוכנה לדעת מה הגוף שלך צריך?</h2>
-    <p class="wp-lead" style="margin-bottom:34px;">לחצי על הכפתור ונתאם אימון התנסות ראשון דרך וואטסאפ.</p>
-    <a href="https://wa.me/972796299299?text=%D7%94%D7%99%D7%99!%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%90%D7%99%D7%9E%D7%95%D7%9F%20%D7%94%D7%AA%D7%A0%D7%A1%D7%95%D7%AA%20%D7%9C%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA%20%D7%94-40%2B%20%D7%A9%D7%9C%20EVER%20LAB%20%F0%9F%98%8A" class="wp-cta" style="background:#fff; color:var(--sage-deep);" target="_blank" rel="noopener noreferrer">אני רוצה לתאם אימון התנסות <span class="arr">←</span></a>
+    <p class="wp-lead" style="margin-bottom:34px;">השאירי פרטים ונחזור אלייך לתיאום אימון התנסות אישי.</p>
+
+    <div class="wp-form-card">
+      <form class="wp-form" novalidate data-webhook="https://hook.eu1.make.com/r5rcmhps5s5agakxo3c07t8khfs8ausp">
+        <!-- Honeypot, hidden from humans; bots fill it and get silently rejected -->
+        <div aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;">
+          <label>אל תמלאו שדה זה<input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <div class="wp-form-row">
+          <label class="wp-form-field">
+            <span class="wp-form-label">שם מלא</span>
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+          <label class="wp-form-field">
+            <span class="wp-form-label">טלפון</span>
+            <input type="tel" name="phone" autocomplete="tel" required>
+          </label>
+        </div>
+        <label class="wp-form-field">
+          <span class="wp-form-label">אימייל</span>
+          <input type="email" name="email" autocomplete="email" required>
+        </label>
+        <label class="wp-form-consent">
+          <input type="checkbox" name="consent" required>
+          <span>אני מאשרת קבלת דיוור פרסומי מ-EVER LAB ומסכימה ל<a href="https://ever-lab.co/terms-and-conditions/" target="_blank" rel="noopener noreferrer">תנאי השימוש</a> ול<a href="https://ever-lab.co/privacy-policy/" target="_blank" rel="noopener noreferrer">מדיניות הפרטיות</a>.</span>
+        </label>
+        <button type="submit" class="wp-form-submit">לתיאום אימון התנסות <span class="arr">←</span></button>
+        <p class="wp-form-status" role="status" aria-live="polite" hidden></p>
+      </form>
+    </div>
+
+    <p class="wp-form-alt">מעדיפה לדבר? <a href="https://wa.me/972796299299?text=%D7%94%D7%99%D7%99!%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%90%D7%99%D7%9E%D7%95%D7%9F%20%D7%94%D7%AA%D7%A0%D7%A1%D7%95%D7%AA%20%D7%9C%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA%20%D7%94-40%2B%20%D7%A9%D7%9C%20EVER%20LAB%20%F0%9F%98%8A" target="_blank" rel="noopener noreferrer">כתבי לנו בוואטסאפ</a></p>
   </div>
 </section>
 
@@ -676,6 +740,74 @@
   <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.001 0.001c-8.836 0-16 7.164-16 16 0 2.823 0.733 5.594 2.127 8.041l-2.262 8.262 8.461-2.219c2.353 1.283 5.013 1.961 7.718 1.961h0.006c8.836 0 16-7.164 16-16s-7.164-16.045-16.05-16.045zM16.001 29.336h-0.005c-2.414 0-4.78-0.65-6.847-1.876l-0.491-0.292-5.085 1.334 1.359-4.961-0.32-0.508c-1.346-2.141-2.058-4.616-2.057-7.154 0-7.414 6.034-13.448 13.453-13.448 3.591 0 6.965 1.4 9.504 3.942 2.539 2.541 3.937 5.916 3.935 9.508 0 7.414-6.034 13.453-13.448 13.453zM23.382 19.226c-0.404-0.202-2.393-1.181-2.764-1.317-0.371-0.135-0.641-0.202-0.911 0.203-0.27 0.404-1.045 1.317-1.281 1.587-0.236 0.27-0.472 0.304-0.876 0.101-0.404-0.202-1.708-0.629-3.252-2.006-1.202-1.073-2.014-2.398-2.25-2.803-0.236-0.404-0.025-0.624 0.178-0.825 0.182-0.181 0.404-0.472 0.607-0.708 0.202-0.236 0.27-0.404 0.404-0.674 0.135-0.27 0.067-0.506-0.034-0.708-0.101-0.202-0.911-2.194-1.248-3.003-0.328-0.787-0.662-0.68-0.911-0.692-0.236-0.012-0.506-0.014-0.776-0.014-0.27 0-0.708 0.101-1.079 0.506-0.371 0.404-1.416 1.384-1.416 3.376 0 1.992 1.45 3.916 1.652 4.186 0.202 0.27 2.853 4.356 6.913 6.111 0.966 0.417 1.72 0.666 2.307 0.853 0.969 0.308 1.852 0.265 2.55 0.161 0.778-0.116 2.393-0.978 2.731-1.923 0.337-0.945 0.337-1.756 0.236-1.923-0.101-0.169-0.371-0.27-0.776-0.472z"/></svg>
   <span>תיאום</span>
 </a>
+
+<!-- Lead form → Make.com webhook (routes leads to Arbox CRM) -->
+<script>
+  (function () {
+    const form = document.querySelector('.wp-form');
+    if (!form) return;
+    const webhook = form.dataset.webhook;
+    const btn = form.querySelector('.wp-form-submit');
+    const status = form.querySelector('.wp-form-status');
+    const btnLabel = btn ? btn.innerHTML : '';
+
+    const showStatus = (msg, type) => {
+      if (!status) return;
+      status.textContent = msg;
+      status.className = 'wp-form-status is-' + type;
+      status.hidden = false;
+    };
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      if (!webhook) return;
+
+      // Honeypot, if the hidden field is filled, it's a bot. Fake success, send nothing.
+      const trap = form.querySelector('[name="company_website"]');
+      if (trap && trap.value) {
+        form.querySelectorAll('.wp-form-row, .wp-form-field, .wp-form-consent').forEach(el => { el.style.display = 'none'; });
+        btn.style.display = 'none';
+        showStatus('תודה! קיבלנו את הפרטים ונחזור אלייך בהקדם.', 'success');
+        return;
+      }
+
+      const name = form.querySelector('[name="name"]').value.trim();
+      const phone = form.querySelector('[name="phone"]').value.trim();
+      const email = form.querySelector('[name="email"]').value.trim();
+      const consent = form.querySelector('[name="consent"]').checked;
+
+      if (!name || !phone || !email) { showStatus('נא למלא שם, טלפון ואימייל.', 'error'); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showStatus('כתובת האימייל אינה תקינה.', 'error'); return; }
+      if (!/\d{7,}/.test(phone.replace(/\D/g, ''))) { showStatus('מספר הטלפון אינו תקין.', 'error'); return; }
+      if (!consent) { showStatus('יש לאשר את קבלת הדיוור ותנאי השימוש.', 'error'); return; }
+
+      btn.disabled = true;
+      btn.textContent = 'שולח...';
+      if (status) status.hidden = true;
+
+      const utm = (window.everlabUTM && window.everlabUTM.get) ? window.everlabUTM.get() : {};
+      const payload = {
+        name: name, phone: phone, email: email, consent: consent,
+        utm_source: utm.utm_source || '', utm_medium: utm.utm_medium || '',
+        utm_campaign: utm.utm_campaign || '', utm_term: utm.utm_term || '', utm_content: utm.utm_content || '',
+        source: 'womenprogram 40+ form', page: window.location.href, page_title: document.title,
+        submitted_at: new Date().toISOString(),
+      };
+
+      try {
+        const res = await fetch(webhook, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        form.querySelectorAll('.wp-form-row, .wp-form-field, .wp-form-consent').forEach(el => { el.style.display = 'none'; });
+        btn.style.display = 'none';
+        showStatus('תודה! קיבלנו את הפרטים ונחזור אלייך בהקדם.', 'success');
+      } catch (err) {
+        btn.disabled = false;
+        btn.innerHTML = btnLabel;
+        showStatus('אירעה שגיאה בשליחה. נסי שוב, או כתבי לנו בוואטסאפ.', 'error');
+      }
+    });
+  })();
+</script>
 
 </body>
 </html>
