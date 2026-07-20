@@ -271,8 +271,9 @@
   @media (max-width: 900px) {
     .wp-hero-grid { grid-template-columns: 1fr; gap: 32px; }
     .wp-hero-img { aspect-ratio: 16/11; }
-    .wp-doc { grid-template-columns: 1fr; gap: 28px; }
-    .wp-doc-photo { max-width: 300px; margin: 0 auto; }
+    .wp-doc { grid-template-columns: 1fr; gap: 28px; justify-items: center; }
+    .wp-doc-photo { width: 100%; max-width: 280px; margin: 0 auto; }
+    .wp-doc-text { text-align: center; }
   }
   @media (max-width: 700px) {
     .wrap { padding: 0 20px; }
@@ -476,7 +477,7 @@
     <div class="wp-sec-eyebrow"><span class="ln"></span>Medical Supervision<span class="ln"></span></div>
     <h2 class="wp-h2">הליווי הרפואי שלנו</h2>
     <div class="wp-doc">
-      <div class="wp-doc-photo"><span>ד״ר סיון אבריל<br>[תמונה תתווסף]</span></div>
+      <div class="wp-doc-photo" style="background-image:url('img/dr-sivan-avril.jpg'); background-size:cover; background-position:center 26%;" role="img" aria-label="ד״ר סיון אבריל — מומחית לרפואת לונג'ביטי ובריאות נשים"></div>
       <div class="wp-doc-text">
         <div class="wp-doc-name">ד״ר סיון אבריל</div>
         <div class="wp-doc-role">מומחית לרפואת לונג'ביטי ובריאות נשים</div>
