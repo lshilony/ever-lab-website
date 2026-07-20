@@ -83,26 +83,38 @@
   .wp-cta:hover .arr { transform: translateX(-5px); }
 
   /* ─────── Hero ─────── */
-  .wp-hero { position: relative; padding: 70px 0 80px; overflow: hidden; }
-  .wp-hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+  /* Hero — full-bleed background image with overlaid text */
+  .wp-hero {
+    position: relative;
+    min-height: 86vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 0 76px;
+    background: url('img/train.jpg') center 22% / cover no-repeat;
+    overflow: hidden;
+  }
+  .wp-hero::before {
+    content: '';
+    position: absolute; inset: 0; z-index: 1;
+    background:
+      linear-gradient(to left, rgba(16,16,16,0.85) 0%, rgba(16,16,16,0.55) 48%, rgba(16,16,16,0.25) 100%),
+      linear-gradient(to top, rgba(16,16,16,0.8) 0%, rgba(16,16,16,0.1) 56%, rgba(16,16,16,0) 100%);
+  }
+  .wp-hero-inner { position: relative; z-index: 2; }
+  .wp-hero-text { max-width: 660px; }
   .wp-eyebrow {
     font-family: 'Poppins','Assistant',monospace; font-size: 12px; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--sage-deep); margin-bottom: 22px;
+    text-transform: uppercase; color: var(--sage-soft); margin-bottom: 22px;
     display: inline-flex; align-items: center; gap: 12px;
   }
-  .wp-eyebrow::before { content:''; width: 34px; height: 1px; background: var(--sage-deep); }
+  .wp-eyebrow::before { content:''; width: 34px; height: 1px; background: var(--sage-soft); }
   .wp-hero h1 {
     font-family: 'Poppins','Assistant',serif; font-weight: 300;
-    font-size: clamp(30px, 4.4vw, 52px); line-height: 1.15; letter-spacing: -0.02em;
-    color: var(--ink); margin-bottom: 24px;
+    font-size: clamp(31px, 4.6vw, 54px); line-height: 1.14; letter-spacing: -0.02em;
+    color: #fff; margin-bottom: 22px; text-shadow: 0 2px 26px rgba(0,0,0,0.4);
   }
-  .wp-hero h1 .hl { color: var(--sage-deep); font-style: italic; font-family: 'Cormorant Garamond', serif; }
-  .wp-hero-sub { font-size: 18px; line-height: 1.75; color: var(--ink-soft); margin-bottom: 34px; max-width: 560px; }
-  .wp-hero-img {
-    aspect-ratio: 4/5; border-radius: 16px; overflow: hidden;
-    background: url('img/train.jpg') center 30% / cover no-repeat;
-    box-shadow: 0 30px 70px -24px rgba(60,80,65,0.4);
-  }
+  .wp-hero h1 .hl { color: var(--sage-soft); font-style: italic; font-family: 'Cormorant Garamond', serif; }
+  .wp-hero-sub { font-size: 18.5px; line-height: 1.75; color: rgba(255,255,255,0.94); margin-bottom: 34px; max-width: 580px; text-shadow: 0 1px 14px rgba(0,0,0,0.35); }
 
   /* ─────── Generic section ─────── */
   .wp-sec { padding: 84px 0; }
@@ -269,8 +281,6 @@
 
   /* ─────── Responsive ─────── */
   @media (max-width: 900px) {
-    .wp-hero-grid { grid-template-columns: 1fr; gap: 32px; }
-    .wp-hero-img { aspect-ratio: 16/11; }
     .wp-doc { grid-template-columns: 1fr; gap: 28px; justify-items: center; }
     .wp-doc-photo { width: 100%; max-width: 340px; margin: 0 auto; }
     .wp-doc-text { text-align: center; }
@@ -278,7 +288,11 @@
   @media (max-width: 700px) {
     .wrap { padding: 0 20px; }
     .wp-sec { padding: 60px 0; }
-    .wp-hero { padding: 44px 0 56px; }
+    .wp-hero { min-height: 82vh; padding: 0 0 52px; background-position: center 20%; }
+    .wp-hero::before {
+      background:
+        linear-gradient(to top, rgba(18,18,18,0.78) 0%, rgba(18,18,18,0.3) 60%, rgba(18,18,18,0.15) 100%);
+    }
     .wp-grid.cols-2, .wp-grid.cols-3, .wp-grid.cols-4, .wp-stages { grid-template-columns: 1fr; }
     .wp-hero-sub, .wp-lead, .wp-prose p, .wp-card p, .wp-stage p, .wp-doc-bio p, .wp-trial-list li, .wp-faq-a p { font-size: 16.5px; }
     .wp-offer { padding: 36px 24px; }
@@ -318,16 +332,13 @@
 </div>
 
 <!-- ═══════════ HERO ═══════════ -->
-<section class="wp-hero">
-  <div class="wrap">
-    <div class="wp-hero-grid">
-      <div class="wp-hero-text">
-        <div class="wp-eyebrow">The 40+ Program</div>
-        <h1>ניסית הכל? פילאטיס, ריצות, לאכול פחות? <span class="hl">וזה עדיין לא עובד.</span></h1>
-        <p class="wp-hero-sub">שיטת ״האימון החדש״ לנשים בגילאי 40+ שמחזירה לך שליטה על הגוף. תוך 6 שבועות תראי שינוי משמעותי: יותר שריר, פחות שומן, יותר אנרגיה — בלי להעמיס על הגוף ובלי להישחק.</p>
-        <a href="https://wa.me/972796299299?text=%D7%94%D7%99%D7%99!%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%90%D7%99%D7%9E%D7%95%D7%9F%20%D7%94%D7%AA%D7%A0%D7%A1%D7%95%D7%AA%20%D7%9C%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA%20%D7%94-40%2B%20%D7%A9%D7%9C%20EVER%20LAB%20%F0%9F%98%8A" class="wp-cta" target="_blank" rel="noopener noreferrer">אני רוצה לתאם אימון התנסות <span class="arr">←</span></a>
-      </div>
-      <div class="wp-hero-img" role="img" aria-label="EVER LAB — אימון מותאם לנשים 40+"></div>
+<section class="wp-hero" role="img" aria-label="EVER LAB — אימון מותאם לנשים 40+">
+  <div class="wrap wp-hero-inner">
+    <div class="wp-hero-text">
+      <div class="wp-eyebrow">The 40+ Program</div>
+      <h1>ניסית הכל? פילאטיס, ריצות, לאכול פחות? <span class="hl">וזה עדיין לא עובד.</span></h1>
+      <p class="wp-hero-sub">שיטת ״האימון החדש״ לנשים בגילאי 40+ שמחזירה לך שליטה על הגוף. תוך 6 שבועות תראי שינוי משמעותי: יותר שריר, פחות שומן, יותר אנרגיה — בלי להעמיס על הגוף ובלי להישחק.</p>
+      <a href="https://wa.me/972796299299?text=%D7%94%D7%99%D7%99!%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%90%D7%99%D7%9E%D7%95%D7%9F%20%D7%94%D7%AA%D7%A0%D7%A1%D7%95%D7%AA%20%D7%9C%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA%20%D7%94-40%2B%20%D7%A9%D7%9C%20EVER%20LAB%20%F0%9F%98%8A" class="wp-cta" target="_blank" rel="noopener noreferrer">אני רוצה לתאם אימון התנסות <span class="arr">←</span></a>
     </div>
   </div>
 </section>
