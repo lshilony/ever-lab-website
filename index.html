@@ -4851,15 +4851,16 @@
     margin-left: auto;
     margin-right: auto;
   }
-  /* Sample report photo (replaces the built dashboard mockup) */
-  .bio-report-photo { margin: 0 0 22px; }
-  .bio-report-photo img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 22px;
-    box-shadow: var(--shadow-md);
-    border: 1px solid rgba(20, 20, 20, 0.06);
+  /* Bio-age report photo as a full-width band (matches the section dividers) */
+  .bio-report-band {
+    order: 4;
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    height: clamp(280px, 40vw, 460px);
+  }
+  .bio-report-band .section-divider-img {
+    background-image: url('img/bio-age-report.jpg');
+    background-position: center 42%;
   }
 
   /* ─── Mobile (≤768px), stack everything vertically ─── */
@@ -6728,21 +6729,9 @@
       <h3>מבדק גיל ביולוגי תפקודי:<span class="em-step">נקודת ההתחלה</span></h3>
     </div>
 
-    <!-- Sample bio-age report, focal centered visual -->
-    <div class="bio-report bio-report-v2" aria-label="דוגמה לדוח המבדק">
-      <figure class="bio-report-photo">
-        <img src="img/bio-age-report.jpg" alt="מאמן EVER LAB מציג ללקוח דוח מבדק גיל ביולוגי תפקודי על מסך" loading="lazy">
-      </figure>
-
-      <!-- ─── Confirmation pill ─── -->
-      <div class="brv2-pill">
-        <span class="brv2-pill-check" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12.5 L10 17 L19 7"/>
-          </svg>
-        </span>
-        דוגמת דוח · בדיקת גיל ביולוגי תפקודי
-      </div>
+    <!-- Bio-age report photo, full-width band matching the section dividers -->
+    <div class="section-divider bio-report-band" role="img" aria-label="דוגמת דוח מבדק גיל ביולוגי תפקודי">
+      <div class="section-divider-img"></div>
     </div>
 
     <!-- Body text, centered below the focal report -->
