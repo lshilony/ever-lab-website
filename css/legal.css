@@ -57,6 +57,7 @@ strong, b { font-weight: 600; color: var(--ink); }
 }
 .legal-updated { font-size: 13.5px; color: var(--warm-gray); margin-bottom: 40px; }
 .legal-updated strong { color: var(--sage-deep); font-weight: 500; }
+.legal-updated-bottom { margin: 46px 0 0; padding-top: 22px; border-top: 1px solid rgba(107,139,112,0.18); text-align: center; }
 .legal-divider { height: 1px; background: rgba(107,139,112,0.2); margin: 0 0 40px; }
 
 .legal-content { font-size: 16px; line-height: 1.9; color: var(--ink-soft); }
