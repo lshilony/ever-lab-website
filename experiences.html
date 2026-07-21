@@ -272,33 +272,80 @@
     font-size: 15px;
   }
   .exp-hero.exp-hero-secondary .exp-eyebrow { margin-bottom: 18px; }
-  /* Inspirational quote under the pricing heading */
+  /* ─── Premium pricing hero ─── */
+  .pricing-hero {
+    padding: 122px 32px 36px;
+    background:
+      radial-gradient(ellipse 66% 48% at 50% -4%, rgba(141, 174, 146, 0.20) 0%, transparent 60%),
+      radial-gradient(ellipse 92% 60% at 50% 116%, rgba(205, 223, 183, 0.18) 0%, transparent 62%),
+      linear-gradient(180deg, var(--paper) 0%, var(--bg) 62%);
+  }
+  .pricing-hero h1 { margin-bottom: 20px; letter-spacing: -0.03em; }
+  .pricing-hero-lead {
+    max-width: 552px;
+    margin: 0 auto;
+    font-family: 'Poppins', 'Assistant', sans-serif;
+    font-weight: 300;
+    font-size: clamp(16px, 1.55vw, 19px);
+    line-height: 1.8;
+    color: var(--ink-soft);
+  }
+  /* Inspirational pull-quote */
   .exp-quote {
-    max-width: 600px;
-    margin: 30px auto 2px;
-    padding-top: 26px;
-    border-top: 1px solid rgba(107, 139, 112, 0.22);
+    position: relative;
+    max-width: 660px;
+    margin: 44px auto 0;
+    padding: 0;
+  }
+  .exp-quote-mark {
+    display: block;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 82px;
+    line-height: 0.5;
+    color: var(--sage);
+    opacity: 0.42;
+    margin-bottom: 14px;
+    user-select: none;
   }
   .exp-quote blockquote {
     font-family: 'Poppins', 'Assistant', serif;
     font-weight: 300;
     font-style: italic;
-    font-size: clamp(19px, 2.1vw, 25px);
-    line-height: 1.5;
-    letter-spacing: -0.01em;
+    font-size: clamp(22px, 2.7vw, 31px);
+    line-height: 1.42;
+    letter-spacing: -0.015em;
     color: var(--ink);
     direction: ltr;
-    margin: 0 0 14px;
+    margin: 0 auto 22px;
   }
   .exp-quote cite {
-    display: block;
+    position: relative;
+    display: inline-block;
     font-family: 'Poppins', 'Assistant', sans-serif;
     font-style: normal;
     font-size: 12px;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--sage-deep);
     direction: ltr;
+    padding-top: 18px;
+  }
+  .exp-quote cite::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 40px; height: 1px;
+    background: var(--sage-deep); opacity: 0.5;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .pricing-hero > * { animation: pricingRise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .pricing-hero h1 { animation-delay: 0.07s; }
+    .pricing-hero .pricing-hero-lead { animation-delay: 0.14s; }
+    .pricing-hero .exp-quote { animation-delay: 0.22s; }
+    @keyframes pricingRise {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
   }
   .exp-eyebrow {
     font-family: 'Poppins', 'Assistant', monospace;
@@ -1159,6 +1206,11 @@
     nav .nav-cta { display: none; }
     .logo-img { height: 72px; margin: -18px 0; }
     .exp-hero { padding: 120px 22px 60px; }
+    .pricing-hero { padding: 116px 24px 30px; }
+    .pricing-hero-lead { font-size: 16px; line-height: 1.75; }
+    .exp-quote { margin-top: 34px; }
+    .exp-quote-mark { font-size: 66px; margin-bottom: 10px; }
+    .exp-quote blockquote { font-size: clamp(20px, 6.2vw, 26px); }
     .packages { padding: 40px 22px 80px; }
     .package { padding: 32px 26px 28px; }
     .exp-closing { padding: 70px 22px 80px; }
@@ -1661,11 +1713,13 @@
 <main id="main">
 
   <!-- Hero: pricing title + quote -->
-  <section class="exp-hero">
+  <section class="exp-hero pricing-hero">
     <div class="exp-eyebrow"><span>Pricing</span></div>
     <h1>מחירון</h1>
+    <p class="pricing-hero-lead">כאן הבריאות שלך נמדדת, מובנת ונבנית מחדש. צעד אחר צעד, אל הגרסה החזקה, הצעירה והבריאה יותר של עצמך.</p>
     <div class="exp-quote">
-      <blockquote>“Take care of your body. It’s the only place you have to live.”</blockquote>
+      <span class="exp-quote-mark" aria-hidden="true">“</span>
+      <blockquote>Take care of your body. It’s the only place you have to live.</blockquote>
       <cite>Jim Rohn</cite>
     </div>
   </section>
