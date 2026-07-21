@@ -305,6 +305,34 @@
     font-size: 15px;
   }
   .exp-hero.exp-hero-secondary .exp-eyebrow { margin-bottom: 18px; }
+  /* Inspirational quote under the pricing heading */
+  .exp-quote {
+    max-width: 600px;
+    margin: 30px auto 2px;
+    padding-top: 26px;
+    border-top: 1px solid rgba(107, 139, 112, 0.22);
+  }
+  .exp-quote blockquote {
+    font-family: 'Poppins', 'Assistant', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(19px, 2.1vw, 25px);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    direction: ltr;
+    margin: 0 0 14px;
+  }
+  .exp-quote cite {
+    display: block;
+    font-family: 'Poppins', 'Assistant', sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    direction: ltr;
+  }
   .exp-eyebrow {
     font-family: 'Poppins', 'Assistant', monospace;
     font-size: 11px;
@@ -1665,6 +1693,10 @@
     <div class="exp-eyebrow"><span>À la carte</span></div>
     <h1>מחירון</h1>
     <p>בחרו שירות אחד להתחיל ממנו: מבדק, אימון היכרות או טיפול התאוששות.</p>
+    <div class="exp-quote">
+      <blockquote>“Take care of your body. It’s the only place you have to live.”</blockquote>
+      <cite>Jim Rohn</cite>
+    </div>
   </section>
 
   <section class="cat-section">
