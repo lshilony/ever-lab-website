@@ -281,15 +281,6 @@
       linear-gradient(180deg, var(--paper) 0%, var(--bg) 62%);
   }
   .pricing-hero h1 { margin-bottom: 20px; letter-spacing: -0.03em; }
-  .pricing-hero-lead {
-    max-width: 552px;
-    margin: 0 auto;
-    font-family: 'Poppins', 'Assistant', sans-serif;
-    font-weight: 300;
-    font-size: clamp(16px, 1.55vw, 19px);
-    line-height: 1.8;
-    color: var(--ink-soft);
-  }
   /* Inspirational pull-quote */
   .exp-quote {
     position: relative;
@@ -339,9 +330,8 @@
   }
   @media (prefers-reduced-motion: no-preference) {
     .pricing-hero > * { animation: pricingRise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
-    .pricing-hero h1 { animation-delay: 0.07s; }
-    .pricing-hero .pricing-hero-lead { animation-delay: 0.14s; }
-    .pricing-hero .exp-quote { animation-delay: 0.22s; }
+    .pricing-hero h1 { animation-delay: 0.08s; }
+    .pricing-hero .exp-quote { animation-delay: 0.18s; }
     @keyframes pricingRise {
       from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -1207,7 +1197,6 @@
     .logo-img { height: 72px; margin: -18px 0; }
     .exp-hero { padding: 120px 22px 60px; }
     .pricing-hero { padding: 116px 24px 30px; }
-    .pricing-hero-lead { font-size: 16px; line-height: 1.75; }
     .exp-quote { margin-top: 34px; }
     .exp-quote-mark { font-size: 66px; margin-bottom: 10px; }
     .exp-quote blockquote { font-size: clamp(20px, 6.2vw, 26px); }
@@ -1716,7 +1705,6 @@
   <section class="exp-hero pricing-hero">
     <div class="exp-eyebrow"><span>Pricing</span></div>
     <h1>מחירון</h1>
-    <p class="pricing-hero-lead">כאן הבריאות שלך נמדדת, מובנת ונבנית מחדש. צעד אחר צעד, אל הגרסה החזקה, הצעירה והבריאה יותר של עצמך.</p>
     <div class="exp-quote">
       <span class="exp-quote-mark" aria-hidden="true">“</span>
       <blockquote>Take care of your body. It’s the only place you have to live.</blockquote>
