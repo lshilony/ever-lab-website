@@ -286,6 +286,42 @@ body {
   max-height: none;
 }
 
+/* Scan-field divider strips */
+.bio-strip {
+  position: relative;
+  margin: 48px 0;
+  padding: 58px 40px;
+  border-radius: 18px;
+  overflow: hidden;
+  text-align: center;
+  background-color: #EDE6DC;
+  background-image:
+    linear-gradient(rgba(107, 139, 112, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(107, 139, 112, 0.10) 1px, transparent 1px);
+  background-size: 46px 46px;
+  border: 1px solid rgba(20, 20, 20, 0.06);
+}
+.bio-strip .bsc { position: absolute; width: 18px; height: 18px; border: 0 solid rgba(79, 106, 84, 0.5); }
+.bio-strip .bsc-tl { top: 16px; left: 16px; border-top-width: 1.4px; border-left-width: 1.4px; }
+.bio-strip .bsc-tr { top: 16px; right: 16px; border-top-width: 1.4px; border-right-width: 1.4px; }
+.bio-strip .bsc-bl { bottom: 16px; left: 16px; border-bottom-width: 1.4px; border-left-width: 1.4px; }
+.bio-strip .bsc-br { bottom: 16px; right: 16px; border-bottom-width: 1.4px; border-right-width: 1.4px; }
+.bio-strip-quote {
+  position: relative;
+  margin: 0;
+  font-family: 'Poppins', 'Assistant', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(20px, 2.7vw, 30px);
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  color: #2f4034;
+  direction: ltr;
+}
+@media (max-width: 600px) {
+  .bio-strip { padding: 40px 22px; margin: 34px 0; }
+}
+
 .tech-content {
   padding: 42px 38px 44px;
   display: flex;
