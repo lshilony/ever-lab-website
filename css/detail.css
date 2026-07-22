@@ -299,8 +299,8 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-.bio-strip-muscle { background-image: url('img/strip-muscle.jpg'); }
-.bio-strip-vo2max { background-image: url('img/strip-vo2max.jpg'); }
+.bio-strip-muscle { background-image: url('../img/strip-muscle.jpg'); }
+.bio-strip-vo2max { background-image: url('../img/strip-vo2max.jpg'); }
 @supports (-webkit-touch-callout: none) { .bio-strip { background-attachment: scroll; } }
 @media (prefers-reduced-motion: reduce) { .bio-strip { background-attachment: scroll; } }
 @media (max-width: 600px) {
