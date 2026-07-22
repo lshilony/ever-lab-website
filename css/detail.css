@@ -286,11 +286,11 @@ body {
   max-height: none;
 }
 
-/* Divider strips — the full original banner sized to the strip itself (cover), so much more of the
-   composition is visible than a viewport-sized fixed background would show. A gentle scroll-driven
-   parallax pans the banner vertically as the strip crosses the viewport. The cream scrim that hides
-   the heavy baked-in headline is the TOP background layer on the same element, so scrim + banner pan
-   together and the headline stays covered. The delicate HTML quote sits on top of the scrim. */
+/* Divider strips — the full banner is a separate .bio-strip-bg layer, oversized vertically so a bit
+   of JavaScript can pan it up/down as the strip crosses the viewport (a real cross-browser parallax,
+   no background-attachment: fixed and no viewport-sized zoom, so most of the composition stays visible).
+   The cream scrim hides the heavy baked-in headline and is the TOP background layer on the same .bio-strip-bg,
+   so scrim + banner pan together and the headline stays covered. The delicate quote sits on top. */
 .bio-strip {
   position: relative;
   display: flex;
@@ -302,18 +302,27 @@ body {
   min-height: clamp(340px, 34vw, 500px);
   overflow: hidden;
   direction: ltr;              /* English quote + left-to-right layout */
+}
+.bio-strip-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -11%;
+  height: 122%;               /* overflow top/bottom gives the parallax its travel room */
+  z-index: 0;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  will-change: transform;
 }
-.bio-strip-muscle {
+.bio-strip-muscle .bio-strip-bg {
   background-image:
     linear-gradient(to right, #EBE6E1 0, #EBE6E1 53%, rgba(235,230,225,0) 64%),
     url('../img/strip-muscle.jpg');
 }
 /* vo2max is the mirror image (athlete on the LEFT), so its scrim + quote live on the RIGHT. */
-.bio-strip-vo2max {
-  justify-content: flex-end;
+.bio-strip-vo2max { justify-content: flex-end; }
+.bio-strip-vo2max .bio-strip-bg {
   background-image:
     linear-gradient(to left, #EFE9E3 0, #EFE9E3 60%, rgba(239,233,227,0) 70%),
     url('../img/strip-vo2max-mirror.jpg');
@@ -322,19 +331,6 @@ body {
   text-align: right;
   padding-left: 0;
   padding-right: clamp(32px, 5.5vw, 104px);
-}
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .bio-strip {
-      animation: bioStripPan linear both;
-      animation-timeline: view();
-      animation-range: cover;
-    }
-  }
-}
-@keyframes bioStripPan {
-  from { background-position: center 18%; }
-  to   { background-position: center 82%; }
 }
 .bio-strip-quote {
   position: relative;
@@ -356,20 +352,22 @@ body {
   font-weight: 300;
   color: var(--sage-deep, #6B8B70);
 }
+@media (prefers-reduced-motion: reduce) {
+  .bio-strip-bg { transform: none !important; top: 0; height: 100%; }
+}
 @media (max-width: 720px) {
   .bio-strip {
     min-height: clamp(220px, 56vw, 320px);
     margin-top: 36px;
     margin-bottom: 36px;
-    animation: none;
-    background-position: 70% center;
   }
-  .bio-strip-muscle {
+  .bio-strip-bg { background-position: 70% center; }
+  .bio-strip-muscle .bio-strip-bg {
     background-image:
       linear-gradient(to right, #EBE6E1 0, #EBE6E1 42%, rgba(235,230,225,0.4) 72%, rgba(235,230,225,0) 100%),
       url('../img/strip-muscle.jpg');
   }
-  .bio-strip-vo2max {
+  .bio-strip-vo2max .bio-strip-bg {
     background-position: 30% center;
     background-image:
       linear-gradient(to left, #EFE9E3 0, #EFE9E3 42%, rgba(239,233,227,0.4) 72%, rgba(239,233,227,0) 100%),
