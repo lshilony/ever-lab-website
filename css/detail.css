@@ -311,10 +311,17 @@ body {
     linear-gradient(to right, #EBE6E1 0, #EBE6E1 53%, rgba(235,230,225,0) 64%),
     url('../img/strip-muscle.jpg');
 }
+/* vo2max is the mirror image (athlete on the LEFT), so its scrim + quote live on the RIGHT. */
 .bio-strip-vo2max {
+  justify-content: flex-end;
   background-image:
-    linear-gradient(to right, #EFE9E3 0, #EFE9E3 56%, rgba(239,233,227,0) 66%),
-    url('../img/strip-vo2max.jpg');
+    linear-gradient(to left, #EFE9E3 0, #EFE9E3 60%, rgba(239,233,227,0) 70%),
+    url('../img/strip-vo2max-mirror.jpg');
+}
+.bio-strip-vo2max .bio-strip-quote {
+  text-align: right;
+  padding-left: 0;
+  padding-right: clamp(32px, 5.5vw, 104px);
 }
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
@@ -363,9 +370,14 @@ body {
       url('../img/strip-muscle.jpg');
   }
   .bio-strip-vo2max {
+    background-position: 30% center;
     background-image:
-      linear-gradient(to right, #EFE9E3 0, #EFE9E3 42%, rgba(239,233,227,0.4) 72%, rgba(239,233,227,0) 100%),
-      url('../img/strip-vo2max.jpg');
+      linear-gradient(to left, #EFE9E3 0, #EFE9E3 42%, rgba(239,233,227,0.4) 72%, rgba(239,233,227,0) 100%),
+      url('../img/strip-vo2max-mirror.jpg');
+  }
+  .bio-strip-vo2max .bio-strip-quote {
+    padding-left: 0;
+    padding-right: 24px;
   }
   .bio-strip-quote {
     max-width: 66%;
