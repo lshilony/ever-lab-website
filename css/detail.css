@@ -296,18 +296,19 @@ body {
   padding: 66px 40px;
   overflow: hidden;
   text-align: center;
-  background-color: #EDE6DC;
+  background-color: #A6C1AB;
   background-image:
-    linear-gradient(rgba(107, 139, 112, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(107, 139, 112, 0.12) 1px, transparent 1px);
-  background-size: 46px 46px;
-  background-attachment: fixed;
-  border-top: 1px solid rgba(20, 20, 20, 0.07);
-  border-bottom: 1px solid rgba(20, 20, 20, 0.07);
+    linear-gradient(rgba(47, 64, 52, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 64, 52, 0.07) 1px, transparent 1px),
+    linear-gradient(160deg, #C6D8C9 0%, #A3C1A8 48%, #82A088 100%);
+  background-size: 46px 46px, 46px 46px, cover;
+  background-attachment: fixed, fixed, fixed;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
 }
 @supports (-webkit-touch-callout: none) { .bio-strip { background-attachment: scroll; } }
 @media (prefers-reduced-motion: reduce) { .bio-strip { background-attachment: scroll; } }
-.bio-strip .bsc { position: absolute; width: 18px; height: 18px; border: 0 solid rgba(79, 106, 84, 0.5); }
+.bio-strip .bsc { position: absolute; width: 18px; height: 18px; border: 0 solid rgba(45, 62, 50, 0.5); }
 .bio-strip .bsc-tl { top: 16px; left: 16px; border-top-width: 1.4px; border-left-width: 1.4px; }
 .bio-strip .bsc-tr { top: 16px; right: 16px; border-top-width: 1.4px; border-right-width: 1.4px; }
 .bio-strip .bsc-bl { bottom: 16px; left: 16px; border-bottom-width: 1.4px; border-left-width: 1.4px; }
