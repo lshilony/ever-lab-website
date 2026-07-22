@@ -286,76 +286,72 @@ body {
   max-height: none;
 }
 
-/* Divider strips — full-bleed bands: refined HTML quote on a cream panel + the athlete photo.
-   The headline text lives in HTML (light Poppins) for a delicate, on-brand look instead of the
-   heavy baked-in banner text. The photo has a subtle scroll-driven vertical parallax. */
+/* Divider strips — one continuous banner: the delicate HTML quote sits on the cream (left),
+   the full athlete photo is anchored to the right and shown whole (never cropped). Its left edge
+   fades softly into the cream so the photo and the quote read as a single composition. */
 .bio-strip {
+  position: relative;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   width: 100vw;
   margin-inline: calc(50% - 50vw);
   margin-top: 52px;
   margin-bottom: 52px;
-  min-height: clamp(280px, 30vw, 380px);
-  background-color: #EDE8E3;
-  direction: ltr;              /* English quote + left-to-right layout */
+  min-height: clamp(280px, 30vw, 400px);
   overflow: hidden;
+  direction: ltr;              /* English quote + left-to-right layout */
+  background-color: #EDE9E6;
 }
-.bio-strip-copy {
-  flex: 0 0 43%;
-  display: flex;
-  align-items: center;
-  padding: 0 clamp(28px, 5vw, 84px);
-}
+.bio-strip-vo2max { background-color: #EEE8E5; }
 .bio-strip-quote {
+  position: relative;
+  z-index: 2;
+  max-width: 52%;
   margin: 0;
+  padding-left: clamp(32px, 5.5vw, 104px);
   font-family: 'Poppins', 'Assistant', sans-serif;
   font-weight: 300;
-  font-size: clamp(21px, 2.35vw, 33px);
-  line-height: 1.36;
-  letter-spacing: 0.03em;
+  font-size: clamp(24px, 2.9vw, 40px);
+  line-height: 1.32;
+  letter-spacing: 0.015em;
   color: var(--ink, #141414);
 }
 .bio-strip-quote .accent {
   display: block;
-  margin-top: 0.15em;
+  margin-top: 0.12em;
   font-style: italic;
   font-weight: 300;
   color: var(--sage-deep, #6B8B70);
 }
 .bio-strip-photo {
-  flex: 1 1 57%;
-  position: relative;
-  overflow: hidden;
-}
-.bio-strip-photo img {
   position: absolute;
-  inset: -12% 0;
-  width: 100%;
-  height: 124%;
-  object-fit: cover;
-  object-position: center top;
-  animation: bioStripParallax linear both;
-  animation-timeline: view();
-  animation-range: cover;
-}
-@keyframes bioStripParallax {
-  from { transform: translateY(-6%); }
-  to   { transform: translateY(6%); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .bio-strip-photo img { animation: none; transform: none; }
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: auto;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%);
+  mask-image: linear-gradient(to right, transparent 0, #000 8%);
 }
 @media (max-width: 720px) {
   .bio-strip {
-    flex-direction: column;
+    display: block;
     min-height: 0;
     margin-top: 36px;
     margin-bottom: 36px;
   }
-  .bio-strip-copy { flex: none; padding: 28px 26px 4px; }
-  .bio-strip-photo { flex: none; width: 100%; aspect-ratio: 3 / 2; }
-  .bio-strip-photo img { inset: 0; height: 100%; }
+  .bio-strip-quote {
+    max-width: none;
+    padding: 26px 26px 6px;
+    font-size: clamp(21px, 6vw, 30px);
+  }
+  .bio-strip-photo {
+    position: static;
+    display: block;
+    width: 100%;
+    height: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
 }
 
 .tech-content {
