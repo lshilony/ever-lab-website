@@ -286,21 +286,23 @@ body {
   max-height: none;
 }
 
-/* Divider strips — full-bleed banner images */
+/* Divider strips — full-bleed banner bands with a fixed (parallax reveal) image */
 .bio-strip {
   width: 100vw;
   margin-inline: calc(50% - 50vw);
   margin-top: 52px;
   margin-bottom: 52px;
+  height: clamp(300px, 30vw, 400px);
   overflow: hidden;
-  line-height: 0;
-  font-size: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
-.bio-strip img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
+.bio-strip-muscle { background-image: url('img/strip-muscle.jpg'); }
+.bio-strip-vo2max { background-image: url('img/strip-vo2max.jpg'); }
+@supports (-webkit-touch-callout: none) { .bio-strip { background-attachment: scroll; } }
+@media (prefers-reduced-motion: reduce) { .bio-strip { background-attachment: scroll; } }
 @media (max-width: 600px) {
   .bio-strip { margin-top: 36px; margin-bottom: 36px; }
 }
