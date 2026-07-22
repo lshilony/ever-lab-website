@@ -286,9 +286,9 @@ body {
   max-height: none;
 }
 
-/* Divider strips — one continuous banner: the delicate HTML quote sits on the cream (left),
-   the full athlete photo is anchored to the right and shown whole (never cropped). Its left edge
-   fades softly into the cream so the photo and the quote read as a single composition. */
+/* Divider strips — the full original banner as background (fills the whole width, no empty gaps).
+   A CSS cream scrim covers only the heavy baked-in headline on the left; the delicate HTML quote
+   sits on top of it. The athlete + data panels on the right stay untouched. */
 .bio-strip {
   position: relative;
   display: flex;
@@ -297,16 +297,31 @@ body {
   margin-inline: calc(50% - 50vw);
   margin-top: 52px;
   margin-bottom: 52px;
-  min-height: clamp(280px, 30vw, 400px);
+  min-height: clamp(300px, 30vw, 420px);
   overflow: hidden;
   direction: ltr;              /* English quote + left-to-right layout */
-  background-color: #EDE9E6;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
-.bio-strip-vo2max { background-color: #EEE8E5; }
+.bio-strip-muscle { background-image: url('../img/strip-muscle.jpg'); }
+.bio-strip-vo2max { background-image: url('../img/strip-vo2max.jpg'); }
+.bio-strip::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to right,
+    #EBE6E1 0%, #EBE6E1 53%, rgba(235,230,225,0) 64%);
+}
+.bio-strip-vo2max::before {
+  background: linear-gradient(to right,
+    #EFE9E3 0%, #EFE9E3 56%, rgba(239,233,227,0) 66%);
+}
 .bio-strip-quote {
   position: relative;
   z-index: 2;
-  max-width: 52%;
+  max-width: 50%;
   margin: 0;
   padding-left: clamp(32px, 5.5vw, 104px);
   font-family: 'Poppins', 'Assistant', sans-serif;
@@ -323,34 +338,25 @@ body {
   font-weight: 300;
   color: var(--sage-deep, #6B8B70);
 }
-.bio-strip-photo {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  width: auto;
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%);
-  mask-image: linear-gradient(to right, transparent 0, #000 8%);
-}
 @media (max-width: 720px) {
   .bio-strip {
-    display: block;
-    min-height: 0;
+    min-height: clamp(220px, 56vw, 320px);
     margin-top: 36px;
     margin-bottom: 36px;
+    background-position: 72% center;
+  }
+  .bio-strip::before {
+    background: linear-gradient(to right,
+      #EBE6E1 0%, #EBE6E1 40%, rgba(235,230,225,0.35) 72%, rgba(235,230,225,0) 100%);
+  }
+  .bio-strip-vo2max::before {
+    background: linear-gradient(to right,
+      #EFE9E3 0%, #EFE9E3 40%, rgba(239,233,227,0.35) 72%, rgba(239,233,227,0) 100%);
   }
   .bio-strip-quote {
-    max-width: none;
-    padding: 26px 26px 6px;
-    font-size: clamp(21px, 6vw, 30px);
-  }
-  .bio-strip-photo {
-    position: static;
-    display: block;
-    width: 100%;
-    height: auto;
-    -webkit-mask-image: none;
-    mask-image: none;
+    max-width: 66%;
+    padding-left: 24px;
+    font-size: clamp(20px, 5.4vw, 27px);
   }
 }
 
