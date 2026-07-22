@@ -286,21 +286,29 @@ body {
   max-height: none;
 }
 
-/* Divider strips — full-bleed banner bands with a fixed (parallax reveal) image */
+/* Divider strips — full-bleed designed banners shown in full (contain) with a fixed parallax reveal.
+   aspect-ratio matches each source image so the whole banner (text + figures) is visible, never cropped.
+   background-color matches the banner's cream so the edges blend seamlessly as the image drifts on scroll. */
 .bio-strip {
   width: 100vw;
   margin-inline: calc(50% - 50vw);
   margin-top: 52px;
   margin-bottom: 52px;
-  height: clamp(300px, 30vw, 400px);
-  overflow: hidden;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-.bio-strip-muscle { background-image: url('../img/strip-muscle.jpg'); }
-.bio-strip-vo2max { background-image: url('../img/strip-vo2max.jpg'); }
+.bio-strip-muscle {
+  background-image: url('../img/strip-muscle.jpg');
+  aspect-ratio: 2000 / 799;
+  background-color: #E8E3DF;
+}
+.bio-strip-vo2max {
+  background-image: url('../img/strip-vo2max.jpg');
+  aspect-ratio: 2000 / 1097;
+  background-color: #F0EAE5;
+}
 @supports (-webkit-touch-callout: none) { .bio-strip { background-attachment: scroll; } }
 @media (prefers-reduced-motion: reduce) { .bio-strip { background-attachment: scroll; } }
 @media (max-width: 600px) {
