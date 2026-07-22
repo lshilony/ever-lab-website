@@ -286,11 +286,11 @@ body {
   max-height: none;
 }
 
-/* Divider strips — the full original banner as a fixed (parallax-reveal) background, exactly like
-   the home-page dividers. The cream scrim that hides the heavy baked-in headline is stacked as the
-   TOP background layer on the same element, so scrim + banner are both `fixed` and move together —
-   the baked headline stays covered at every scroll position while the image parallaxes. The
-   delicate HTML quote sits on top of the scrim. */
+/* Divider strips — the full original banner sized to the strip itself (cover), so much more of the
+   composition is visible than a viewport-sized fixed background would show. A gentle scroll-driven
+   parallax pans the banner vertically as the strip crosses the viewport. The cream scrim that hides
+   the heavy baked-in headline is the TOP background layer on the same element, so scrim + banner pan
+   together and the headline stays covered. The delicate HTML quote sits on top of the scrim. */
 .bio-strip {
   position: relative;
   display: flex;
@@ -299,13 +299,12 @@ body {
   margin-inline: calc(50% - 50vw);
   margin-top: 52px;
   margin-bottom: 52px;
-  min-height: clamp(300px, 30vw, 420px);
+  min-height: clamp(340px, 34vw, 500px);
   overflow: hidden;
   direction: ltr;              /* English quote + left-to-right layout */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
 }
 .bio-strip-muscle {
   background-image:
@@ -317,9 +316,19 @@ body {
     linear-gradient(to right, #EFE9E3 0, #EFE9E3 56%, rgba(239,233,227,0) 66%),
     url('../img/strip-vo2max.jpg');
 }
-/* Fall back to a static banner where fixed backgrounds are janky/unsupported (iOS) or unwanted. */
-@supports (-webkit-touch-callout: none) { .bio-strip { background-attachment: scroll; } }
-@media (prefers-reduced-motion: reduce) { .bio-strip { background-attachment: scroll; } }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .bio-strip {
+      animation: bioStripPan linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+  }
+}
+@keyframes bioStripPan {
+  from { background-position: center 18%; }
+  to   { background-position: center 82%; }
+}
 .bio-strip-quote {
   position: relative;
   z-index: 2;
@@ -345,7 +354,7 @@ body {
     min-height: clamp(220px, 56vw, 320px);
     margin-top: 36px;
     margin-bottom: 36px;
-    background-attachment: scroll;
+    animation: none;
     background-position: 70% center;
   }
   .bio-strip-muscle {
