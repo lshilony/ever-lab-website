@@ -66,7 +66,6 @@
     </p>
 
     <div class="bio-strip bio-strip-muscle" role="img" aria-label="muscle is the organ of Longevity">
-      <div class="bio-strip-bg"></div>
       <p class="bio-strip-quote">Muscle is the organ of<span class="accent">Longevity</span></p>
     </div>
 
@@ -175,7 +174,6 @@
     </div>
 
     <div class="bio-strip bio-strip-vo2max" role="img" aria-label="VO₂max is the engine of Longevity">
-      <div class="bio-strip-bg"></div>
       <p class="bio-strip-quote">VO<sub>2</sub>max is the engine of<span class="accent">Longevity</span></p>
     </div>
   </div>
@@ -222,32 +220,6 @@
 
   <p class="site-footer-copy">© 2026 Meduza Labs LTD. כל הזכויות שמורות.</p>
 </footer>
-
-<script>
-  (function () {
-    var bgs = document.querySelectorAll('.bio-strip-bg');
-    if (!bgs.length) return;
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var ticking = false;
-    function update() {
-      var vh = window.innerHeight || document.documentElement.clientHeight;
-      for (var i = 0; i < bgs.length; i++) {
-        var strip = bgs[i].parentElement;
-        var r = strip.getBoundingClientRect();
-        if (r.bottom < -40 || r.top > vh + 40) continue;
-        var p = (vh - r.top) / (vh + r.height);   /* 0 as it enters bottom, 1 as it leaves top */
-        p = p < 0 ? 0 : p > 1 ? 1 : p;
-        var shift = (p - 0.5) * 13;                 /* -6.5% .. +6.5% within the 11% overflow */
-        bgs[i].style.transform = 'translate3d(0,' + shift.toFixed(2) + '%,0)';
-      }
-      ticking = false;
-    }
-    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    update();
-  })();
-</script>
 
 </body>
 </html>
