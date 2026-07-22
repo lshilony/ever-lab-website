@@ -286,21 +286,27 @@ body {
   max-height: none;
 }
 
-/* Scan-field divider strips */
+/* Scan-field divider strips — full-bleed band with a fixed (parallax) grid */
 .bio-strip {
   position: relative;
-  margin: 48px 0;
-  padding: 58px 40px;
-  border-radius: 18px;
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 66px 40px;
   overflow: hidden;
   text-align: center;
   background-color: #EDE6DC;
   background-image:
-    linear-gradient(rgba(107, 139, 112, 0.10) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(107, 139, 112, 0.10) 1px, transparent 1px);
+    linear-gradient(rgba(107, 139, 112, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(107, 139, 112, 0.12) 1px, transparent 1px);
   background-size: 46px 46px;
-  border: 1px solid rgba(20, 20, 20, 0.06);
+  background-attachment: fixed;
+  border-top: 1px solid rgba(20, 20, 20, 0.07);
+  border-bottom: 1px solid rgba(20, 20, 20, 0.07);
 }
+@supports (-webkit-touch-callout: none) { .bio-strip { background-attachment: scroll; } }
+@media (prefers-reduced-motion: reduce) { .bio-strip { background-attachment: scroll; } }
 .bio-strip .bsc { position: absolute; width: 18px; height: 18px; border: 0 solid rgba(79, 106, 84, 0.5); }
 .bio-strip .bsc-tl { top: 16px; left: 16px; border-top-width: 1.4px; border-left-width: 1.4px; }
 .bio-strip .bsc-tr { top: 16px; right: 16px; border-top-width: 1.4px; border-right-width: 1.4px; }
@@ -319,7 +325,7 @@ body {
   direction: ltr;
 }
 @media (max-width: 600px) {
-  .bio-strip { padding: 40px 22px; margin: 34px 0; }
+  .bio-strip { padding: 46px 22px; margin-top: 40px; margin-bottom: 40px; }
 }
 
 .tech-content {
