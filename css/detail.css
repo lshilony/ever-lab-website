@@ -285,6 +285,12 @@ body {
   height: 100%;
   max-height: none;
 }
+.bio-cards .tech-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
 /* Divider strips — SAME structure and behaviour as the home-page / shop dividers (.section-divider):
    a fixed-height, overflow-hidden container with a SEPARATE absolutely-positioned .bio-strip-img layer
