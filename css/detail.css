@@ -286,11 +286,11 @@ body {
   max-height: none;
 }
 
-/* Divider strips — the full banner as a fixed (parallax-reveal) background, exactly like the
-   home-page dividers: the banner appears to stay put while the strip scrolls, revealing it.
-   The cream scrim (which hides the muscle strip's baked-in headline and seats the quote) is the
-   TOP background layer on the same element, so scrim + banner are both fixed and stay aligned at
-   every scroll position. vo2max uses the mirror image (athlete left) with scrim + quote on the right. */
+/* Divider strips — SAME structure and behaviour as the home-page / shop dividers (.section-divider):
+   a fixed-height, overflow-hidden container with a SEPARATE absolutely-positioned .bio-strip-img layer
+   that carries the background-attachment: fixed image, so it parallaxes identically. The cream scrim
+   (hides the muscle headline + seats the quote) is the top background layer on that same fixed img, so
+   scrim + banner stay aligned. vo2max uses the mirror image (athlete left) with scrim + quote on the right. */
 .bio-strip {
   position: relative;
   display: flex;
@@ -299,21 +299,30 @@ body {
   margin-inline: calc(50% - 50vw);
   margin-top: 52px;
   margin-bottom: 52px;
-  min-height: clamp(320px, 32vw, 460px);
+  height: 440px;
   overflow: hidden;
   direction: ltr;              /* English quote + left-to-right layout */
+}
+.bio-strip-img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  /* Background pinned to viewport, image stays still while content scrolls past (parallax window effect) */
   background-attachment: fixed;
 }
-.bio-strip-muscle {
+/* iOS Safari has spotty support for fixed bg-attachment, fallback to scroll there */
+@supports (-webkit-touch-callout: none) { .bio-strip-img { background-attachment: scroll; } }
+@media (prefers-reduced-motion: reduce) { .bio-strip-img { background-attachment: scroll; } }
+.bio-strip-muscle .bio-strip-img {
   background-image:
     linear-gradient(to right, #EBE6E1 0, #EBE6E1 53%, rgba(235,230,225,0) 64%),
     url('../img/strip-muscle.jpg');
 }
-.bio-strip-vo2max {
-  justify-content: flex-end;
+.bio-strip-vo2max { justify-content: flex-end; }
+.bio-strip-vo2max .bio-strip-img {
   background-image:
     linear-gradient(to left, #EFE9E3 0, #EFE9E3 60%, rgba(239,233,227,0) 70%),
     url('../img/strip-vo2max-mirror.jpg');
@@ -323,9 +332,6 @@ body {
   padding-left: 0;
   padding-right: clamp(32px, 5.5vw, 104px);
 }
-/* Fixed backgrounds are janky/unsupported on iOS and unwanted with reduced motion — fall back to static. */
-@supports (-webkit-touch-callout: none) { .bio-strip { background-attachment: scroll; } }
-@media (prefers-reduced-motion: reduce) { .bio-strip { background-attachment: scroll; } }
 .bio-strip-quote {
   position: relative;
   z-index: 2;
@@ -346,20 +352,19 @@ body {
   font-weight: 300;
   color: var(--sage-deep, #6B8B70);
 }
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .bio-strip {
-    min-height: clamp(220px, 56vw, 320px);
+    height: 300px;
     margin-top: 36px;
     margin-bottom: 36px;
-    background-attachment: scroll;
-    background-position: 70% center;
   }
-  .bio-strip-muscle {
+  .bio-strip-img { background-position: 70% center; }
+  .bio-strip-muscle .bio-strip-img {
     background-image:
       linear-gradient(to right, #EBE6E1 0, #EBE6E1 42%, rgba(235,230,225,0.4) 72%, rgba(235,230,225,0) 100%),
       url('../img/strip-muscle.jpg');
   }
-  .bio-strip-vo2max {
+  .bio-strip-vo2max .bio-strip-img {
     background-position: 30% center;
     background-image:
       linear-gradient(to left, #EFE9E3 0, #EFE9E3 42%, rgba(239,233,227,0.4) 72%, rgba(239,233,227,0) 100%),
