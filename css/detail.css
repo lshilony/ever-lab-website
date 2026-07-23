@@ -321,16 +321,10 @@ body {
     linear-gradient(to right, #EBE6E1 0, #EBE6E1 53%, rgba(235,230,225,0) 64%),
     url('../img/strip-muscle.jpg');
 }
-.bio-strip-vo2max { justify-content: flex-end; }
+/* vo2max is a complete designed banner (its own elegant text + biological-age dashboard),
+   shown whole with no scrim / HTML quote overlay. */
 .bio-strip-vo2max .bio-strip-img {
-  background-image:
-    linear-gradient(to left, #EFE9E3 0, #EFE9E3 60%, rgba(239,233,227,0) 70%),
-    url('../img/strip-vo2max-mirror.jpg');
-}
-.bio-strip-vo2max .bio-strip-quote {
-  text-align: right;
-  padding-left: 0;
-  padding-right: clamp(32px, 5.5vw, 104px);
+  background-image: url('../img/strip-vo2max-v2.jpg');
 }
 .bio-strip-quote {
   position: relative;
@@ -365,14 +359,8 @@ body {
       url('../img/strip-muscle.jpg');
   }
   .bio-strip-vo2max .bio-strip-img {
-    background-position: 30% center;
-    background-image:
-      linear-gradient(to left, #EFE9E3 0, #EFE9E3 42%, rgba(239,233,227,0.4) 72%, rgba(239,233,227,0) 100%),
-      url('../img/strip-vo2max-mirror.jpg');
-  }
-  .bio-strip-vo2max .bio-strip-quote {
-    padding-left: 0;
-    padding-right: 24px;
+    background-position: center;
+    background-image: url('../img/strip-vo2max-v2.jpg');
   }
   .bio-strip-quote {
     max-width: 66%;
