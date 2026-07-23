@@ -316,56 +316,19 @@ body {
 /* iOS Safari has spotty support for fixed bg-attachment, fallback to scroll there */
 @supports (-webkit-touch-callout: none) { .bio-strip-img { background-attachment: scroll; } }
 @media (prefers-reduced-motion: reduce) { .bio-strip-img { background-attachment: scroll; } }
-.bio-strip-muscle .bio-strip-img {
-  background-image:
-    linear-gradient(to right, #EBE6E1 0, #EBE6E1 53%, rgba(235,230,225,0) 64%),
-    url('../img/strip-muscle.jpg');
-}
-/* vo2max is a complete designed banner (its own elegant text + biological-age dashboard),
+/* Both strips are complete designed banners (their own elegant text + biological-age metrics),
    shown whole with no scrim / HTML quote overlay. */
+.bio-strip-muscle .bio-strip-img {
+  background-image: url('../img/strip-muscle-v2.jpg');
+}
 .bio-strip-vo2max .bio-strip-img {
   background-image: url('../img/strip-vo2max-v2.jpg');
-}
-.bio-strip-quote {
-  position: relative;
-  z-index: 2;
-  max-width: 50%;
-  margin: 0;
-  padding-left: clamp(32px, 5.5vw, 104px);
-  font-family: 'Poppins', 'Assistant', sans-serif;
-  font-weight: 300;
-  font-size: clamp(24px, 2.9vw, 40px);
-  line-height: 1.32;
-  letter-spacing: 0.015em;
-  color: var(--ink, #141414);
-}
-.bio-strip-quote .accent {
-  display: block;
-  margin-top: 0.12em;
-  font-style: italic;
-  font-weight: 300;
-  color: var(--sage-deep, #6B8B70);
 }
 @media (max-width: 768px) {
   .bio-strip {
     height: 300px;
     margin-top: 36px;
     margin-bottom: 36px;
-  }
-  .bio-strip-img { background-position: 70% center; }
-  .bio-strip-muscle .bio-strip-img {
-    background-image:
-      linear-gradient(to right, #EBE6E1 0, #EBE6E1 42%, rgba(235,230,225,0.4) 72%, rgba(235,230,225,0) 100%),
-      url('../img/strip-muscle.jpg');
-  }
-  .bio-strip-vo2max .bio-strip-img {
-    background-position: center;
-    background-image: url('../img/strip-vo2max-v2.jpg');
-  }
-  .bio-strip-quote {
-    max-width: 66%;
-    padding-left: 24px;
-    font-size: clamp(20px, 5.4vw, 27px);
   }
 }
 
