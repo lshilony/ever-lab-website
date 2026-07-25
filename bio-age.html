@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/detail.css?v=8">
+  <link rel="stylesheet" href="css/detail.css?v=9">
 
   <script type="application/ld+json">
   {
@@ -230,6 +230,9 @@
      on scroll. Pure JS (view()/fixed are unreliable on iOS); a short rAF loop after each scroll/touch
      input keeps it updating through iOS momentum scrolling. */
   (function () {
+    /* Where animation-timeline: view() is supported, the CSS scroll-driven animation (detail.css)
+       drives the parallax on the compositor. Only run this JS fallback otherwise, to avoid conflict. */
+    if (window.CSS && CSS.supports && CSS.supports('animation-timeline: view()')) return;
     var imgs = document.querySelectorAll('.bio-strip-img');
     if (!imgs.length) return;
     var mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');

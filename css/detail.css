@@ -355,6 +355,23 @@ body {
   }
   .bio-strip-vo2max .bio-strip-img { aspect-ratio: 2000 / 1160; }
 }
+/* Compositor-smooth parallax for iOS (26+) etc. — runs on the GPU via a scroll-driven animation,
+   which (unlike a JS scroll handler) actually repaints during iOS momentum scrolling. Keyframes are
+   centered on -50% (the layer's centering offset). The JS in bio-age.html is the fallback where
+   animation-timeline: view() isn't supported. */
+@keyframes bioStripPanMobile {
+  from { transform: translateY(-55%); }
+  to   { transform: translateY(-45%); }
+}
+@supports (animation-timeline: view()) {
+  @media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+    .bio-strip-img {
+      animation: bioStripPanMobile linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+  }
+}
 
 .tech-content {
   padding: 42px 38px 44px;
