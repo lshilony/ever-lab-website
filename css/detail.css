@@ -331,36 +331,29 @@ body {
   background-image: url('../img/strip-vo2max-v2.jpg');
 }
 @media (max-width: 768px) {
+  /* On phones the wide banners show in FULL (no side-crop) at their own aspect ratio. The strip is a
+     touch shorter than the banner so there's a little vertical room, and the image layer is nudged
+     on scroll by JS (background-attachment: fixed and animation-timeline: view() are both unreliable
+     on iOS). background-size: 100% 100% fills the aspect-matched box exactly — no crop, no distortion. */
   .bio-strip {
-    height: 300px;
+    height: auto;
+    aspect-ratio: 2000 / 1180;
     margin-top: 36px;
     margin-bottom: 36px;
-    /* clip (NOT hidden): still crops the oversized image, but does NOT become a scroll container,
-       so the .bio-strip-img view() timeline measures against the viewport and actually progresses. */
     overflow: clip;
   }
-  /* background-attachment: fixed doesn't work on mobile, so the parallax here pans an oversized
-     image layer instead. Preferred path: CSS scroll-driven animation (compositor-smooth). Where
-     unsupported, the script in bio-age.html drives the same transform as a fallback. */
+  .bio-strip-vo2max { aspect-ratio: 2000 / 1030; }
   .bio-strip-img {
-    top: -20%;
-    height: 140%;
+    top: 50%;
+    bottom: auto;
+    height: auto;
+    aspect-ratio: 2000 / 1333;
+    background-size: 100% 100%;
     background-attachment: scroll;
+    transform: translateY(-50%);
     will-change: transform;
   }
-}
-@keyframes bioStripPanMobile {
-  from { transform: translateY(-15%); }
-  to   { transform: translateY(15%); }
-}
-@supports (animation-timeline: view()) {
-  @media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
-    .bio-strip-img {
-      animation: bioStripPanMobile linear both;
-      animation-timeline: view();
-      animation-range: cover;
-    }
-  }
+  .bio-strip-vo2max .bio-strip-img { aspect-ratio: 2000 / 1160; }
 }
 
 .tech-content {

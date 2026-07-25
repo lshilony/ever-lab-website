@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/detail.css?v=7">
+  <link rel="stylesheet" href="css/detail.css?v=8">
 
   <script type="application/ld+json">
   {
@@ -225,37 +225,35 @@
 </footer>
 
 <script>
-  /* Mobile parallax for the divider strips. On desktop the CSS background-attachment: fixed
-     handles it; that doesn't work on mobile, so there we translate the oversized .bio-strip-img
-     layer on scroll. Runs only <=768px and clears the transform on desktop so `fixed` is untouched. */
+  /* Mobile parallax for the divider strips. Desktop uses CSS background-attachment: fixed and is left
+     alone. On phones (<=768px) the image layer is centered (translateY(-50%)) and nudged a few percent
+     on scroll. Pure JS (view()/fixed are unreliable on iOS); a short rAF loop after each scroll/touch
+     input keeps it updating through iOS momentum scrolling. */
   (function () {
-    /* Modern browsers use the CSS scroll-driven animation (see detail.css). Only run this
-       JS fallback where animation-timeline: view() is unsupported, to avoid double-driving. */
-    if (window.CSS && CSS.supports && CSS.supports('animation-timeline: view()')) return;
     var imgs = document.querySelectorAll('.bio-strip-img');
     if (!imgs.length) return;
-    var mqMobile = window.matchMedia('(max-width: 768px)');
     var mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-    var ticking = false;
-    function update() {
+    var rafId = null, until = 0;
+    function apply() {
+      var mobile = window.innerWidth <= 768 && !mqReduce.matches;
       var vh = window.innerHeight || document.documentElement.clientHeight;
-      var active = mqMobile.matches && !mqReduce.matches;
       for (var i = 0; i < imgs.length; i++) {
-        if (!active) { if (imgs[i].style.transform) imgs[i].style.transform = ''; continue; }
-        var strip = imgs[i].parentElement;
-        var r = strip.getBoundingClientRect();
+        if (!mobile) { if (imgs[i].style.transform) imgs[i].style.transform = ''; continue; }
+        var r = imgs[i].parentElement.getBoundingClientRect();
         if (r.bottom < 0 || r.top > vh) continue;
         var p = (vh - r.top) / (vh + r.height);   /* 0 entering bottom → 1 leaving top */
         p = p < 0 ? 0 : p > 1 ? 1 : p;
-        var shift = (p - 0.5) * 30;                 /* -15% .. +15% within the 20% overflow */
-        imgs[i].style.transform = 'translate3d(0,' + shift.toFixed(2) + '%,0)';
+        var shift = (p - 0.5) * 10;                 /* nudge -5% .. +5% of the image height */
+        imgs[i].style.transform = 'translateY(' + (-50 + shift).toFixed(2) + '%)';
       }
-      ticking = false;
     }
-    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    update();
+    function loop() { apply(); if (Date.now() < until) { rafId = requestAnimationFrame(loop); } else { rafId = null; } }
+    function kick() { until = Date.now() + 700; if (!rafId) { rafId = requestAnimationFrame(loop); } }
+    window.addEventListener('scroll', kick, { passive: true });
+    window.addEventListener('touchmove', kick, { passive: true });
+    window.addEventListener('touchstart', kick, { passive: true });
+    window.addEventListener('resize', function () { apply(); kick(); });
+    apply();
   })();
 </script>
 
