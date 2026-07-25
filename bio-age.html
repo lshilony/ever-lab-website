@@ -224,5 +224,37 @@
   <p class="site-footer-copy">© 2026 Meduza Labs LTD. כל הזכויות שמורות.</p>
 </footer>
 
+<script>
+  /* Mobile parallax for the divider strips. On desktop the CSS background-attachment: fixed
+     handles it; that doesn't work on mobile, so there we translate the oversized .bio-strip-img
+     layer on scroll. Runs only <=768px and clears the transform on desktop so `fixed` is untouched. */
+  (function () {
+    var imgs = document.querySelectorAll('.bio-strip-img');
+    if (!imgs.length) return;
+    var mqMobile = window.matchMedia('(max-width: 768px)');
+    var mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var ticking = false;
+    function update() {
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var active = mqMobile.matches && !mqReduce.matches;
+      for (var i = 0; i < imgs.length; i++) {
+        if (!active) { if (imgs[i].style.transform) imgs[i].style.transform = ''; continue; }
+        var strip = imgs[i].parentElement;
+        var r = strip.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) continue;
+        var p = (vh - r.top) / (vh + r.height);   /* 0 entering bottom → 1 leaving top */
+        p = p < 0 ? 0 : p > 1 ? 1 : p;
+        var shift = (p - 0.5) * 13;                 /* -6.5% .. +6.5% within the 15% overflow */
+        imgs[i].style.transform = 'translate3d(0,' + shift.toFixed(2) + '%,0)';
+      }
+      ticking = false;
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+  })();
+</script>
+
 </body>
 </html>
