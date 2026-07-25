@@ -335,6 +335,9 @@ body {
     height: 300px;
     margin-top: 36px;
     margin-bottom: 36px;
+    /* clip (NOT hidden): still crops the oversized image, but does NOT become a scroll container,
+       so the .bio-strip-img view() timeline measures against the viewport and actually progresses. */
+    overflow: clip;
   }
   /* background-attachment: fixed doesn't work on mobile, so the parallax here pans an oversized
      image layer instead. Preferred path: CSS scroll-driven animation (compositor-smooth). Where
