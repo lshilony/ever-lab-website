@@ -229,6 +229,9 @@
      handles it; that doesn't work on mobile, so there we translate the oversized .bio-strip-img
      layer on scroll. Runs only <=768px and clears the transform on desktop so `fixed` is untouched. */
   (function () {
+    /* Modern browsers use the CSS scroll-driven animation (see detail.css). Only run this
+       JS fallback where animation-timeline: view() is unsupported, to avoid double-driving. */
+    if (window.CSS && CSS.supports && CSS.supports('animation-timeline: view()')) return;
     var imgs = document.querySelectorAll('.bio-strip-img');
     if (!imgs.length) return;
     var mqMobile = window.matchMedia('(max-width: 768px)');
@@ -244,7 +247,7 @@
         if (r.bottom < 0 || r.top > vh) continue;
         var p = (vh - r.top) / (vh + r.height);   /* 0 entering bottom → 1 leaving top */
         p = p < 0 ? 0 : p > 1 ? 1 : p;
-        var shift = (p - 0.5) * 13;                 /* -6.5% .. +6.5% within the 15% overflow */
+        var shift = (p - 0.5) * 30;                 /* -15% .. +15% within the 20% overflow */
         imgs[i].style.transform = 'translate3d(0,' + shift.toFixed(2) + '%,0)';
       }
       ticking = false;

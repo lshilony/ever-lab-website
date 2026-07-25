@@ -336,13 +336,27 @@ body {
     margin-top: 36px;
     margin-bottom: 36px;
   }
-  /* background-attachment: fixed doesn't work on mobile, so the parallax here is JS-driven:
-     the image layer is oversized and translated on scroll (see the script in bio-age.html). */
+  /* background-attachment: fixed doesn't work on mobile, so the parallax here pans an oversized
+     image layer instead. Preferred path: CSS scroll-driven animation (compositor-smooth). Where
+     unsupported, the script in bio-age.html drives the same transform as a fallback. */
   .bio-strip-img {
-    top: -15%;
-    height: 130%;
+    top: -20%;
+    height: 140%;
     background-attachment: scroll;
     will-change: transform;
+  }
+}
+@keyframes bioStripPanMobile {
+  from { transform: translateY(-15%); }
+  to   { transform: translateY(15%); }
+}
+@supports (animation-timeline: view()) {
+  @media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+    .bio-strip-img {
+      animation: bioStripPanMobile linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
   }
 }
 
