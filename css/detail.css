@@ -331,18 +331,29 @@ body {
   background-image: url('../img/strip-vo2max-v2.jpg');
 }
 @media (max-width: 768px) {
-  /* Phones: each banner shown in FULL at its own aspect ratio (no crop), static. Reliable parallax
-     isn't achievable on iOS for inline strips — background-attachment: fixed is unsupported and
-     scroll-driven animations don't drive here — so, like the home-page dividers, the mobile strips
-     are static. Desktop keeps the fixed-background parallax. */
+  /* Phones: the banner shows in full width (no side-crop). The strip is a touch shorter than the
+     banner so the image layer has a little vertical room, which the Lenis-synced JS in bio-age.html
+     nudges on scroll (Lenis drives scrolling on rAF, so unlike native iOS momentum the parallax
+     actually updates every frame). background-size: 100% 100% fills the aspect-matched box exactly. */
   .bio-strip {
     height: auto;
-    aspect-ratio: 2000 / 1333;
+    aspect-ratio: 2000 / 1180;
     margin-top: 36px;
     margin-bottom: 36px;
+    overflow: clip;
   }
-  .bio-strip-vo2max { aspect-ratio: 2000 / 1160; }
-  .bio-strip-img { background-attachment: scroll; }
+  .bio-strip-vo2max { aspect-ratio: 2000 / 1030; }
+  .bio-strip-img {
+    top: 50%;
+    bottom: auto;
+    height: auto;
+    aspect-ratio: 2000 / 1333;
+    background-size: 100% 100%;
+    background-attachment: scroll;
+    transform: translateY(-50%);
+    will-change: transform;
+  }
+  .bio-strip-vo2max .bio-strip-img { aspect-ratio: 2000 / 1160; }
 }
 
 .tech-content {

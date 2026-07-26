@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/detail.css?v=10">
+  <link rel="stylesheet" href="css/detail.css?v=11">
 
   <script type="application/ld+json">
   {
@@ -223,6 +223,33 @@
 
   <p class="site-footer-copy">© 2026 Meduza Labs LTD. כל הזכויות שמורות.</p>
 </footer>
+
+<!-- Lenis smooth scroll (self-hosted) — drives scrolling on requestAnimationFrame so the strip
+     parallax stays in sync every frame, including through iOS touch/momentum scrolling. -->
+<script src="js/lenis.min.js"></script>
+<script>
+  (function () {
+    if (!window.Lenis) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var lenis = new Lenis({ smoothWheel: true, syncTouch: true, touchMultiplier: 1.4 });
+    var imgs = document.querySelectorAll('.bio-strip-img');
+    function parallax() {
+      var mobile = window.innerWidth <= 768;
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      for (var i = 0; i < imgs.length; i++) {
+        if (!mobile) { if (imgs[i].style.transform) imgs[i].style.transform = ''; continue; }
+        var r = imgs[i].parentElement.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) continue;
+        var p = (vh - r.top) / (vh + r.height);   /* 0 entering bottom → 1 leaving top */
+        p = p < 0 ? 0 : p > 1 ? 1 : p;
+        var shift = (p - 0.5) * 12;                 /* nudge -6% .. +6% of the image height */
+        imgs[i].style.transform = 'translateY(' + (-50 + shift).toFixed(2) + '%)';
+      }
+    }
+    function raf(time) { lenis.raf(time); parallax(); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+  })();
+</script>
 
 </body>
 </html>
