@@ -292,6 +292,15 @@ body {
   display: block;
 }
 
+/* Lenis smooth-scroll required styles (only active on pages that init Lenis, i.e. bio-age).
+   Force scroll-behavior: auto on the whole Lenis page — the global `html { scroll-behavior: smooth }`
+   fights Lenis and can stop it taking over the scroll. */
+html.lenis { scroll-behavior: auto !important; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
 /* Divider strips — SAME structure and behaviour as the home-page / shop dividers (.section-divider):
    a fixed-height, overflow-hidden container with a SEPARATE absolutely-positioned .bio-strip-img layer
    that carries the background-attachment: fixed image, so it parallaxes identically. The cream scrim
