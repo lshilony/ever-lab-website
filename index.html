@@ -3386,6 +3386,62 @@
     .fnav-toggle, .fnav-toggle svg, .fluid-nav, .fnav-item { transition: none; }
   }
 
+  /* ═══════════ DESKTOP HORIZONTAL NAV (Equinox-style, replaces hamburger on wide screens) ═══════════ */
+  .topnav { display: none; }
+  .topnav-link {
+    font-family: 'Poppins', 'Assistant', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    text-decoration: none;
+    white-space: nowrap;
+    position: relative;
+    padding: 6px 0;
+    transition: color 0.2s ease;
+  }
+  .topnav-link:hover { color: var(--sage-deep); }
+  .topnav-link.active { color: var(--sage-deep); }
+  .topnav-link::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -3px;
+    height: 1.5px;
+    background: var(--sage-deep);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.25s ease;
+  }
+  .topnav-link:hover::after,
+  .topnav-link.active::after { transform: scaleX(1); }
+
+  @media (min-width: 1200px) {
+    nav { justify-content: flex-start; gap: 22px; }
+    nav .fnav-toggle { display: none; }
+    .fluid-nav { display: none; }
+    /* un-center the logo: place it inline on the right (RTL start) */
+    nav .logo { position: static; transform: none; left: auto; top: auto; }
+    .topnav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .topnav-link { font-size: 14.5px; }
+    /* push the booking CTA to the far left (RTL end); keep it on one line + compact */
+    .nav-cta {
+      margin-inline-start: auto;
+      white-space: nowrap;
+      padding: 13px 26px;
+      min-height: 0;
+      font-size: 15px;
+      gap: 8px;
+    }
+    .nav-cta .arr { font-size: 16px; }
+  }
+
   /* ───── Decorative city map (SVG, behind chapter text) ───── */
   .chapter-map-svg {
     position: absolute;
@@ -6407,6 +6463,14 @@
   <a href="#" class="logo" aria-label="EVER LAB">
     <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="logo-img">
   </a>
+  <ul class="topnav" aria-label="ניווט ראשי">
+    <li><a href="#step-map" class="topnav-link" data-target="step-map">השיטה שלנו</a></li>
+    <li><a href="#step-measure" class="topnav-link" data-target="step-measure">מבדק גיל ביולוגי</a></li>
+    <li><a href="#step-plan" class="topnav-link" data-target="step-plan">התוכנית</a></li>
+    <li><a href="womenprogram.html" class="topnav-link">תוכנית נשים 40+</a></li>
+    <li><a href="#faq" class="topnav-link" data-target="faq">שאלות נפוצות</a></li>
+    <li><a href="#contact" class="topnav-link" data-target="contact">יצירת קשר</a></li>
+  </ul>
   <a href="experiences.html" class="nav-cta"><span>הזמינו אונליין</span> <span class="arr">←</span></a>
 </nav>
 
@@ -7325,13 +7389,6 @@
 <!-- ═══════════ FLUID NAVIGATION, items panel (toggle lives inside main <nav>) ═══════════ -->
 <div id="fluid-nav-panel" class="fluid-nav" data-state="closed" aria-label="ניווט מהיר">
   <div class="fnav-items">
-    <a href="#hero" class="fnav-item" data-target="hero" aria-label="בית">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M3 12 L12 4 L21 12"/>
-        <path d="M5 11 V20 H19 V11"/>
-      </svg>
-      <span class="fnav-label">בית</span>
-    </a>
     <a href="#step-map" class="fnav-item" data-target="step-map" aria-label="השיטה שלנו">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M3 4.5 V18.5 C 6 18.5 9.5 18.5 12 20 C 14.5 18.5 18 18.5 21 18.5 V4.5 C 18 4.5 14.5 4.5 12 6 C 9.5 4.5 6 4.5 3 4.5 Z"/>
@@ -7366,14 +7423,6 @@
         <line x1="9" y1="18" x2="15" y2="18"/>
       </svg>
       <span class="fnav-label">תוכנית נשים 40+</span>
-    </a>
-    <a href="experiences.html" class="fnav-item fnav-item-shop" aria-label="חבילות ומחירים">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M5 8 L12 4 L19 8 L19 16 L12 20 L5 16 Z"/>
-        <path d="M5 8 L12 12 L19 8"/>
-        <path d="M12 12 L12 20"/>
-      </svg>
-      <span class="fnav-label">חבילות ומחירים</span>
     </a>
     <a href="#faq" class="fnav-item" data-target="faq" aria-label="שאלות נפוצות">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -7435,9 +7484,13 @@
     const targetIds = items.map(i => i.dataset.target);
     const sections = targetIds.map(id => document.getElementById(id)).filter(Boolean);
     if (sections.length) {
+      const topLinks = Array.from(document.querySelectorAll('.topnav-link'));
       const setActive = (id) => {
         items.forEach(item => {
           item.classList.toggle('active', item.dataset.target === id);
+        });
+        topLinks.forEach(l => {
+          l.classList.toggle('active', l.dataset.target === id);
         });
       };
       const observer = new IntersectionObserver((entries) => {
