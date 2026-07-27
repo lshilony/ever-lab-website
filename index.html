@@ -273,7 +273,8 @@
     padding: 22px 40px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 14px;
     background: rgba(237, 232, 227, 0.7);
     backdrop-filter: blur(18px) saturate(140%);
     -webkit-backdrop-filter: blur(18px) saturate(140%);
@@ -374,6 +375,8 @@
     display: inline-flex;
     align-items: center;
     gap: 12px;
+    /* sits at the far-left (RTL end) of the header; cart sits just to its right */
+    margin-inline-start: auto;
     background:
       linear-gradient(115deg,
         rgba(255, 255, 255, 0.98) 0%,
@@ -1173,6 +1176,17 @@
   .section-divider-everlabred .section-divider-img {
     background-image: url('img/everlabred.jpg');
     background-position: center center;
+  }
+  .section-divider-retest .section-divider-img {
+    background-image: url('img/retest-results.jpg');
+    background-position: center 45%;
+  }
+  /* Mobile: cover the band (not the viewport) so the full scene — both people + screen — is visible, not just a cropped center strip of data */
+  @media (max-width: 768px) {
+    .section-divider-retest .section-divider-img {
+      background-attachment: scroll;
+      background-position: center center;
+    }
   }
   @media (max-width: 768px) {
     .section-divider { height: 280px; }
@@ -3415,6 +3429,28 @@
   .topnav-link:hover::after,
   .topnav-link.active::after { transform: scaleX(1); }
 
+  /* cart icon button on the header edge (WooCommerce cart, shop.ever-lab.co) */
+  .nav-cart {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    color: var(--ink);
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .nav-cart svg { width: 23px; height: 23px; }
+  .nav-cart:hover { background: rgba(107, 139, 112, 0.14); color: var(--sage-deep); }
+  .nav-cart:focus-visible { outline: 2px solid var(--sage-deep); outline-offset: 2px; }
+  @media (max-width: 600px) {
+    .nav-actions { gap: 6px; }
+    .nav-cart { width: 40px; height: 40px; }
+    .nav-cart svg { width: 21px; height: 21px; }
+  }
+
   @media (min-width: 1200px) {
     nav { justify-content: flex-start; gap: 22px; }
     nav .fnav-toggle { display: none; }
@@ -3430,9 +3466,11 @@
       padding: 0;
     }
     .topnav-link { font-size: 14.5px; }
-    /* push the booking CTA to the far left (RTL end); keep it on one line + compact */
+    /* push the cart + CTA pair to the far left (RTL end); cart leads, CTA at the corner */
+    .nav-cart { margin-inline-start: auto; }
+    /* keep the booking CTA on one line + compact */
     .nav-cta {
-      margin-inline-start: auto;
+      margin-inline-start: 0;
       white-space: nowrap;
       padding: 13px 26px;
       min-height: 0;
@@ -3478,6 +3516,30 @@
     height: 1px;
     background: var(--sage-deep);
     opacity: 0.5;
+  }
+  /* Numbered step eyebrow variant: "01 | LABEL" (Latin, reads left-to-right) */
+  .eyebrow-step { gap: 13px; direction: ltr; }
+  .eyebrow-step .eyebrow-num {
+    font-family: 'Poppins', 'Assistant', monospace;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--sage-deep);
+    line-height: 1;
+  }
+  .eyebrow-step .eyebrow-bar {
+    display: inline-block;
+    width: 1px;
+    height: 18px;
+    background: var(--sage-deep);
+    opacity: 0.45;
+  }
+  .eyebrow-step .eyebrow-txt {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: none; /* render the label exactly as written */
+    color: var(--sage-deep);
+    line-height: 1;
   }
 
   /* ═══════════ CHAPTER, Bio-Tech Luxury layers ═══════════ */
@@ -4245,6 +4307,37 @@
     order: 5;
   }
   .vital.measure .vital-expand-btn:hover {
+    transform: translateY(-2px);
+  }
+  /* Two-button CTA row in the measure section (buy = primary, details = secondary) */
+  .vital.measure .vital-cta-row {
+    order: 5;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-top: 12px;
+  }
+  .vital.measure .vital-cta-row .vital-expand-btn {
+    margin: 0;
+    width: 240px;
+    max-width: 100%;
+    justify-content: center;
+    /* sage border matches the ghost button's border so both boxes are identical in size */
+    border: 1.5px solid var(--sage-deep);
+  }
+  /* Secondary "details" button: sage outline */
+  .vital.measure .vital-btn-ghost {
+    background: transparent;
+    color: var(--sage-deep);
+    border: 1.5px solid var(--sage-deep);
+    box-shadow: none;
+  }
+  .vital.measure .vital-btn-ghost:hover {
+    background: var(--sage-deep);
+    color: var(--paper);
+    border-color: var(--sage-deep);
     transform: translateY(-2px);
   }
   /* Subtitle on one line (override the .em display:block in vital sections) */
@@ -6471,6 +6564,13 @@
     <li><a href="#faq" class="topnav-link" data-target="faq">שאלות נפוצות</a></li>
     <li><a href="#contact" class="topnav-link" data-target="contact">יצירת קשר</a></li>
   </ul>
+  <a href="https://shop.ever-lab.co/cart/" class="nav-cart" aria-label="עגלת הקניות">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="9" cy="21" r="1"/>
+      <circle cx="20" cy="21" r="1"/>
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+    </svg>
+  </a>
   <a href="experiences.html" class="nav-cta"><span>הזמינו אונליין</span> <span class="arr">←</span></a>
 </nav>
 
@@ -6784,11 +6884,12 @@
   <div class="vital-frame">
     <!-- Centered header (matches Chapter / Plan sections) -->
     <div class="vital-top">
-      <div class="chapter-eyebrow">
-        <span class="eyebrow-line" aria-hidden="true"></span>
-        <span>The Assessment</span>
+      <div class="chapter-eyebrow eyebrow-step">
+        <span class="eyebrow-num">01</span>
+        <span class="eyebrow-bar" aria-hidden="true"></span>
+        <span class="eyebrow-txt">MEASURE FIRST</span>
       </div>
-      <h3>מבדק גיל ביולוגי תפקודי:<span class="em-step">נקודת ההתחלה</span></h3>
+      <h3>מבדק גיל ביולוגי תפקודי<span class="em-step">נקודת ההתחלה</span></h3>
     </div>
 
     <!-- Bio-age report photo, full-width band matching the section dividers -->
@@ -6809,10 +6910,16 @@
       </p>
     </div>
 
-    <a href="bio-age.html" class="vital-expand-btn vital-expand-link">
-      פרטים על המבדק
-      <span class="arr" aria-hidden="true">←</span>
-    </a>
+    <div class="vital-cta-row">
+      <a href="https://shop.ever-lab.co/checkout/?add-to-cart=13304" class="vital-expand-btn vital-buy-btn">
+        לרכישת המבדק
+        <span class="arr" aria-hidden="true">←</span>
+      </a>
+      <a href="bio-age.html" class="vital-expand-btn vital-expand-link vital-btn-ghost">
+        פרטים על המבדק
+        <span class="arr" aria-hidden="true">←</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -6821,9 +6928,10 @@
 <section class="plan-overview" id="step-plan" data-journey-step="2">
   <div class="plan-inner">
     <div class="plan-header">
-      <div class="plan-eyebrow">
-        <span class="eyebrow-line" aria-hidden="true"></span>
-        <span>The Program</span>
+      <div class="plan-eyebrow eyebrow-step">
+        <span class="eyebrow-num">02</span>
+        <span class="eyebrow-bar" aria-hidden="true"></span>
+        <span class="eyebrow-txt">Your data. Your plan.</span>
       </div>
       <h2 class="plan-title">
         התוכנית של <span class="hl">EVER LAB</span>
@@ -6942,6 +7050,30 @@
     check(); // initial check (in case page loads mid-scroll past the section)
   })();
 </script>
+
+<!-- Parallax band: re-test results dashboard, leads into the re-test section -->
+<div class="section-divider section-divider-retest" role="img" aria-label="מסך תוצאות בדיקה חוזרת ב-EVER LAB">
+  <div class="section-divider-img"></div>
+</div>
+
+<!-- ============== RE-MEASURE / PROGRESS SECTION ============== -->
+<section class="vital measure" id="step-remeasure">
+  <div class="vital-frame">
+    <div class="vital-top">
+      <div class="chapter-eyebrow eyebrow-step">
+        <span class="eyebrow-num">03</span>
+        <span class="eyebrow-bar" aria-hidden="true"></span>
+        <span class="eyebrow-txt">Measure your progress</span>
+      </div>
+      <h3>בדיקה חוזרת</h3>
+    </div>
+    <div class="vital-body">
+      <p>לונג'ביטי הוא מסע של <strong>שיפור מתמשך</strong>.</p>
+      <p>המדידה החוזרת מאפשרת לעצור לרגע, לראות את הדרך שעשיתם ולהבין כיצד הגוף שלכם מגיב לתהליך. היא <strong>מאמתת את ההתקדמות</strong>, חושפת הזדמנויות חדשות לשיפור ומאפשרת <strong>לדייק את התוכנית</strong>, כך שתמשיך להתאים לכם גם כשהגוף והצרכים שלכם משתנים.</p>
+      <p>ב-EVER LAB אנחנו מאמינים שהצלחה אמיתית <strong>נמדדת לאורך זמן</strong>. לכן אנחנו מלווים אתכם ב<strong>מדידות תקופתיות</strong>, כדי שכל החלטה תהיה מבוססת על <strong>נתונים אמיתיים</strong>, ולא על תחושות בלבד. כך תוכלו לראות את ההתקדמות שלכם, להמשיך להשתפר ולבנות בריאות, תפקוד ואיכות חיים לשנים קדימה.</p>
+    </div>
+  </div>
+</section>
 
 <!-- ============== FAQ, שאלות ותשובות (SEO + AI optimization) ============== -->
 <section class="faq-section" id="faq" aria-labelledby="faq-title">
