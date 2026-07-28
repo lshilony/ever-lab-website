@@ -1,8 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
-    { "source": "/womenprogram", "destination": "/womenprogram.html" }
+    { "source": "/womenprogram", "destination": "/womenprogram.html" },
+    { "source": "/sitemap.xml", "destination": "/api/sitemap" }
   ],
+  "functions": {
+    "api/sitemap.js": { "includeFiles": "*.html" }
+  },
   "headers": [
     {
       "source": "/(.*)",
