@@ -4,6 +4,8 @@ img/ד״ר סיון אבריל.jpeg
 img/איילת עדות.mp4
 # Local source assets and documents — not for deployment
 /*.pdf
+# CRO mockup — local preview only, never deploy
+giftcard-mockup.html
 
 img/אירובי.png
 img/מבדק גיל ביולוגי.png
