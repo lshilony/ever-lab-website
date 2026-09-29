@@ -6,9 +6,21 @@ img/איילת עדות.mp4
 /*.pdf
 # CRO mockup — local preview only, never deploy
 giftcard-mockup.html
+# Stale homepage draft/variant — local only, never deploy (was publicly reachable)
+index.v1-journey-architecture.html
 
 img/אירובי.png
 img/מבדק גיל ביולוגי.png
 img/פוד דוגמנית.jpg
 img/שריר.png
 img/‎⁨גל אוירה⁩.JPG
+
+# Local backups, never deploy
+*.bak
+img/סיגל ולימור.jpg
+img/אינבודי.JPG
+img/אריק.jpg
+img/עדי.jpg
+img/רלי סאונה כחול.jpg
+img/EVERLAB_010.jpg
+img/EVERLAB_012.jpg

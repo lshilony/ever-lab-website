@@ -21,6 +21,7 @@ const META = {
   'training.html':             { url: '/training.html',             priority: '0.8', changefreq: 'monthly', lastmod: '2026-07-23' },
   'recovery.html':             { url: '/recovery.html',             priority: '0.8', changefreq: 'monthly', lastmod: '2026-07-23' },
   'womenprogram.html':         { url: '/womenprogram',              priority: '0.8', changefreq: 'monthly', lastmod: '2026-07-23' },
+  'longevity-program.html':    { url: '/longevity-program.html',    priority: '0.8', changefreq: 'monthly', lastmod: '2026-08-24' },
   'terms-and-conditions.html': { url: '/terms-and-conditions.html', priority: '0.3', changefreq: 'yearly',  lastmod: '2026-07-23' },
   'privacy-policy.html':       { url: '/privacy-policy.html',       priority: '0.3', changefreq: 'yearly',  lastmod: '2026-07-23' },
   'refund-policy.html':        { url: '/refund-policy.html',        priority: '0.3', changefreq: 'yearly',  lastmod: '2026-07-23' },
@@ -34,6 +35,10 @@ const EXCLUDE = new Set([
   'accessibility.html',
   '404.html',
   '500.html',
+  // תוכנית נשים 40+ הוסתרה זמנית מהאתר. הדף נשמר לשימוש עתידי. להחזרה: הסירי את השורה הבאה.
+  'womenprogram.html',
+  // מסלולי היכרות הוסתר זמנית מהאתר. הדף נשמר לשימוש עתידי. להחזרה: הסירי את השורה הבאה.
+  'tracks.html',
 ]);
 
 function discover() {

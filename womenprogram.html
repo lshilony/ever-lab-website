@@ -133,30 +133,30 @@
   .wp-sec { padding: 84px 0; }
   .wp-sec.tint { background: var(--paper); }
   .wp-sec.sage {
-    background: linear-gradient(135deg, var(--sage) 0%, var(--sage-deep) 100%);
-    color: #fff;
+    background: #E1DDD6; /* darker cream, sets the lead form apart from the lighter section above */
+    color: var(--ink);
   }
   .wp-sec-eyebrow {
     display: flex; justify-content: center; align-items: center; gap: 12px;
     font-family: 'Poppins','Assistant',monospace; font-size: 11px; letter-spacing: 0.24em;
     text-transform: uppercase; color: var(--sage-deep); margin-bottom: 20px;
   }
-  .wp-sec.sage .wp-sec-eyebrow { color: rgba(255,255,255,0.75); }
+  .wp-sec.sage .wp-sec-eyebrow { color: var(--warm-gray); }
   .wp-sec-eyebrow span.ln { width: 34px; height: 1px; background: currentColor; opacity: 0.5; }
   .wp-h2 {
     font-family: 'Poppins','Assistant',serif; font-weight: 300;
     font-size: clamp(27px, 3.4vw, 42px); line-height: 1.2; letter-spacing: -0.015em;
     color: var(--ink); text-align: center; margin: 0 auto 40px; max-width: 800px;
   }
-  .wp-sec.sage .wp-h2 { color: #fff; }
+  .wp-sec.sage .wp-h2 { color: var(--ink); }
   .wp-lead {
     font-size: 18.5px; line-height: 1.85; color: var(--ink-soft);
     max-width: 760px; margin: 0 auto 20px; text-align: center;
   }
   .wp-lead:last-child { margin-bottom: 0; }
   .wp-lead strong { color: var(--ink); }
-  .wp-sec.sage .wp-lead { color: rgba(255,255,255,0.92); }
-  .wp-sec.sage .wp-lead strong { color: #fff; }
+  .wp-sec.sage .wp-lead { color: var(--ink-soft); }
+  .wp-sec.sage .wp-lead strong { color: var(--ink); }
 
   /* ─────── Why-different body ─────── */
   .wp-prose { max-width: 760px; margin: 0 auto; }
@@ -299,7 +299,7 @@
 
   /* ─────── Final CTA + footer ─────── */
   .wp-final { text-align: center; position: relative; overflow: hidden; }
-  .wp-final .wp-h2 { color: #fff; }
+  .wp-final .wp-h2 { color: var(--ink); }
   /* Lead form (on the sage final section) */
   .wp-form-card {
     background: #fff; border-radius: 20px; padding: 34px 32px; max-width: 520px; margin: 0 auto;
@@ -329,8 +329,8 @@
   .wp-form-status { margin: 14px 0 0; font-size: 14.5px; text-align: center; }
   .wp-form-status.is-success { color: var(--sage-deep); font-weight: 600; }
   .wp-form-status.is-error { color: #b83b3b; }
-  .wp-form-alt { text-align: center; margin: 22px 0 0; font-size: 15px; color: rgba(255,255,255,0.92); }
-  .wp-form-alt a { color: #fff; text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
+  .wp-form-alt { text-align: center; margin: 22px 0 0; font-size: 15px; color: var(--ink-soft); }
+  .wp-form-alt a { color: var(--sage-deep); text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
   /* Footer (light, blends with the page) */
   .wp-footer { background: var(--paper); color: var(--warm-gray); text-align: center; padding: 48px 32px; border-top: 1px solid rgba(107,139,112,0.16); }
   .wp-footer-logo { font-family: 'Poppins','Assistant',sans-serif; font-weight: 600; letter-spacing: 0.16em; color: var(--ink); font-size: 18px; margin-bottom: 8px; }
@@ -719,7 +719,7 @@
 <!-- ═══════════ FINAL CTA — lead form ═══════════ -->
 <section class="wp-sec sage wp-final" id="wp-contact">
   <div class="wrap">
-    <h2 class="wp-h2">עייפה להתאמן קשה, לאכול פחות, ולא לראות שינוי?</h2>
+    <h2 class="wp-h2">עושה הכול נכון, אבל הגוף כבר לא מגיב כמו פעם?</h2>
     <p class="wp-lead" style="margin-bottom:34px;">השאירי פרטים ונחזור אלייך לשיחת התאמה אישית, כדי להבין מה הכי נכון עבורך.</p>
 
     <div class="wp-form-card">
@@ -863,5 +863,7 @@
 </script>
 
   <script defer src="/_vercel/insights/script.js"></script>
+<script src="/js/site-nav.js" defer></script>
+<script src="/js/float-cta.js" defer></script>
 </body>
 </html>
