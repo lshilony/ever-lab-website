@@ -71,12 +71,14 @@
       'transition:background-color .25s ease,transform .28s ease}' +
     '.sn-cta:hover{background:var(--ink,#141414);transform:translateY(-2px)}' +
     '.sn-cta .arr{font-size:16px;transition:transform .25s ease}.sn-cta:hover .arr{transform:translateX(-4px)}' +
-    // ---- >=1024px: horizontal nav, hide hamburger (same breakpoint as homepage) ----
-    '@media(min-width:1024px){' +
-      '.site-nav{gap:22px}' +
+    // ---- >=1280px: horizontal nav, hide hamburger. space-between + a compact links row
+    //      keep the centered logo clear of the CTA and the links (same fix as homepage). ----
+    '@media(min-width:1280px){' +
+      '.site-nav{gap:22px;justify-content:space-between}' +
       '.sn-toggle{display:none}.sn-panel{display:none!important}' +
-      '.sn-links{display:flex;align-items:center;gap:18px;list-style:none;margin:0;padding:0}' +
-      '.sn-right{display:flex;align-items:center;gap:16px;margin-inline-start:auto}' +
+      '.sn-links{display:flex;align-items:center;gap:13px;list-style:none;margin:0;padding:0}' +
+      '.sn-links>li>a{font-size:13.5px}' +
+      '.sn-right{display:flex;align-items:center;gap:16px;margin-inline-start:0}' +
     '}' +
     // ---- small screens: shrink logo like the homepage ----
     '@media(max-width:768px){' +

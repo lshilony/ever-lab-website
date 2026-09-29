@@ -3252,8 +3252,19 @@
     .nav-cart svg { width: 21px; height: 21px; }
   }
 
-  @media (min-width: 1024px) {
-    nav { justify-content: flex-start; gap: 22px; }
+  /* Below the desktop breakpoint the header is hamburger + centered logo only;
+     the standalone CTA is hidden here (the fluid-nav panel + floating CTA cover it),
+     so it can never collide with the centered logo. */
+  @media (max-width: 1279px) {
+    .nav-cta { display: none; }
+  }
+
+  @media (min-width: 1280px) {
+    /* space-between pushes the CTA and the links to opposite edges, leaving the
+       middle free for the absolutely-centered logo (no overlap even when the
+       links list is long). */
+    nav { justify-content: space-between; gap: 22px; }
+    .nav-cta { margin-inline-start: 0; }
     nav .fnav-toggle { display: none; }
     .fluid-nav { display: none; }
     /* Logo centered in the header on desktop too, consistent across all pages */
@@ -3261,12 +3272,12 @@
     .topnav {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 13px;
       list-style: none;
       margin: 0;
       padding: 0;
     }
-    .topnav-link { font-size: 14.5px; }
+    .topnav-link { font-size: 13.5px; }
     /* push the cart + CTA pair to the far left (RTL end); cart leads, CTA at the corner */
     .nav-cart { margin-inline-start: auto; }
     /* keep the booking CTA on one line + compact */
