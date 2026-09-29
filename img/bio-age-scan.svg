@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 497" fill="none" font-family="Poppins, 'Helvetica Neue', Arial, sans-serif">
+  <rect width="760" height="497" fill="#E8E2D5"/>
+  <rect x="10" y="10" width="740" height="477" rx="14" stroke="#C7D4B9" stroke-width="1.4" opacity="0.7"/>
+
+  <!-- faint grid -->
+  <g stroke="#8DAE92" stroke-width="1" opacity="0.13">
+    <path d="M170 74 V423 M260 74 V423 M350 74 V423 M440 74 V423 M530 74 V423 M620 74 V423"/>
+    <path d="M96 130 H664 M96 200 H664 M96 270 H664 M96 340 H664"/>
+  </g>
+
+  <!-- corner brackets -->
+  <g stroke="#7C9E82" stroke-width="2.2" stroke-linecap="round">
+    <path d="M40 64 V40 H64"/><path d="M696 40 H720 V64"/>
+    <path d="M40 433 V457 H64"/><path d="M720 457 V433 M720 457 H696"/>
+  </g>
+
+  <!-- donut gauge -->
+  <circle cx="380" cy="210" r="92" stroke="#C2D2B6" stroke-width="9" opacity="0.6" fill="none"/>
+  <circle cx="380" cy="210" r="92" stroke="#7C9E82" stroke-width="9" stroke-linecap="round" fill="none" stroke-dasharray="358 578" transform="rotate(-90 380 210)"/>
+  <circle cx="380" cy="118" r="6.5" fill="#6B8B70"/>
+
+  <text x="381" y="238" text-anchor="middle" font-size="88" font-weight="600" fill="#4f6b56" letter-spacing="-2">36</text>
+  <text x="381" y="270" text-anchor="middle" font-size="19" font-weight="400" fill="#7c8a7e" style="direction:rtl" font-family="'Assistant', Arial, sans-serif">שנים</text>
+
+  <!-- younger label -->
+  <text x="380" y="366" text-anchor="middle" font-size="19" font-weight="600" fill="#5c7a62" style="direction:rtl" font-family="'Assistant', Arial, sans-serif">צעיר ב-6 שנים</text>
+  <text x="380" y="392" text-anchor="middle" font-size="14" font-weight="300" fill="#93a08d" style="direction:rtl" font-family="'Assistant', Arial, sans-serif">מהגיל הכרונולוגי</text>
+</svg>

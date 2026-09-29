@@ -4,7 +4,6 @@
     { "source": "/index.html", "destination": "/", "permanent": true }
   ],
   "rewrites": [
-    { "source": "/womenprogram", "destination": "/womenprogram.html" },
     { "source": "/sitemap.xml", "destination": "/api/sitemap" }
   ],
   "functions": {

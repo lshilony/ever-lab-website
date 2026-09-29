@@ -67,6 +67,26 @@
     }
     .back-link:hover { color: var(--ink); }
     .back-link::before { content: '→'; font-size: 18px; }
+    /* Top bar with centered logo, consistent with the other pages */
+    .legal-bar {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: center;
+      padding: 14px 24px;
+      background: rgba(244,240,235,0.92);
+      backdrop-filter: saturate(180%) blur(12px);
+      -webkit-backdrop-filter: saturate(180%) blur(12px);
+      border-bottom: 1px solid rgba(107,139,112,0.16);
+    }
+    .legal-back {
+      position: absolute; inset-inline-start: 24px; top: 50%; transform: translateY(-50%);
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 500; color: var(--sage-deep); text-decoration: none;
+      padding: 8px 16px 8px 12px; border: 1px solid rgba(107,139,112,0.35); border-radius: 999px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .legal-back svg { width: 14px; height: 14px; }
+    .legal-back:hover { background: var(--sage-deep); color: #fff; border-color: var(--sage-deep); }
+    .legal-logo img { height: 44px; mix-blend-mode: multiply; display: block; }
     .eyebrow {
       font-family: 'Poppins', 'Assistant', monospace;
       font-size: 11px;
@@ -209,8 +229,12 @@
 
 <a href="#main" class="skip-to-content">דלג לתוכן הראשי</a>
 
+<div class="legal-bar">
+  <a href="/" class="legal-back" aria-label="חזרה לדף הבית"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3 L5 8 L10 13"/></svg> חזרה לדף הבית</a>
+  <a href="/" class="legal-logo" aria-label="EVER LAB"><img src="img/EVERLAB_LOGO.png" alt="EVER LAB"></a>
+</div>
+
 <main id="main" class="wrap">
-  <a href="/" class="back-link">חזרה לאתר</a>
 
   <div class="eyebrow">Accessibility Statement</div>
   <h1>הצהרת נגישות</h1>
@@ -309,5 +333,7 @@
 </footer>
 
   <script defer src="/_vercel/insights/script.js"></script>
+<script src="/js/site-nav.js" defer></script>
+<script src="/js/float-cta.js" defer></script>
 </body>
 </html>

@@ -31,3 +31,6 @@ User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://ever-lab.co/sitemap.xml
+
+# AI / LLM guide (ChatGPT, Claude, Perplexity)
+# llms.txt: https://ever-lab.co/llms.txt

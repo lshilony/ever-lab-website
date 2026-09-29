@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 497" fill="none" font-family="Poppins, 'Helvetica Neue', Arial, sans-serif">
+  <rect width="760" height="497" fill="#E8E2D5"/>
+  <rect x="10" y="10" width="740" height="477" rx="14" stroke="#C7D4B9" stroke-width="1.4" opacity="0.7"/>
+
+  <!-- faint grid -->
+  <g stroke="#8DAE92" stroke-width="1" opacity="0.16">
+    <path d="M170 74 V423 M260 74 V423 M350 74 V423 M440 74 V423 M530 74 V423 M620 74 V423"/>
+    <path d="M96 130 H664 M96 200 H664 M96 270 H664 M96 340 H664"/>
+  </g>
+
+  <!-- corner brackets -->
+  <g stroke="#7C9E82" stroke-width="2.2" stroke-linecap="round">
+    <path d="M40 64 V40 H64"/><path d="M696 40 H720 V64"/>
+    <path d="M40 433 V457 H64"/><path d="M720 457 V433 M720 457 H696"/>
+  </g>
+
+  <!-- dumbbell -->
+  <g fill="#8DAE92">
+    <rect x="292" y="163" width="176" height="26" rx="13"/>
+    <rect x="250" y="146" width="30" height="60" rx="14"/>
+    <rect x="210" y="128" width="34" height="96" rx="16"/>
+    <rect x="480" y="146" width="30" height="60" rx="14"/>
+    <rect x="516" y="128" width="34" height="96" rx="16"/>
+  </g>
+  <g stroke="#E8E2D5" stroke-width="3">
+    <path d="M210 155 H244 M210 176 H244 M210 197 H244"/>
+    <path d="M516 155 H550 M516 176 H550 M516 197 H550"/>
+    <path d="M250 165 H280 M250 187 H280"/>
+    <path d="M480 165 H510 M480 187 H510"/>
+  </g>
+
+  <!-- strength curve -->
+  <path d="M150 348 C 240 348, 296 340, 336 306 C 356 289, 404 289, 424 306 C 464 340, 520 348, 610 348" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" opacity="0.92"/>
+  <g stroke="#6B8B70" stroke-width="1.6" opacity="0.9">
+    <circle cx="380" cy="298" r="6"/>
+    <path d="M380 288 v-6 M380 308 v6 M370 298 h-6 M390 298 h6"/>
+  </g>
+  <text x="380" y="276" text-anchor="middle" font-size="19" font-weight="500" fill="#5f7d65">42 kg</text>
+
+  <!-- axis + label -->
+  <g stroke="#8DAE92" stroke-width="1.6" opacity="0.4" stroke-linecap="round">
+    <path d="M150 372 H610"/>
+    <path d="M196 372 v7 M288 372 v7 M380 372 v7 M472 372 v7 M564 372 v7"/>
+  </g>
+  <text x="150" y="398" font-size="13" font-weight="400" fill="#8a9587" letter-spacing="1.5" style="direction:ltr">Peak grip · 42 kg</text>
+</svg>
