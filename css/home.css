@@ -1011,8 +1011,27 @@
   @media (max-width: 768px) {
     .section-divider { height: 280px; }
   }
+  /* Mobile parallax on the compositor thread — stays smooth during momentum
+     scrolling (incl. iOS), where a scroll-event-driven JS parallax stutters or
+     freezes. Modern engines use this; older ones fall back to js/parallax.js. */
+  @media (max-width: 768px) {
+    @supports (animation-timeline: view()) {
+      .section-divider-img {
+        background-attachment: scroll;
+        top: -30%; bottom: auto; height: 160%;
+        will-change: transform;
+        animation: sd-parallax linear both;
+        animation-timeline: view();
+        animation-range: cover 0% cover 100%;
+      }
+    }
+  }
+  @keyframes sd-parallax {
+    from { transform: translate3d(0, -18%, 0); }
+    to   { transform: translate3d(0,  18%, 0); }
+  }
   @media (prefers-reduced-motion: reduce) {
-    .section-divider-img { background-attachment: scroll; transform: none !important; }
+    .section-divider-img { background-attachment: scroll; transform: none !important; animation: none !important; }
   }
 
   /* ═══════════ PLAN OVERVIEW, התוכנית של EVER LAB ═══════════ */

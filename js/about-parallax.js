@@ -11,6 +11,9 @@
 
   var mq = window.matchMedia('(max-width: 768px)');
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // Modern engines run a smoother compositor-driven parallax straight from CSS
+  // (@supports animation-timeline: view()); this JS is only the fallback.
+  try { if (window.CSS && CSS.supports && CSS.supports('animation-timeline: view()')) { return; } } catch (e) {}
 
   var bands = [];
   var ticking = false;

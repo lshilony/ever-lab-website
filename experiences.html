@@ -337,6 +337,25 @@
   @media (max-width: 768px) {
     .pricing-hero, .photo-band { background-attachment: scroll; }
   }
+  /* Compositor-driven parallax (smooth on mobile incl. iOS momentum scroll);
+     js/parallax.js is the fallback for engines without scroll-driven animations. */
+  @media (max-width: 768px) {
+    @supports (animation-timeline: view()) {
+      .photo-band {
+        will-change: background-position;
+        animation: pb-parallax linear both;
+        animation-timeline: view();
+        animation-range: cover 0% cover 100%;
+      }
+    }
+  }
+  @keyframes pb-parallax {
+    from { background-position: center center, center 24%; }
+    to   { background-position: center center, center 36%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .photo-band { animation: none !important; }
+  }
   /* Inspirational pull-quote */
   .exp-quote {
     position: relative;

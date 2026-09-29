@@ -89,6 +89,13 @@
       .about-band{height:clamp(320px,50vh,440px)}
       .about-band-img{background-attachment:scroll;top:-14%;height:128%;will-change:transform}
     }
+    /* Compositor-driven parallax on modern engines (smooth on mobile incl. iOS
+       momentum scroll); js/about-parallax.js is the fallback for older browsers. */
+    @media(max-width:768px){@supports (animation-timeline: view()){
+      .about-band-img{animation:ab-parallax linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+    }}
+    @keyframes ab-parallax{from{transform:translate3d(0,-8%,0)}to{transform:translate3d(0,8%,0)}}
+    @media(prefers-reduced-motion:reduce){.about-band-img{animation:none!important;transform:none!important}}
   </style>
   <div class="about-band-img"></div>
 </div>
