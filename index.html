@@ -243,7 +243,7 @@
     <img src="img/EVERLAB_LOGO.png" alt="EVER LAB" class="logo-img">
   </a>
   <ul class="topnav" aria-label="ניווט ראשי">
-    <li><a href="longevity-program.html" class="topnav-link">תוכנית לונג'ביטי</a></li>
+    <li><a href="#plan" class="topnav-link" data-target="plan">תוכנית לונג'ביטי</a></li>
     <!-- הכותרת בסרגל שונתה מתפריט נפתח "תוכניות" לקישור ישיר לתוכנית לונג'ביטי. להחזרת התפריט הנפתח: מחקי את הקישור הישיר שמעל, והסירי את הערת ה-HTML מהבלוק הבא (כולל החזרת תוכנית נשים במידת הצורך). -->
     <!--
     <li class="topnav-has-menu">
@@ -604,9 +604,8 @@
     .hp-journey .vital.measure{padding-bottom:40px}
     .hp-journey .bio-report-band .section-divider-img{background-image:url('/img/retest-results.jpg')}
     /* distinct backgrounds so each journey chapter reads as its own block */
-    .hpj-measure-wrap{background:#DDE6D6}
+    .hpj-measure-wrap{background:#E8DECC}
     .hpj-measure-wrap .vital.measure{padding-top:clamp(46px,6vw,86px)}
-    .hpj-remeasure-wrap{background:#DDE6D6;padding-block:clamp(40px,5vw,66px)}
     @media(max-width:768px){
       .hp-journey .vital-frame{padding-bottom:0}
       .hp-journey .vital.measure{padding-bottom:36px}
@@ -645,7 +644,7 @@
 <section class="plan-overview hp-showcase" id="ever-lab-program" aria-labelledby="hp-showcase-title">
   <style>
     html{scroll-behavior:smooth}
-    .hp-showcase{scroll-margin-top:90px}
+    #plan,.hp-showcase{scroll-margin-top:90px}
     /* Scoped so the homepage's own .plan section inline styles don't leak in */
     .hp-showcase .plan-inner{max-width:1280px}
     .hp-showcase .plan-title{font-family:'Poppins','Assistant',serif;font-weight:300;font-size:clamp(32px,3.5vw,44px);line-height:1.15;letter-spacing:-.022em;color:var(--ink,#141414);margin-bottom:32px}
@@ -1352,7 +1351,7 @@
 <!-- ═══════════ FLUID NAVIGATION, items panel (toggle lives inside main <nav>) ═══════════ -->
 <div id="fluid-nav-panel" class="fluid-nav" data-state="closed" aria-label="ניווט מהיר">
   <div class="fnav-items">
-    <a href="longevity-program.html" class="fnav-item" aria-label="תוכנית לונג'ביטי">
+    <a href="#plan" class="fnav-item" aria-label="תוכנית לונג'ביטי">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M3 4.5 V18.5 C 6 18.5 9.5 18.5 12 20 C 14.5 18.5 18 18.5 21 18.5 V4.5 C 18 4.5 14.5 4.5 12 6 C 9.5 4.5 6 4.5 3 4.5 Z"/>
         <path d="M12 6 V20"/>

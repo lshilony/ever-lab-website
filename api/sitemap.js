@@ -21,7 +21,6 @@ const META = {
   'training.html':             { url: '/training.html',             priority: '0.8', changefreq: 'monthly', lastmod: '2026-07-23' },
   'recovery.html':             { url: '/recovery.html',             priority: '0.8', changefreq: 'monthly', lastmod: '2026-07-23' },
   'womenprogram.html':         { url: '/womenprogram',              priority: '0.8', changefreq: 'monthly', lastmod: '2026-07-23' },
-  'longevity-program.html':    { url: '/longevity-program.html',    priority: '0.8', changefreq: 'monthly', lastmod: '2026-08-24' },
   'blog.html':                 { url: '/blog.html',                 priority: '0.7', changefreq: 'weekly',  lastmod: '2026-09-29' },
   'grip-strength-longevity.html': { url: '/grip-strength-longevity.html', priority: '0.7', changefreq: 'monthly', lastmod: '2026-09-28' },
   'balance-test-longevity.html':  { url: '/balance-test-longevity.html',  priority: '0.7', changefreq: 'monthly', lastmod: '2026-09-29' },
@@ -42,6 +41,8 @@ const EXCLUDE = new Set([
   'womenprogram.html',
   // מסלולי היכרות הוסתר זמנית מהאתר. הדף נשמר לשימוש עתידי. להחזרה: הסירי את השורה הבאה.
   'tracks.html',
+  // תוכן עמוד תוכנית הלונג'ביטי הועבר לדף הבית; הדף פרש עם הפניית 301 ל-/#plan (ראי vercel.json). הקובץ נשמר כגיבוי.
+  'longevity-program.html',
 ]);
 
 function discover() {

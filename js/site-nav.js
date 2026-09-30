@@ -97,7 +97,7 @@
       '<a class="sn-logo" href="/" aria-label="EVER LAB, לדף הבית"><img src="' + LOGO + '" alt="EVER LAB"></a>' +
       '<ul class="sn-links">' +
         // הכותרת בסרגל שונתה מתפריט נפתח "תוכניות" לקישור ישיר לתוכנית לונג'ביטי. להחזרת התפריט הנפתח: החליפי את השורה הבאה בבלוק שבהערה למטה.
-        '<li><a href="/longevity-program.html">תוכנית לונג’ביטי</a></li>' +
+        '<li><a href="/#plan">תוכנית לונג’ביטי</a></li>' +
         // --- מקור: תפריט נפתח "תוכניות" (להחזרה, כולל תוכנית נשים במידת הצורך) ---
         // '<li class="sn-has-menu"><a href="/longevity-program.html">תוכניות <span class="sn-caret" aria-hidden="true">▾</span></a>' +
         //   '<ul class="sn-submenu">' +
@@ -117,7 +117,7 @@
         '<a class="sn-cta" href="/experiences.html">לפרטים נוספים ורכישה <span class="arr" aria-hidden="true">←</span></a>' +
       '</div>' +
       '<div class="sn-panel">' +
-        '<a href="/longevity-program.html">תוכנית לונג’ביטי</a>' +
+        '<a href="/#plan">תוכנית לונג’ביטי</a>' +
         // תוכנית נשים 40+ הוסתרה מהניווט. הדף נשמר לשימוש עתידי (womenprogram.html). להחזרה: בטלי את ההערה מהשורה הבאה.
         // '<a href="/womenprogram.html">תוכנית נשים 40+</a>' +
         // מסלולי היכרות הוסתר מהניווט. הדף נשמר לשימוש עתידי (tracks.html). להחזרה: בטלי את ההערה מהשורה הבאה.
