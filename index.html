@@ -546,7 +546,7 @@
 <!-- ============== מה כוללת התוכנית + מחיר ============== -->
 <section class="plan" id="plan" aria-labelledby="plan-title">
   <style>
-    .plan{background:var(--bg,#EDE8E3);padding:clamp(58px,8vw,110px) clamp(20px,4vw,40px)}
+    .plan{background:var(--bg-warm,#E1DDD6);padding:clamp(58px,8vw,110px) clamp(20px,4vw,40px)}
     .plan-inner{max-width:1040px;margin:0 auto}
     .plan-title{text-align:center;font-family:'Poppins','Assistant',serif;font-weight:300;font-size:clamp(32px,4.4vw,52px);letter-spacing:-.012em;color:var(--ink,#141414);margin:0 0 clamp(40px,5.5vw,66px);line-height:1.15}
     .plan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(26px,3vw,46px);text-align:center}
@@ -603,12 +603,13 @@
     .hp-journey .vital-frame{height:auto;min-height:0;overflow:visible}
     .hp-journey .vital.measure{padding-bottom:40px}
     .hp-journey .bio-report-band .section-divider-img{background-image:url('/img/retest-results.jpg')}
-    /* distinct backgrounds so each journey chapter reads as its own block.
-       NOTE: .vital.measure sets its own background:var(--bg) (=#EDE8E3, same as .plan),
-       which paints over the wrapper, so the distinct color must be applied to the
-       section itself, not only .hpj-measure-wrap. */
-    .hpj-measure-wrap{background:#D8CDB4}
-    .hpj-measure-wrap .vital.measure{background:#D8CDB4;padding-top:clamp(46px,6vw,86px)}
+    /* Distinct brand-neutral backgrounds so each journey chapter reads as its own
+       block: plan uses --bg-warm, this measure section uses --paper (the palette's
+       lightest and warmest neutrals = max on-brand contrast at this boundary).
+       NOTE: .vital.measure sets its own background:var(--bg) which would paint over
+       the wrapper, so the color is applied to the section itself, not only the wrapper. */
+    .hpj-measure-wrap{background:var(--paper,#F4F0EB)}
+    .hpj-measure-wrap .vital.measure{background:var(--paper,#F4F0EB);padding-top:clamp(46px,6vw,86px)}
     @media(max-width:768px){
       .hp-journey .vital-frame{padding-bottom:0}
       .hp-journey .vital.measure{padding-bottom:36px}
