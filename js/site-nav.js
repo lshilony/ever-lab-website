@@ -12,13 +12,13 @@
 
   var CSS = '' +
     // ---- bar (= homepage <nav>) ----
-    '.site-nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:flex-start;gap:14px;' +
+    '.site-nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;gap:14px;' +
       'padding:22px 40px;background:rgba(237,232,227,.7);backdrop-filter:blur(18px) saturate(140%);' +
       '-webkit-backdrop-filter:blur(18px) saturate(140%);border-bottom:1px solid rgba(20,20,20,.06);' +
       "font-family:'Poppins','Assistant',sans-serif;transition:padding .3s ease,background .3s ease,box-shadow .3s ease}" +
     '.site-nav.scrolled{padding:14px 40px;background:rgba(237,232,227,.92);box-shadow:0 6px 24px -12px rgba(20,20,20,.2)}' +
     // ---- centered logo (= .logo / .logo-img) ----
-    '.site-nav .sn-logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;direction:ltr;line-height:1;text-decoration:none}' +
+    '.site-nav .sn-logo{order:-1;display:flex;align-items:center;direction:ltr;line-height:1;text-decoration:none}' +
     '.site-nav .sn-logo img{height:96px;width:auto;display:block;margin:-24px 0;mix-blend-mode:multiply}' +
     // ---- default (below 1024px): hamburger only ----
     '.sn-links{display:none}' +
