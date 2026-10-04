@@ -486,7 +486,9 @@
     }
     @media(max-width:540px){
       .howit-steps{grid-template-columns:1fr;gap:34px}
-      .hstep-media{aspect-ratio:3/4}
+      /* keep landscape media on mobile too: the group photos (cards 2 & 4) are
+         landscape, so a 3/4 portrait slot cropped the people off the sides */
+      .hstep-media{aspect-ratio:4/3}
     }
   </style>
 
