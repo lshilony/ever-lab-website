@@ -43,6 +43,12 @@ const EXCLUDE = new Set([
   'tracks.html',
   // תוכן עמוד תוכנית הלונג'ביטי הועבר לדף הבית; הדף פרש עם הפניית 301 ל-/#plan (ראי vercel.json). הקובץ נשמר כגיבוי.
   'longevity-program.html',
+  // דפי מדיניות/משפטיים: סומנו noindex כדי שלא יופיעו בחיפוש גוגל (כולל כסייטלינקים). נשארים חיים ונגישים מהפוטר. להחזרה לאינדקס: החזירי robots ל-index והסירי מכאן.
+  'privacy-policy.html',
+  'refund-policy.html',
+  'terms-and-conditions.html',
+  'cancellation.html',
+  'lab-regulations.html',
 ]);
 
 function discover() {
