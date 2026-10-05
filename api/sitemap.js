@@ -20,6 +20,7 @@ const META = {
   'bio-age.html':              { url: '/bio-age.html',              priority: '0.9', changefreq: 'monthly', lastmod: '2026-07-26' },
   'training.html':             { url: '/training.html',             priority: '0.8', changefreq: 'monthly', lastmod: '2026-07-23' },
   'recovery.html':             { url: '/recovery.html',             priority: '0.8', changefreq: 'monthly', lastmod: '2026-07-23' },
+  'giftcard.html':             { url: '/giftcard',                  priority: '0.7', changefreq: 'monthly', lastmod: '2026-10-05' },
   'womenprogram.html':         { url: '/womenprogram',              priority: '0.8', changefreq: 'monthly', lastmod: '2026-07-23' },
   'blog.html':                 { url: '/blog.html',                 priority: '0.7', changefreq: 'weekly',  lastmod: '2026-09-29' },
   'grip-strength-longevity.html': { url: '/grip-strength-longevity.html', priority: '0.7', changefreq: 'monthly', lastmod: '2026-09-28' },
@@ -49,6 +50,8 @@ const EXCLUDE = new Set([
   'terms-and-conditions.html',
   'cancellation.html',
   'lab-regulations.html',
+  // דף נחיתה ישן של שובר המתנה (מוקאפ); הוחלף ב-giftcard.html. נשמר כגיבוי, לא לאינדקס.
+  'giftcard-mockup.html',
 ]);
 
 function discover() {

@@ -5,7 +5,8 @@
     { "source": "/longevity-program.html", "destination": "/#plan", "permanent": true }
   ],
   "rewrites": [
-    { "source": "/sitemap.xml", "destination": "/api/sitemap" }
+    { "source": "/sitemap.xml", "destination": "/api/sitemap" },
+    { "source": "/giftcard", "destination": "/giftcard.html" }
   ],
   "functions": {
     "api/sitemap.js": { "includeFiles": "*.html" }
