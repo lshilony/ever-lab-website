@@ -145,7 +145,7 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
 .ftreat .center{margin:0 auto clamp(38px,5.5vw,66px)}
 .ftr{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center;margin-bottom:clamp(46px,6vw,84px);direction:rtl}
 .ftr:last-child{margin-bottom:0}
-.ftr-img img{width:100%;height:auto;display:block;border-radius:3px}
+.ftr-img img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center;display:block;border-radius:3px}
 .ftr.imgleft .ftr-img{order:2}
 .ftr-body{text-align:right}
 .ftr-label{display:flex;direction:ltr;align-items:center;gap:14px;margin-bottom:18px}
@@ -158,7 +158,6 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
 @media(max-width:760px){
   .ftr,.ftr.imgleft{grid-template-columns:1fr;gap:16px;margin-bottom:46px}
   .ftr.imgleft .ftr-img{order:0}
-  .ftr-img img{max-height:340px;object-fit:cover}
 }
 @media(max-width:600px){ .pack-grid.two{grid-template-columns:1fr;max-width:420px} }
 </style>
@@ -190,7 +189,6 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
 <section class="steps">
   <div class="wrap">
     <div class="center">
-      <span class="eyebrow">עולם חדש של התחדשות</span>
       <p class="lead">במתחם הוולנס החדשני של <span class="en" style="white-space:nowrap">EVER LAB</span> בהרצליה הילס יתגלה בפניך עולם חדש של טיפולים שכמוהו לא הכרת. חווית ההתחדשות שלנו משלבת מספר טיפולים המייצרים ביחד חוויה עוצמתית, שתמלא אותך באנרגיות חדשות ותחזיר לגוף ולנפש את האיזון שהוא כל כך זקוק לו.</p>
     </div>
   </div>
@@ -202,7 +200,7 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
     <div class="center"><h2 class="sec">הטיפולים שלנו</h2></div>
 
     <div class="ftr imgleft">
-      <div class="ftr-img"><img src="/img/pouch.jpg" alt="עיסוי לימפטי מלטף, The Pouch"></div>
+      <div class="ftr-img"><img src="/img/pouch.jpg" alt="עיסוי לימפטי מלטף, The Pouch" style="object-position:center 72%"></div>
       <div class="ftr-body">
         <div class="ftr-label"><span class="ln"></span><span class="en">THE POUCH</span><span class="tk"></span></div>
         <h3>עיסוי לימפטי מלטף</h3>
@@ -229,7 +227,7 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
     </div>
 
     <div class="ftr">
-      <div class="ftr-img"><img src="/img/ice.JPG" alt="טיפול בקור, The Ice Cube"></div>
+      <div class="ftr-img"><img src="/img/ice.JPG" alt="טיפול בקור, The Ice Cube" style="object-position:center 22%"></div>
       <div class="ftr-body">
         <div class="ftr-label"><span class="ln"></span><span class="en">THE ICE CUBE</span><span class="tk"></span></div>
         <h3>טיפול בקור 85°-</h3>
@@ -250,7 +248,7 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
     </div>
     <div class="pack-grid two">
       <div class="pack featured">
-        <span class="badge">הכי נבחרת</span>
+        <span class="badge">הכי פופולרית</span>
         <span class="grp">לזוג</span>
         <h3>חבילה זוגית</h3>
         <p class="inc">חוויית ההתחדשות שלנו לשניים, יום פינוק משותף ומלא.</p>
