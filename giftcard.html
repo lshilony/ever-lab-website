@@ -127,8 +127,10 @@ section{padding:76px 0}
 .final .micro{margin-top:16px;font-size:15px;color:var(--ink-soft)}
 
 /* footer */
-footer{background:var(--ink);color:rgba(255,255,255,.75);padding:40px 0;text-align:center;font-size:14px}
-footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:#fff;margin-bottom:8px}
+footer{background:var(--paper);color:var(--ink-soft);padding:52px 0 44px;text-align:center;font-size:14px;border-top:1px solid rgba(107,139,112,.16)}
+footer a{color:var(--ink-soft);text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--sage-deep)}
+footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sage-deep);margin-bottom:10px}
 
 @media(max-width:820px){
   .steps-grid,.treat-grid,.pack-grid{grid-template-columns:1fr}
@@ -137,6 +139,28 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:#fff;marg
   section{padding:56px 0}
   .hero{min-height:88vh}
 }
+
+/* Figma editorial treatments (alternating image/text, labeled divider, no boxes) */
+.ftreat{padding:clamp(56px,7vw,88px) 0}
+.ftreat .center{margin:0 auto clamp(38px,5.5vw,66px)}
+.ftr{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center;margin-bottom:clamp(46px,6vw,84px);direction:rtl}
+.ftr:last-child{margin-bottom:0}
+.ftr-img img{width:100%;height:auto;display:block;border-radius:3px}
+.ftr.imgleft .ftr-img{order:2}
+.ftr-body{text-align:right}
+.ftr-label{display:flex;direction:ltr;align-items:center;gap:14px;margin-bottom:18px}
+.ftr-label .ln{flex:1;height:1px;background:rgba(20,20,20,.22)}
+.ftr-label .en{font-family:'Poppins',sans-serif;letter-spacing:.22em;font-size:13px;color:#8d8d84;white-space:nowrap}
+.ftr-label .tk{width:1px;height:22px;background:rgba(20,20,20,.3)}
+.ftr-body h3{font-family:'Assistant',sans-serif;font-weight:600;font-size:clamp(21px,2.3vw,27px);line-height:1.25;color:var(--ink);margin:0 0 14px}
+.ftr-body p{font-weight:300;font-size:clamp(15px,1.5vw,16.5px);line-height:1.75;color:var(--ink-soft);margin:0}
+.pack-grid.two{grid-template-columns:repeat(2,1fr);max-width:720px;margin-inline:auto}
+@media(max-width:760px){
+  .ftr,.ftr.imgleft{grid-template-columns:1fr;gap:16px;margin-bottom:46px}
+  .ftr.imgleft .ftr-img{order:0}
+  .ftr-img img{max-height:340px;object-fit:cover}
+}
+@media(max-width:600px){ .pack-grid.two{grid-template-columns:1fr;max-width:420px} }
 </style>
 </head>
 <body>
@@ -172,30 +196,47 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:#fff;marg
   </div>
 </section>
 
-<!-- TREATMENTS — what THEY get -->
-<section>
+<!-- TREATMENTS (Figma editorial, alternating image/text) -->
+<section class="ftreat">
   <div class="wrap">
-    <div class="center">
-      <h2 class="sec">הטיפולים שלנו</h2>
+    <div class="center"><h2 class="sec">הטיפולים שלנו</h2></div>
+
+    <div class="ftr imgleft">
+      <div class="ftr-img"><img src="/img/pouch.jpg" alt="עיסוי לימפטי מלטף, The Pouch"></div>
+      <div class="ftr-body">
+        <div class="ftr-label"><span class="ln"></span><span class="en">THE POUCH</span><span class="tk"></span></div>
+        <h3>עיסוי לימפטי מלטף</h3>
+        <p>כיס ענק ומפנק בו ניתן ליהנות מעיסוי הדיטוקס המושלם שמרגיש כמו עיסוי ב-24 ידיים בו זמנית. בסיומו תרגיש כאילו הגוף שלך עבר איתחול מחדש.</p>
+      </div>
     </div>
-    <div class="treat-grid">
-      <article class="treat">
-        <div class="ph"><img src="/img/pouch.jpg" alt="עיסוי לימפטי מלטף, The Pouch"><span class="tag">The Pouch</span></div>
-        <div class="body"><h3>עיסוי לימפטי מלטף</h3><p>כיס ענק ומפנק בו ניתן ליהנות מעיסוי הדיטוקס המושלם שמרגיש כמו עיסוי ב-24 ידיים בו זמנית. בסיומו תרגיש כאילו הגוף שלך עבר איתחול מחדש.</p></div>
-      </article>
-      <article class="treat">
-        <div class="ph"><img src="/img/pod.jpg" alt="פוד מהעתיד, The Nap Pod"><span class="tag">The Nap Pod</span></div>
-        <div class="body"><h3>פוד מהעתיד בשילוב עיסוי שרירים עמוק</h3><p>פוד עתידני המדמה מצב ציפה ומשלב עיסוי שרירים מפנק בליווי מוזיקה מרגיעה, אשר ישאיר אותך בתחושה של ריחוף על ענן.</p></div>
-      </article>
-      <article class="treat">
-        <div class="ph"><img src="/img/infrared.jpg" alt="סאונת אינפרא אדום, The Red Room"><span class="tag">The Red Room</span></div>
-        <div class="body"><h3>סאונת אינפרא אדום</h3><p>מתי בפעם האחרונה קיבלת חיבוק חם, מרגיע ומפנק של 20 דקות? ככה זה מרגיש בסאונת האינפרא אדום של <span class="en" style="white-space:nowrap">EVER LAB</span>. השהות בסאונה מתניעה תהליכי התחדשות ותשאיר אותך לא רק רגוע ועם חיוך, אלא גם עם עור פנים מתוח וזוהר.</p></div>
-      </article>
-      <article class="treat">
-        <div class="ph"><img src="/img/ice.JPG" alt="טיפול בקור, The Ice Cube"><span class="tag">The Ice Cube</span></div>
-        <div class="body"><h3>טיפול בקור 85°-</h3><p>טיפול בקור הוא המרכיב הסודי לכל מי שמעוניין להקפיא את הזמן ולהרגיש הכי טוב. 3 דקות בלבד, אבל תחושת האושר תלווה אותך עוד שעות ארוכות.</p></div>
-      </article>
+
+    <div class="ftr">
+      <div class="ftr-img"><img src="/img/pod.jpg" alt="פוד מהעתיד, The Nap Pod"></div>
+      <div class="ftr-body">
+        <div class="ftr-label"><span class="ln"></span><span class="en">THE NAP POD</span><span class="tk"></span></div>
+        <h3>פוד מהעתיד בשילוב עיסוי שרירים עמוק</h3>
+        <p>פוד עתידני המדמה מצב ציפה ומשלב עיסוי שרירים מפנק בליווי מוזיקה מרגיעה, אשר ישאיר אותך בתחושה של ריחוף על ענן.</p>
+      </div>
     </div>
+
+    <div class="ftr imgleft">
+      <div class="ftr-img"><img src="/img/infrared.jpg" alt="סאונת אינפרא אדום, The Red Room"></div>
+      <div class="ftr-body">
+        <div class="ftr-label"><span class="ln"></span><span class="en">THE RED ROOM</span><span class="tk"></span></div>
+        <h3>סאונת אינפרא אדום</h3>
+        <p>מתי בפעם האחרונה קיבלת חיבוק חם, מרגיע ומפנק של 20 דקות? ככה זה מרגיש בסאונת האינפרא אדום של <span class="en" style="white-space:nowrap">EVER LAB</span>. השהות בסאונה מתניעה תהליכי התחדשות ותשאיר אותך לא רק רגוע ועם חיוך, אלא גם עם עור פנים מתוח וזוהר.</p>
+      </div>
+    </div>
+
+    <div class="ftr">
+      <div class="ftr-img"><img src="/img/ice.JPG" alt="טיפול בקור, The Ice Cube"></div>
+      <div class="ftr-body">
+        <div class="ftr-label"><span class="ln"></span><span class="en">THE ICE CUBE</span><span class="tk"></span></div>
+        <h3>טיפול בקור 85°-</h3>
+        <p>טיפול בקור הוא המרכיב הסודי לכל מי שמעוניין להקפיא את הזמן ולהרגיש הכי טוב. 3 דקות בלבד, אבל תחושת האושר תלווה אותך עוד שעות ארוכות.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -207,7 +248,7 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:#fff;marg
       <h2 class="sec">מחירון טיפולים</h2>
       <p class="pack-help">אנחנו מאמינים ששילוב של מספר טיפולים זאת הדרך הטובה ביותר להנות מחוויית וולנס אמיתית לגוף ולנפש. בחירה מבין מגוון הטיפולים שלנו: עיסוי לימפטי מפנק, סאונת אינפרא אדום, פוד מהעתיד בשילוב עיסוי שרירים עמוק וטיפול בקור.</p>
     </div>
-    <div class="pack-grid" style="grid-template-columns:repeat(2,1fr);max-width:720px;margin-inline:auto">
+    <div class="pack-grid two">
       <div class="pack featured">
         <span class="badge">הכי נבחרת</span>
         <span class="grp">לזוג</span>
@@ -237,16 +278,16 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:#fff;marg
 
 <footer>
   <div class="tag">Feel Your Best Ever</div>
-  <nav aria-label="קישורי מדיניות ותקנון" style="margin:16px auto 10px;display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;font-size:13px">
-    <a href="/terms-and-conditions.html" style="color:rgba(255,255,255,.75);text-decoration:none">תנאי שימוש</a>
-    <a href="/privacy-policy.html" style="color:rgba(255,255,255,.75);text-decoration:none">מדיניות פרטיות</a>
-    <a href="/refund-policy.html" style="color:rgba(255,255,255,.75);text-decoration:none">מדיניות ביטולים והחזרים</a>
-    <a href="/cancellation.html" style="color:rgba(255,255,255,.75);text-decoration:none">דרכי ביטול עסקה</a>
-    <a href="/lab-regulations.html" style="color:rgba(255,255,255,.75);text-decoration:none">תקנון המעבדה</a>
-    <a href="/accessibility.html" style="color:rgba(255,255,255,.75);text-decoration:none">הצהרת נגישות</a>
+  <nav aria-label="קישורי מדיניות ותקנון" style="margin:16px auto 12px;display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;font-size:13px">
+    <a href="/terms-and-conditions.html">תנאי שימוש</a>
+    <a href="/privacy-policy.html">מדיניות פרטיות</a>
+    <a href="/refund-policy.html">מדיניות ביטולים והחזרים</a>
+    <a href="/cancellation.html">דרכי ביטול עסקה</a>
+    <a href="/lab-regulations.html">תקנון המעבדה</a>
+    <a href="/accessibility.html">הצהרת נגישות</a>
   </nav>
   <div><span class="en" style="white-space:nowrap">EVER LAB</span> · הרצליה הילס · 079-629-9299</div>
-  <div style="margin-top:8px;font-size:12px;opacity:.7">© 2026 Meduza Labs LTD. כל הזכויות שמורות.</div>
+  <div style="margin-top:8px;font-size:12px;opacity:.65">© 2026 Meduza Labs LTD. כל הזכויות שמורות.</div>
 </footer>
 
 <script defer src="/_vercel/insights/script.js"></script>
