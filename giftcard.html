@@ -162,6 +162,19 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
   .ftr.imgleft .ftr-img{order:0}
 }
 @media(max-width:600px){ .pack-grid.two{grid-template-columns:1fr;max-width:420px} }
+
+/* Venue parallax bands */
+.gc-band{position:relative;width:100%;height:440px;overflow:hidden;background-color:#000}
+.gc-band-img{position:absolute;inset:0;width:100%;height:100%;background-size:cover;background-position:center;background-repeat:no-repeat;background-attachment:fixed}
+@media(max-width:768px){
+  .gc-band{height:280px}
+  .gc-band-img{background-attachment:scroll}
+  @supports (animation-timeline: view()){
+    .gc-band-img{top:-30%;bottom:auto;height:160%;will-change:transform;animation:gc-parallax linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+  }
+}
+@keyframes gc-parallax{from{transform:translate3d(0,-18%,0)}to{transform:translate3d(0,18%,0)}}
+@media(prefers-reduced-motion:reduce){.gc-band-img{background-attachment:scroll;transform:none!important;animation:none!important}}
 </style>
 </head>
 <body>
@@ -244,6 +257,11 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
   </div>
 </section>
 
+<!-- VENUE PARALLAX 1 (between treatments and prices) -->
+<div class="gc-band" role="img" aria-label="מתחם EVER LAB בהרצליה">
+  <div class="gc-band-img" style="background-image:url('/img/everlab-space.jpg')"></div>
+</div>
+
 <!-- PACKAGES — grouped + guided choice -->
 <section class="packs" id="packages">
   <div class="wrap">
@@ -281,6 +299,11 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
   </div>
 </section>
 
+<!-- VENUE PARALLAX 2 (between the story and the form) -->
+<div class="gc-band" role="img" aria-label="מתחם EVER LAB בהרצליה">
+  <div class="gc-band-img" style="background-image:url('/img/everlab-space2.jpg')"></div>
+</div>
+
 <!-- FINAL CTA -->
 <section class="final">
   <div class="wrap">
@@ -314,6 +337,8 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
   document.addEventListener('DOMContentLoaded', function () {
     var m = document.querySelector('.closing-manifesto');
     if (m) { m.textContent = 'רוצים עזרה בבחירת המתנה?'; }
+    var btn = document.querySelector('.cf-submit');
+    if (btn) { btn.textContent = 'לפרטים נוספים ←'; }
   });
 </script>
 </body>
