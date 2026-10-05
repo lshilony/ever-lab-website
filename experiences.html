@@ -1350,6 +1350,15 @@
     margin: 0 auto;
   }
 
+  .cat-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  @media (max-width: 560px) {
+    .cat-grid-2 { grid-template-columns: 1fr; max-width: 420px; }
+  }
+
   /* Card base, shared shell */
   .cat-card {
     position: relative;
@@ -1805,35 +1814,12 @@
   <section class="exp-hero exp-hero-secondary" id="section-items">
     <div class="exp-eyebrow"><span>À la carte</span></div>
     <h1>מסלולי היכרות</h1>
-    <p>בחרו שירות אחד להתחיל ממנו: מבדק, אימון היכרות או טיפול התחדשות.</p>
+    <p>בחרו שירות אחד להתחיל ממנו: מבדק גיל ביולוגי תפקודי או אימון התנסות לונג'ביטי.</p>
   </section>
 
   <section class="cat-section">
     <div class="cat-inner">
-      <div class="cat-grid">
-
-        <article class="cat-card cat-card-4">
-          <div class="cat-card-icon" aria-hidden="true">
-            <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="14" y1="22" x2="46" y2="22" stroke-width="1" opacity="0.45"/>
-              <line x1="14" y1="22" x2="36" y2="22" stroke-width="2.2"/>
-              <line x1="14" y1="30" x2="46" y2="30" stroke-width="1" opacity="0.45"/>
-              <line x1="14" y1="30" x2="28" y2="30" stroke-width="2.2"/>
-              <line x1="14" y1="38" x2="46" y2="38" stroke-width="1" opacity="0.45"/>
-              <line x1="14" y1="38" x2="42" y2="38" stroke-width="2.2"/>
-            </svg>
-          </div>
-          <div class="cat-card-body">
-            <span class="cat-card-num">01</span>
-            <span class="cat-card-label">Body Composition</span>
-            <h3 class="cat-card-title">בדיקת הרכב גוף</h3>
-            <p class="cat-card-desc">סריקת InBody · 30 דקות · 200 ₪</p>
-          </div>
-          <div class="cat-card-actions">
-            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-body-comp">לפרטים</button>
-            <a href="https://wa.me/972796299299?text=%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9B%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%91%D7%93%D7%99%D7%A7%D7%AA%20%D7%94%D7%A8%D7%9B%D7%91%20%D7%92%D7%95%D7%A3%20%28InBody%29%20%D7%95%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D." class="cat-btn cat-btn-primary" target="_blank" rel="noopener noreferrer">לתיאום בוואטסאפ</a>
-          </div>
-        </article>
+      <div class="cat-grid cat-grid-2">
 
         <article class="cat-card cat-card-1">
           <div class="cat-card-icon" aria-hidden="true">
@@ -1851,14 +1837,13 @@
             </svg>
           </div>
           <div class="cat-card-body">
-            <span class="cat-card-num">02</span>
+            <span class="cat-card-num">01</span>
             <span class="cat-card-label">Bio Age Test</span>
-            <h3 class="cat-card-title">גיל ביולוגי תפקודי</h3>
+            <h3 class="cat-card-title">מבדק גיל ביולוגי תפקודי</h3>
             <p class="cat-card-desc">אבחון מקיף · 60 דקות · 550 ₪</p>
           </div>
           <div class="cat-card-actions">
-            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-bio-age">לפרטים</button>
-            <a href="https://wa.me/972796299299?text=%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9B%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%9E%D7%91%D7%93%D7%A7%20%D7%92%D7%99%D7%9C%20%D7%91%D7%99%D7%95%D7%9C%D7%95%D7%92%D7%99%20%D7%AA%D7%A4%D7%A7%D7%95%D7%93%D7%99%20%D7%95%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D." class="cat-btn cat-btn-primary" target="_blank" rel="noopener noreferrer">לתיאום בוואטסאפ</a>
+            <a href="https://arbox.link/C0Ih4w-i" class="cat-btn cat-btn-primary" target="_blank" rel="noopener noreferrer">לרכישה אונליין</a>
           </div>
         </article>
 
@@ -1878,34 +1863,13 @@
             </svg>
           </div>
           <div class="cat-card-body">
-            <span class="cat-card-num">03</span>
+            <span class="cat-card-num">02</span>
             <span class="cat-card-label">Trial Workout</span>
-            <h3 class="cat-card-title">אימון התנסות</h3>
-            <p class="cat-card-desc">אימון פרטי · 60 דקות · 350 ₪</p>
+            <h3 class="cat-card-title">אימון התנסות לונג'ביטי</h3>
+            <p class="cat-card-desc">אימון פרטי · 60 דקות · 450 ₪</p>
           </div>
           <div class="cat-card-actions">
-            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-trial-workout">לפרטים</button>
-            <a href="https://wa.me/972796299299?text=%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9B%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%90%D7%99%D7%9E%D7%95%D7%9F%20%D7%94%D7%AA%D7%A0%D7%A1%D7%95%D7%AA%20%D7%95%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D." class="cat-btn cat-btn-primary" target="_blank" rel="noopener noreferrer">לתיאום בוואטסאפ</a>
-          </div>
-        </article>
-
-        <article class="cat-card cat-card-3">
-          <div class="cat-card-icon" aria-hidden="true">
-            <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M 12 22 Q 21 16, 30 22 T 48 22"/>
-              <path d="M 12 30 Q 21 24, 30 30 T 48 30" opacity="0.75"/>
-              <path d="M 12 38 Q 21 32, 30 38 T 48 38" opacity="0.55"/>
-            </svg>
-          </div>
-          <div class="cat-card-body">
-            <span class="cat-card-num">04</span>
-            <span class="cat-card-label">Single Recovery</span>
-            <h3 class="cat-card-title">טיפול התחדשות</h3>
-            <p class="cat-card-desc">טיפול בודד · 20-30 דקות · 200 ₪</p>
-          </div>
-          <div class="cat-card-actions">
-            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-single-recovery">לפרטים</button>
-            <a href="https://wa.me/972796299299?text=%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9B%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%98%D7%99%D7%A4%D7%95%D7%9C%20%D7%94%D7%AA%D7%97%D7%93%D7%A9%D7%95%D7%AA%20%D7%95%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D." class="cat-btn cat-btn-primary" target="_blank" rel="noopener noreferrer">לתיאום בוואטסאפ</a>
+            <a href="https://arbox.link/-XkVAzYb" class="cat-btn cat-btn-primary" target="_blank" rel="noopener noreferrer">לרכישה אונליין</a>
           </div>
         </article>
 
@@ -1931,7 +1895,7 @@
   <!-- Packages -->
   <section class="cat-section">
     <div class="cat-inner">
-      <div class="cat-grid cat-grid-3">
+      <div class="cat-grid cat-grid-2">
 
         <article class="cat-card cat-card-1">
           <div class="cat-card-icon" aria-hidden="true">
@@ -1949,42 +1913,14 @@
           <div class="cat-card-body">
             <span class="cat-card-num">01</span>
             <h3 class="cat-card-title cat-card-title-en">Longevity Discovery</h3>
-            <p class="cat-card-desc">מבדק גיל ביולוגי תפקודי + 2 טיפולים · 120 דקות · 930 ₪</p>
+            <p class="cat-card-desc">יחיד · מבדק + 2 טיפולים · 120 דקות · 930 ₪</p>
           </div>
           <div class="cat-card-actions">
-            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-discovery">לפרטים</button>
-            <a href="https://wa.me/972796299299?text=%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9B%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%90%D7%AA%20%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Longevity%20Discovery%20%D7%95%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D." class="cat-btn cat-btn-primary" target="_blank" rel="noopener noreferrer">לתיאום בוואטסאפ</a>
+            <a href="https://arbox.link/PN8QV_GX" class="cat-btn cat-btn-primary" target="_blank" rel="noopener noreferrer">לרכישה אונליין</a>
           </div>
         </article>
 
         <article class="cat-card cat-card-2">
-          <div class="cat-card-icon" aria-hidden="true">
-            <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="18" cy="30" r="2.4" fill="currentColor"/>
-              <line x1="18" y1="22" x2="18" y2="25"/>
-              <line x1="18" y1="35" x2="18" y2="38"/>
-              <line x1="10" y1="30" x2="13" y2="30"/>
-              <line x1="23" y1="30" x2="26" y2="30"/>
-              <circle cx="18" cy="30" r="7" opacity="0.45" stroke-dasharray="1.5 3"/>
-              <line x1="27" y1="27" x2="33" y2="27"/>
-              <line x1="30" y1="24" x2="30" y2="30"/>
-              <path d="M 38 24 Q 41 22, 44 24 T 50 24"/>
-              <path d="M 38 28 Q 41 26, 44 28 T 50 28" opacity="0.75"/>
-              <path d="M 38 32 Q 41 30, 44 32 T 50 32" opacity="0.55"/>
-            </svg>
-          </div>
-          <div class="cat-card-body">
-            <span class="cat-card-num">02</span>
-            <h3 class="cat-card-title cat-card-title-en">Longevity Experience</h3>
-            <p class="cat-card-desc">אימון + 3 טיפולים · 120 דקות · 720 ₪</p>
-          </div>
-          <div class="cat-card-actions">
-            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-experience">לפרטים</button>
-            <a href="https://wa.me/972796299299?text=%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9B%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%90%D7%AA%20%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Longevity%20Experience%20%D7%95%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D." class="cat-btn cat-btn-primary" target="_blank" rel="noopener noreferrer">לתיאום בוואטסאפ</a>
-          </div>
-        </article>
-
-        <article class="cat-card cat-card-4">
           <div class="cat-card-icon" aria-hidden="true">
             <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="23" cy="30" r="11"/>
@@ -1993,13 +1929,12 @@
             </svg>
           </div>
           <div class="cat-card-body">
-            <span class="cat-card-num">03</span>
-            <h3 class="cat-card-title cat-card-title-en">Longevity Escape</h3>
-            <p class="cat-card-desc">4 טיפולים זוגיים · 120 דקות · 990 ₪</p>
+            <span class="cat-card-num">02</span>
+            <h3 class="cat-card-title cat-card-title-en">Longevity Discovery</h3>
+            <p class="cat-card-desc">זוגית · מבדק לכל אחד + 2 טיפולים לכל אחד · 120 דקות · 1,500 ₪</p>
           </div>
           <div class="cat-card-actions">
-            <button type="button" class="cat-btn cat-btn-secondary" data-modal-open="modal-escape">לפרטים</button>
-            <a href="https://wa.me/972796299299?text=%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9B%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%90%D7%AA%20%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Longevity%20Escape%20%D7%95%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D." class="cat-btn cat-btn-primary" target="_blank" rel="noopener noreferrer">לתיאום בוואטסאפ</a>
+            <a href="https://arbox.link/DeMnq5aA" class="cat-btn cat-btn-primary" target="_blank" rel="noopener noreferrer">לרכישה אונליין</a>
           </div>
         </article>
 
@@ -2017,194 +1952,6 @@
       שיחת ייעוץ ללא עלות <span style="font-size: 18px;">←</span>
     </a>
   </section>
-
-  <!-- ═══════════════════════════════════════════════════════════════════════
-       PRODUCT MODALS, opened by 'לפרטים' buttons (one per product)
-       ═══════════════════════════════════════════════════════════════════════ -->
-
-  <div class="cat-modal" id="modal-body-comp" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="cat-modal-backdrop" data-modal-close></div>
-    <div class="cat-modal-panel" role="document">
-      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
-      <div class="cat-modal-eyebrow">Body Composition</div>
-      <h3 class="cat-modal-title">בדיקת הרכב גוף</h3>
-      <p class="cat-modal-desc">סריקת InBody מקצועית המספקת תמונה מדויקת של הרכב הגוף שלך: אחוזי שומן, מסת שריר, שומן ויסצרלי, מאזן הנוזלים ומדדים נוספים. נקודת הפתיחה להבנת מצב הגוף כיום ולמעקב אחר ההתקדמות לאורך זמן.</p>
-      <div class="cat-modal-section">
-        <h4 class="cat-modal-section-title is-emphasized">ה-InBody מראה מה שהמשקל מסתיר:</h4>
-        <ul class="cat-modal-list">
-          <li>אחוז שומן ומסת שומן</li>
-          <li>מסת שריר ופירוט לפי איברים</li>
-          <li>שומן ויסצרלי</li>
-          <li>מאזן מים תוך-תאי וחוץ-תאי</li>
-          <li>דוח אישי מודפס</li>
-        </ul>
-      </div>
-      <div class="cat-modal-meta">
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">30 דקות</span></div>
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">200 ₪</span></div>
-      </div>
-      <a href="https://wa.me/972796299299?text=%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9B%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%91%D7%93%D7%99%D7%A7%D7%AA%20%D7%94%D7%A8%D7%9B%D7%91%20%D7%92%D7%95%D7%A3%20%28InBody%29%20%D7%95%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D." class="cat-modal-cta" target="_blank" rel="noopener noreferrer">לתיאום בוואטסאפ</a>
-    </div>
-  </div>
-
-  <div class="cat-modal" id="modal-bio-age" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="cat-modal-backdrop" data-modal-close></div>
-    <div class="cat-modal-panel" role="document">
-      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
-      <div class="cat-modal-eyebrow">Bio Age Test</div>
-      <h3 class="cat-modal-title">בדיקת גיל ביולוגי־תפקודי</h3>
-      <p class="cat-modal-desc"><em>אי אפשר לשפר את מה שלא מודדים.</em></p>
-      <p class="cat-modal-desc">המבדק המקיף של EVER LAB משלב הרכב גוף עם מדדים תפקודיים מתקדמים, ומספק תמונה מדויקת של מצב הגוף שלך כיום. בסיום תקבל/י את מפת הלונג'ביטי האישית שלך, הבסיס לבניית תוכנית מותאמת אישית ולמעקב אחר ההתקדמות לאורך זמן.</p>
-      <div class="cat-modal-section">
-        <h4 class="cat-modal-section-title">מה נבדק:</h4>
-        <ul class="cat-modal-list">
-          <li>הרכב גוף ומסת שריר</li>
-          <li>יכולת אירובית (VO₂max)</li>
-          <li>כוח ותפקוד שרירי</li>
-          <li>שיווי משקל ויציבות</li>
-          <li>מהירות תגובה ותפקוד קוגניטיבי</li>
-          <li>מדדי כושר ותנועה</li>
-        </ul>
-      </div>
-      <div class="cat-modal-meta">
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">60 דקות</span></div>
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">550 ₪</span></div>
-      </div>
-      <a href="https://wa.me/972796299299?text=%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9B%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%9E%D7%91%D7%93%D7%A7%20%D7%92%D7%99%D7%9C%20%D7%91%D7%99%D7%95%D7%9C%D7%95%D7%92%D7%99%20%D7%AA%D7%A4%D7%A7%D7%95%D7%93%D7%99%20%D7%95%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D." class="cat-modal-cta" target="_blank" rel="noopener noreferrer">לתיאום בוואטסאפ</a>
-    </div>
-  </div>
-
-  <div class="cat-modal" id="modal-trial-workout" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="cat-modal-backdrop" data-modal-close></div>
-    <div class="cat-modal-panel" role="document">
-      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
-      <div class="cat-modal-eyebrow">Trial Workout</div>
-      <h3 class="cat-modal-title">אימון היכרות עם שיטת EVER LAB</h3>
-      <p class="cat-modal-desc"><em>הצעד הראשון לבריאות טובה יותר מתחיל כאן.</em></p>
-      <p class="cat-modal-desc">באימון היכרות אישי תכירו את שיטת האימון הייחודית של EVER LAB, שיטה המבוססת על מדידה, התאמה אישית וטכנולוגיות האימון המתקדמות בעולם.</p>
-      <p class="cat-modal-desc">האימון מותאם לרמת הכושר ולמטרות האישיות שלך, ומשלב עבודה על המרכיבים החשובים ביותר לבריאות, לתפקוד ולאריכות ימים.</p>
-      <p class="cat-modal-desc">הדגש הוא לא על משך האימון, אלא על איכות הגירוי, היעילות והתוצאות.</p>
-      <div class="cat-modal-section">
-        <h4 class="cat-modal-section-title">מה כולל האימון?</h4>
-        <ul class="cat-modal-list">
-          <li>אימון אישי 1:1 עם מאמן מוסמך</li>
-          <li>היכרות עם שיטת האימון של EVER LAB</li>
-          <li>שימוש בטכנולוגיות אימון מתקדמות, כולל ARX, CAR.O.L Bike ו-Vasper (בהתאם לתוכנית)</li>
-          <li>התאמה אישית לרמת הכושר, למטרות ולמצב הבריאותי שלך</li>
-          <li>מדידת ביצועים בזמן אמת והסבר על שיטת העבודה שלנו</li>
-        </ul>
-      </div>
-      <div class="cat-modal-meta">
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">60 דקות</span></div>
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">350 ₪</span></div>
-      </div>
-      <a href="https://wa.me/972796299299?text=%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9B%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%90%D7%99%D7%9E%D7%95%D7%9F%20%D7%94%D7%AA%D7%A0%D7%A1%D7%95%D7%AA%20%D7%95%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D." class="cat-modal-cta" target="_blank" rel="noopener noreferrer">לתיאום בוואטסאפ</a>
-    </div>
-  </div>
-
-  <div class="cat-modal" id="modal-single-recovery" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="cat-modal-backdrop" data-modal-close></div>
-    <div class="cat-modal-panel" role="document">
-      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
-      <div class="cat-modal-eyebrow">Single Recovery</div>
-      <h3 class="cat-modal-title">טיפול התחדשות בודד</h3>
-      <p class="cat-modal-desc"><em>לפעמים הדרך להתקדם מתחילה דווקא בהתאוששות.</em></p>
-      <p class="cat-modal-desc">ב-EVER LAB אנחנו רואים בהתאוששות חלק בלתי נפרד מתהליך השיפור. טיפולי ההתחדשות שלנו משלבים טכנולוגיות מתקדמות שנועדו לתמוך במנגנוני ההתחדשות הטבעיים של הגוף, להפחית עומסים, להאיץ את ההתאוששות ולסייע בשמירה על בריאות, ביצועים ואיכות חיים לאורך זמן.</p>
-      <p class="cat-modal-desc">ניתן לבחור טיפול בודד או לשלב מספר טיפולים, בהתאם למטרות ולהעדפות האישיות שלך.</p>
-      <div class="cat-modal-section">
-        <h4 class="cat-modal-section-title">הטיפולים לבחירה</h4>
-        <ul class="cat-modal-list">
-          <li>סאונת אינפרא־אדום</li>
-          <li>תא קור</li>
-          <li>עיסוי לימפטי</li>
-          <li>Nap Pod: הרפיה והתאוששות</li>
-          <li>עיסוי שרירים עמוק</li>
-        </ul>
-      </div>
-      <div class="cat-modal-meta">
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">20-30 דקות</span></div>
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">200 ₪</span></div>
-      </div>
-      <a href="https://wa.me/972796299299?text=%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9B%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%98%D7%99%D7%A4%D7%95%D7%9C%20%D7%94%D7%AA%D7%97%D7%93%D7%A9%D7%95%D7%AA%20%D7%95%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D." class="cat-modal-cta" target="_blank" rel="noopener noreferrer">לתיאום בוואטסאפ</a>
-    </div>
-  </div>
-
-  <div class="cat-modal" id="modal-discovery" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="cat-modal-backdrop" data-modal-close></div>
-    <div class="cat-modal-panel" role="document">
-      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
-      <div class="cat-modal-eyebrow">Longevity Discovery</div>
-      <h3 class="cat-modal-title">חבילת ההיכרות עם עולם הלונג'ביטי</h3>
-      <p class="cat-modal-desc"><em>הדרך הטובה ביותר להכיר את עולם הלונג'ביטי של EVER LAB.</em></p>
-      <p class="cat-modal-desc">החבילה משלבת את מבדק הגיל הביולוגי־תפקודי עם שני טיפולי התחדשות לבחירתך, ומעניקה לך את ההזדמנות להבין כיצד הגוף שלך באמת מתפקד, להכיר את שיטת EVER LAB ולחוות את הטכנולוגיות המתקדמות שלנו.</p>
-      <p class="cat-modal-desc">הכל מתחיל ביצירת מפת הלונג'ביטי האישית שלך, נקודת הפתיחה לבניית תוכנית אישית ולשיפור הבריאות, התפקוד ואיכות החיים לאורך זמן.</p>
-      <div class="cat-modal-section">
-        <h4 class="cat-modal-section-title">החבילה כוללת</h4>
-        <ul class="cat-modal-list">
-          <li>מבדק גיל ביולוגי־תפקודי מקיף</li>
-          <li>שני טיפולי התחדשות לבחירתך</li>
-          <li>מפת הלונג'ביטי האישית שלך, הכוללת את הגיל הביולוגי־תפקודי והמלצות מותאמות אישית</li>
-          <li>10% הנחה ברכישה זוגית</li>
-        </ul>
-      </div>
-      <div class="cat-modal-meta">
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">120 דקות</span></div>
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">930 ₪</span></div>
-      </div>
-      <a href="https://wa.me/972796299299?text=%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9B%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%90%D7%AA%20%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Longevity%20Discovery%20%D7%95%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D." class="cat-modal-cta" target="_blank" rel="noopener noreferrer">לתיאום בוואטסאפ</a>
-    </div>
-  </div>
-
-  <div class="cat-modal" id="modal-experience" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="cat-modal-backdrop" data-modal-close></div>
-    <div class="cat-modal-panel" role="document">
-      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
-      <div class="cat-modal-eyebrow">Longevity Experience</div>
-      <h3 class="cat-modal-title">חוויית EVER BEST</h3>
-      <p class="cat-modal-desc"><em>הדרך הטובה ביותר לחוות את שיטת EVER LAB.</em></p>
-      <p class="cat-modal-desc">החבילה משלבת אימון היכרות אישי עם שלושה טיפולי התחדשות מתקדמים, ומעניקה לך היכרות מלאה עם הדרך שבה אנו משלבים אימון, טכנולוגיה והתאוששות כדי לשפר את הבריאות, התפקוד ואיכות החיים לאורך זמן.</p>
-      <p class="cat-modal-desc">הדגש הוא לא על משך האימון, אלא על איכות הגירוי, היעילות והתוצאות.</p>
-      <div class="cat-modal-section">
-        <h4 class="cat-modal-section-title">החוויה כוללת</h4>
-        <ul class="cat-modal-list">
-          <li>אימון היכרות אישי עם שיטת EVER LAB</li>
-          <li>שימוש בטכנולוגיות האימון המתקדמות שלנו (ARX, CAR.O.L Bike ו-Vasper, בהתאם לתוכנית)</li>
-          <li>שלושה טיפולי התחדשות לבחירתך</li>
-          <li>10% הנחה ברכישה זוגית</li>
-        </ul>
-      </div>
-      <div class="cat-modal-meta">
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">120 דקות</span></div>
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">720 ₪</span></div>
-      </div>
-      <a href="https://wa.me/972796299299?text=%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9B%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%90%D7%AA%20%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Longevity%20Experience%20%D7%95%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D." class="cat-modal-cta" target="_blank" rel="noopener noreferrer">לתיאום בוואטסאפ</a>
-    </div>
-  </div>
-
-  <div class="cat-modal" id="modal-escape" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="cat-modal-backdrop" data-modal-close></div>
-    <div class="cat-modal-panel" role="document">
-      <button type="button" class="cat-modal-close" aria-label="סגירה" data-modal-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
-      <div class="cat-modal-eyebrow">Longevity Escape for Two</div>
-      <h3 class="cat-modal-title">חוויה זוגית של בריאות והתחדשות</h3>
-      <p class="cat-modal-desc"><em>המתנה הטובה ביותר שתוכלו להעניק לעצמכם, זמן איכות שמוקדש לבריאות, לרוגע ולהתחדשות.</em></p>
-      <p class="cat-modal-desc">החבילה מזמינה אתכם לעצור לרגע את המרוץ, לבחור מתוך מגוון טיפולי ההתחדשות של EVER LAB וליהנות מחוויה זוגית המשלבת רוגע, התחדשות וטכנולוגיות מתקדמות, בסביבה אינטימית ומעוצבת.</p>
-      <div class="cat-modal-section">
-        <h4 class="cat-modal-section-title">החוויה כוללת</h4>
-        <ul class="cat-modal-list">
-          <li>ארבעה טיפולי התחדשות זוגיים לבחירה</li>
-          <li>חוויה משותפת בחדרי טיפול פרטיים</li>
-          <li>שובר מתנה דיגיטלי, מושלם גם כמתנה לבני זוג, בני משפחה או חברים</li>
-        </ul>
-      </div>
-      <div class="cat-modal-meta">
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">משך</span><span class="cat-modal-meta-value">120 דקות</span></div>
-        <div class="cat-modal-meta-item"><span class="cat-modal-meta-label">מחיר</span><span class="cat-modal-meta-value">990 ₪ לזוג</span></div>
-      </div>
-      <a href="https://wa.me/972796299299?text=%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%D7%9B%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%90%D7%AA%20%D7%97%D7%91%D7%99%D7%9C%D7%AA%20Longevity%20Escape%20%D7%95%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D." class="cat-modal-cta" target="_blank" rel="noopener noreferrer">לתיאום בוואטסאפ</a>
-    </div>
-  </div>
-
 
 </main>
 
