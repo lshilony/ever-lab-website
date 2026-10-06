@@ -27,7 +27,7 @@
   function collect() {
     // Group A covers every band that has a dedicated image layer we can translate.
     layerBands = [];
-    [['.section-divider', '.section-divider-img'], ['.about-band', '.about-band-img']].forEach(function (cfg) {
+    [['.section-divider', '.section-divider-img'], ['.about-band', '.about-band-img'], ['.gc-band', '.gc-band-img']].forEach(function (cfg) {
       [].slice.call(document.querySelectorAll(cfg[0])).forEach(function (b) {
         var img = b.querySelector(cfg[1]);
         if (img) { layerBands.push({ band: b, img: img }); }

@@ -173,7 +173,11 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
   .gc-band{height:280px}
   .gc-band-img{background-attachment:scroll}
   @supports (animation-timeline: view()){
-    .gc-band-img{top:-30%;bottom:auto;height:160%;will-change:transform;animation:gc-parallax linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+    /* name the timeline on the band (tracked by the page viewport); the band's own
+       overflow:hidden would make view() on the img resolve to a non-scrolling
+       container and freeze the animation, so the img consumes the band's timeline */
+    .gc-band{view-timeline-name:--gcband;view-timeline-axis:block}
+    .gc-band-img{top:-30%;bottom:auto;height:160%;will-change:transform;animation:gc-parallax linear both;animation-timeline:--gcband;animation-range:cover 0% cover 100%}
   }
 }
 @keyframes gc-parallax{from{transform:translate3d(0,-18%,0)}to{transform:translate3d(0,18%,0)}}
@@ -339,6 +343,7 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
 
 <script src="/js/utm-tracking.js" defer></script>
 <script src="/js/contact-footer.js" defer></script>
+<script src="/js/parallax.js" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
   // The shared footer form injects a longevity manifesto; replace it with a
