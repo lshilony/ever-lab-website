@@ -38,7 +38,7 @@ h2.sec{font-family:'Assistant',sans-serif;font-weight:600;font-size:clamp(26px,3
 /* header */
 header{position:sticky;top:0;z-index:50;background:rgba(237,232,227,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
-header .logo{height:44px;mix-blend-mode:multiply}
+header .logo{height:96px;width:auto;margin:-24px 0;mix-blend-mode:multiply}
 header .btn{padding:11px 22px;font-size:14px}
 
 /* hero */
@@ -81,7 +81,8 @@ section{padding:76px 0}
 
 /* packages */
 .packs{background:var(--bg)}
-.pack-help{text-align:center;color:var(--ink-soft);font-size:17px;margin-top:14px}
+.pack-help{text-align:center;color:var(--ink-soft);font-size:17px;line-height:1.65;max-width:600px;margin:14px auto 0;text-wrap:balance}
+.pack-help + .pack-help{margin-top:10px}
 .pack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
 .pack{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:30px 26px 28px;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
 .pack:hover{transform:translateY(-3px);box-shadow:0 18px 40px -20px rgba(60,80,65,.35)}
@@ -135,6 +136,7 @@ footer a:hover{color:var(--sage-deep)}
 footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sage-deep);margin-bottom:10px}
 
 @media(max-width:820px){
+  header .logo{height:72px;margin:-18px 0}
   .steps-grid,.treat-grid,.pack-grid{grid-template-columns:1fr}
   .story .wrap{grid-template-columns:1fr;gap:30px}
   .story .pic{aspect-ratio:1/1;max-width:320px}
@@ -272,19 +274,18 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
 <section class="packs" id="packages">
   <div class="wrap">
     <div class="center">
-      <p class="pack-help">אנחנו מאמינים שהדרך הטובה ביותר להירגע, להתאושש ולהיטען מחדש היא באמצעות שילוב מדויק של כמה טיפולים משלימים.<br>החוויה הזוגית שלנו כוללת ארבע תחנות של וולנס והתחדשות: עיסוי לימפטי מפנק, סאונת אינפרא אדום, פוד עתידני עם עיסוי שרירים עמוק וטיפול בקור.</p>
+      <p class="pack-help">אנחנו מאמינים שהדרך הטובה ביותר להירגע, להתאושש ולהיטען מחדש היא באמצעות שילוב מדויק של כמה טיפולים משלימים.</p>
+      <p class="pack-help">החוויה הזוגית שלנו כוללת ארבע תחנות של וולנס והתחדשות: עיסוי לימפטי מפנק, סאונת אינפרא אדום, פוד עתידני עם עיסוי שרירים עמוק וטיפול בקור.</p>
     </div>
     <div class="pack-grid two">
       <div class="pack featured">
         <span class="badge">הכי פופולרי</span>
-        <span class="grp">לזוג</span>
         <h3>חבילה זוגית</h3>
         <p class="inc">8 טיפולי התחדשות (4 לכל אחד)<br>עיסוי לימפטי · סאונת אינפרא אדום · פוד מדיטציה · תא קור</p>
         <p class="dur">כ־120 דקות</p>
         <a href="https://arbox.link/HFoFs0xk" class="btn btn-primary" target="_blank" rel="noopener noreferrer">לרכישה אונליין</a>
       </div>
       <div class="pack">
-        <span class="grp">ליחיד</span>
         <h3>חבילה ליחיד</h3>
         <p class="inc">4 טיפולי התחדשות<br>עיסוי לימפטי · סאונת אינפרא אדום · פוד מדיטציה · תא קור</p>
         <p class="dur">כ־120 דקות</p>
