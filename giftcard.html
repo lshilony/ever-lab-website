@@ -92,9 +92,16 @@ section{padding:76px 0}
 .pack h3{font-weight:600;font-size:24px;margin-bottom:6px}
 .pack .inc{color:var(--ink-soft);font-weight:300;font-size:16px;min-height:48px;margin-bottom:10px}
 .pack .dur{font-family:'Poppins','Assistant',sans-serif;font-weight:400;font-size:13px;letter-spacing:.04em;color:var(--sage-deep)}
-.pack .price{font-family:'Poppins',sans-serif;font-size:30px;font-weight:500;color:var(--ink);margin-bottom:2px}
+.pack .price-wrap{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:16px;margin-bottom:16px}
+.pack .price{font-family:'Poppins',sans-serif;font-size:30px;font-weight:500;color:var(--ink)}
+.pack .price-sub{font-family:'Poppins','Assistant',sans-serif;font-size:13.5px;color:var(--ink-soft)}
 .pack .price .old{font-size:17px;color:#9a9a90;text-decoration:line-through;margin-inline-start:8px;font-weight:400}
-.pack .btn{margin-top:20px;justify-content:center;width:100%;padding:13px 20px;font-size:15px}
+.pack .btn{margin-top:auto;justify-content:center;width:100%;padding:13px 20px;font-size:15px}
+.pack-trust{display:flex;align-items:center;justify-content:center;gap:8px;text-align:center;margin:28px auto 0;max-width:600px;font-family:'Poppins','Assistant',sans-serif;font-size:13.5px;color:var(--ink-soft)}
+.pack-trust svg{width:15px;height:15px;flex:none;color:var(--sage-deep)}
+.pack-alt{text-align:center;margin:12px auto 0;font-size:15px;color:var(--ink-soft)}
+.pack-alt a{color:var(--sage-deep);font-weight:500;text-decoration:none;border-bottom:1px solid currentColor;white-space:nowrap}
+.pack-alt a:hover{color:var(--ink)}
 
 /* testimonial */
 .testi{background:linear-gradient(160deg,var(--sage) 0%,var(--sage-deep) 100%);color:#fff}
@@ -295,15 +302,23 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
         <h3>חבילה זוגית</h3>
         <p class="inc">8 טיפולי התחדשות (4 לכל אחד)<br>עיסוי לימפטי · סאונת אינפרא אדום · פוד מדיטציה · תא קור</p>
         <p class="dur">כ־120 דקות</p>
+        <div class="price-wrap"><span class="price">990 ₪</span><span class="price-sub">495 ₪ לכל אחד</span></div>
         <a href="https://arbox.link/HFoFs0xk" class="btn btn-primary" target="_blank" rel="noopener noreferrer">לרכישה אונליין</a>
       </div>
       <div class="pack">
         <h3>חבילה ליחיד</h3>
         <p class="inc">4 טיפולי התחדשות<br>עיסוי לימפטי · סאונת אינפרא אדום · פוד מדיטציה · תא קור</p>
         <p class="dur">כ־120 דקות</p>
+        <div class="price-wrap"><span class="price">640 ₪</span><span class="price-sub">4 טיפולי התחדשות</span></div>
         <a href="https://arbox.link/mZjnd19t" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">לרכישה אונליין</a>
       </div>
     </div>
+
+    <p class="pack-trust">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+      רכישה מאובטחת · השובר נשלח אליכם מיד במייל · בתוקף 24 חודשים
+    </p>
+    <p class="pack-alt">מעדיפים לרכוש בלי הרשמה? <a href="https://wa.me/972796299299?text=%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%9C%D7%A8%D7%9B%D7%95%D7%A9%20%D7%A9%D7%95%D7%91%D7%A8%20%D7%9E%D7%AA%D7%A0%D7%94%20%D7%9C%D7%98%D7%99%D7%A4%D7%95%D7%9C%D7%99%20%D7%94%D7%94%D7%AA%D7%97%D7%93%D7%A9%D7%95%D7%AA%20%D7%A9%D7%9C%20EVER%20LAB%2C%20%D7%91%D7%9C%D7%99%20%D7%94%D7%A8%D7%A9%D7%9E%D7%94" target="_blank" rel="noopener noreferrer">דברו איתנו בוואטסאפ ←</a></p>
   </div>
 </section>
 
