@@ -6,7 +6,8 @@
   ],
   "rewrites": [
     { "source": "/sitemap.xml", "destination": "/api/sitemap" },
-    { "source": "/giftcard", "destination": "/giftcard.html" }
+    { "source": "/giftcard", "destination": "/giftcard.html" },
+    { "source": "/thank-you", "destination": "/thank-you.html" }
   ],
   "functions": {
     "api/sitemap.js": { "includeFiles": "*.html" }

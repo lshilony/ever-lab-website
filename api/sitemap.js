@@ -52,6 +52,8 @@ const EXCLUDE = new Set([
   'lab-regulations.html',
   // דף נחיתה ישן של שובר המתנה (מוקאפ); הוחלף ב-giftcard.html. נשמר כגיבוי, לא לאינדקס.
   'giftcard-mockup.html',
+  // עמוד תודה אחרי רכישה (יעד ההפניה מ-Grow); noindex, לא רלוונטי לחיפוש.
+  'thank-you.html',
 ]);
 
 function discover() {

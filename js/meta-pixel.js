@@ -42,6 +42,21 @@
     if (isShop) {
       try { fbq('track', 'ViewContent', { content_category: 'gift-card', content_name: document.title }); } catch (e) {}
     }
+
+    // Purchase, fired on the post-payment thank-you page (<body data-everlab-purchase>).
+    // Grow's success-redirect URL carries the amount/item, e.g.
+    //   /thank-you?amount=990&item=couple
+    // so we can report the real value even though payment happened off-site on Grow.
+    if (document.body && document.body.hasAttribute('data-everlab-purchase')) {
+      try {
+        var qs = new URLSearchParams(location.search);
+        var amt = Number((qs.get('amount') || qs.get('sum') || '').replace(/[^\d.]/g, ''));
+        var d = { currency: 'ILS' };
+        if (amt) { d.value = amt; }
+        var item = qs.get('item'); if (item) { d.content_name = item; }
+        fbq('track', 'Purchase', d);
+      } catch (e) {}
+    }
   }
 
   // Pull a ₪ amount from the nearest product card, for event value (helps ad optimization).
@@ -58,7 +73,7 @@
     var a = e.target.closest && e.target.closest('a[href]');
     if (!a) return;
     var href = a.getAttribute('href') || '';
-    if (/arbox\.link/.test(href)) {
+    if (/arbox\.link|grow\.link/.test(href)) {
       var data = { currency: 'ILS' };
       var v = priceNear(a); if (v) data.value = v;
       try { fbq('track', 'InitiateCheckout', data); } catch (_) {}
