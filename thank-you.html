@@ -37,35 +37,37 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;paddi
 header .logo{height:96px;width:auto;margin:-24px 0;mix-blend-mode:multiply}
 header .btn{padding:11px 22px;font-size:14px}
 
-/* hero: confirmation + the voucher itself */
-.ty-hero{padding:96px 0 100px}
-.ty-grid{display:grid;grid-template-columns:1fr 1.05fr;grid-template-areas:"head visual" "dl visual";column-gap:88px;align-items:center}
-.ty-head{grid-area:head;align-self:end}
-.ty-dl{grid-area:dl;align-self:start;margin-top:30px}
-.ty-visual{grid-area:visual}
+/* hero: the same voucher-style card as below; text on the green, the pod photo
+   filling the other half, one frame line running around both */
+.ty-hero{padding:44px 0 28px}
+.ty-vcard.ty-hero-card{padding:0;text-align:right;display:grid;grid-template-columns:1fr 1fr;min-height:560px}
+.ty-hero-card .frame{z-index:2;border-color:rgba(244,240,235,.55)}
+.ty-hero-text{position:relative;z-index:1;padding:80px 64px 76px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.ty-hero-photo{position:relative}
+.ty-hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% center;filter:saturate(.88)}
 
 .ty-ok{display:inline-flex;align-items:center;gap:12px;margin-bottom:22px}
-.ty-ok i{width:30px;height:30px;border-radius:50%;background:var(--sage-deep);display:flex;align-items:center;justify-content:center;flex:none}
-.ty-ok i svg{width:16px;height:16px;stroke:var(--paper);stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.ty-title{font-weight:300;font-size:clamp(38px,5.2vw,62px);line-height:1.08;letter-spacing:-.005em;margin-bottom:22px}
-.ty-lead{font-weight:600;font-size:clamp(19px,2.2vw,22px);margin-bottom:6px}
-.ty-sub{font-size:clamp(17px,1.9vw,19px);font-weight:300;color:var(--ink-soft);max-width:460px;text-wrap:balance}
-.ty-order{display:inline-block;margin-top:20px;font-family:'Poppins','Assistant',sans-serif;font-size:14px;letter-spacing:.02em;color:var(--sage-deep);background:rgba(205,223,183,.32);border:1px solid rgba(107,139,112,.28);border-radius:30px;padding:8px 20px}
-.ty-hint{margin-top:12px;font-size:14.5px;font-weight:300;color:var(--ink-soft)}
-
-.ty-photo{width:100%;aspect-ratio:4/5;max-height:620px;object-fit:cover;object-position:58% center;border-radius:6px;filter:saturate(.88)}
+.ty-ok i{width:30px;height:30px;border-radius:50%;background:var(--paper);display:flex;align-items:center;justify-content:center;flex:none}
+.ty-ok i svg{width:16px;height:16px;stroke:var(--sage-deep);stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ty-hero .eyebrow{color:rgba(244,240,235,.82)}
+.ty-title{font-weight:300;font-size:clamp(36px,4.6vw,54px);line-height:1.08;letter-spacing:-.005em;margin-bottom:20px}
+.ty-lead{font-weight:500;font-size:clamp(18px,2.1vw,21px);margin-bottom:6px;text-wrap:balance}
+.ty-lead .nb{white-space:nowrap}
+.ty-sub{font-size:clamp(16.5px,1.8vw,18px);font-weight:300;opacity:.9;max-width:420px;text-wrap:balance}
+.ty-order{display:inline-block;margin-top:20px;font-family:'Poppins','Assistant',sans-serif;font-size:14px;letter-spacing:.02em;color:var(--paper);background:rgba(255,255,255,.1);border:1px solid rgba(244,240,235,.5);border-radius:30px;padding:8px 20px}
+.ty-dl{margin-top:30px}
+.ty-hint{margin-top:12px;font-size:14.5px;font-weight:300;opacity:.85;text-wrap:balance}
 
 @media (prefers-reduced-motion:no-preference){
-  .ty-head,.ty-dl{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
-  .ty-dl{animation-delay:.1s}
-  .ty-photo{animation:fade 1s .15s ease both}
+  .ty-hero-text{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+  .ty-hero-photo img{animation:fade 1s .15s ease both}
 }
 @keyframes fade{from{opacity:0}to{opacity:1}}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
 /* everything after the hero sits in one card styled like the gift voucher:
    sage gradient, thin inner frame, faint corner circles, sprig divider */
-.ty-next{padding:0 0 104px}
+.ty-next{padding:0 0 96px}
 .ty-vcard{position:relative;overflow:hidden;max-width:1060px;margin:0 auto;border-radius:18px;background:var(--sage-grad);color:var(--paper);text-align:center;padding:88px 72px 84px}
 .ty-vcard .frame{position:absolute;inset:22px;border:1px solid rgba(244,240,235,.42);border-radius:12px;pointer-events:none}
 .ty-vcard .bubble{position:absolute;right:-170px;bottom:-230px;width:540px;height:540px;border-radius:50%;border:1.5px solid rgba(244,240,235,.14);pointer-events:none}
@@ -100,14 +102,15 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
 
 @media(max-width:900px){
   header .logo{height:72px;margin:-18px 0}
-  .ty-hero{padding:40px 0 64px;text-align:center}
-  .ty-grid{grid-template-columns:1fr;grid-template-areas:"head" "visual" "dl";row-gap:40px}
+  .ty-hero{padding:24px 0 20px}
+  .ty-vcard.ty-hero-card{grid-template-columns:1fr;min-height:0;text-align:center}
+  .ty-hero-card .frame{inset:12px}
+  .ty-hero-text{padding:56px 28px 44px;align-items:center}
+  .ty-hero-photo{aspect-ratio:5/4}
   .ty-ok{margin-bottom:16px}
   .ty-title{margin-bottom:16px}
-  .ty-dl{margin-top:0}
   .ty-sub{margin:0 auto}
-  .ty-visual{max-width:460px;margin:0 auto;width:100%}
-  .ty-photo{aspect-ratio:5/4}
+  .ty-dl{margin-top:26px;width:100%}
   .ty-next{padding:0 0 72px}
   .ty-vcard{padding:64px 30px 60px;border-radius:14px}
   .ty-vcard .frame{inset:12px;border-radius:9px}
@@ -140,26 +143,26 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
 
 <main>
   <section class="ty-hero">
-    <div class="wrap ty-grid">
-      <div class="ty-head">
+    <div class="wrap">
+     <div class="ty-vcard ty-hero-card">
+      <span class="frame" aria-hidden="true"></span>
+      <div class="ty-hero-text">
         <span class="ty-ok"><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></i><span class="eyebrow">Thank you</span></span>
         <h1 class="ty-title">תודה, הרכישה הושלמה!</h1>
-        <p class="ty-lead">החוויה שלכם ב-<span class="en">EVER LAB</span> מתחילה כאן.</p>
+        <p class="ty-lead">החוויה שלכם <span class="nb">ב-<span class="en">EVER LAB</span></span> מתחילה כאן.</p>
         <p class="ty-sub">אישור הרכישה נשלח למייל שלכם, ואת השובר אפשר להוריד כבר עכשיו.</p>
         <p class="ty-order" hidden></p>
-      </div>
-
-      <div class="ty-visual">
-        <img class="ty-photo" src="/img/hero.jpg" alt="המתחם של EVER LAB, פוד מדיטציה">
-      </div>
 
       <div class="ty-dl">
-        <a class="btn btn-primary js-voucher" href="/img/gift-voucher.png" download="EVER-LAB-gift-voucher.png">
+        <a class="btn btn-light js-voucher" href="/img/gift-voucher.png" download="EVER-LAB-gift-voucher.png">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>
           להורדת השובר
         </a>
         <p class="ty-hint">מומלץ לשמור את השובר בטלפון, כך הוא תמיד יהיה בהישג יד.</p>
       </div>
+      </div>
+      <div class="ty-hero-photo"><img src="/img/hero.jpg" alt="המתחם של EVER LAB, פוד מדיטציה"></div>
+     </div>
     </div>
   </section>
 
