@@ -303,14 +303,14 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
         <p class="inc">8 טיפולי התחדשות (4 לכל אחד)<br>עיסוי לימפטי · סאונת אינפרא אדום · פוד מדיטציה · תא קור</p>
         <p class="dur">כ־120 דקות</p>
         <div class="price-wrap"><span class="price">990 ₪</span><span class="price-sub">495 ₪ לכל אחד</span></div>
-        <a href="https://pay.grow.link/MjE3NDM~00da1ce43879e99e9eb3b4af02526a18-NDIyMDI3Mg" class="btn btn-primary" target="_blank" rel="noopener noreferrer">לרכישה אונליין</a>
+        <a href="https://pay.grow.link/MjE3NDM~00da1ce43879e99e9eb3b4af02526a18-NDIyMDI3Mg" data-buy="couple" class="btn btn-primary" target="_blank" rel="noopener noreferrer">לרכישה אונליין</a>
       </div>
       <div class="pack">
         <h3>חבילה ליחיד</h3>
         <p class="inc">4 טיפולי התחדשות<br>עיסוי לימפטי · סאונת אינפרא אדום · פוד מדיטציה · תא קור</p>
         <p class="dur">כ־120 דקות</p>
         <div class="price-wrap"><span class="price">640 ₪</span></div>
-        <a href="https://pay.grow.link/MjE3NDM~a10b6394305e90fcca8e22b27e0a4eda-NDIyMDA1MQ" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">לרכישה אונליין</a>
+        <a href="https://pay.grow.link/MjE3NDM~a10b6394305e90fcca8e22b27e0a4eda-NDIyMDA1MQ" data-buy="single" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">לרכישה אונליין</a>
       </div>
     </div>
 
@@ -379,7 +379,40 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
   data-message="מעוניין לרכוש שובר מתנה לטיפולי ההתחדשות של EVER LAB"></script>
 <script src="/js/cookie-consent.js" defer></script>
 <script src="/js/a11y-widget.js" defer></script>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script>
+  // Funnel events for Vercel Analytics (cookieless, so every visitor counts): how far
+  // people scroll and how they leave with intent. Completed purchases show up as
+  // /thank-you page views.
+  document.addEventListener('DOMContentLoaded', function () {
+    function track(name) { window.va('event', { name: name }); }
+
+    if ('IntersectionObserver' in window) {
+      [['.ftr-img', 'reached_treatments'], ['.pack', 'reached_packages']].forEach(function (c) {
+        var el = document.querySelector(c[0]);
+        if (!el) return;
+        var io = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) { track(c[1]); io.disconnect(); }
+        }, { threshold: 0.5 });
+        io.observe(el);
+      });
+    }
+
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a) return;
+      if (a.dataset.buy) { track('buy_click_' + a.dataset.buy); }
+      else if (/wa\.me/.test(a.href)) { track('whatsapp_click'); }
+    });
+
+    document.addEventListener('submit', function (e) {
+      if (e.target.closest && e.target.closest('.closing-form')) { track('contact_form'); }
+    }, true);
+  });
+</script>
 <script>
   // The shared footer form injects a longevity manifesto; replace it with a
   // gift-relevant heading on this page only (runs after contact-footer.js).
