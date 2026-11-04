@@ -43,11 +43,12 @@ header .btn{padding:11px 22px;font-size:14px}
 
 /* hero */
 .hero{position:relative;min-height:82vh;display:flex;align-items:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('/img/pod-hero.jpg') center 40%/cover no-repeat}
+.hero-bg{position:absolute;inset:0;background:url('/img/gc/pod-hero.jpg') center 40%/cover no-repeat}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(24,32,26,.72) 0%,rgba(24,32,26,.4) 45%,rgba(24,32,26,.15) 100%)}
 .hero .wrap{position:relative;z-index:2;color:#fff;padding-top:80px;padding-bottom:80px}
 .hero-inner{max-width:640px}
 .hero .eyebrow{color:var(--sage-soft)}
+.hero-for{display:inline-block;font-size:16px;font-weight:500;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.55);border-radius:30px;padding:6px 18px;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 .hero h1{font-family:'Assistant',sans-serif;font-weight:600;font-size:clamp(34px,5vw,56px);line-height:1.1;margin:16px 0 18px;text-shadow:0 2px 24px rgba(0,0,0,.3)}
 .hero p.sub{font-size:clamp(18px,2vw,22px);font-weight:300;line-height:1.5;color:rgba(255,255,255,.94);max-width:560px;margin-bottom:30px}
 .hero-cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:18px}
@@ -94,8 +95,8 @@ section{padding:76px 0}
 .pack .dur{font-family:'Poppins','Assistant',sans-serif;font-weight:400;font-size:13px;letter-spacing:.04em;color:var(--sage-deep)}
 .pack .price-wrap{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:16px;margin-bottom:16px}
 .pack .price{font-family:'Poppins',sans-serif;font-size:30px;font-weight:500;color:var(--ink)}
-.pack .price-sub{font-family:'Poppins','Assistant',sans-serif;font-size:13.5px;color:var(--ink-soft)}
-.pack .price .old{font-size:17px;color:#9a9a90;text-decoration:line-through;margin-inline-start:8px;font-weight:400}
+.pack .price-sub{flex-basis:100%;font-family:'Poppins','Assistant',sans-serif;font-size:13.5px;color:var(--ink-soft)}
+.pack .price .old{font-size:17px;color:#9a9a90;text-decoration:line-through;margin-inline-start:14px;font-weight:400}
 .pack .btn{margin-top:auto;justify-content:center;width:100%;padding:13px 20px;font-size:15px}
 .pack-trust{display:flex;align-items:center;justify-content:center;gap:8px;text-align:center;margin:28px auto 0;max-width:600px;font-family:'Poppins','Assistant',sans-serif;font-size:13.5px;color:var(--ink-soft)}
 .pack-trust svg{width:15px;height:15px;flex:none;color:var(--sage-deep)}
@@ -200,7 +201,7 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
 <header>
   <div class="wrap">
     <a href="/" aria-label="EVER LAB, דף הבית"><img class="logo" src="/img/EVERLAB_LOGO.png" alt="EVER LAB"></a>
-    <a href="#packages" class="btn btn-primary">לרכישת שובר מתנה</a>
+    <a href="#packages" class="btn btn-primary">להזמנת החוויה</a>
   </div>
 </header>
 
@@ -209,10 +210,11 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
   <div class="hero-bg"></div>
   <div class="wrap">
     <div class="hero-inner">
+      <span class="hero-for">לעצמכם או במתנה</span>
       <h1>לא עוד ספא.<br><span style="color:var(--sage-soft)">חוויית התחדשות לגוף ולנפש.</span></h1>
-      <p class="sub">מסע זוגי של רוגע והתחדשות, שיאפשר לכם להתנתק, להיטען מחדש<br>ולצאת בתחושה של ריחוף על ענן.</p>
+      <p class="sub">מסע של רוגע והתחדשות, שיאפשר לכם להתנתק, להיטען מחדש<br>ולצאת בתחושה של ריחוף על ענן.</p>
       <div class="hero-cta-row">
-        <a href="#packages" class="btn btn-primary">לרכישת טיפולי התחדשות <span>←</span></a>
+        <a href="#packages" class="btn btn-primary">להזמנת החוויה <span>←</span></a>
       </div>
     </div>
   </div>
@@ -229,7 +231,7 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
 
 <!-- VENUE PARALLAX 0 (after hero/intro, before treatments) -->
 <div class="gc-band" role="img" aria-label="מתחם EVER LAB בהרצליה">
-  <div class="gc-band-img" style="background-image:url('/img/everlab-space2.jpg')"></div>
+  <div class="gc-band-img" style="background-image:url('/img/gc/everlab-space2.jpg')"></div>
 </div>
 
 <!-- TREATMENTS (Figma editorial, alternating image/text) -->
@@ -238,7 +240,7 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
     <div class="center"><h2 class="sec">הטיפולים שלנו</h2></div>
 
     <div class="ftr imgleft">
-      <div class="ftr-img"><img src="/img/pouch.jpg" alt="עיסוי לימפטי מלטף, The Pouch" style="object-position:center 72%"></div>
+      <div class="ftr-img"><img loading="lazy" decoding="async" src="/img/gc/pouch.jpg" alt="עיסוי לימפטי מלטף, The Pouch" style="object-position:center 72%"></div>
       <div class="ftr-body">
         <div class="ftr-label"><span class="ln"></span><span class="en">THE POUCH</span><span class="tk"></span></div>
         <h3>עיסוי לימפטי מלטף</h3>
@@ -248,7 +250,7 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
     </div>
 
     <div class="ftr">
-      <div class="ftr-img"><img src="/img/pod.jpg" alt="פוד מהעתיד, The Nap Pod"></div>
+      <div class="ftr-img"><img loading="lazy" decoding="async" src="/img/gc/pod.jpg" alt="פוד מהעתיד, The Nap Pod"></div>
       <div class="ftr-body">
         <div class="ftr-label"><span class="ln"></span><span class="en">THE NAP POD</span><span class="tk"></span></div>
         <h3>פוד מהעתיד בשילוב עיסוי שרירים עמוק</h3>
@@ -258,7 +260,7 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
     </div>
 
     <div class="ftr imgleft">
-      <div class="ftr-img"><img src="/img/sauna-blue.jpg" alt="סאונת אינפרא אדום, The Red Room"></div>
+      <div class="ftr-img"><img loading="lazy" decoding="async" src="/img/gc/sauna-blue.jpg" alt="סאונת אינפרא אדום, The Red Room"></div>
       <div class="ftr-body">
         <div class="ftr-label"><span class="ln"></span><span class="en">THE RED ROOM</span><span class="tk"></span></div>
         <h3>סאונת אינפרא אדום</h3>
@@ -268,7 +270,7 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
     </div>
 
     <div class="ftr">
-      <div class="ftr-img"><img src="/img/ice.jpg" alt="טיפול בקור, The Ice Cube" style="object-position:center 22%"></div>
+      <div class="ftr-img"><img loading="lazy" decoding="async" src="/img/gc/ice.jpg" alt="טיפול בקור, The Ice Cube" style="object-position:center 22%"></div>
       <div class="ftr-body">
         <div class="ftr-label"><span class="ln"></span><span class="en">THE ICE CUBE</span><span class="tk"></span></div>
         <h3>טיפול בקור 85°-</h3>
@@ -278,7 +280,7 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
     </div>
 
     <div class="center" style="margin-top:clamp(34px,5vw,54px)">
-      <a href="#packages" class="btn btn-primary">לרכישת טיפולי התחדשות <span>←</span></a>
+      <a href="#packages" class="btn btn-primary">להזמנת החוויה <span>←</span></a>
     </div>
 
   </div>
@@ -286,7 +288,7 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
 
 <!-- VENUE PARALLAX 1 (between treatments and prices) -->
 <div class="gc-band" role="img" aria-label="טיפול באור אדום, EVER LAB">
-  <div class="gc-band-img" style="background-image:url('/img/redlight.jpg')"></div>
+  <div class="gc-band-img" style="background-image:url('/img/gc/redlight.jpg')"></div>
 </div>
 
 <!-- PACKAGES — grouped + guided choice -->
@@ -299,14 +301,14 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
     <div class="pack-grid two">
       <div class="pack featured">
         <span class="badge">הכי פופולרי</span>
-        <h3>חבילה זוגית</h3>
+        <h3>יום כיף זוגי</h3>
         <p class="inc">8 טיפולי התחדשות (4 לכל אחד)<br>עיסוי לימפטי · סאונת אינפרא אדום · פוד מדיטציה · תא קור</p>
         <p class="dur">כ־120 דקות</p>
-        <div class="price-wrap"><span class="price">990 ₪</span><span class="price-sub">495 ₪ לכל אחד</span></div>
+        <div class="price-wrap"><span class="price">990 ₪<span class="old">1,280 ₪</span></span><span class="price-sub">495 ₪ לכל אחד</span></div>
         <a href="https://pay.grow.link/MjE3NDM~00da1ce43879e99e9eb3b4af02526a18-NDIyMDI3Mg" data-buy="couple" class="btn btn-primary" target="_blank" rel="noopener noreferrer">לרכישה אונליין</a>
       </div>
       <div class="pack">
-        <h3>חבילה ליחיד</h3>
+        <h3>יום כיף ליחיד</h3>
         <p class="inc">4 טיפולי התחדשות<br>עיסוי לימפטי · סאונת אינפרא אדום · פוד מדיטציה · תא קור</p>
         <p class="dur">כ־120 דקות</p>
         <div class="price-wrap"><span class="price">640 ₪</span></div>
@@ -331,13 +333,13 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
       <p>הן הקימו את <span class="en" style="white-space:nowrap">EVER LAB</span> מתוך מטרה לייצר <strong>בועת וולנס הוליסטית שמאפשרת לגוף לעשות איתחול</strong>, לנשימה להתרחב ולפעום להתמלא מחדש.</p>
       <p><span class="en" style="white-space:nowrap">EVER LAB</span> הוא מפגש מפתיע בין חוכמה עתיקה לטכנולוגיה חכמה, אשר יוצר חווית התחדשות עוצמתית במקום שמרגיש כמו הצצה אל העתיד.</p>
     </div>
-    <div class="pic"><img src="/img/sigal-limor.jpg" alt="סיגל ולימור, המייסדות של EVER LAB"></div>
+    <div class="pic"><img loading="lazy" decoding="async" src="/img/sigal-limor.jpg" alt="סיגל ולימור, המייסדות של EVER LAB"></div>
   </div>
 </section>
 
 <!-- VENUE PARALLAX 2 (between the story and the form) -->
 <div class="gc-band" role="img" aria-label="מתחם EVER LAB בהרצליה">
-  <div class="gc-band-img" style="background-image:url('/img/everlab-space.jpg')"></div>
+  <div class="gc-band-img" style="background-image:url('/img/gc/everlab-space.jpg')"></div>
 </div>
 
 <!-- FINAL CTA -->
