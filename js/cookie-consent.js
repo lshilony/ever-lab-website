@@ -164,7 +164,9 @@
     if (!readPrefs()) { setTimeout(showBanner, 800); }
 
     banner.querySelector('[data-action="accept-all"]').addEventListener('click', function () { savePrefs({ analytics: true, marketing: true }); });
-    banner.querySelector('[data-action="reject-all"]').addEventListener('click', function () { savePrefs({ analytics: false, marketing: false }); });
+    banner.querySelectorAll('[data-action="reject-all"]').forEach(function (el) {
+      el.addEventListener('click', function () { savePrefs({ analytics: false, marketing: false }); });
+    });
     banner.querySelector('[data-action="customize"]').addEventListener('click', openModal);
 
     modal.querySelector('[data-action="save"]').addEventListener('click', function () {
