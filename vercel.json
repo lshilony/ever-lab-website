@@ -2,7 +2,12 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     { "source": "/index.html", "destination": "/", "permanent": true },
-    { "source": "/longevity-program.html", "destination": "/#plan", "permanent": true }
+    { "source": "/longevity-program.html", "destination": "/#plan", "permanent": true },
+    { "source": "/giftcard/", "destination": "/giftcard", "permanent": true },
+    { "source": "/ever-gift-card25", "destination": "/giftcard", "permanent": true },
+    { "source": "/ever-gift-card25/", "destination": "/giftcard", "permanent": true },
+    { "source": "/product/gift_card", "destination": "/giftcard", "permanent": true },
+    { "source": "/product/gift_card/", "destination": "/giftcard", "permanent": true }
   ],
   "rewrites": [
     { "source": "/sitemap.xml", "destination": "/api/sitemap" },
