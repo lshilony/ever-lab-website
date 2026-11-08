@@ -6,7 +6,8 @@
      PageView         every page
      ViewContent      gift-card / shop pages
      InitiateCheckout click on an Arbox "לרכישה אונליין" buy button
-     Lead             WhatsApp purchase click + contact-form submit
+     Lead             WhatsApp purchase click (any WhatsApp click on the
+                      gift-card page) + contact-form submit
    NOTE: the actual Purchase happens off-site on Arbox, so it is NOT
    captured here. To record purchases, the pixel must also sit on
    Arbox's post-payment page, or use Meta's Conversions API.
@@ -77,7 +78,8 @@
       var data = { currency: 'ILS' };
       var v = priceNear(a); if (v) data.value = v;
       try { fbq('track', 'InitiateCheckout', data); } catch (_) {}
-    } else if (/wa\.me/.test(href) && /(לרכוש|רכישה|שובר)/.test((a.textContent || '') + ' ' + (a.getAttribute('aria-label') || ''))) {
+    } else if (/wa\.me/.test(href) && (/\/giftcard/.test(location.pathname) ||
+        /(לרכוש|רכישה|שובר)/.test((a.textContent || '') + ' ' + (a.getAttribute('aria-label') || '')))) {
       try { fbq('track', 'Lead', { content_category: 'whatsapp-purchase' }); } catch (_) {}
     }
   }, true);
