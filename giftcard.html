@@ -43,13 +43,16 @@ header .btn{padding:11px 22px;font-size:14px}
 
 /* hero */
 .hero{position:relative;min-height:82vh;display:flex;align-items:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('/img/gc/pod-hero.jpg') center 40%/cover no-repeat}
+/* The still under the video is a frame of the clip itself (Vimeo's poster), cropped the
+   same way, so the switch to the moving video is seamless and the old photo never shows. */
+.hero-bg{position:absolute;inset:0;--vx:50%;--vy:42%;background:#2a2f2b url('/img/gc/hero-video-poster-960.jpg') var(--vx) var(--vy)/cover no-repeat}
+@media(min-width:821px){.hero-bg{background-image:url('/img/gc/hero-video-poster.jpg')}}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(24,32,26,.72) 0%,rgba(24,32,26,.4) 45%,rgba(24,32,26,.15) 100%)}
-/* Vimeo background video over the photo; it fades in only once it is actually playing,
-   so a blocked autoplay (low-power mode, some in-app browsers) just leaves the photo.
+/* Vimeo background video over the poster; it fades in only once it is actually playing,
+   so a blocked autoplay (low-power mode, some in-app browsers) just leaves the poster.
    The clip is portrait (1920x2240): the iframe is sized to cover the hero, and
-   --vx / --vy pick which part of the frame stays in view. */
-.hero-video{position:absolute;inset:0;overflow:hidden;container-type:size;opacity:0;transition:opacity .9s ease;--vx:50%;--vy:42%}
+   --vx / --vy (set on .hero-bg) pick which part of the frame stays in view. */
+.hero-video{position:absolute;inset:0;overflow:hidden;container-type:size;opacity:0;transition:opacity .6s ease}
 .hero-video.is-playing{opacity:1}
 .hero-video iframe{position:absolute;left:var(--vx);top:var(--vy);width:100%;height:100%;width:max(100cqw,calc(100cqh * 1920 / 2240));height:max(100cqh,calc(100cqw * 2240 / 1920));transform:translate(calc(var(--vx) * -1),calc(var(--vy) * -1));border:0;pointer-events:none}
 @media (prefers-reduced-motion:reduce){.hero-video{display:none}}
@@ -162,7 +165,7 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
   .story .pic{aspect-ratio:1/1;max-width:320px}
   section{padding:56px 0}
   .hero{min-height:88vh}
-  .hero-video{--vx:62%}
+  .hero-bg{--vx:62%}
 }
 
 /* Figma editorial treatments (alternating image/text, labeled divider, no boxes) */
@@ -435,8 +438,8 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
   });
 </script>
 <script>
-  // Hero video (Vimeo "EVER LAB HERO"). Loaded after the page so the photo stays the
-  // fast first paint; skipped for reduced motion and data saver. background=1 gives a
+  // Hero video (Vimeo "EVER LAB HERO"). Starts as soon as the page is parsed; the poster
+  // frame is the first paint. Skipped for reduced motion and data saver. background=1 gives a
   // muted, looping, control-free player; dnt=1 keeps Vimeo from setting tracking cookies.
   (function () {
     var box = document.querySelector('.hero-video');
@@ -467,8 +470,7 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
         }
       });
     }
-    if (document.readyState === 'complete') { start(); }
-    else { window.addEventListener('load', start); }
+    start();
   })();
 </script>
 <script src="/js/ga4.js" defer></script>
