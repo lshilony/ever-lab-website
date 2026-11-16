@@ -45,6 +45,14 @@ header .btn{padding:11px 22px;font-size:14px}
 .hero{position:relative;min-height:82vh;display:flex;align-items:center;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:url('/img/gc/pod-hero.jpg') center 40%/cover no-repeat}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(24,32,26,.72) 0%,rgba(24,32,26,.4) 45%,rgba(24,32,26,.15) 100%)}
+/* Vimeo background video over the photo; it fades in only once it is actually playing,
+   so a blocked autoplay (low-power mode, some in-app browsers) just leaves the photo.
+   The clip is portrait (1920x2240): the iframe is sized to cover the hero, and
+   --vx / --vy pick which part of the frame stays in view. */
+.hero-video{position:absolute;inset:0;overflow:hidden;container-type:size;opacity:0;transition:opacity .9s ease;--vx:50%;--vy:42%}
+.hero-video.is-playing{opacity:1}
+.hero-video iframe{position:absolute;left:var(--vx);top:var(--vy);width:100%;height:100%;width:max(100cqw,calc(100cqh * 1920 / 2240));height:max(100cqh,calc(100cqw * 2240 / 1920));transform:translate(calc(var(--vx) * -1),calc(var(--vy) * -1));border:0;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.hero-video{display:none}}
 .hero .wrap{position:relative;z-index:2;color:#fff;padding-top:80px;padding-bottom:80px}
 .hero-inner{max-width:640px}
 .hero .eyebrow{color:var(--sage-soft)}
@@ -154,6 +162,7 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
   .story .pic{aspect-ratio:1/1;max-width:320px}
   section{padding:56px 0}
   .hero{min-height:88vh}
+  .hero-video{--vx:62%}
 }
 
 /* Figma editorial treatments (alternating image/text, labeled divider, no boxes) */
@@ -207,7 +216,7 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
 
 <!-- HERO — reframed to the GIVER -->
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg"><div class="hero-video" data-vimeo="1041948746" aria-hidden="true"></div></div>
   <div class="wrap">
     <div class="hero-inner">
       <span class="hero-for">לעצמכם או במתנה</span>
@@ -424,6 +433,43 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
     var btn = document.querySelector('.cf-submit');
     if (btn) { btn.textContent = 'לפרטים נוספים ←'; }
   });
+</script>
+<script>
+  // Hero video (Vimeo "EVER LAB HERO"). Loaded after the page so the photo stays the
+  // fast first paint; skipped for reduced motion and data saver. background=1 gives a
+  // muted, looping, control-free player; dnt=1 keeps Vimeo from setting tracking cookies.
+  (function () {
+    var box = document.querySelector('.hero-video');
+    if (!box) return;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var saveData = navigator.connection && navigator.connection.saveData;
+    if (reduce || saveData) return;
+    var ORIGIN = 'https://player.vimeo.com';
+    function start() {
+      var f = document.createElement('iframe');
+      f.src = ORIGIN + '/video/' + box.getAttribute('data-vimeo') + '?background=1&autoplay=1&loop=1&muted=1&dnt=1';
+      f.allow = 'autoplay; fullscreen; picture-in-picture';
+      f.title = 'EVER LAB';
+      f.tabIndex = -1;
+      box.appendChild(f);
+      // Same message format as Vimeo's own player.js: { method, value } objects.
+      function send(msg) { f.contentWindow.postMessage(msg, ORIGIN); }
+      window.addEventListener('message', function (e) {
+        if (e.origin !== ORIGIN || e.source !== f.contentWindow) return;
+        var d;
+        try { d = typeof e.data === 'string' ? JSON.parse(e.data) : e.data; } catch (_) { return; }
+        if (!d || !d.event) return;
+        if (d.event === 'ready') {
+          send({ method: 'addEventListener', value: 'timeupdate' });
+          send({ method: 'addEventListener', value: 'playProgress' });
+        } else if ((d.event === 'timeupdate' || d.event === 'playProgress') && d.data && d.data.seconds > 0) {
+          box.classList.add('is-playing');
+        }
+      });
+    }
+    if (document.readyState === 'complete') { start(); }
+    else { window.addEventListener('load', start); }
+  })();
 </script>
 <script src="/js/ga4.js" defer></script>
 <script src="/js/meta-pixel.js" defer></script>
