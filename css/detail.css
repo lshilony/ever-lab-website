@@ -515,6 +515,17 @@ html.lenis, html.lenis body { height: auto; }
   border: 1px solid rgba(255, 255, 255, 0.55);
 }
 .detail-cta-btn-secondary:hover { background: rgba(255, 255, 255, 0.14); border-color: #fff; }
+/* Small text link under the buttons (recovery.html: gift card) */
+.detail-cta p.detail-cta-gift { margin: 30px auto 0; font-size: 15px; opacity: 1; }
+.detail-cta-gift a {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  white-space: nowrap;
+}
+.detail-cta-gift a:hover { text-decoration-thickness: 2px; }
 
 /* ─────────── Responsive ─────────── */
 @media (max-width: 900px) {

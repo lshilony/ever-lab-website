@@ -1358,6 +1358,24 @@
   @media (max-width: 560px) {
     .cat-grid-2 { grid-template-columns: 1fr; max-width: 420px; }
   }
+  /* One-line link to the gift card page, under the Longevity packages */
+  .cat-gift-note {
+    margin: 40px auto 0;
+    text-align: center;
+    font-family: 'Poppins', 'Assistant', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--ink-soft);
+  }
+  .cat-gift-note a {
+    color: var(--sage-deep);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    transition: color .2s ease;
+  }
+  .cat-gift-note a:hover { color: var(--ink); }
 
   /* Card base, shared shell */
   .cat-card {
@@ -1943,6 +1961,7 @@
         </article>
 
       </div>
+      <p class="cat-gift-note">מחפשים מתנה? <a href="/giftcard">שובר לחוויית התחדשות, ליחיד או לזוג <span aria-hidden="true">←</span></a></p>
     </div>
   </section>
 

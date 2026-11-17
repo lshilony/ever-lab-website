@@ -15,12 +15,12 @@ const ORIGIN = 'https://ever-lab.co';
 // Canonical path + SEO hints per page. lastmod is a fallback; the live file's
 // modification time is preferred when available.
 const META = {
-  'index.html':                { url: '/',                          priority: '1.0', changefreq: 'weekly',  lastmod: '2026-07-27' },
-  'experiences.html':          { url: '/experiences.html',          priority: '0.9', changefreq: 'weekly',  lastmod: '2026-07-23' },
+  'index.html':                { url: '/',                          priority: '1.0', changefreq: 'weekly',  lastmod: '2026-11-17' },
+  'experiences.html':          { url: '/experiences.html',          priority: '0.9', changefreq: 'weekly',  lastmod: '2026-11-17' },
   'bio-age.html':              { url: '/bio-age.html',              priority: '0.9', changefreq: 'monthly', lastmod: '2026-07-26' },
   'training.html':             { url: '/training.html',             priority: '0.8', changefreq: 'monthly', lastmod: '2026-07-23' },
-  'recovery.html':             { url: '/recovery.html',             priority: '0.8', changefreq: 'monthly', lastmod: '2026-07-23' },
-  'giftcard.html':             { url: '/giftcard',                  priority: '0.7', changefreq: 'monthly', lastmod: '2026-10-05' },
+  'recovery.html':             { url: '/recovery.html',             priority: '0.8', changefreq: 'monthly', lastmod: '2026-11-17' },
+  'giftcard.html':             { url: '/giftcard',                  priority: '0.7', changefreq: 'monthly', lastmod: '2026-11-17' },
   'womenprogram.html':         { url: '/womenprogram',              priority: '0.8', changefreq: 'monthly', lastmod: '2026-07-23' },
   'blog.html':                 { url: '/blog.html',                 priority: '0.7', changefreq: 'weekly',  lastmod: '2026-09-29' },
   'grip-strength-longevity.html': { url: '/grip-strength-longevity.html', priority: '0.7', changefreq: 'monthly', lastmod: '2026-09-28' },
