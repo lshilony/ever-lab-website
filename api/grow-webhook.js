@@ -24,7 +24,8 @@ const crypto = require('crypto');
 const PIXEL_ID = '1249727762563006';
 const SOURCE_URL = 'https://ever-lab.co/giftcard';
 // Only gift-card purchases are forwarded. Checked against the product names/description.
-const PRODUCT_MATCH = /התחדשות|שובר|gift/i;
+// Includes "יום כיף" so renaming the Grow products to match the ads keeps them counted.
+const PRODUCT_MATCH = /התחדשות|שובר|יום כיף|gift/i;
 const MAX_BODY = 256 * 1024;
 const UNSAFE_KEYS = new Set(['__proto__', 'constructor', 'prototype']);
 
