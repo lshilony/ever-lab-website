@@ -1733,28 +1733,6 @@
   })();
 </script>
 
-<!-- ═══════════ COOKIE CONSENT, GDPR / Israeli law compliant ═══════════ -->
-<aside id="cookie-banner" class="cookie-banner" aria-hidden="true" aria-label="הסכמה לשימוש בעוגיות">
-  <button type="button" class="cookie-banner-close" data-action="reject-all" aria-label="סגור">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-      <line x1="6" y1="6" x2="18" y2="18"/>
-      <line x1="18" y1="6" x2="6" y2="18"/>
-    </svg>
-  </button>
-  <h3 class="cookie-banner-title">העוגיות של EVER LAB</h3>
-  <p class="cookie-banner-text">
-    אנחנו משתמשים בעוגיות כדי לשפר את החוויה שלכם באתר. ההסכמה שלכם עוזרת לנו להתאים את התוכן בצורה הטובה ביותר עבורכם.
-  </p>
-  <div class="cookie-banner-actions">
-    <button type="button" class="cookie-btn cookie-btn-secondary" data-action="customize">ניהול העדפות</button>
-    <button type="button" class="cookie-btn cookie-btn-secondary" data-action="reject-all">סירוב</button>
-    <button type="button" class="cookie-btn cookie-btn-primary" data-action="accept-all">הבנתי, תודה</button>
-  </div>
-  <div class="cookie-banner-links">
-    <a href="privacy-policy.html" target="_blank" rel="noopener noreferrer">מדיניות הפרטיות</a>
-  </div>
-</aside>
-
 <!-- ═══════════ WHATSAPP FLOATING BUTTON, direct line to EVER LAB ═══════════ -->
 <a href="https://wa.me/972796299299?text=%D7%94%D7%99%D7%99!%20%D7%94%D7%A9%D7%90%D7%A8%D7%AA%D7%99%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%91%D7%90%D7%AA%D7%A8%20%D7%A9%D7%9C%20EVER%20LAB%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%9E%D7%99%D7%93%D7%A2%20%D7%A0%D7%95%D7%A1%D7%A3.%20%F0%9F%98%8A"
    class="wa-float"
@@ -1840,155 +1818,7 @@
   </footer>
 </aside>
 
-<div id="cookie-modal" class="cookie-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
-  <div class="cookie-modal-card">
-    <header class="cookie-modal-head">
-      <h2 id="cookie-modal-title" class="cookie-modal-title">הגדרות עוגיות</h2>
-      <button type="button" class="cookie-modal-close" data-action="close" aria-label="סגור">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-          <line x1="6" y1="6" x2="18" y2="18"/>
-          <line x1="18" y1="6" x2="6" y2="18"/>
-        </svg>
-      </button>
-    </header>
-
-    <p class="cookie-modal-intro">
-      בחרו אילו עוגיות יופעלו. ההגדרות נשמרות במכשיר ואפשר לשנות אותן בכל עת.
-    </p>
-
-    <div class="cookie-category">
-      <div class="cookie-category-head">
-        <span class="cookie-category-name">חיוניות</span>
-        <span class="cookie-category-badge">תמיד פעיל</span>
-      </div>
-      <p class="cookie-category-desc">
-        עוגיות שמאפשרות לאתר לפעול, שמירת העדפות, מצב טופס, ביטחון. בלעדיהן האתר לא יעבוד תקין.
-      </p>
-    </div>
-
-    <div class="cookie-category">
-      <div class="cookie-category-head">
-        <span class="cookie-category-name">אנליטיקה</span>
-        <label class="cookie-switch">
-          <input type="checkbox" id="cookie-toggle-analytics">
-          <span class="cookie-switch-track"></span>
-        </label>
-      </div>
-      <p class="cookie-category-desc">
-        עוזרות לנו להבין כיצד האתר נמצא בשימוש (Google Analytics וכדומה), דפים נצפים, זמני שהייה, כדי לשפר אותו.
-      </p>
-    </div>
-
-    <div class="cookie-category">
-      <div class="cookie-category-head">
-        <span class="cookie-category-name">שיווק</span>
-        <label class="cookie-switch">
-          <input type="checkbox" id="cookie-toggle-marketing">
-          <span class="cookie-switch-track"></span>
-        </label>
-      </div>
-      <p class="cookie-category-desc">
-        מאפשרות להציג מודעות מותאמות אישית ולמדוד את אפקטיביות הקמפיינים שלנו (Meta Pixel וכדומה).
-      </p>
-    </div>
-
-    <footer class="cookie-modal-foot">
-      <button type="button" class="cookie-btn cookie-btn-secondary" data-action="save">שמירת הבחירה</button>
-      <button type="button" class="cookie-btn cookie-btn-primary" data-action="accept-all">אישור הכל</button>
-    </footer>
-  </div>
-</div>
-
 <script>
-  /* COOKIE CONSENT, GDPR / Israeli privacy law compliant (isolated script block) */
-  (function() {
-    const STORAGE_KEY = 'everlab-cookie-consent';
-    const banner = document.getElementById('cookie-banner');
-    const modal = document.getElementById('cookie-modal');
-    if (!banner || !modal) return;
-
-    const readPrefs = () => {
-      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || null; } catch (e) { return null; }
-    };
-    const showBanner = () => {
-      banner.classList.add('is-visible');
-      banner.removeAttribute('aria-hidden');
-    };
-    const hideBanner = () => {
-      banner.classList.remove('is-visible');
-      banner.setAttribute('aria-hidden', 'true');
-    };
-    const openModal = () => {
-      modal.classList.add('is-open');
-      modal.removeAttribute('aria-hidden');
-      const prefs = readPrefs() || {};
-      modal.querySelector('#cookie-toggle-analytics').checked = !!prefs.analytics;
-      modal.querySelector('#cookie-toggle-marketing').checked = !!prefs.marketing;
-      document.body.style.overflow = 'hidden';
-    };
-    const closeModal = () => {
-      modal.classList.remove('is-open');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    };
-    const savePrefs = (prefs) => {
-      const data = {
-        necessary: true,
-        analytics: !!prefs.analytics,
-        marketing: !!prefs.marketing,
-        timestamp: new Date().toISOString(),
-      };
-      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
-      window.dispatchEvent(new CustomEvent('everlab:consent-updated', { detail: data }));
-      hideBanner();
-      closeModal();
-    };
-
-    if (!readPrefs()) {
-      setTimeout(showBanner, 800);
-    }
-
-    banner.querySelector('[data-action="accept-all"]').addEventListener('click', function() {
-      savePrefs({ analytics: true, marketing: true });
-    });
-    banner.querySelectorAll('[data-action="reject-all"]').forEach(function(el) {
-      el.addEventListener('click', function() {
-        savePrefs({ analytics: false, marketing: false });
-      });
-    });
-    banner.querySelector('[data-action="customize"]').addEventListener('click', openModal);
-
-    modal.querySelector('[data-action="save"]').addEventListener('click', function() {
-      savePrefs({
-        analytics: modal.querySelector('#cookie-toggle-analytics').checked,
-        marketing: modal.querySelector('#cookie-toggle-marketing').checked,
-      });
-    });
-    modal.querySelector('[data-action="accept-all"]').addEventListener('click', function() {
-      savePrefs({ analytics: true, marketing: true });
-    });
-    modal.querySelector('[data-action="close"]').addEventListener('click', closeModal);
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) closeModal();
-    });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
-    });
-
-    document.querySelectorAll('[data-cookie-prefs]').forEach(function(el) {
-      el.addEventListener('click', function(e) {
-        e.preventDefault();
-        openModal();
-      });
-    });
-
-    window.everlabConsent = {
-      get: readPrefs,
-      reset: function() { localStorage.removeItem(STORAGE_KEY); showBanner(); },
-      openSettings: openModal,
-    };
-  })();
-
   /* ACCESSIBILITY WIDGET, Israeli law (תקנה 35) compliant */
   (function() {
     const STORAGE_KEY = 'everlab-a11y';
@@ -2202,6 +2032,7 @@
 <script src="/js/float-cta.js" defer
   data-message="היי, הגעתי מעמוד הלונג'ביטי באתר ויש לי שאלה"></script>
 <script src="/js/parallax.js" defer></script>
+<script src="/js/cookie-consent.js" defer></script>
 <script src="/js/ga4.js" defer></script>
 <script src="/js/meta-pixel.js" defer></script>
 </body>
