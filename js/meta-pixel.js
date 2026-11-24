@@ -8,9 +8,10 @@
      InitiateCheckout click on an Arbox "לרכישה אונליין" buy button
      Lead             WhatsApp purchase click (any WhatsApp click on the
                       gift-card page) + contact-form submit
-   NOTE: the actual Purchase happens off-site on Arbox, so it is NOT
-   captured here. To record purchases, the pixel must also sit on
-   Arbox's post-payment page, or use Meta's Conversions API.
+     Purchase         /thank-you (Grow's success redirect), see below
+   The reliable Purchase signal is server-side: api/grow-webhook.js
+   (Grow webhook → Meta Conversions API), which also covers buyers
+   who declined cookies or never return to /thank-you.
    ============================================================ */
 (function () {
   'use strict';
@@ -55,7 +56,11 @@
         var d = { currency: 'ILS' };
         if (amt) { d.value = amt; }
         var item = qs.get('item'); if (item) { d.content_name = item; }
-        fbq('track', 'Purchase', d);
+        // If Grow passes the transaction id back, use the same event_id as the server
+        // event (api/grow-webhook.js: 'grow_' + transactionId) so Meta counts it once.
+        var tx = qs.get('transactionId') || qs.get('transaction_id');
+        if (tx && /^[\w-]{1,64}$/.test(tx)) { fbq('track', 'Purchase', d, { eventID: 'grow_' + tx }); }
+        else { fbq('track', 'Purchase', d); }
       } catch (e) {}
     }
   }
