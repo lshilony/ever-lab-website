@@ -257,6 +257,11 @@
       "permanent": true
     },
     {
+      "source": "/blog",
+      "destination": "/blog.html",
+      "permanent": true
+    },
+    {
       "source": "/blog/(.*)",
       "destination": "/blog.html",
       "permanent": true
