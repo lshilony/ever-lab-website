@@ -257,22 +257,22 @@
       "permanent": true
     },
     {
-      "source": "/blog/:slug*",
+      "source": "/blog/(.*)",
       "destination": "/blog.html",
       "permanent": true
     },
     {
-      "source": "/category/:slug*",
+      "source": "/category/(.*)",
       "destination": "/blog.html",
       "permanent": true
     },
     {
-      "source": "/tag/:slug*",
+      "source": "/tag/(.*)",
       "destination": "/blog.html",
       "permanent": true
     },
     {
-      "source": "/product/:slug*",
+      "source": "/product/(.*)",
       "destination": "/experiences.html",
       "permanent": true
     }
