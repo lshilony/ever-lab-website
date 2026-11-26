@@ -76,8 +76,8 @@
     '@media(min-width:1280px){' +
       '.site-nav{gap:22px;justify-content:space-between}' +
       '.sn-toggle{display:none}.sn-panel{display:none!important}' +
-      '.sn-links{display:flex;align-items:center;gap:20px;list-style:none;margin:0;padding:0}' +
-      '.sn-links>li>a{font-size:16px}' + // was 13.5px, too small on desktop
+      '.sn-links{display:flex;align-items:center;gap:22px;list-style:none;margin:0;padding:0}' +
+      '.sn-links>li>a{font-size:18px}' + // was 13.5px, then 16px; user asked for 18px on desktop
       '.sn-right{display:flex;align-items:center;gap:16px;margin-inline-start:0}' +
     '}' +
     // ---- small screens: shrink logo like the homepage ----
