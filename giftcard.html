@@ -65,6 +65,16 @@ header .btn{padding:11px 22px;font-size:14px}
 .hero-cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:18px}
 .hero .micro{font-size:15px;color:rgba(255,255,255,.85);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .hero .micro b{font-weight:500;color:#fff}
+/* Hero copy v2 (2026-11-26): "הספא של העתיד" with the winter price on the first screen */
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px}
+.hero h1 + .hero-lead{margin-top:-6px}
+.hero-lead{font-size:clamp(20px,2.4vw,27px);font-weight:600;line-height:1.35;color:#fff;max-width:600px;margin:0 0 14px;text-shadow:0 2px 18px rgba(0,0,0,.25)}
+.hero p.sub.tight{margin-bottom:14px}
+.hero-promo{font-size:16px;font-weight:500;color:var(--sage-soft);margin:0 0 10px}
+.hero-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;margin:0 0 24px;color:rgba(255,255,255,.9)}
+.hero-price .now{font-family:'Poppins',sans-serif;font-size:clamp(30px,3.4vw,38px);font-weight:500;color:#fff;line-height:1}
+.hero-price .per{font-size:19px;font-weight:600;color:#fff}
+.hero-price .old{font-family:'Poppins',sans-serif;font-size:17px;color:rgba(255,255,255,.62);text-decoration:line-through}
 
 /* section base */
 section{padding:76px 0}
@@ -295,11 +305,14 @@ footer .tag{font-family:'Poppins',sans-serif;letter-spacing:.1em;color:var(--sag
   <div class="hero-bg"><div class="hero-video" data-vimeo="1041948746" aria-hidden="true"></div></div>
   <div class="wrap">
     <div class="hero-inner">
-      <span class="hero-for">לעצמכם או במתנה</span>
-      <h1>לא עוד ספא.<br><span style="color:var(--sage-soft)">חוויית התחדשות לגוף ולנפש.</span></h1>
-      <p class="sub">מסע של רוגע והתחדשות, שיאפשר לכם להתנתק, להיטען מחדש<br>ולצאת בתחושה של ריחוף על ענן.</p>
+      <div class="hero-tags"><span class="hero-for">לעצמכם או במתנה</span><span class="hero-for">הרצליה הילס</span></div>
+      <h1>הספא של העתיד</h1>
+      <p class="hero-lead">חוויית התחדשות זוגית שלא דומה לשום ספא שהכרתם</p>
+      <p class="sub tight">ארבעה טיפולים מתקדמים לכל אחד, המשלבים רוגע, פינוק והתחדשות.</p>
+      <p class="hero-promo">הטבת חורף מיוחדת לזמן מוגבל</p>
+      <p class="hero-price"><span class="now">990 ₪</span><span class="per">לזוג</span><span class="old" aria-label="במקום 1,280 ₪">1,280 ₪</span></p>
       <div class="hero-cta-row">
-        <a href="#packages" class="btn btn-primary">להזמנת החוויה <span>←</span></a>
+        <a href="https://pay.grow.link/MjE3NDM~00da1ce43879e99e9eb3b4af02526a18-NDIyMDI3Mg" data-buy="couple_hero" class="btn btn-primary" target="_blank" rel="noopener noreferrer">לרכישת החוויה הזוגית <span>←</span></a>
       </div>
     </div>
   </div>
